@@ -1,0 +1,66 @@
+//CUSTOM VARIABLES    EDIT VARIABLES HERE. get variables you want to change from _variables.scss
+
+$enable-negative-margins: true;
+
+// Colors
+$primary:       #E0BAA2;
+$secondary:     #6c757d;
+$success:       #198754;
+$info:          #0dcaf0;
+$warning:       #ffc107;
+$danger:        #dc3545;
+$light:         #FDFBF3;
+$dark:          #212529;
+$titleColor:    #DF7450;
+$content:       #6B493D;
+$section:       #F3E4D9;
+$subheading:    #C58383;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+  "titleColor": $titleColor,
+  "content":    $content,
+  "section":    $section,
+  "subheading": $subheading
+);
+
+//FONTS
+$font-family-sans-serif:    "Poppins" !default;
+$headings-font-family:      "Abril Fatface" !default;
+$headings-font-style:       cursive !default;
+
+
+//Borders
+$border-radius:     .25rem;   // 1
+$border-radius-sm:  .2rem;    // 2
+$border-radius-lg:  2rem;     // 3
+
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 4.5
+);
+
+
+
+
+//Imported Boostrap files
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+// font-family: 'Poppins', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+// font-family: 'Abril Fatface', cursive;
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
