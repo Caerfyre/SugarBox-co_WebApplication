@@ -37,7 +37,7 @@
 <body class="bg-light">
     
     <!-- nav bar -->
-    <nav class="ps-5 pe-5 navbar navbar-expand-sm navbar-light bg-primary sticky-top shadow p-3">
+    <nav class="ps-5 pe-5 navbar navbar-expand-lg navbar-light bg-primary sticky-top shadow p-3">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
                 aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,13 +46,13 @@
             <a href="landing.html"><img class="me-3" draggable="false" alt="SugarBox Logo" src="assets/sblogo-1.svg"></a>
             <div class="collapse navbar-collapse" id="navbarID">
                 <div class="d-flex flex-row">
-                    <ul class="navbar-nav "> 
-                    <li class="nav-item btn-primary btn-lg"><a class="nav-link fw-bold text-content" aria-current="page" href="landing.html">HOME</a></li>
-                    <li class="nav-item btn-primary btn-lg"><a class="nav-link fw-bold text-content" aria-current="page" href="#">MENU</a></li>
-                    <li class="nav-item btn-primary btn-lg"><a class="nav-link fw-bold text-content" aria-current="page" href="#">ORDER ONLINE</a></li>
-                    <li class="nav-item btn-primary btn-lg"><a class="nav-link fw-bold text-content" aria-current="page" href="#">ABOUT US</a></li>
-                    <li class="nav-item btn-primary btn-lg"><a class="nav-link fw-bold text-content" aria-current="page" href="#">GALLERY</a></li>
-                    <li class="nav-item btn-primary btn-lg"><a class="nav-link fw-bold text-content" aria-current="page" href="#">CONTACT US</a></li>
+                    <ul class="navbar-nav"> 
+                        <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="landing.html">HOME</a></li>
+                        <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="#">MENU</a></li>
+                        <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="#">ORDER ONLINE</a></li>
+                        <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="#">ABOUT US</a></li>
+                        <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="#">GALLERY</a></li>
+                        <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="#">CONTACT US</a></li>
                     </ul>
                 </div>
                
@@ -140,7 +140,7 @@
                     <h2 class="text-center text-titleColor">HOW TO GET YOUR GOODIES</h2>
                 </div>
                 <div class="col text-center mt-n4">
-                    <img src="assets/leaves.svg" draggable="false" alt="">
+                    <img class="img-fluid" src="assets/leaves.svg" draggable="false" alt="">
                 </div>
             </div>
         </div>
@@ -170,8 +170,7 @@
     <div class="ps-5 pe-5 pt-6 pb-6">
 
         <!-- Check out our gallery -->
-        <div>
-            <div class="container-fluid">
+            <div class="container-fluid mt-3 mb-3">
                 <div class="row align-items-center">
                     <div class="col-4 text-center">
                         <h1 class="text-titleColor">CHECK OUT OUR GALLERY</h1>
@@ -189,36 +188,28 @@
                     <div class="col-2">
                         <img class="img-fluid" src="assets/toycake.png" alt="">
                     </div>
-
                 </div>
             </div>
-        </div>
 
     </div>
     <div class="bg-section ps-5 pe-5 pt-6 pb-6">
 
         <!-- Want to know more about us? -->
-        <div class="container-fluid ps-3 pe-3 mt-2">
-            <div class="row align-items-center">
-                <div class="col-4">
-                    <img src="assets/about-us.svg" alt="">
+        <div class="container-fluid mt-3 mb-3">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-5 text-center">
+                    <img class="img-fluid" src="assets/about-us.svg" alt=""> <!-- we should change this to png -->
                 </div>
-                <div class="col-8">
-                    <div class="text-center">
-                        <div>
-                            <h3 class="text-titleColor">WANT TO KNOW MORE ABOUT US?</h3>
+                <div class="col text-center">
+                        <h3 class="text-titleColor">WANT TO KNOW MORE ABOUT US?</h3>
+                        <div class="mt-n4">
+                            <img class="img-fluid" draggable="false" src="assets/leaves.svg" alt="">
                         </div>
-                        <div>
-                            <hr>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-content">Sugarbox&co. was conceptualized and formed in the year 2020 
+                            <p class="text-content mt-4">Sugarbox&co. was conceptualized and formed in the year 2020 
                                 to bring homemade treats and sweets to families and friends stuck at home. We 
                                 strive to allow our customers the creative freedom to customize their own goodies. 
                                 Today Sugarbax&co. has served numerous happy customers since its early days.</p>
-                        </div>
-                        <div><button class="btn btn-titleColor text-white">LEARN MORE</button></div>
-                    </div>
+                        <button class="btn btn-titleColor text-white mt-3">LEARN MORE</button>
                 </div>
             </div>
         </div>
