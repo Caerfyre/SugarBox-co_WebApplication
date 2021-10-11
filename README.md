@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Caerfyre/IM2-Project/main/assets/sblogo-2.png"/> 
+</p>
+
 # Sugarbox&co.
 Sugarbox&co is a growing small-scale pastry business based on Cebu, Philippines that specializes in creating custom desserts such as cakes, cupcakes, cookies and more.
 
