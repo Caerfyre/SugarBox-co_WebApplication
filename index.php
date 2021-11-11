@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,7 @@
     }
 </style>
 
-<body class="bg-light">
+<body class="bg-light <?php if ($_SESSION['functions']['toggleCart'] == true) echo 'overflow-hidden' ?>">
     
     <!-- Navbar -->
     <?php include 'common/navbar.php' ?>
@@ -120,14 +121,11 @@
     <!-- Check out our gallery -->
     <div class="ps-5 pe-5 pt-6 pb-6">
             <div class="container mt-3 mb-3">
-                <div class="row align-items-center">
+                <div class="row align-items-center justify-content-between">
                     <div class="col-md-4 text-center">
                         <h1 class="text-titleColor">CHECK OUT OUR GALLERY</h1>
                         <button class="btn btn-titleColor text-white mt-4">SEE MORE</button> 
                     </div>
-                    <!-- <div class="col-1 fs-3">
-                        <i class="bi bi-arrow-left-circle-fill"></i>
-                    </div> -->
                     <div class="col-2">
                         <img class="img-fluid" src="assets/chococake.png" alt="">
                     </div>
@@ -140,9 +138,6 @@
                     <div class="col-2">
                         <img class="img-fluid" src="assets/toycake.png" alt="">
                     </div>
-                    <!-- <div class="col-1 fs-3">
-                        <i class="bi bi-arrow-right-circle-fill"></i>
-                    </div> -->
                 </div>
             </div>
     </div>
@@ -171,6 +166,6 @@
 
     <!-- Footer -->
     <?php include 'common/footer.php' ?>
-    
+
 </body>
 </html>

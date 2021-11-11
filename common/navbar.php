@@ -18,14 +18,14 @@
             </div>
         </div>
         <!-- Nav Icons -->
-        <form action="" method="post" class="d-flex flex-row-reverse">
-            <button class="btn btn-primary rounded-3 px-0" type="submit">
-                <img class="p-1 px-3" draggable="false" src="assets/iconbasket.svg" alt="Purchase_icon">
+        <form class="d-flex flex-row-reverse" action="scripts/functions/navicons.php" method="post">
+            <button class="btn btn-primary rounded-3 px-0" name="navIcon" value="toggleCart" type="submit">
+                <img class="p-1 px-3" draggable="false" src="assets/iconbasket.svg" alt="Cart_icon">
             </button>
-            <button class="btn btn-primary rounded-3 px-0" type="submit">
+            <button class="btn btn-primary rounded-3 px-0" name="navIcon" value="toggleProfile" type="submit">
                 <img class="p-1 px-3" draggable="false" src="assets/iconprofile.svg" alt="Profile_icon">
             </button>
-            <button class="btn btn-primary rounded-3 px-0" type="submit">
+            <button class="btn btn-primary rounded-3 px-0" name="navIcon" value="toggleSearch" type="submit">
                 <img class="p-1 px-3" draggable="false" src="assets/iconsearch.svg" alt="Search_icon">
             </button>
         </form>
@@ -33,22 +33,26 @@
 </nav>
 
 <!-- Your Order -->
-<!-- <div class="container-fluid fixed-top bg-black bg-opacity-25" style="height:100%;">
+<?php if ($_SESSION['functions']['toggleCart'] == true) { ?>
+
+<div class="container-fluid fixed-top bg-black bg-opacity-25" style="height:100%;">
     <div class="row justify-content-end overflow-auto" style="max-height:100%;">
         <div class="col-4 bg-light py-3 px-4">
             <div class="row pt-3 pb-2 ps-4 pe-5">
                 <div class="col">
                     <p class="fs-5 fw-bolder text-content">YOUR ORDER</p>
                 </div>
-                <div class="col-auto text-end">
-                    <img class="img-fluid" draggable="false" src="assets/iconbasket.svg" alt="Purchase_icon"></a>
-                </div>
+                <form class="col-auto text-end" action="scripts/functions/navicons.php" method="post">
+                    <button class="btn rounded-3 px-0 py-0" name="navIcon" value="toggleCart" type="submit">
+                        <img class="img-fluid" draggable="false" src="assets/iconbasket.svg" alt="Purchase_icon"></a>
+                    </button>
+                </form>
             </div>
             <div class="row mx-2">
                 <hr class="border-bottom border-2 border-content">
-            </div> -->
+            </div>
             <!-- Product -->
-            <!-- <div class="row mx-2 mb-3 bg-section">
+            <div class="row mx-2 mb-3 bg-section">
                 <div class="col-4 ps-0 overflow-hidden" style="max-height: 175px;">
                     <img class="" src="assets/pandesal.png" alt="Product_img">
                 </div>
@@ -79,9 +83,9 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
             <!-- Product -->
-            <!-- <div class="row mx-2 mb-3 bg-section">
+            <div class="row mx-2 mb-3 bg-section">
                 <div class="col-4 ps-0 overflow-hidden" style="max-height: 175px;">
                     <img class="" src="assets/pandesal.png" alt="Product_img">
                 </div>
@@ -112,9 +116,9 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
             <!-- Checkout -->
-            <!-- <div class="row mx-2 mt-6">
+            <div class="row mx-2 mt-6">
                 <hr class="border-bottom border-2 border-content">
             </div>
             <div class="row mx-2">
@@ -122,7 +126,7 @@
                     <p class="text-content">TOTAL:</p>
                 </div>
                 <div class="col-auto fs-5 fw-bold px-0">
-                    <p class="text-content">P150</p>
+                    <p class="text-content">P300</p>
                 </div>
             </div>
             <div class="row mx-2 my-3 justify-content-center">
@@ -132,4 +136,6 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
+
+<?php } ?>
