@@ -18,7 +18,7 @@
             </div>
         </div>
         <!-- Nav Icons -->
-        <form class="d-flex flex-row-reverse" action="scripts/functions/navicons.php" method="post">ñ
+        <form class="d-flex flex-row-reverse" action="scripts/functions/navicons.php" method="post">
             <button class="btn btn-primary rounded-3 px-0" name="navIcon" value="toggleCart" type="submit">
                 <img class="p-1 px-3" draggable="false" src="assets/iconbasket.svg" alt="Cart_icon">
             </button>
