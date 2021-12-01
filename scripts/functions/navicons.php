@@ -1,6 +1,6 @@
 <?php
 
-include './functions.php';
+session_start();
 
 switch ($_POST['navIcon']) {
     case 'toggleCart':
