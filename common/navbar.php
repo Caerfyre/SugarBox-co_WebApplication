@@ -4,11 +4,11 @@
             aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>    
-        <a href="index.html"><img class="me-3" draggable="false" alt="SugarBox Logo" src="assets/sblogo-1.svg"></a>
+        <a href="index.php"><img class="me-3" draggable="false" alt="SugarBox Logo" src="assets/sblogo-1.svg"></a>
         <div class="collapse navbar-collapse" id="navbarID">
             <div class="d-flex flex-row">
                 <ul class="navbar-nav"> 
-                    <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="index.html">HOME</a></li>
+                    <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="index.php">HOME</a></li>
                     <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="#">MENU</a></li>
                     <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="#">ORDER ONLINE</a></li>
                     <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="#">ABOUT US</a></li>
