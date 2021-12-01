@@ -8,10 +8,8 @@ Sugarbox&co is a growing small-scale pastry business based on Cebu, Philippines 
 ## Project Description
 The primary objective of this project is to successfully create an Information System for Sugarbox&co using the database approach. This system is expected to contain functionalities of managing data that is received, processed, stored, or sent from transactions and other business-related activities. These functions will be focused on allowing the client user to have better data management, time-saving processes, and other benefits brought by the database approach.
 
-## Installation
-1. Clone the repo to your local directory
-2. Install the node modules
-```
+## Project Setup
+```sh-session
 npm install
 ```
 
