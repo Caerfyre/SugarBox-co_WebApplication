@@ -13,7 +13,7 @@
                     <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="#">ORDER ONLINE</a></li>
                     <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="#">ABOUT US</a></li>
                     <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="#">GALLERY</a></li>
-                    <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="#">CONTACT US</a></li>
+                    <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="contact-us.php">CONTACT US</a></li>
                 </ul>
             </div>
         </div>

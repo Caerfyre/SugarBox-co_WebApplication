@@ -25,13 +25,13 @@
 
     <!-- Splash Image -->
     <div style="background-image: url('../assets/splash.svg'); background-size: cover;">
-        <div class="pt-5 pb-5 ps-6 pe-6">
-            <div class="container pt-4 pb-4 bg-light rounded-3" style="--bs-bg-opacity: .5;">
+        <div class="px-6 py-5">
+            <div class="container py-4 bg-light rounded-3" style="--bs-bg-opacity: .5;">
                 <div class="row align-items-center">
-                    <div class="col-md mt-4 mb-4">
+                    <div class="col-md my-4">
                         <img class="img-fluid ps-4" draggable="false" src="../assets/sblogo-2.svg" alt="">
                     </div>
-                    <div class="col-md-5 text-center pe-3 mt-4 mb-4">
+                    <div class="col-md-5 text-center pe-3 my-4">
                         <div><h3 class="text-titleColor">ORDER NOW FOR PICK-UP OR DELIVERY</h3></div>
                         <div><p class="text-content mb-4">Cakes, Cupcakes, Cookies & more!</p></div>
                         <div><button class="btn btn-titleColor text-white">ORDER HERE</button></div>
@@ -42,7 +42,7 @@
     </div>
         
     <!-- Featured Products -->
-    <div class="ps-5 pe-5 pt-6 pb-6">
+    <div class="px-5 py-6">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col">
@@ -80,7 +80,7 @@
     </div>
 
     <!-- How to get your goodies -->
-    <div class="bg-section ps-5 pe-5 pt-6 pb-4">
+    <div class="bg-section px-5 pt-6 pb-4">
         <div class="container mb-6">
             <div class="row justify-content-center flex-column">
                 <div class="col">
@@ -120,32 +120,32 @@
     </div>
 
     <!-- Check out our gallery -->
-    <div class="ps-5 pe-5 pt-6 pb-6">
-            <div class="container mt-3 mb-3">
+    <div class="px-5 py-6">
+            <div class="container my-3">
                 <div class="row align-items-center justify-content-between">
                     <div class="col-md-4 text-center">
                         <h1 class="text-titleColor">CHECK OUT OUR GALLERY</h1>
                         <button class="btn btn-titleColor text-white mt-4">SEE MORE</button> 
                     </div>
                     <div class="col-2">
-                        <img class="img-fluid" src="../assets/chococake.png" alt="">
+                        <img class="img-fluid rounded-2" src="../assets/chococake.png" alt="">
                     </div>
                     <div class="col-2">
-                        <img class="img-fluid" src="../assets/sunflowercake.png" alt="">
+                        <img class="img-fluid rounded-2" src="../assets/sunflowercake.png" alt="">
                     </div>
                     <div class="col-2">
-                        <img class="img-fluid" src="../assets/rosecake.png" alt="">
+                        <img class="img-fluid rounded-2" src="../assets/rosecake.png" alt="">
                     </div>
                     <div class="col-2">
-                        <img class="img-fluid" src="../assets/toycake.png" alt="">
+                        <img class="img-fluid rounded-2" src="../assets/toycake.png" alt="">
                     </div>
                 </div>
             </div>
     </div>
 
     <!-- Want to know more about us? -->
-    <div class="bg-section ps-5 pe-5 pt-6 pb-6">
-        <div class="container mt-3 mb-3">
+    <div class="bg-section px-5 py-6">
+        <div class="container my-3">
             <div class="row justify-content-center align-items-center">
                 <div class="col-5 text-center">
                     <img class="img-fluid" src="../assets/about-us.svg" alt=""> <!-- we should change this to png -->
