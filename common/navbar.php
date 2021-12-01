@@ -4,11 +4,11 @@
             aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>    
-        <a href="index.php"><img class="me-3" draggable="false" alt="SugarBox Logo" src="assets/sblogo-1.svg"></a>
+        <a href="home.php"><img class="me-3" draggable="false" alt="SugarBox Logo" src="../assets/sblogo-1.svg"></a>
         <div class="collapse navbar-collapse" id="navbarID">
             <div class="d-flex flex-row">
                 <ul class="navbar-nav"> 
-                    <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="index.php">HOME</a></li>
+                    <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="home.php">HOME</a></li>
                     <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="#">MENU</a></li>
                     <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="#">ORDER ONLINE</a></li>
                     <li class="nav-item btn-primary btn-lg text-center"><a class="nav-link fw-bold text-content" aria-current="page" href="#">ABOUT US</a></li>
@@ -18,15 +18,15 @@
             </div>
         </div>
         <!-- Nav Icons -->
-        <form class="d-flex flex-row-reverse" action="scripts/functions/navicons.php" method="post">
+        <form class="d-flex flex-row-reverse" action="../scripts/functions/navicons.php" method="post">
             <button class="btn btn-primary rounded-3 px-0" name="navIcon" value="toggleCart" type="submit">
-                <img class="p-1 px-3" draggable="false" src="assets/iconbasket.svg" alt="Cart_icon">
+                <img class="p-1 px-3" draggable="false" src="../assets/iconbasket.svg" alt="Cart_icon">
             </button>
             <button class="btn btn-primary rounded-3 px-0" name="navIcon" value="toggleProfile" type="submit">
-                <img class="p-1 px-3" draggable="false" src="assets/iconprofile.svg" alt="Profile_icon">
+                <img class="p-1 px-3" draggable="false" src="../assets/iconprofile.svg" alt="Profile_icon">
             </button>
             <button class="btn btn-primary rounded-3 px-0" name="navIcon" value="toggleSearch" type="submit">
-                <img class="p-1 px-3" draggable="false" src="assets/iconsearch.svg" alt="Search_icon">
+                <img class="p-1 px-3" draggable="false" src="../assets/iconsearch.svg" alt="Search_icon">
             </button>
         </form>
     </div>
@@ -42,9 +42,9 @@
                 <div class="col">
                     <p class="fs-5 fw-bolder text-content">YOUR ORDER</p>
                 </div>
-                <form class="col-auto text-end" action="scripts/functions/navicons.php" method="post">
+                <form class="col-auto text-end" action="../scripts/functions/navicons.php" method="post">
                     <button class="btn rounded-3 px-0 py-0" name="navIcon" value="toggleCart" type="submit">
-                        <img class="img-fluid" draggable="false" src="assets/iconbasket.svg" alt="Purchase_icon"></a>
+                        <img class="img-fluid" draggable="false" src="../assets/iconbasket.svg" alt="Purchase_icon"></a>
                     </button>
                 </form>
             </div>
@@ -54,7 +54,7 @@
             <!-- Product -->
             <div class="row mx-2 mb-3 bg-section">
                 <div class="col-4 ps-0 overflow-hidden" style="max-height: 175px;">
-                    <img class="" src="assets/pandesal.png" alt="Product_img">
+                    <img class="" src="../assets/pandesal.png" alt="Product_img">
                 </div>
                 <div class="col my-3 px-3 d-flex flex-column">
                     <div class="row">
@@ -87,7 +87,7 @@
             <!-- Product -->
             <div class="row mx-2 mb-3 bg-section">
                 <div class="col-4 ps-0 overflow-hidden" style="max-height: 175px;">
-                    <img class="" src="assets/pandesal.png" alt="Product_img">
+                    <img class="" src="../assets/pandesal.png" alt="Product_img">
                 </div>
                 <div class="col my-3 px-3 d-flex flex-column">
                     <div class="row">

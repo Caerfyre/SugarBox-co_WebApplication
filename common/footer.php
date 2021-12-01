@@ -1,7 +1,7 @@
 <footer class="bg-primary container-fluid pt-3 pb-3 ps-5 pe-5">
     <div class="row justify-content-between align-items-center">
         <div class="col-3">
-            <img class="img-fluid" draggable="false" src="assets/sblogo-2.svg" alt="">
+            <img class="img-fluid" draggable="false" src="../assets/sblogo-2.svg" alt="">
         </div>
         <div class="col container">
             <div class="row justify-content-end">
