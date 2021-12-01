@@ -21,7 +21,7 @@ npm install
 Ongoing
 
 ## Contributors
-**IM-2 Group**
+**IM-2 Group 9**
   - Niña Therese Ybas
   - Vladimir Roman
   - Edwin Bartlett
