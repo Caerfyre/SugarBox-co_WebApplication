@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Caerfyre/IM2-Project/main/assets/sblogo-2.png"/> 
+  <img src="https://raw.githubusercontent.com/Caerfyre/IM2-Project/main/assets/sblogo-2.svg"/> 
 </p>
 
 # Sugarbox&co.
