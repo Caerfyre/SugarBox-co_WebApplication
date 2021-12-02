@@ -14,7 +14,7 @@ $dark:          #212529;
 $titleColor:    #DF7450;
 $content:       #6B493D;
 $section:       #F3E4D9;
-$section2:       #FFF5EC;
+$section2:      #FFF5EC;
 $subheading:    #C58383;
 $icon:          #B05635;
 
@@ -46,7 +46,6 @@ $font-weight-normal:        400;
 $font-weight-bold:          500;
 $font-weight-bolder:        bolder;
 
-
 // Borders
 $border-radius:     .25rem;   // 1
 $border-radius-sm:  .2rem;    // 2
@@ -62,6 +61,9 @@ $spacers: (
   5: $spacer * 3,
   6: $spacer * 4.5
 );
+
+// Inputs
+$input-border-color:    $primary;
 
 // Scrollbar
 body {
