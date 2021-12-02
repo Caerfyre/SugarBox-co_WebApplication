@@ -24,23 +24,22 @@
                     </li>
                 </ul>
             </div>
-        
-        <!-- Nav Icons -->
-        <form class="col-auto ms-auto px-0" action="../scripts/functions/navicons.php" method="post">
-            <div class="d-flex flex-row-reverse justify-content-center">
-                <button class="btn btn-primary rounded-3 px-0 ms-1" name="navIcon" value="toggleCart" type="submit">
-                    <img class="py-1 px-3" draggable="false" src="../assets/iconbasket.svg" alt="Cart_icon">
-                </button>
-                <button class="btn btn-primary rounded-3 px-0 ms-1" name="navIcon" value="toggleProfile" type="submit">
-                    <img class="py-1 px-3" draggable="false" src="../assets/iconprofile.svg" alt="Profile_icon">
-                </button>
-                <button class="btn btn-primary rounded-3 px-0 ms-1" name="navIcon" value="toggleSearch" type="submit">
-                    <img class="py-1 px-3" draggable="false" src="../assets/iconsearch.svg" alt="Search_icon">
-                </button>
-            </div>
-        </form>
+
+            <!-- Nav Icons -->
+            <form class="col-auto ms-auto px-0" action="../scripts/functions/navicons.php" method="post">
+                <div class="d-flex flex-row-reverse justify-content-center">
+                    <button class="btn btn-primary rounded-3 px-0 ms-1" name="navIcon" value="toggleCart" type="submit">
+                        <img class="py-1 px-3" draggable="false" src="../assets/iconbasket.svg" alt="Cart_icon">
+                    </button>
+                    <button class="btn btn-primary rounded-3 px-0 ms-1" name="navIcon" value="toggleProfile" type="submit">
+                        <img class="py-1 px-3" draggable="false" src="../assets/iconprofile.svg" alt="Profile_icon">
+                    </button>
+                    <button class="btn btn-primary rounded-3 px-0 ms-1" name="navIcon" value="toggleSearch" type="submit">
+                        <img class="py-1 px-3" draggable="false" src="../assets/iconsearch.svg" alt="Search_icon">
+                    </button>
+                </div>
+            </form>
         </div>
-        
     </div>
 </nav>
 
