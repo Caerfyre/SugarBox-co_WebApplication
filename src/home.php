@@ -1,6 +1,7 @@
 <?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
     <?php include '../scripts/functions/functions.php' ?>
     <?php include '../common/meta.php' ?>
@@ -32,9 +33,9 @@
                         <img class="img-fluid ps-4" draggable="false" src="../assets/sblogo-2.svg" alt="">
                     </div>
                     <div class="col-md-5 text-center pe-3 my-4">
-                        <div><h3 class="text-titleColor">ORDER NOW FOR PICK-UP OR DELIVERY</h3></div>
-                        <div><p class="text-content mb-4">Cakes, Cupcakes, Cookies & more!</p></div>
-                        <div><button class="btn btn-titleColor text-white">ORDER HERE</button></div>
+                        <h3 class="text-titleColor">ORDER NOW FOR PICK-UP OR DELIVERY</h3>
+                        <p class="text-content mb-4">Cakes, Cupcakes, Cookies & more!</p>
+                        <a href="menu.php"><button class="btn btn-titleColor text-white">ORDER HERE</button></a>
                     </div>
                 </div>
             </div>
@@ -51,29 +52,29 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-md text-center mb-4">
-                    <img class="img-fluid" src="../assets/cookies.png" alt="Assorted cookies">
+                    <img class="img-fluid rounded-2" src="../assets/cookies.png" alt="Assorted cookies">
                     <p class="text-subheading fs-5 fw-bold mt-3">Assorted Cookies</p>
                     <p class="text-content">Includes: Oatmeal, Matcha, Chocolate chip, Red Velvet, Oreo, Double Choc Chip, Brookie Flavors and More!</p>
                 </div>
                 <div class="col-md text-center mb-4">
-                    <img class="img-fluid" src="../assets/pandesal.png" alt="Ube Cheese Pandesal">
+                    <img class="img-fluid rounded-2" src="../assets/pandesal.png" alt="Ube Cheese Pandesal">
                     <p class="text-subheading fs-5 fw-bold mt-3">Ube Cheese Pandesal</p>
                     <p class="text-content">Homemade soft Ube cheese pandesal. Also available: Ube Macapuno filling.</p>    
                 </div>
                 <div class="col-md text-center mb-4">
-                    <img class="img-fluid" src="../assets/cheesecake.png" alt="Mini Cheesecakes">
+                    <img class="img-fluid rounded-2" src="../assets/cheesecake.png" alt="Mini Cheesecakes">
                     <p class="text-subheading fs-5 fw-bold mt-3">Mini Cheesecakes</p>
                     <p class="text-content">Includes: Strawberry, Blueberry, & Mango Toppings.</p>
                 </div>
                 <div class="col-md text-center mb-4">
-                    <img class="img-fluid" src="../assets/bentocake.png" alt="Bento Cakes">
+                    <img class="img-fluid rounded-2" src="../assets/bentocake.png" alt="Bento Cakes">
                     <p class="text-subheading fs-5 fw-bold mt-3">Bento Cakes</p>
                     <p class="text-content">Customizeable Bento Mini Cakes. Includes: 3 different flavors, toppings & decorations.</p>
                 </div>  
             </div>
             <div class="row justify-content-center">
                 <div class="col text-center">
-                    <button class="btn btn-titleColor text-white">SEE MORE</button>
+                    <a href="menu.php"><button class="btn btn-titleColor text-white">SEE MORE</button></a>
                 </div>
             </div>
         </div>
@@ -121,34 +122,36 @@
 
     <!-- Check out our gallery -->
     <div class="px-5 py-6">
-            <div class="container my-3">
-                <div class="row align-items-center justify-content-between">
-                    <div class="col-md-4 text-center">
-                        <h1 class="text-titleColor">CHECK OUT OUR GALLERY</h1>
-                        <button class="btn btn-titleColor text-white mt-4">SEE MORE</button> 
-                    </div>
-                    <div class="col-2">
+        <div class="container my-3">
+            <div class="row">
+                <div class="col-md-4 text-center py-3">
+                    <h1 class="text-titleColor">CHECK OUT OUR GALLERY</h1>
+                    <a href="#"><button class="btn btn-titleColor text-white mt-4">SEE MORE</button></a>
+                </div>
+                <div class="col-md-8 d-flex ps-0">
+                    <div class="col-3 d-flex align-items-center ps-3">
                         <img class="img-fluid rounded-2" src="../assets/chococake.png" alt="">
                     </div>
-                    <div class="col-2">
+                    <div class="col-3 d-flex align-items-center ps-3">
                         <img class="img-fluid rounded-2" src="../assets/sunflowercake.png" alt="">
                     </div>
-                    <div class="col-2">
+                    <div class="col-3 d-flex align-items-center ps-3">
                         <img class="img-fluid rounded-2" src="../assets/rosecake.png" alt="">
                     </div>
-                    <div class="col-2">
+                    <div class="col-3 d-flex align-items-center ps-3">
                         <img class="img-fluid rounded-2" src="../assets/toycake.png" alt="">
                     </div>
                 </div>
             </div>
+        </div>
     </div>
 
     <!-- Want to know more about us? -->
     <div class="bg-section px-5 py-6">
         <div class="container my-3">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-5 text-center">
-                    <img class="img-fluid" src="../assets/about-us.svg" alt=""> <!-- we should change this to png -->
+            <div class="row gx-5 gy-4 justify-content-center align-items-center">
+                <div class="col-md-5 text-center">
+                    <img class="img-fluid" src="../assets/about-us.png" alt="About_us">
                 </div>
                 <div class="col text-center">
                     <h3 class="text-titleColor">WANT TO KNOW MORE ABOUT US?</h3>
@@ -159,7 +162,7 @@
                         to bring homemade treats and sweets to families and friends stuck at home. We
                         strive to allow our customers the creative freedom to customize their own goodies.
                         Today Sugarbax&co. has served numerous happy customers since its early days.</p>
-                    <button class="btn btn-titleColor text-white mt-3">LEARN MORE</button>
+                    <a href="#"><button class="btn btn-titleColor text-white mt-3">LEARN MORE</button></a>
                 </div>
             </div>
         </div>
