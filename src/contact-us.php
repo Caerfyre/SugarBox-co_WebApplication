@@ -25,7 +25,7 @@
     <!-- Navbar -->
     <?php include '../common/navbar.php' ?>
 
-    <div class="container-fluid px-5 py-5">
+    <div class="container-fluid px-6 py-6">
         <div class="row">
             <div class="col bg-section p-5">
                 <h2 class="text-titleColor">CONTACT US</h2>
@@ -33,23 +33,23 @@
                 <form class="container-fluid px-0 mt-5" action="" method="post">
                     <div class="row mb-4">
                         <div class="col pe-4">
-                            <label class="text-subheading fs-5 fw-bolder mb-2" for="name">NAME:</label>
+                            <label class="form-label text-subheading fs-5 fw-bolder mb-2" for="name">NAME:</label>
                             <input class="form-control" type="text" name="name">
                         </div>
                         <div class="col">
-                            <label class="text-subheading fs-5 fw-bolder mb-2" for="email">EMAIL:</label>
+                            <label class="form-label text-subheading fs-5 fw-bolder mb-2" for="email">EMAIL:</label>
                             <input class="form-control" type="text" name="email">
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
-                            <label class="text-subheading fs-5 fw-bolder mb-2" for="subject">SUBJECT:</label>
+                            <label class="form-label text-subheading fs-5 fw-bolder mb-2" for="subject">SUBJECT:</label>
                             <input class="form-control" type="text" name="subject">
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
-                            <label class="text-subheading fs-5 fw-bolder mb-2" for="message">MESSAGE:</label>
+                            <label class="form-label text-subheading fs-5 fw-bolder mb-2" for="message">MESSAGE:</label>
                             <textarea class="form-control" rows="10" name="message"></textarea>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-lg-4 bg-section2 p-5">
+            <div class="col-lg-4 bg-section2 py-5 px-4">
                 <div class="container-fluid">
                     <div class="row mb-5">
                         <p class="text-subheading fs-5 fw-bolder mb-2">EMAIL:</p>
