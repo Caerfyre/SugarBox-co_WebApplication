@@ -8,7 +8,7 @@
                         <a class="nav-link fw-bold text-content text-nowrap" aria-current="page" href="home.php">HOME</a>
                     </li>
                     <li class="nav-item btn-primary btn-lg text-center">
-                        <a class="nav-link fw-bold text-content text-nowrap" aria-current="page" href="#">MENU</a>
+                        <a class="nav-link fw-bold text-content text-nowrap" aria-current="page" href="menu.php">MENU</a>
                     </li>
                     <li class="nav-item btn-primary btn-lg text-center">
                         <a class="nav-link fw-bold text-content text-nowrap" aria-current="page" href="#">ABOUT US</a>

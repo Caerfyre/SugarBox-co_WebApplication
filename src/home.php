@@ -35,7 +35,7 @@
                     <div class="col-md-5 text-center pe-3 my-4">
                         <h3 class="text-titleColor">ORDER NOW FOR PICK-UP OR DELIVERY</h3>
                         <p class="text-content mb-4">Cakes, Cupcakes, Cookies & more!</p>
-                        <a href="menu.php"><button class="btn btn-titleColor text-white">ORDER HERE</button></a>
+                        <a href="menu.php"><button class="btn btn-titleColor text-light">ORDER HERE</button></a>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col text-center">
-                    <a href="menu.php"><button class="btn btn-titleColor text-white">SEE MORE</button></a>
+                    <a href="menu.php"><button class="btn btn-titleColor text-light">SEE MORE</button></a>
                 </div>
             </div>
         </div>
