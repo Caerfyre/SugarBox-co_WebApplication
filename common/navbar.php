@@ -1,6 +1,9 @@
 <nav class="px-5 navbar navbar-expand-lg navbar-light bg-primary sticky-top shadow p-3">
     <div class="container-fluid">
         <a href="home.php"><img class="me-3" draggable="false" alt="SugarBox Logo" src="../assets/sblogo-1.svg"></a>
+        <button class="navbar-toggler border-icon border-0" type="button" data-toggle="collapse" data-target="#navbarID" aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+            <img draggable="false" src="../assets/iconmenu.svg" alt="Menu">
+        </button>
         <div class="collapse navbar-collapse" id="navbarID">
             <div class="d-flex flex-row justify-content-center">
                 <ul class="navbar-nav">
@@ -21,9 +24,9 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        
         <!-- Nav Icons -->
-        <form class="container-fluid col-auto px-0" action="../scripts/functions/navicons.php" method="post">
+        <form class="col-auto ms-auto px-0" action="../scripts/functions/navicons.php" method="post">
             <div class="d-flex flex-row-reverse justify-content-center">
                 <button class="btn btn-primary rounded-3 px-0 ms-1" name="navIcon" value="toggleCart" type="submit">
                     <img class="py-1 px-3" draggable="false" src="../assets/iconbasket.svg" alt="Cart_icon">
@@ -36,9 +39,8 @@
                 </button>
             </div>
         </form>
-        <button class="navbar-toggler border-icon border-0" type="button" data-toggle="collapse" data-target="#navbarID" aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
-            <img draggable="false" src="../assets/iconmenu.svg" alt="Menu">
-        </button>
+        </div>
+        
     </div>
 </nav>
 
