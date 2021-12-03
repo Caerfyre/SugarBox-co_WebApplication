@@ -32,7 +32,7 @@
                     <p class="text-content fw-bold m-3">Want something personalized to give for a special ocassion? Order a custom cake!
                         You can choose from our catalogue of flavors, sizes and more! The design is
                         completely up to YOU. What are you waiting for? Order a custom cake now!</p>
-                    <button class="btn btn-titleColor text-light mt-3">ORDER CUSTOM CAKE</button>
+                    <a href="custom-order.php"><button class="btn btn-titleColor text-light mt-3">ORDER CUSTOM CAKE</button></a>
                 </div>
             </div>
         </div>
