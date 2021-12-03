@@ -12,11 +12,6 @@
     /* div {
         border: 1px solid black;
     } */
-    .row:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
 </style>
 
 <body class="bg-light <?php if ($_SESSION['functions']['toggleCart'] == true) echo 'overflow-hidden' ?>">
