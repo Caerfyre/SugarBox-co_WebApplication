@@ -101,16 +101,15 @@
                 <div class="col-md text-center mb-5">
                     <img src="../assets/sched.svg" draggable="false" alt="">
                     <p class="text-subheading fs-5 fw-bold mt-4">SCHEDULE YOUR DELIVERY</p>
-                    <p class="text-content">Whether you’re a planner or a last minute giver, you can schedule your delivery up to 1
+                    <p class="text-content">Whether you're a planner or a last minute giver, you can schedule your delivery up to 1
                         week in advance.</p>
                 </div>
             
                 <div class="col-md text-center mb-5">
                     <img src="../assets/smiley.svg" draggable="false" alt="">
                     <p class="text-subheading fs-5 fw-bold mt-4">WAIT AND GET READY</p>
-                    <p class="text-content">Sit back and relax while we prepare your treats for fresh delivery or pick-up. We’ll
-                        notify you every step of
-                        the way.</p>
+                    <p class="text-content">Sit back and relax while we prepare your treats for fresh delivery or pick-up. We'll
+                        notify you every step of the way.</p>
                 </div>
             </div>
         </div> 
@@ -166,6 +165,5 @@
 
     <!-- Footer -->
     <?php include '../common/footer.php' ?>
-    <?php include '../common/scripts.php' ?>
 </body>
 </html>
