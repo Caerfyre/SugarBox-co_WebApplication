@@ -41,7 +41,8 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`Account_ID`, `Acc_Username`, `Acc_Password`, `Date_Created`, `Acc_Status`, `User_Type`) VALUES
-(1, 'admin1', 'admin1', '2022-01-12', '2', '0');
+(1, 'admin1', 'admin1', '2022-01-12', '2', '0'),
+(2, 'user1', 'user1', '2022-01-12', '2', '1');
 
 -- --------------------------------------------------------
 
