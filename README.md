@@ -17,12 +17,12 @@ npm install
 * [Figma Prototype](https://www.figma.com/file/YdoiT4VOOJoGmICwCWTRmv/CIS-1202-Exercise-2-WebDev-and-Design-YBAS?node-id=104%3A14172)
 * [Proposal Document](https://docs.google.com/document/d/1fKh0n3eTiV8IhbUMKo7PGqCGzXXHRrAM/edit?usp=sharing&ouid=108013498313349699134&rtpof=true&sd=true)
 
-## Project Status
-Ongoing
-
 ## Contributors
 **IM-2 Group 9**
   - Niña Therese Ybas
   - Vladimir Roman
   - Edwin Bartlett
   - Eloisa Españo
+
+## Project Status
+Ongoing
