@@ -38,7 +38,7 @@
         <div class="row justify-content-center mt-5">
             <div class="col-md-5 bg-section shadow-sm py-4">
                 <h3 class="text-titleColor">LOGIN</h3>
-                <form class="container px-5" action="scripts/database/login&out.php" method="post">
+                <form class="container px-5" action="scripts/database/login-logout.php" method="post">
                     <div class="row text-start mt-5">
                         <label class="form-label text-subheading fw-bolder ps-1" for="username">Username:</label>
                         <input class="form-control" type="text" name="username">
