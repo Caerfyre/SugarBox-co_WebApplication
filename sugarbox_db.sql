@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2022 at 04:04 AM
+-- Generation Time: Jan 12, 2022 at 07:59 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -72,7 +72,7 @@ INSERT INTO `cake` (`Cake_ID`, `Flavor_Name`, `Design_Name`, `Design_Description
 
 CREATE TABLE `cake_flavor` (
   `Flavor_Name` varchar(40) NOT NULL,
-  `Flavor_Type` enum('Classic','Fusion','','') NOT NULL
+  `Flavor_Type` enum('Classic','Fusion','','') NOT NULL COMMENT '''Classic'', ''Fusion'''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -158,8 +158,8 @@ CREATE TABLE `orders` (
   `Cust_ID` int(11) NOT NULL,
   `Order_Placement_Date` date NOT NULL,
   `Order_Fullfilment_Date` date NOT NULL,
-  `Order_Type` enum('Pick-up','Delivery','','') NOT NULL,
-  `Order_Status` enum('Baking soon','In progress','Ready for pick-up','Delivering','Delivery failed','Claimed','Cancelled') NOT NULL
+  `Order_Type` enum('Pick-up','Delivery','','') NOT NULL COMMENT '''Pick-up'', ''Delivery''',
+  `Order_Status` enum('Baking soon','In progress','Ready for pick-up','Delivering','Delivery failed','Claimed','Cancelled') NOT NULL COMMENT '''Baking soon'',''In progress'',''Ready for pick-up'',''Delivering'',''Delivery failed'',''Claimed'',''Cancelled'''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -172,8 +172,8 @@ CREATE TABLE `order_line` (
   `Order_ID` int(11) NOT NULL,
   `Prod_ID` int(11) NOT NULL,
   `Order_Quantity` int(11) NOT NULL,
-  `Line_Price` float(15,2) NOT NULL,
-  `Product_Type` enum('C','S','','') NOT NULL
+  `Line_Price` float(15,2) NOT NULL COMMENT 'Price x QTY',
+  `Product_Type` enum('C','S','','') NOT NULL COMMENT '''C''-cake, ''S''-side product'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
