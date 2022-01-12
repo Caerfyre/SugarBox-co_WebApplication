@@ -11,14 +11,26 @@ if(isset($_POST['signin'])){
     $userAccount = mysqli_fetch_array($result);
 
     if($userAccount){
+
         if($uName == $userAccount['Acc_Username'] && $pass == $userAccount['Acc_Password'])
         {
-            $_SESSION['user'] = $user=array(
-                                "accID"=>$userAccount['Account_ID'],
-                                "accUsername"=>$userAccount['Acc_Username']
-                                ); 
+            if($userAccount['User_Type'] == 0)
+            {
+                $_SESSION['user'] = $user=array(
+                            "accID"=>$userAccount['Account_ID'],
+                            "accUsername"=>$userAccount['Acc_Username']
+                            ); 
+                header('Location: ../../admin-src/index.php');
+
+            }elseif($userAccount['User_Type'] == 1)
+            {
+                $_SESSION['user'] = $user=array(
+                    "accID"=>$userAccount['Account_ID'],
+                    "accUsername"=>$userAccount['Acc_Username']
+                    ); 
+                header('Location: ../../src/home.php');
+            }
             
-            header('Location: ../../src/home.php');
         }
         
     }else{
