@@ -4,7 +4,7 @@ include 'DB-connect.php';
 
 if($conn)
 {
-    echo "Database Connected";
+    //echo "Database Connected";
 }
 else
 {
