@@ -1,4 +1,5 @@
-<?php session_start() ?>
+<?php include '../scripts/database/secure-login.php'?>
+
 <!DOCTYPE html>
 <html lang="en">
     
@@ -165,6 +166,6 @@
 
     <!-- Footer -->
     <?php include '../common/footer.php' ?>
-
+    <?php include '../common/scripts.php' ?>
 </body>
 </html>

@@ -1,4 +1,5 @@
-<?php session_start() ?>
+<?php include '../scripts/database/secure-login.php'?>
+
 <!DOCTYPE html>
 <html lang="en">
 
