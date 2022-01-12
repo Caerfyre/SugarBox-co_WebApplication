@@ -41,7 +41,6 @@
                     </div>
                     <input class="btn btn-titleColor text-light px-5 my-5" type="submit" name="signup" value="SIGN UP">
                 </form>
-                <p class="text-content mb-2">Forgot Password?</p>
                 <p class="text-content">Already have an account? <a class="link-titleColor" href="../index.php">Sign in</a></p>
             </div>
         </div>
