@@ -3,7 +3,7 @@
 if (!isset($_SESSION['functions'])) {
     $_SESSION['functions'] = array(
         "toggleCart" => false,
-        "toggleProfile" => false,
+        "toggleOptions" => false,
         "toggleSearch" => false
     );
 }

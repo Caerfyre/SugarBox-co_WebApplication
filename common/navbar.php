@@ -31,7 +31,7 @@
                     <button class="btn btn-primary rounded-3 px-0 ms-1" name="navIcon" value="toggleCart" type="submit">
                         <img class="py-1 px-3" draggable="false" src="../assets/iconbasket.svg" alt="Cart_icon">
                     </button>
-                    <button class="btn btn-primary rounded-3 px-0 ms-1" name="navIcon" value="toggleProfile" type="submit">
+                    <button class="btn btn-primary rounded-3 px-0 ms-1" name="navIcon" value="toggleOptions" type="submit">
                         <img class="py-1 px-3" draggable="false" src="../assets/iconprofile.svg" alt="Profile_icon">
                     </button>
                     <button class="btn btn-primary rounded-3 px-0 ms-1" name="navIcon" value="toggleSearch" type="submit">
@@ -45,7 +45,6 @@
 
 <!-- Your Order -->
 <?php if ($_SESSION['functions']['toggleCart'] == true) { ?>
-
     <div class="container-fluid fixed-top bg-black bg-opacity-25" style="height:100%;">
         <div class="row justify-content-end overflow-auto" style="max-height:100%;">
             <div class="col-4 bg-light py-3 px-4">
@@ -148,5 +147,110 @@
             </div>
         </div>
     </div>
+<?php } ?>
 
+<!-- Profile Options -->
+<?php if ($_SESSION['functions']['toggleOptions'] == true) { ?>
+    <div class="container-fluid fixed-top bg-black bg-opacity-25" style="height:100%;">
+        <div class="row justify-content-end overflow-auto" style="max-height:100%;">
+            <div class="col-4 bg-light py-3 px-4">
+                <div class="row pt-3 pb-2 ps-4 pe-5">
+                    <div class="col">
+                        <p class="fs-5 fw-bolder text-content">OPTIONS</p>
+                    </div>
+                    <form class="col-auto text-end" action="../scripts/functions/navicons.php" method="post">
+                        <button class="btn rounded-3 px-0 py-0" name="navIcon" value="toggleOptions" type="submit">
+                            <img class="img-fluid" draggable="false" src="../assets/iconprofile.svg" alt="Profile_icon"></a>
+                        </button>
+                    </form>
+                </div>
+                <div class="row mx-2">
+                    <hr class="border-bottom border-2 border-content">
+                </div>
+                <div class="row mx-2 mb-2">
+                    <!-- View Profile -->
+                    <form class="px-0" action="../scripts/functions/navicons.php" method="post">
+                        <div class="input-group">
+                            <i class="bi bi-person-fill input-group-text text-subheading bg-section2 border-0 mb-1"></i>
+                            <input class="form-control btn btn-section2 text-start text-subheading fw-bold mb-1" name="viewProfile" type="submit" value="View Profile">
+                        </div>
+                    </form>
+                    <!-- Logout -->
+                    <form class="px-0" action="../scripts/database/login-logout.php" method="post">
+                        <div class="input-group">
+                            <i class="bi bi-door-open-fill input-group-text text-subheading bg-section2 border-0"></i>
+                            <input class="form-control btn btn-section2 text-start text-subheading fw-bold" name="logout" type="submit" value="Logout">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<!-- Search -->
+<?php if ($_SESSION['functions']['toggleSearch'] == true) { ?>
+    <div class="container-fluid fixed-top bg-black bg-opacity-25" style="height:100%;">
+        <div class="row justify-content-end overflow-auto" style="max-height:100%;">
+            <div class="col-4 bg-light py-3 px-4">
+                <div class="row pt-3 pb-2 ps-4 pe-5">
+                    <div class="col">
+                        <p class="fs-5 fw-bolder text-content">SEARCH</p>
+                    </div>
+                    <form class="col-auto text-end" action="../scripts/functions/navicons.php" method="post">
+                        <button class="btn rounded-3 px-0 py-0" name="navIcon" value="toggleSearch" type="submit">
+                            <img class="img-fluid" draggable="false" src="../assets/iconsearch.svg" alt="Search_icon"></a>
+                        </button>
+                    </form>
+                </div>
+                <div class="row mx-2">
+                    <hr class="border-bottom border-2 border-content">
+                </div>
+                <div class="row mx-2 mb-3">
+                    <form class="px-0" action="" method="post">
+                        <div class="input-group">
+                            <input class="form-control text-content" type="text" name="searchTerm" placeholder="Input search term">
+                            <input class="btn btn-titleColor text-light" type="submit" value="Search">
+                        </div>
+                    </form>
+                </div>
+                <!-- Product -->
+                <div class="row mx-2 mb-3 bg-section">
+                    <div class="col-4 ps-0 overflow-hidden" style="max-height: 150px;">
+                        <img class="" src="../assets/pandesal.png" alt="Product_img">
+                    </div>
+                    <div class="col my-3 px-3 d-flex flex-column">
+                        <div class="row">
+                            <div class="col">
+                                <p class="fw-bolder text-subheading">Ube Cheesecake Pandesal</p>
+                            </div>
+                        </div>
+                        <div class="row flex-grow-1">
+                            <div class="col">
+                                <p class="text-content">P75</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product -->
+                <div class="row mx-2 mb-3 bg-section">
+                    <div class="col-4 ps-0 overflow-hidden" style="max-height: 150px;">
+                        <img class="" src="../assets/pandesal.png" alt="Product_img">
+                    </div>
+                    <div class="col my-3 px-3 d-flex flex-column">
+                        <div class="row">
+                            <div class="col">
+                                <p class="fw-bolder text-subheading">Ube Cheesecake Pandesal</p>
+                            </div>
+                        </div>
+                        <div class="row flex-grow-1">
+                            <div class="col">
+                                <p class="text-content">P75</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <?php } ?>
