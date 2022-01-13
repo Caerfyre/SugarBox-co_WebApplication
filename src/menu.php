@@ -48,7 +48,7 @@
             </div>
             <div class="row gy-4">
                 <div class="col-md-2 p-0 me-5">
-                    <div class="container-fluid bg-section rounded-2 fw-bolder ps-4 pt-4 pb-3">
+                    <div class="container-fluid bg-section rounded-2 fw-bolder ps-4 pt-4 pb-3 border border-primary">
                         <p class="mt-2 mb-4 ms-2"><a class="text-decoration-none text-subheading" href="#">Brownies</a></p>
                         <p class="ms-2 mb-4"><a class="text-decoration-none text-subheading" href="#">Cheesecakes</a></p>
                         <p class="ms-2 mb-4"><a class="text-decoration-none text-subheading" href="#">Cookies</a></p>
