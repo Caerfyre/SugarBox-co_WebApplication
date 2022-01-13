@@ -2,19 +2,13 @@
 session_start();
 include 'DB-connect.php';
 
-if($conn)
-{
+if ($conn) {
     //echo "Database Connected";
-}
-else
-{
+} else {
     header("Location: scripts/DB-connect.php");
 }
 
 //Login
-if(!$_SESSION['user'])
-{
+if (!$_SESSION['user']) {
     header('Location: ../index.php');
 }
-
-?>

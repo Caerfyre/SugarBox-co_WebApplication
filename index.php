@@ -41,15 +41,15 @@
                 <form class="container px-5" action="scripts/database/login-logout.php" method="post">
                     <div class="row text-start mt-5">
                         <label class="form-label text-subheading fw-bolder ps-1" for="username">Username:</label>
-                        <input class="form-control" type="text" name="username">
+                        <input class="form-control <?php if (isset($_SESSION['loginErr']) && $_SESSION['loginErr'] == 2) echo 'border-danger'; ?>" type="text" name="username">
                     </div>
                     <div class="row text-start mt-4">
                         <label class="form-label text-subheading fw-bolder ps-1" for="password">Password:</label>
-                        <input class="form-control" type="password" name="password">
+                        <input class="form-control <?php if (isset($_SESSION['loginErr']) && $_SESSION['loginErr'] >= 1) echo 'border-danger'; ?>" type="password" name="password">
                     </div>
                     <input class="btn btn-titleColor text-light px-5 my-5" type="submit" name="signin" value="SIGN IN">
                 </form>
-                <p class="text-content mb-2">Forgot Password?</p>
+                <p class="text-content mb-2"><a class="link-titleColor" href="#">Forgot Password?</a></p>
                 <p class="text-content">Don't have an account? <a class="link-titleColor" href="src/signup.php">Sign up</a></p>
             </div>
         </div>
