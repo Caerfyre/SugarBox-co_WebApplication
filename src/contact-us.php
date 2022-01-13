@@ -58,8 +58,8 @@
             <div class="col-lg-4 bg-section2 py-5 px-4">
                 <div class="container-fluid">
                     <div class="row mb-5">
-                        <p class="text-subheading fw-bolder mb-2 ps-2">EMAIL:</p>
-                        <div class="col-auto">
+                        <p class="text-subheading fw-bolder mb-2 ps-2">EMAIL</p>
+                        <div class="col-auto pe-0">
                             <i class="bi bi-envelope text-content fs-4"></i>
                         </div>
                         <div class="col">
@@ -67,8 +67,8 @@
                         </div>
                     </div>
                     <div class="row mb-5">
-                        <p class="text-subheading fw-bolder mb-2 ps-2">CONTACT NUMBER:</p>
-                        <div class="col-auto">
+                        <p class="text-subheading fw-bolder mb-2 ps-2">CONTACT NUMBER</p>
+                        <div class="col-auto pe-0">
                             <i class="bi bi-telephone text-content fs-4"></i>
                         </div>
                         <div class="col">
@@ -76,8 +76,8 @@
                         </div>
                     </div>
                     <div class="row mb-5">
-                        <p class="text-subheading fw-bolder mb-2 ps-2">LOCATION:</p>
-                        <div class="col-auto">
+                        <p class="text-subheading fw-bolder mb-2 ps-2">LOCATION</p>
+                        <div class="col-auto pe-0">
                             <i class="bi bi-geo-alt text-content fs-4"></i>
                         </div>
                         <div class="col">
@@ -85,8 +85,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <p class="text-subheading fw-bolder mb-2 ps-2">SOCIAL MEDIA:</p>
-                        <div class="col-auto">
+                        <p class="text-subheading fw-bolder mb-2 ps-2">SOCIAL MEDIA</p>
+                        <div class="col-auto pe-0">
                             <i class="bi bi-instagram text-content fs-4"></i>
                         </div>
                         <div class="col">
