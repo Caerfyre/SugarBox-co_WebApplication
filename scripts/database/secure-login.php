@@ -3,12 +3,12 @@ session_start();
 include 'DB-connect.php';
 
 if ($conn) {
-    //echo "Database Connected";
+    // echo "Database Connected";
 } else {
     header("Location: scripts/DB-connect.php");
 }
 
-//Login
+// Login
 if (!$_SESSION['user']) {
     header('Location: ../index.php');
 }

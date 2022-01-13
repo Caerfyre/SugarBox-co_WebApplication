@@ -41,8 +41,6 @@ if (isset($_POST['signin'])) {
         header('Location: ../../index.php');
     }
 }
-//------ LOGIN ------//
-
 
 //------ LOGOUT ------//
 if (isset($_POST['logout'])) {
@@ -50,4 +48,3 @@ if (isset($_POST['logout'])) {
     unset($_SESSION['user']);
     header('Location: ../../index.php');
 }
-//------ LOGOUT ------//
