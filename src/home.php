@@ -15,7 +15,7 @@
     } */
 </style>
 
-<body class="bg-light <?php if ($_SESSION['functions']['toggleCart'] == true) echo 'overflow-hidden' ?>">
+<body class="bg-light <?php if ($_SESSION['functions']['toggleCart'] == true || $_SESSION['functions']['toggleOptions'] == true || $_SESSION['functions']['toggleSearch'] == true) echo 'overflow-hidden' ?>">
     
     <!-- Navbar -->
     <?php include '../common/navbar.php' ?>
