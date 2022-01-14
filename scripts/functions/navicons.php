@@ -25,4 +25,8 @@ if (isset($_POST['viewProfile'])) {
     // Redirect to profile page
 }
 
+if (isset($_POST['viewHistory'])) {
+    // Redirect to order history page
+}
+
 ?>

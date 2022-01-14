@@ -168,15 +168,20 @@
                     <hr class="border-bottom border-2 border-content">
                 </div>
                 <div class="row mx-2 mb-2">
-                    <!-- View Profile -->
                     <form class="px-0" action="../scripts/functions/navicons.php" method="post">
+                        <!-- View Profile -->
                         <div class="input-group">
                             <i class="bi bi-person-fill input-group-text text-subheading bg-section2 border-0 mb-1"></i>
                             <input class="form-control btn btn-section2 text-start text-subheading fw-bold mb-1" name="viewProfile" type="submit" value="View Profile">
                         </div>
+                        <!-- Order History -->
+                        <div class="input-group">
+                            <i class="bi bi-clock-fill input-group-text text-subheading bg-section2 border-0 mb-1"></i>
+                            <input class="form-control btn btn-section2 text-start text-subheading fw-bold mb-1" name="viewHistory" type="submit" value="Order History">
+                        </div>
                     </form>
-                    <!-- Logout -->
                     <form class="px-0" action="../scripts/database/login-logout.php" method="post">
+                        <!-- Logout -->
                         <div class="input-group">
                             <i class="bi bi-door-open-fill input-group-text text-subheading bg-section2 border-0"></i>
                             <input class="form-control btn btn-section2 text-start text-subheading fw-bold" name="logout" type="submit" value="Logout">
