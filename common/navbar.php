@@ -1,7 +1,7 @@
 <nav class="px-5 navbar navbar-expand-lg navbar-light bg-primary sticky-top shadow p-3">
     <div class="container-fluid">
         <a href="home.php"><img class="me-3" draggable="false" alt="SugarBox Logo" src="../assets/sblogo-1.svg"></a>
-        <button class="navbar-toggler border-icon border-0" type="button" data-toggle="collapse" data-target="#navbarID" aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler border-icon border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarID" aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
             <img draggable="false" src="../assets/iconmenu.svg" alt="Menu">
         </button>
         <div class="collapse navbar-collapse" id="navbarID">
