@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2022 at 07:59 AM
+-- Generation Time: Jan 14, 2022 at 11:57 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -42,7 +42,7 @@ CREATE TABLE `accounts` (
 
 INSERT INTO `accounts` (`Account_ID`, `Acc_Username`, `Acc_Password`, `Date_Created`, `Acc_Status`, `User_Type`) VALUES
 (1, 'admin1', 'admin1', '2022-01-12', '2', '0'),
-(2, 'user1', 'user1', '2022-01-12', '2', '1');
+(2, 'Mary45', 'mary45', '2022-01-12', '2', '1');
 
 -- --------------------------------------------------------
 
@@ -160,7 +160,8 @@ CREATE TABLE `orders` (
   `Order_Placement_Date` date NOT NULL,
   `Order_Fullfilment_Date` date NOT NULL,
   `Order_Type` enum('Pick-up','Delivery','','') NOT NULL COMMENT '''Pick-up'', ''Delivery''',
-  `Order_Status` enum('Baking soon','In progress','Ready for pick-up','Delivering','Delivery failed','Claimed','Cancelled') NOT NULL COMMENT '''Baking soon'',''In progress'',''Ready for pick-up'',''Delivering'',''Delivery failed'',''Claimed'',''Cancelled'''
+  `Order_Status` enum('Baking soon','In progress','Ready for pick-up','Delivering','Delivery failed','Claimed','Cancelled') NOT NULL COMMENT '''Baking soon'',''In progress'',''Ready for pick-up'',''Delivering'',''Delivery failed'',''Claimed'',''Cancelled''',
+  `Total_Price` float(15,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -338,7 +339,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `Account_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Account_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `cake`
