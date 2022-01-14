@@ -22,10 +22,12 @@ if (isset($_POST['navIcon'])) {
 }
 
 if (isset($_POST['viewProfile'])) {
-    // Redirect to profile page
+    $_SESSION['functions']['toggleOptions'] = false;
+    header('Location: ../../src/account.php');
 }
 
 if (isset($_POST['viewHistory'])) {
+    // $_SESSION['functions']['toggleOptions'] = false;
     // Redirect to order history page
 }
 
