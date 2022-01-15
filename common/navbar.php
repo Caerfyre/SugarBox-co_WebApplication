@@ -85,7 +85,7 @@
                                 <span class="text-content"><b>TOTAL: &nbsp;</b> P150</span>
                             </div>
                             <div class="col-auto bg-light d-flex align-items-center rounded-2 border border-content px-0 me-3">
-                                <form action="py-0" method="post">
+                                <form action="" method="post">
                                     <button class="btn py-0">-</button>
                                     <span>2</span>
                                     <button class="btn py-0">+</button>
@@ -118,7 +118,7 @@
                                 <span class="text-content"><b>TOTAL: &nbsp;</b> P150</span>
                             </div>
                             <div class="col-auto bg-light d-flex align-items-center rounded-2 border border-content px-0 me-3">
-                                <form action="py-0" method="post">
+                                <form action="" method="post">
                                     <button class="btn py-0">-</button>
                                     <span>2</span>
                                     <button class="btn py-0">+</button>
