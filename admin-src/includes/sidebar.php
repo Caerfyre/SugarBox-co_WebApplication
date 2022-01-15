@@ -3,7 +3,7 @@
         <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <img class="img-fluid" src="../assets/sblogo-2.svg" alt="SugarBox&co. logo" draggable="false">
             </a>
 
@@ -12,7 +12,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -27,7 +27,7 @@
 
             <!-- Nav Item - Products -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="products.php">
                     <i class="fas fa-fw fa-tags"></i>
                     <span>Products</span></a>
             </li>
