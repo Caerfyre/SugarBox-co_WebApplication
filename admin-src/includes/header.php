@@ -21,6 +21,17 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.css" rel="stylesheet">
 
+    <style>
+        .pull-up {
+        transition: all 0.25s ease; 
+        }
+        .pull-up:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0px 14px 24px rgba(62, 57, 107, 0.2);
+        z-index: 999; 
+        }
+    </style>
+
 </head>
 
 <body id="page-top">
