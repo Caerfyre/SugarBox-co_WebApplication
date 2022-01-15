@@ -29,15 +29,40 @@
                     <div class="py-6"></div>
                 </div>
                 <div class="col-7 text-center">
-                    <h3 class="text-titleColor">Ube Cheese Pandesal</h3>
-                    <p class="text-content mt-4">Homemade soft Ube cheese pandesal.</p>
+                    <div class="container">
+                        <div class="row mb-4">
+                            <h3 class="text-titleColor">Ube Cheese Pandesal</h3>
+                            <p class="text-content mt-3">Homemade soft Ube cheese pandesal.</p>
+                        </div>
+                        <form action="" method="post">
+                            <div class="row justify-content-center">
+                                <div class="col-4 text-start me-3">
+                                    <p class="fs-5 fw-bolder text-subheading">TYPE</p>
+                                    <select class="form-select text-content" name="layers" aria-label="Default select example">
+                                        <option selected>Select type</option>
+                                        <option value="onelayered">Box of 6 - P75</option>
+                                    </select>
+                                    <p class="fs-5 fw-bolder text-subheading mt-5">TOTAL: &nbsp;<span class="fs-4 fw-normal text-content">P150</span></p>
+                                </div>
+                                <div class="col-4 text-start ms-3">
+                                    <p class="fs-5 fw-bolder text-subheading">QTY.</p>
+                                    <div class="col-auto bg-light d-flex align-items-center justify-content-between rounded-2 border border-primary px-0 me-3">
+                                        <button class="btn border-0" onclick="document.getElementById('qty').value--">-</button>
+                                        <input class="form-control border-0 bg-light text-center" type="number" name="qty" id="qty" value="0">
+                                        <button class="btn border-0" onclick="document.getElementById('qty').value++">+</button>
+                                    </div>
+                                    <input class="btn btn-titleColor text-light mt-5" type="submit" value="Add to Cart">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- You might also like... -->
-    <div class="bg-section px-5 py-4 my-4">
+    <div class="bg-section px-5 pt-4 my-4">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col">
