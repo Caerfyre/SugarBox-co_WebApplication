@@ -59,36 +59,36 @@
                 <div class="col container-fluid">
                     <div class="row justify-content-center">
                         <!-- Products -->
-                        <div class="col-md-4 text-center mb-4">
+                        <a href="./order-item.php?id=1" class="text-decoration-none col-md-4 text-center mb-4">
                             <img class="img-fluid rounded-2" src="../assets/cookies.png" alt="Assorted cookies">
                             <p class="text-subheading fs-5 fw-bold mt-3">Assorted Cookies</p>
                             <p class="text-content">Includes: Oatmeal, Matcha, Chocolate chip, Red Velvet, Oreo, Double Choc Chip, Brookie Flavors and More!</p>
-                        </div>
-                        <div class="col-md-4 text-center mb-4">
+                        </a>
+                        <a href="./order-item.php?id=2" class="text-decoration-none col-md-4 text-center mb-4">
                             <img class="img-fluid rounded-2" src="../assets/cheesecake.png" alt="Mini Cheesecakes">
                             <p class="text-subheading fs-5 fw-bold mt-3">Mini Cheesecakes</p>
                             <p class="text-content">Includes: Strawberry, Blueberry, & Mango Toppings.</p>
-                        </div>
-                        <div class="col-md-4 text-center mb-4">
+                        </a>
+                        <a href="./order-item.php?id=3" class="text-decoration-none col-md-4 text-center mb-4">
                             <img class="img-fluid rounded-2" src="../assets/pandesal.png" alt="Ube Cheese Pandesal">
                             <p class="text-subheading fs-5 fw-bold mt-3">Ube Cheese Pandesal</p>
                             <p class="text-content">Homemade soft Ube cheese pandesal. Also available: Ube Macapuno filling.</p>
-                        </div>
-                        <div class="col-md-4 text-center mb-4">
+                        </a>
+                        <a href="./order-item.php?id=1" class="text-decoration-none col-md-4 text-center mb-4">
                             <img class="img-fluid rounded-2" src="../assets/cookies.png" alt="Assorted cookies">
                             <p class="text-subheading fs-5 fw-bold mt-3">Assorted Cookies</p>
                             <p class="text-content">Includes: Oatmeal, Matcha, Chocolate chip, Red Velvet, Oreo, Double Choc Chip, Brookie Flavors and More!</p>
-                        </div>
-                        <div class="col-md-4 text-center mb-4">
+                        </a>
+                        <a href="./order-item.php?id=2" class="text-decoration-none col-md-4 text-center mb-4">
                             <img class="img-fluid rounded-2" src="../assets/cheesecake.png" alt="Mini Cheesecakes">
                             <p class="text-subheading fs-5 fw-bold mt-3">Mini Cheesecakes</p>
                             <p class="text-content">Includes: Strawberry, Blueberry, & Mango Toppings.</p>
-                        </div>
-                        <div class="col-md-4 text-center mb-4">
+                        </a>
+                        <a href="./order-item.php?id=3" class="text-decoration-none col-md-4 text-center mb-4">
                             <img class="img-fluid rounded-2" src="../assets/pandesal.png" alt="Ube Cheese Pandesal">
                             <p class="text-subheading fs-5 fw-bold mt-3">Ube Cheese Pandesal</p>
                             <p class="text-content">Homemade soft Ube cheese pandesal. Also available: Ube Macapuno filling.</p>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
