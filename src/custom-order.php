@@ -6,7 +6,7 @@
 <head>
     <?php include '../scripts/functions/functions.php' ?>
     <?php include '../common/meta.php' ?>
-    <title>SugarBox&co.</title>
+    <title>SugarBox&co. | Custom Order</title>
 </head>
 
 <style>
