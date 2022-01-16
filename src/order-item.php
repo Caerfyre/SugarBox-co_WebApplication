@@ -70,22 +70,22 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-md text-center mb-4">
+                <a href="./order-item.php?id=1" class="col-md text-center text-decoration-none mb-4">
                     <img class="img-fluid rounded-2" src="../assets/cookies.png" alt="Assorted cookies">
                     <p class="text-subheading fs-6 fw-bold mt-3">Assorted Cookies</p>
-                </div>
-                <div class="col-md text-center mb-4">
+                </a>
+                <a href="./order-item.php?id=2" class="col-md text-center text-decoration-none mb-4">
                     <img class="img-fluid rounded-2" src="../assets/pandesal.png" alt="Ube Cheese Pandesal">
                     <p class="text-subheading fs-6 fw-bold mt-3">Ube Cheese Pandesal</p>
-                </div>
-                <div class="col-md text-center mb-4">
+                </a>
+                <a href="./order-item.php?id=3" class="col-md text-center text-decoration-none mb-4">
                     <img class="img-fluid rounded-2" src="../assets/cheesecake.png" alt="Mini Cheesecakes">
                     <p class="text-subheading fs-6 fw-bold mt-3">Mini Cheesecakes</p>
-                </div>
-                <div class="col-md text-center mb-4">
+                </a>
+                <a href="./order-item.php?id=4" class="col-md text-center text-decoration-none mb-4">
                     <img class="img-fluid rounded-2" src="../assets/bentocake.png" alt="Bento Cakes">
                     <p class="text-subheading fs-6 fw-bold mt-3">Bento Cakes</p>
-                </div>  
+                </a>  
             </div>
         </div>
     </div>
