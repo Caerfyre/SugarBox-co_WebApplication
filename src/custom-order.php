@@ -27,7 +27,7 @@
                 <div class="text-center">
                     <img class="img-fluid mt-n5" src="../assets/leaves.svg" draggable="false" alt="">
                 </div>
-                <form class="container-fluid px-0 mt-5" action="" method="post">
+                <form class="container-fluid px-0 mt-5" action="./checkout.php?type=2" method="post">
                     <div class="row mb-4">
                         <div class="col pe-4">
                             <label class="form-label text-subheading fw-bolder mb-2" for="flavor">CAKE FLAVOR:</label>
@@ -73,13 +73,13 @@
                     <div class="row mb-4">
                         <div class="col">
                             <label class="form-label text-subheading fw-bolder mb-2" for="description">DESIGN DESCRIPTION:</label>
-                            <p class="form-label text-content fw-bold mb-3">Describe what your cake’s design will be. Feel free to be as detailed as possible. You are also welcome to send a link to a reference photo.</p>
+                            <p class="form-label text-content fw-bold mb-3">Describe what your cake's design will be. Feel free to be as detailed as possible. You are also welcome to send a link to a reference photo.</p>
                             <textarea class="form-control text-content" rows="10" name="description"></textarea>
                         </div>
                     </div>
                     <div class="row mt-5">
                         <div class="col text-center">
-                            <input class="btn btn-titleColor text-light px-4" type="submit" value="ORDER CUSTOM CAKE">
+                            <input class="btn btn-titleColor text-light px-4" type="submit" value="Checkout">
                         </div>
                     </div>
                 </form>

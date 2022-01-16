@@ -31,4 +31,9 @@ if (isset($_POST['viewHistory'])) {
     // Redirect to order history page
 }
 
+if (isset($_POST['checkout'])) {
+    $_SESSION['functions']['toggleCart'] = false;
+    header('Location: ../../src/checkout.php?type=1');
+}
+
 ?>

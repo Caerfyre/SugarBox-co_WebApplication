@@ -141,7 +141,9 @@
                 </div>
                 <div class="row mx-2 my-3 justify-content-center">
                     <div class="col px-0 text-center">
-                        <button class="btn btn-titleColor text-light" type="submit">Checkout</button>
+                        <form action="../scripts/functions/navicons.php" method="post">
+                            <input class="btn btn-titleColor text-light" type="submit" name="checkout" value="Checkout">
+                        </form>
                     </div>
                 </div>
             </div>
