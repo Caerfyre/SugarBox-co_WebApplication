@@ -69,7 +69,7 @@
                     <div class="col my-3 px-3 d-flex flex-column">
                         <div class="row">
                             <div class="col">
-                                <p class="fw-bolder text-subheading">Ube Cheesecake Pandesal</p>
+                                <p class="fw-bolder text-subheading">Ube Cheese Pandesal</p>
                             </div>
                             <div class="col-auto ps-0 mt-n2">
                                 <i class="bi bi-x fs-3"></i>
@@ -102,7 +102,7 @@
                     <div class="col my-3 px-3 d-flex flex-column">
                         <div class="row">
                             <div class="col">
-                                <p class="fw-bolder text-subheading">Ube Cheesecake Pandesal</p>
+                                <p class="fw-bolder text-subheading">Ube Cheese Pandesal</p>
                             </div>
                             <div class="col-auto ps-0 mt-n2">
                                 <i class="bi bi-x fs-3"></i>
@@ -229,7 +229,7 @@
                     <div class="col my-3 px-3 d-flex flex-column">
                         <div class="row">
                             <div class="col">
-                                <p class="fw-bolder text-subheading">Ube Cheesecake Pandesal</p>
+                                <p class="fw-bolder text-subheading">Ube Cheese Pandesal</p>
                             </div>
                         </div>
                         <div class="row flex-grow-1">
@@ -247,7 +247,7 @@
                     <div class="col my-3 px-3 d-flex flex-column">
                         <div class="row">
                             <div class="col">
-                                <p class="fw-bolder text-subheading">Ube Cheesecake Pandesal</p>
+                                <p class="fw-bolder text-subheading">Ube Cheese Pandesal</p>
                             </div>
                         </div>
                         <div class="row flex-grow-1">
