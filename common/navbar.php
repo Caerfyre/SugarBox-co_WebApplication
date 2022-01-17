@@ -62,11 +62,11 @@
                     <hr class="border-bottom border-2 border-content">
                 </div>
                 <!-- Product -->
-                <div class="row mx-2 mb-3 bg-section">
-                    <div class="col-4 ps-0 overflow-hidden" style="max-height: 175px;">
-                        <img class="" src="../assets/pandesal.png" alt="Product_img">
+                <div class="row mx-2 mb-3 bg-section align-items-center">
+                    <div class="col-4 ps-0 overflow-hidden d-flex justify-content-center" style="max-height: 150px;">
+                        <img src="../assets/pandesal.png" alt="Product_img">
                     </div>
-                    <div class="col my-3 px-3 d-flex flex-column">
+                    <div class="col my-3 d-flex flex-column align">
                         <div class="row">
                             <div class="col">
                                 <p class="fw-bolder text-subheading">Ube Cheese Pandesal</p>
@@ -85,7 +85,7 @@
                                 <span class="text-content"><b>TOTAL: &nbsp;</b> P150</span>
                             </div>
                             <div class="col-auto bg-light d-flex align-items-center rounded-2 border border-content px-0 me-3">
-                                <form action="" method="post">
+                                <form class="d-flex align-items-center" action="" method="post">
                                     <button class="btn py-0">-</button>
                                     <span>2</span>
                                     <button class="btn py-0">+</button>
@@ -95,11 +95,11 @@
                     </div>
                 </div>
                 <!-- Product -->
-                <div class="row mx-2 mb-3 bg-section">
-                    <div class="col-4 ps-0 overflow-hidden" style="max-height: 175px;">
-                        <img class="" src="../assets/pandesal.png" alt="Product_img">
+                <div class="row mx-2 mb-3 bg-section align-items-center">
+                    <div class="col-4 ps-0 overflow-hidden d-flex justify-content-center" style="max-height: 150px;">
+                        <img src="../assets/pandesal.png" alt="Product_img">
                     </div>
-                    <div class="col my-3 px-3 d-flex flex-column">
+                    <div class="col my-3 d-flex flex-column">
                         <div class="row">
                             <div class="col">
                                 <p class="fw-bolder text-subheading">Ube Cheese Pandesal</p>
@@ -118,7 +118,7 @@
                                 <span class="text-content"><b>TOTAL: &nbsp;</b> P150</span>
                             </div>
                             <div class="col-auto bg-light d-flex align-items-center rounded-2 border border-content px-0 me-3">
-                                <form action="" method="post">
+                                <form class="d-flex align-items-center" action="" method="post">
                                     <button class="btn py-0">-</button>
                                     <span>2</span>
                                     <button class="btn py-0">+</button>
@@ -222,9 +222,9 @@
                     </form>
                 </div>
                 <!-- Product -->
-                <div class="row mx-2 mb-3 bg-section">
-                    <div class="col-4 ps-0 overflow-hidden" style="max-height: 150px;">
-                        <img class="" src="../assets/pandesal.png" alt="Product_img">
+                <a href="../src/order-item.php?id=1" class="row mx-2 mb-3 bg-section text-decoration-none">
+                    <div class="col-4 ps-0 overflow-hidden d-flex justify-content-center" style="max-height: 150px;">
+                        <img src="../assets/pandesal.png" alt="Product_img">
                     </div>
                     <div class="col my-3 px-3 d-flex flex-column">
                         <div class="row">
@@ -238,11 +238,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
                 <!-- Product -->
-                <div class="row mx-2 mb-3 bg-section">
-                    <div class="col-4 ps-0 overflow-hidden" style="max-height: 150px;">
-                        <img class="" src="../assets/pandesal.png" alt="Product_img">
+                <a href="../src/order-item.php?id=1" class="row mx-2 mb-3 bg-section text-decoration-none">
+                    <div class="col-4 ps-0 overflow-hidden d-flex justify-content-center" style="max-height: 150px;">
+                        <img src="../assets/pandesal.png" alt="Product_img">
                     </div>
                     <div class="col my-3 px-3 d-flex flex-column">
                         <div class="row">
@@ -256,7 +256,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
