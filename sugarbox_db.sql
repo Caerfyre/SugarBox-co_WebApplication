@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2022 at 12:14 PM
+-- Generation Time: Jan 18, 2022 at 11:38 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -216,12 +216,35 @@ INSERT INTO `sideproduct_sizes` (`Size_ID`, `Prod_ID`, `Size_Description`, `Size
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `side_categories`
+--
+
+CREATE TABLE `side_categories` (
+  `Categ_ID` int(11) NOT NULL,
+  `Categ_Name` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `side_categories`
+--
+
+INSERT INTO `side_categories` (`Categ_ID`, `Categ_Name`) VALUES
+(1, 'Cupcakes'),
+(2, 'Cookies'),
+(3, 'Brownies'),
+(4, 'Cheesecakes'),
+(5, 'Pandesal');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `side_products`
 --
 
 CREATE TABLE `side_products` (
   `SideProd_ID` int(11) NOT NULL,
   `SideProd_Name` varchar(40) NOT NULL,
+  `Categ_ID` int(11) NOT NULL,
   `SideProd_Desc` varchar(100) NOT NULL,
   `SideProd_Image` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -230,8 +253,10 @@ CREATE TABLE `side_products` (
 -- Dumping data for table `side_products`
 --
 
-INSERT INTO `side_products` (`SideProd_ID`, `SideProd_Name`, `SideProd_Desc`, `SideProd_Image`) VALUES
-(10, 'ubee', 'eeee', '');
+INSERT INTO `side_products` (`SideProd_ID`, `SideProd_Name`, `Categ_ID`, `SideProd_Desc`, `SideProd_Image`) VALUES
+(10, 'Ube Cheese Pandesal', 5, 'Homemade soft ube pandesal with cheese filling.', 'pandesal.png'),
+(11, 'Oreo Cookies', 2, 'Chewy and sweet cookies with real crushed oreos', 'oreo-cookies.png'),
+(12, 'Matcha Cookies', 2, 'Soft matcha cookies with white chocolate chips', 'matcha-cookies.png');
 
 -- --------------------------------------------------------
 
@@ -320,10 +345,17 @@ ALTER TABLE `sideproduct_sizes`
   ADD KEY `Prod_ID` (`Prod_ID`);
 
 --
+-- Indexes for table `side_categories`
+--
+ALTER TABLE `side_categories`
+  ADD PRIMARY KEY (`Categ_ID`);
+
+--
 -- Indexes for table `side_products`
 --
 ALTER TABLE `side_products`
-  ADD PRIMARY KEY (`SideProd_ID`);
+  ADD PRIMARY KEY (`SideProd_ID`),
+  ADD KEY `Categ_ID` (`Categ_ID`);
 
 --
 -- Indexes for table `suppliers`
@@ -384,10 +416,16 @@ ALTER TABLE `sideproduct_sizes`
   MODIFY `Size_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `side_categories`
+--
+ALTER TABLE `side_categories`
+  MODIFY `Categ_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `side_products`
 --
 ALTER TABLE `side_products`
-  MODIFY `SideProd_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `SideProd_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
@@ -443,6 +481,12 @@ ALTER TABLE `payment`
 --
 ALTER TABLE `sideproduct_sizes`
   ADD CONSTRAINT `sideproduct_sizes_ibfk_1` FOREIGN KEY (`Prod_ID`) REFERENCES `side_products` (`SideProd_ID`);
+
+--
+-- Constraints for table `side_products`
+--
+ALTER TABLE `side_products`
+  ADD CONSTRAINT `side_products_ibfk_1` FOREIGN KEY (`Categ_ID`) REFERENCES `side_categories` (`Categ_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
