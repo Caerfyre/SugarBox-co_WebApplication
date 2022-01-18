@@ -31,6 +31,13 @@
         box-shadow: 0px 14px 24px rgba(62, 57, 107, 0.2);
         z-index: 999; 
         }
+
+        .table-image{
+        width: auto !important; 
+        height: 70px !important;
+
+        }
+
     </style>
 
 </head>
