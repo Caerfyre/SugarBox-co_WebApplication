@@ -35,8 +35,16 @@
         .table-image{
         width: auto !important; 
         height: 70px !important;
-
         }
+        .modal-image{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%!important; 
+        height: 200px !important;
+        object-fit: cover;
+        }
+
 
     </style>
 
