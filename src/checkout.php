@@ -96,9 +96,11 @@
             </div>
             <div class="col-lg-4 bg-section pt-4 pb-4 px-2">
                 <div class="container-fluid d-flex flex-column justify-content-between h-100">
+                    <!-- Regular Checkout -->
+                    <?php if ($_GET['type'] == 1) { ?>
                     <div class="row justify-content-center">
                         <p class="text-center text-titleColor fs-5 fw-bolder">YOUR CART ITEMS</p>
-                        <hr>
+                        <hr class="bg-content">
                         <!-- Product -->
                         <div class="row mb-3 bg-section2 p-0">
                             <div class="col-4 ps-0 overflow-hidden d-flex justify-content-center" style="max-height: 150px;">
@@ -153,7 +155,7 @@
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <hr>
+                    <hr class="bg-content">
                         <div class="row p-0">
                             <div class="col d-flex align-items-center">
                                 <span class="text-content"><b>OVERALL:</b></span>
@@ -163,6 +165,18 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Custom Order Checkout -->
+                    <?php } else if ($_GET['type'] == 2) { ?>
+                    <div class="row justify-content-center">
+                        <p class="text-center text-titleColor fs-5 fw-bolder">CUSTOM CAKE</p>
+                        <hr class="bg-content">
+                        <p class="text-content"><b class="text-subheading">FLAVOR: &nbsp;</b> CHOCOLATE</p>
+                        <p class="text-content"><b class="text-subheading">SIZE: &nbsp;</b> 7 INCHES</p>
+                        <p class="text-content"><b class="text-subheading">LAYERS: &nbsp;</b> 2</p>
+                        <p class="text-content"><b class="text-subheading">NAME: &nbsp;</b> SPORTS THEME</p>
+                        <p class="text-content"><b class="text-subheading">DESCRIPTION: &nbsp;</b> </p>
+                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
