@@ -75,10 +75,11 @@ include 'includes/topbar.php'
                                             <button class="btn btn-danger">Delete Product</button>
                                             </td>
                                         </tr>
+
                                         <!-- Details Modal -->
                                         <div class="modal fade" id="DetailsModal<?php echo $row['SideProd_ID']; ?>" 
                                         tabindex="-1" role="dialog" aria-labelledby="DetailsModal" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="DetailsModal">Product #<?php echo $row['SideProd_ID']; ?></h5>
@@ -86,8 +87,50 @@ include 'includes/topbar.php'
                                                 <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <img src="../assets/<?php echo $row['SideProd_Image']; ?>" alt="<?php echo $row['SideProd_Image']; ?>">
-                                            <p><?php echo $row['SideProd_Desc']; ?></p>
+
+                                            <!-- Modal Content -->
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <img class="modal-image" src="../assets/<?php echo $row['SideProd_Image']; ?>" alt="<?php echo $row['SideProd_Image']; ?>">                                               
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <h4 class="font-weight-bold"><?php echo $row['SideProd_Name']; ?></h4>
+                                                        <p class=""><?php echo $row['SideProd_Desc']; ?></p>
+                                                        <hr>
+                                                        <h5 class="font-weight-bold">Price Information:</h5>
+                                                        <?php
+                                                        $prodID = $row['SideProd_ID'];
+                                                        
+                                                        $info_query = "SELECT sideproduct_sizes.Size_Description, sideproduct_sizes.Size_Price
+                                                        FROM side_products
+                                                        RIGHT JOIN sideproduct_sizes
+                                                        ON side_products.SideProd_ID = sideproduct_sizes.Prod_ID
+                                                        WHERE side_products.SideProd_ID = $prodID
+                                                        ORDER BY sideproduct_sizes.Size_ID ASC";
+
+                                                        $info_query_run = mysqli_query($conn, $info_query);
+                                                        $check_prodinfo = mysqli_num_rows($info_query_run) > 0;
+                                                        if($check_prodinfo){ ?>
+
+                                                            <ul>
+                                                            <?php while($row = mysqli_fetch_assoc($info_query_run)){ ?>
+                                                            <li><?php echo $row['Size_Description'];?> - <?php echo $row['Size_Price'];?></li>
+                                                            <?php } ?>
+                                                            </ul>
+
+                                                        <?php }else { ?>
+                                                        <button class="btn btn-sm btn-primary">Add Price Information</button>
+                                                        <p class="text-sm">Price Information not yet added</p>  
+                                                        <?php } ?>
+
+                                                    </div>
+                                                </div>
+                                             
+                                            </div>
+                                            
+                                            <!-- Modal Content -->
+
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                 <button type="submit" name="registerbtn" class="btn btn-primary">Save</button>
@@ -98,17 +141,8 @@ include 'includes/topbar.php'
                                         </div>
                                         </div>
                                         <?php } ?>
-
-                                        <!-- <tr>
-                                            <td>7</td>
-                                            <td><img class="table-image" src="../assets/matcha-cookies.png" alt=""></td>
-                                            <td>Matcha Cookies</td>
-                                            <td>Description</td>
-                                            <td>
-                                                <button class="btn btn-primary" data-toggle="modal" data-target="#viewDetailsModal">View Details</button>
-                                                <button class="btn btn-danger">Delete Product</button>
-                                            </td>
-                                        </tr> -->
+                                        <!-- End of Details Modal -->
+    
 
                                     </tbody>
                                 </table>
