@@ -16,7 +16,13 @@ include 'includes/topbar.php'
     <!-- Products -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Side Products</h6>
+                            <div class="d-sm-flex align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Side Products</h6>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProducts">
+                                Add New Product
+                                </button>
+                            </div>
+                            
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -96,6 +102,7 @@ include 'includes/topbar.php'
                                                     </div>
                                                     <div class="col-8">
                                                         <h4 class="font-weight-bold"><?php echo $row['SideProd_Name']; ?></h4>
+                                                        <p class="text-gray-500"><?php echo $row['Categ_Name']; ?></p>
                                                         <p class=""><?php echo $row['SideProd_Desc']; ?></p>
                                                         <hr>
                                                         <h5 class="font-weight-bold">Price Information:</h5>
@@ -107,7 +114,7 @@ include 'includes/topbar.php'
                                                         RIGHT JOIN sideproduct_sizes
                                                         ON side_products.SideProd_ID = sideproduct_sizes.Prod_ID
                                                         WHERE side_products.SideProd_ID = $prodID
-                                                        ORDER BY sideproduct_sizes.Size_ID ASC";
+                                                        ORDER BY sideproduct_sizes.Size_Price ASC";
 
                                                         $info_query_run = mysqli_query($conn, $info_query);
                                                         $check_prodinfo = mysqli_num_rows($info_query_run) > 0;
@@ -119,7 +126,7 @@ include 'includes/topbar.php'
                                                             <?php } ?>
                                                             </ul>
 
-                                                        <?php }else { ?>
+                                                        <?php } else { ?>
                                                         <button class="btn btn-sm btn-primary">Add Price Information</button>
                                                         <p class="text-sm">Price Information not yet added</p>  
                                                         <?php } ?>
@@ -165,52 +172,61 @@ include 'includes/topbar.php'
 <!-- End of Main Content -->
 
 
-<!-- Details Modal -->
-<div class="modal fade" id="DetailsModal" tabindex="-1" role="dialog" aria-labelledby="viewDetailsModal" aria-hidden="true">
+<!-- Add Products Modal -->
+<div class="modal fade" id="addProducts" tabindex="-1" role="dialog" aria-labelledby="addProductsModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Account</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
-      <form action="code.php" method="POST">
+      <form action="../scripts/database/crud.php" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
 
             <div class="form-group">
-                <label> Username </label>
-                <input type="text" name="username" class="form-control" placeholder="Enter Username" required>
+                <label> Product Name </label>
+                <input type="text" name="prodName" class="form-control" placeholder="Enter Username" required>
             </div>
             <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control checking_email" placeholder="Enter Email" required>
-                <small class="error_email" style="color: red;"></small>
+                <label>Product Type</label>
+
+                <?php
+                $categ_query = "SELECT * FROM side_categories ORDER BY Categ_ID ASC";
+                $categ_query_run = mysqli_query($conn, $categ_query);
+                $check_categ = mysqli_num_rows($categ_query_run) > 0;
+
+                if($check_categ){?>
+
+                <select class="form-control" name="prodCateg" id="categ" required>
+                    <?php while($res = mysqli_fetch_assoc($categ_query_run)){ ?>
+                        <option value="<?php echo $res['Categ_ID']?>"><?php echo $res['Categ_Name']?></option> 
+                    <?php } ?>
+                </select>
+
+                <?php }else{?>
+                    <p class="small text-danger">No categories available</p>
+                <?php } ?>
+                
             </div>
             <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
-            </div>
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" name="confirmpassword" class="form-control" placeholder="Confirm Password" required>
+                <label>Product Description</label>
+                <textarea class="form-control" name="prodDesc" id="prodDesc" placeholder="Enter product description..." required></textarea>
             </div>
 
-            <!-- <div class="form-group">
-                <label>Usertype</label>
-                    <select name="update_usertype" class="form-control">
-                        <option value="admin">Admin</option>
-                        <option value="user">User</option>
-                    </select>
-            </div> -->
-
-                <input type="hidden" name="usertype" value="user">
+            <div class="form-group">
+                <label>Product Image</label>
+                <input class="form-control-input" type="file" name="prodImage" required>
+                
+            </div>
+            
 
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" name="registerbtn" class="btn btn-primary">Save</button>
+            <button type="submit" name="addProductBtn" class="btn btn-primary">Add Product</button>
         </div>
       </form>
   
