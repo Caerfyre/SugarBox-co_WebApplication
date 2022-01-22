@@ -44,7 +44,7 @@
 </nav>
 
 <!-- Your Order -->
-<?php if ($_SESSION['functions']['toggleCart'] == true) { ?>
+<?php if (isset($_SESSION['functions']['toggleCart']) && $_SESSION['functions']['toggleCart']) { ?>
     <div class="container-fluid fixed-top bg-black bg-opacity-25" style="height:100%;">
         <div class="row justify-content-end overflow-auto" style="max-height:100%;">
             <div class="col-4 bg-light py-3 px-4">
@@ -152,7 +152,7 @@
 <?php } ?>
 
 <!-- Profile Options -->
-<?php if ($_SESSION['functions']['toggleOptions'] == true) { ?>
+<?php if (isset($_SESSION['functions']['toggleOptions']) && $_SESSION['functions']['toggleOptions']) { ?>
     <div class="container-fluid fixed-top bg-black bg-opacity-25" style="height:100%;">
         <div class="row justify-content-end overflow-auto" style="max-height:100%;">
             <div class="col-4 bg-light py-3 px-4">
@@ -196,7 +196,7 @@
 <?php } ?>
 
 <!-- Search -->
-<?php if ($_SESSION['functions']['toggleSearch'] == true) { ?>
+<?php if (isset($_SESSION['functions']['toggleSearch']) && $_SESSION['functions']['toggleSearch']) { ?>
     <div class="container-fluid fixed-top bg-black bg-opacity-25" style="height:100%;">
         <div class="row justify-content-end overflow-auto" style="max-height:100%;">
             <div class="col-4 bg-light py-3 px-4">
