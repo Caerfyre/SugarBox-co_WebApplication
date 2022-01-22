@@ -27,8 +27,8 @@ if (isset($_POST['viewProfile'])) {
 }
 
 if (isset($_POST['viewHistory'])) {
-    // $_SESSION['functions']['toggleOptions'] = false;
-    // Redirect to order history page
+    $_SESSION['functions']['toggleOptions'] = false;
+    header('Location: ../../src/account.php#orderHistory');
 }
 
 if (isset($_POST['checkout'])) {
