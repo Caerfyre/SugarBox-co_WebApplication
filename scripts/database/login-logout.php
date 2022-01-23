@@ -1,5 +1,6 @@
 <?php
 include "secure-login.php";
+include "./crud.php";
 
 //------ LOGIN ------//
 if (isset($_POST['signin'])) {
@@ -12,17 +13,15 @@ if (isset($_POST['signin'])) {
 
     if ($userAccount) {
         if ($uName == $userAccount['Acc_Username'] && $pass == $userAccount['Acc_Password']) {
+            $_SESSION['user'] = $user = array(
+                "accID" => $userAccount['Account_ID'],
+                "accUsername" => $userAccount['Acc_Username'],
+                "passLength" => strlen($userAccount['Acc_Password'])
+            );
             if ($userAccount['User_Type'] == 0) {
-                $_SESSION['user'] = $user = array(
-                    "accID" => $userAccount['Account_ID'],
-                    "accUsername" => $userAccount['Acc_Username']
-                );
                 header('Location: ../../admin-src/index.php');
             } elseif ($userAccount['User_Type'] == 1) {
-                $_SESSION['user'] = $user = array(
-                    "accID" => $userAccount['Account_ID'],
-                    "accUsername" => $userAccount['Acc_Username']
-                );
+                getCustomer($userAccount['Account_ID']);
                 header('Location: ../../src/home.php');
             }
             if (isset($_SESSION['loginErr'])) unset($_SESSION['loginErr']);
@@ -45,6 +44,5 @@ if (isset($_POST['signin'])) {
 //------ LOGOUT ------//
 if (isset($_POST['logout'])) {
     session_destroy();
-    unset($_SESSION['user']);
     header('Location: ../../index.php');
 }

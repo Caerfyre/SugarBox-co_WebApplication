@@ -169,6 +169,9 @@
                 <div class="row mx-2">
                     <hr class="border-bottom border-2 border-content">
                 </div>
+                <div class="row mx-2 text-center">
+                    <p class="text-subheading fw-bold fs-5">Hi, <?php echo $_SESSION['user']['accUsername'] ?>.</p>
+                </div>
                 <div class="row mx-2 mb-2">
                     <form class="px-0" action="../scripts/functions/navicons.php" method="post">
                         <!-- View Profile -->

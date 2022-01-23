@@ -40,9 +40,9 @@
                         <a href="#" class="text-decoration-none"><p class="fs-5 text-subheading mb-0">EDIT</p></a>
                     </div>
                     <hr class="bg-content mb-4 mt-2">
-                    <p class="text-content fw-bolder">Full Name:</p>
-                    <p class="text-content fw-bolder">Contact Number:</p>
-                    <p class="text-content fw-bolder">Address:</p>
+                    <p class="text-content fw-bolder">Full Name: &nbsp;<span class="text-content fw-bold"><?php echo $_SESSION["customer"]["fname"] . $_SESSION["customer"]["lname"] ?></span></p>
+                    <p class="text-content fw-bolder">Contact Number: &nbsp;<span class="text-content fw-bold"><?php echo $_SESSION["customer"]["contact"] ?></span></p>
+                    <p class="text-content fw-bolder">Address: &nbsp;<span class="text-content fw-bold"><?php echo $_SESSION["customer"]["address"] ?></span></p>
                 </div>
                 <div class="col-lg bg-section rounded-1 p-5">
                     <div class="d-flex align-items-center justify-content-between">
@@ -50,8 +50,8 @@
                         <a href="#" class="text-decoration-none"><p class="fs-5 text-subheading mb-0">EDIT</p></a>
                     </div>
                     <hr class="bg-content mb-4 mt-2">
-                    <p class="text-content fw-bolder">Username:</p>
-                    <p class="text-content fw-bolder">Password:</p>
+                    <p class="text-content fw-bolder">Username: &nbsp;<span class="text-content fw-bold"><?php echo $_SESSION['user']['accUsername'] ?></span></p>
+                    <p class="text-content fw-bolder">Password: &nbsp;<span class="text-content fw-bold font-monospace"><?php for ($i = 0; $i < $_SESSION['user']['passLength']; $i++) echo '*' ?></span></p>
                     <a href="#" class="text-decoration-none"><p class="text-danger fw-bold">Delete Account</p></a>
                 </div>
             </div>
@@ -67,6 +67,9 @@
                 <a href="#" class="text-decoration-none"><p class="fs-5 text-subheading mb-0">SEE ALL</p></a>
             </div>
             <hr class="bg-content mb-4 mt-2">
+            <div class="bg-section2 rounded-2 p-3 mb-3 text-content">
+                Order
+            </div>
             <div class="bg-section2 rounded-2 p-3 mb-3 text-content">
                 Order
             </div>
