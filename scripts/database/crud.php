@@ -3,12 +3,14 @@ include "secure-login.php";
 
 // CLIENT FUNCTIONS ----------------------
 
-$_SESSION["customer"] = array(
-    "fname" => "",
-    "lname" => "",
-    "contact" => "",
-    "address" => ""
-);
+if (!isset($_SESSION["customer"])) {
+    $_SESSION["customer"] = array(
+        "fname" => "",
+        "lname" => "",
+        "contact" => "",
+        "address" => ""
+    );
+}
 
 /**
  * Adds customer information to the SESSION:
