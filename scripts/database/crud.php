@@ -26,10 +26,13 @@ function getCustomer($accID)
     $query = "SELECT * FROM `customer` WHERE `Cust_ID`='$accID' LIMIT 1";
     $result = mysqli_query($conn, $query);
     $custInfo = mysqli_fetch_array($result);
-    $_SESSION["customer"]["fname"] = $custInfo["Cust_FName"];
-    $_SESSION["customer"]["lname"] = $custInfo["Cust_LName"];
-    $_SESSION["customer"]["contact"] = $custInfo["Cust_ContactNo"];
-    $_SESSION["customer"]["address"] = $custInfo["Cust_Address"];
+    if ($custInfo) {
+        $_SESSION["customer"]["fname"] = $custInfo["Cust_FName"];
+        $_SESSION["customer"]["lname"] = $custInfo["Cust_LName"];
+        $_SESSION["customer"]["contact"] = $custInfo["Cust_ContactNo"];
+        $_SESSION["customer"]["address"] = $custInfo["Cust_Address"];
+    }
+    
 }
 
 // ADMIN FUNCTIONS -----------------------
