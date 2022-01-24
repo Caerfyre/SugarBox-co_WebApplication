@@ -35,8 +35,45 @@ function getCustomer($accID)
     
 }
 
+// Update Contact Details
+if (isset($_POST['updateContact'])) {
+
+}
+
+// Update Account Details
+if (isset($_POST['updateAccount'])) {
+    $accID = $_SESSION['user']['accID'];
+    $username = $_POST['username'];
+    $newPassword = $_POST['newPassword'];
+    $valPassword = $_POST['valPassword'];
+    
+    if ($newPassword != "" && $newPassword === $valPassword) {
+        $query = "UPDATE `accounts` SET `Acc_Username` = '$username', `Acc_Password` = '$newPassword'
+                WHERE `Account_ID` = '$accID'";
+        $password = $newPassword;
+    } elseif ($newPassword === "") {
+        $query = "UPDATE `accounts` SET `Acc_Username` = '$username'
+                WHERE `Account_ID` = '$accID'";
+    } else {
+        // error
+    }
+    
+    if (isset($query) && mysqli_query($conn, $query)) {
+        $_SESSION['user']['accUsername'] = $username;
+        if ($newPassword != "") {
+            $_SESSION['user']['accPassword'] = $newPassword;
+        }
+        echo '<script>console.log("Account Updated.")</script>';
+    } else {
+        echo '<script>console.log("Failed to update account...")</script>';
+    }
+    
+    header('Location: ../../src/account.php');
+}
+
 // ADMIN FUNCTIONS -----------------------
 
+// Add Product
 if (isset($_POST['addProductBtn'])) {
     $prodName = mysqli_real_escape_string($conn, $_POST['prodName']);
     $prodCateg = mysqli_real_escape_string($conn, $_POST['prodCateg']);

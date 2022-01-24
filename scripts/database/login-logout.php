@@ -16,7 +16,7 @@ if (isset($_POST['signin'])) {
             $_SESSION['user'] = $user = array(
                 "accID" => $userAccount['Account_ID'],
                 "accUsername" => $userAccount['Acc_Username'],
-                "passLength" => strlen($userAccount['Acc_Password'])
+                "accPassword" => $userAccount['Acc_Password']
             );
             if ($userAccount['User_Type'] == 0) {
                 header('Location: ../../admin-src/index.php');
