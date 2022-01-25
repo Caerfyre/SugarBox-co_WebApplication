@@ -1,4 +1,5 @@
-<?php include '../scripts/database/secure-login.php'?>
+<?php include '../scripts/database/secure-login.php' ?>
+<?php include '../scripts/database/DB-connect.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">

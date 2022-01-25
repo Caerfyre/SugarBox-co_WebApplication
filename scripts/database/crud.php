@@ -1,5 +1,6 @@
 <?php
 include "secure-login.php";
+include "./DB-connect.php";
 
 // CLIENT FUNCTIONS ----------------------
 
@@ -24,9 +25,11 @@ function getCustomer($accID)
 {
     include "./DB-connect.php";
     $conn = db_connect();
+
     $query = "SELECT * FROM `customer` WHERE `Cust_ID`='$accID' LIMIT 1";
     $result = mysqli_query($conn, $query);
     $custInfo = mysqli_fetch_array($result);
+    
     if ($custInfo) {
         $_SESSION["customer"]["fname"] = $custInfo["Cust_FName"];
         $_SESSION["customer"]["lname"] = $custInfo["Cust_LName"];
@@ -34,6 +37,7 @@ function getCustomer($accID)
         $_SESSION["customer"]["address"] = $custInfo["Cust_Address"];
     }
     
+    mysqli_close($conn);
 }
 
 // Update Contact Details
@@ -43,6 +47,8 @@ if (isset($_POST['updateContact'])) {
 
 // Update Account Details
 if (isset($_POST['updateAccount'])) {
+    $conn = db_connect();
+    
     $accID = $_SESSION['user']['accID'];
     $username = $_POST['username'];
     $newPassword = $_POST['newPassword'];
@@ -68,7 +74,8 @@ if (isset($_POST['updateAccount'])) {
     } else {
         echo '<script>console.log("Failed to update account...")</script>';
     }
-    
+
+    mysqli_close($conn);    
     header('Location: ../../src/account.php');
 }
 
@@ -76,6 +83,8 @@ if (isset($_POST['updateAccount'])) {
 
 // Add Product
 if (isset($_POST['addProductBtn'])) {
+    $conn = db_connect();
+
     $prodName = mysqli_real_escape_string($conn, $_POST['prodName']);
     $prodCateg = mysqli_real_escape_string($conn, $_POST['prodCateg']);
     $prodDesc = mysqli_real_escape_string($conn, $_POST['prodDesc']);
@@ -105,4 +114,6 @@ if (isset($_POST['addProductBtn'])) {
             echo '<script>alert("Failed to add product")</script>';
         }
     }
+
+    mysqli_close($conn);   
 }

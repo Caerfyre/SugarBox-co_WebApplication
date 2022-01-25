@@ -1,9 +1,11 @@
 <?php
 include "secure-login.php";
-include "./crud.php";
+include "crud.php";
 
 //------ LOGIN ------//
 if (isset($_POST['signin'])) {
+    $conn = db_connect();
+    
     $uName = $_POST["username"];
     $pass = $_POST["password"];
 
@@ -16,7 +18,6 @@ if (isset($_POST['signin'])) {
             $_SESSION['user'] = $user = array(
                 "accID" => $userAccount['Account_ID'],
                 "accUsername" => $userAccount['Acc_Username'],
-                "accPassword" => $userAccount['Acc_Password']
             );
             if ($userAccount['User_Type'] == 0) {
                 header('Location: ../../admin-src/index.php');
@@ -39,6 +40,8 @@ if (isset($_POST['signin'])) {
         }
         header('Location: ../../index.php');
     }
+
+    mysqli_close($conn);
 }
 
 //------ LOGOUT ------//
