@@ -49,7 +49,7 @@
                     </div>
                     <hr class="bg-content mb-4 mt-2">
                     <?php if (!isset($_POST["editContact"])) { ?>
-                        <p class="text-content fw-bolder">Full Name: &nbsp;<span class="text-content fw-bold"><?php echo $_SESSION["customer"]["fname"] . $_SESSION["customer"]["lname"] ?></span></p>
+                        <p class="text-content fw-bolder">Full Name: &nbsp;<span class="text-content fw-bold"><?php echo $_SESSION["customer"]["fname"] . " " . $_SESSION["customer"]["lname"] ?></span></p>
                         <p class="text-content fw-bolder">Contact Number: &nbsp;<span class="text-content fw-bold"><?php echo $_SESSION["customer"]["contact"] ?></span></p>
                         <p class="text-content fw-bolder">Address: &nbsp;<span class="text-content fw-bold"><?php echo $_SESSION["customer"]["address"] ?></span></p>
                     <?php } else { ?>

@@ -40,9 +40,38 @@ function getCustomer($accID)
     mysqli_close($conn);
 }
 
-// Update Contact Details
+// Add/Update Contact Details
 if (isset($_POST['updateContact'])) {
+    $conn = db_connect();
 
+    $accID = $_SESSION['user']['accID'];
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $contact = $_POST['contact'];
+    $address = $_POST['address'];
+
+    $query = "SELECT * FROM `customer` WHERE `Cust_ID`='$accID' LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    $custInfo = mysqli_fetch_array($result);
+
+    if ($custInfo) {
+        $query = "UPDATE `customer` SET `Cust_FName` = '$fname',`Cust_LName` = '$lname', 
+                `Cust_ContactNo` = '$contact', `Cust_Address` = '$address' WHERE `Cust_ID` = '$accID'";
+    } else {
+        $query = "INSERT INTO `customer`(`Cust_ID`, `Cust_FName`, `Cust_LName`, `Cust_ContactNo`, `Cust_Address`) 
+                VALUES('$accID', '$fname','$lname', '$contact', '$address')";
+    }
+
+    if (mysqli_query($conn, $query)) {
+        getCustomer($accID);
+        echo '<script>console.log("Contact details updated.")</script>';
+    } else {
+        echo '<script>console.log("Failed to update contact details...")</script>';
+        // echo mysqli_error($conn);
+    }
+
+    mysqli_close($conn);    
+    header('Location: ../../src/account.php');
 }
 
 // Update Account Details
@@ -70,7 +99,7 @@ if (isset($_POST['updateAccount'])) {
         if ($newPassword != "") {
             $_SESSION['user']['accPassword'] = $newPassword;
         }
-        echo '<script>console.log("Account Updated.")</script>';
+        echo '<script>console.log("Account updated.")</script>';
     } else {
         echo '<script>console.log("Failed to update account...")</script>';
     }
