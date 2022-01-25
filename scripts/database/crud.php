@@ -18,11 +18,12 @@ if (!isset($_SESSION["customer"])) {
  * - Last Name
  * - Contact Number
  * - Address
- * @param int $accID The Account ID of the customer
+ * @param int $accID The Account ID of the customer.
  */
 function getCustomer($accID)
 {
     include "./DB-connect.php";
+    $conn = db_connect();
     $query = "SELECT * FROM `customer` WHERE `Cust_ID`='$accID' LIMIT 1";
     $result = mysqli_query($conn, $query);
     $custInfo = mysqli_fetch_array($result);

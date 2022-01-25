@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="row justify-content-center mt-5">
-            <div class="col-md-5 bg-section shadow-sm py-4">
+            <div class="col-md-5 bg-section rounded-2 py-4">
                 <h3 class="text-titleColor">SIGN UP</h3>
                 <form class="container px-5" action="" method="post">
                     <div class="row text-start mt-4">
