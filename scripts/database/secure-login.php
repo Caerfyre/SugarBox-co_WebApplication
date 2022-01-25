@@ -9,7 +9,7 @@ if ($conn) {
     header("Location: ../../404.php");
 }
 
-// Login
+// Login validation
 if (!$_SESSION['user']) {
-    header('Location: ../../404.php');
+    header('Location: ../index.php');
 }
