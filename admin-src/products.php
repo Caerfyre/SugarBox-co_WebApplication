@@ -29,7 +29,7 @@ include 'includes/topbar.php'
 
                             <?php
                             require '../scripts/database/DB-connect.php';
-                            db_connect();
+                            $conn = db_connect();
 
                             // $prod_query = "SELECT * FROM side_products ORDER BY SideProd_ID ASC";
                             $prod_query = "SELECT side_products.SideProd_ID,
