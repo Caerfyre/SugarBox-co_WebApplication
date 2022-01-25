@@ -78,14 +78,14 @@
                     <hr class="bg-content mb-4 mt-2">
                     <?php if (!isset($_POST["editAccount"])) { ?>
                         <p class="text-content fw-bolder">Username: &nbsp;<span class="text-content fw-bold"><?php echo $_SESSION['user']['accUsername'] ?></span></p>
-                        <p class="text-content fw-bolder">Password: &nbsp;<span class="text-content fw-bold font-monospace"><?php for ($i = 0; $i < strlen($_SESSION['user']['accPassword']); $i++) echo '*' ?></span></p>
+                        <p class="text-content fw-bolder">Password: &nbsp;<span class="text-content fw-bold font-monospace"><?php for ($i = 0; $i < strlen(getPassword()); $i++) echo '*' ?></span></p>
                         <a href="#" class="text-decoration-none"><p class="text-danger fw-bold">Delete Account</p></a>
                     <?php } else { ?>
                         <form action="../scripts/database/crud.php" method="post">
                             <p class="text-content fw-bolder">Username: <input class="form-control bg-section2 border-0 mt-2" type="text" name="username" value="<?php echo $_SESSION['user']['accUsername'] ?>"></p>
                             <p class="text-content fw-bolder mb-2">Password:</p>
                             <div class="input-group mb-3">
-                                <input class="form-control bg-section2 border-0 font-monospace" disabled type="password" name="password" id="password" value="<?php echo $_SESSION['user']['accPassword'] ?>">
+                                <input class="form-control bg-section2 border-0 font-monospace" disabled type="password" name="password" id="password" value="<?php echo getPassword() ?>">
                                 <button class="btn btn-section2 text-subheading" type="button" onclick="showPass('password', this)">Show</button>
                             </div>
                             <p class="text-content fw-bolder mb-2">New Password:</p>
@@ -141,8 +141,26 @@
     <!-- Footer -->
     <?php include '../common/footer.php' ?>
 
+    <?php
+        /**
+         * Returns the password of the authorized user.
+         * @return string The password of the authorized user.
+         */
+        function getPassword() {
+            $conn = db_connect();
+            $accID = $_SESSION["user"]["accID"];
+
+            $query = "SELECT `Acc_Password` FROM `accounts` WHERE `Account_ID`='$accID' LIMIT 1";
+            $result = mysqli_query($conn, $query);
+            $password = mysqli_fetch_array($result);
+
+            mysqli_close($conn);
+            return $password["Acc_Password"];
+        }
+    ?>
+
     <script>
-        function showPass(input, btn) {
+        function showPass(input = "", btn) {
             var x = document.getElementById(input);
             if (x.type === "password") {
                 x.type = "text";
