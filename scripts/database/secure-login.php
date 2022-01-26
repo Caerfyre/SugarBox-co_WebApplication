@@ -6,7 +6,7 @@ $conn = db_connect();
 if ($conn) {
     // echo "Database Connected";
 } else {
-    header("Location: ../../404.php");
+    header("Location: ../404.php");
     exit;
 }
 

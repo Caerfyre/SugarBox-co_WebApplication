@@ -18,9 +18,9 @@ if (!function_exists("db_connect")) {
 
         $conn = mysqli_connect($server_name, $username, $password, $db_name);
 
-        if (!$conn) {
-            die("Connection Failed: " . mysqli_connect_error());
-        }
+        // if (!$conn) {
+        //     die("Connection Failed: " . mysqli_connect_error());
+        // }
 
         return $conn;
     }
