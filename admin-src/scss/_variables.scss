@@ -31,6 +31,39 @@ $cyan: #36b9cc !default;
 $brand-google: #ea4335 !default;
 $brand-facebook: #3b5998 !default;
 
+// Sugarbox&co. Colors
+$primary:       #E0BAA2;
+$secondary:     #6c757d;
+$success:       #198754;
+$info:          #0dcaf0;
+$warning:       #ffc107;
+$danger:        #dc3545;
+$light:         #FDFBF3;
+$dark:          #212529;
+$titleColor:    #DF7450;
+$content:       #6B493D;
+$section:       #F3E4D9;
+$section2:      #FFF5EC;
+$subheading:    #C58383;
+$icon:          #B05635;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+  "titleColor": $titleColor,
+  "content":    $content,
+  "section":    $section,
+  "section2":   $section2,
+  "subheading": $subheading,
+  "icon":       $icon
+);
+
 // Set Contrast Threshold
 $yiq-contrasted-threshold: 195 !default;
 
