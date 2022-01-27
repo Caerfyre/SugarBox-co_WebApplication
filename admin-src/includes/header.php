@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>SugarBox&co. Admin - Dashboard</title>
+    
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/sblogo-1.svg">
 
     <!-- Custom fonts for this template-->
