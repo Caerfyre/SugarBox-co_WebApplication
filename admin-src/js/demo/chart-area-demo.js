@@ -1,6 +1,6 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-Chart.defaults.global.defaultFontColor = '#858796';
+Chart.defaults.global.defaultFontColor = '#6B493D';
 
 function number_format(number, decimals, dec_point, thousands_sep) {
   // *     example: number_format(1234.56, 2, ',', ' ');
@@ -34,6 +34,7 @@ var myLineChart = new Chart(ctx, {
   data: {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     datasets: [{
+      displayColors: "#6B493D",
       label: "Earnings",
       lineTension: 0.3,
       backgroundColor: "rgba(78, 115, 223, 0.05)",
@@ -82,8 +83,8 @@ var myLineChart = new Chart(ctx, {
           }
         },
         gridLines: {
-          color: "rgb(234, 236, 244)",
-          zeroLineColor: "rgb(234, 236, 244)",
+          color: "#F3E4D9",
+          zeroLineColor: "#F3E4D9",
           drawBorder: false,
           borderDash: [2],
           zeroLineBorderDash: [2]
@@ -95,11 +96,11 @@ var myLineChart = new Chart(ctx, {
     },
     tooltips: {
       backgroundColor: "rgb(255,255,255)",
-      bodyFontColor: "#858796",
+      bodyFontColor: "#6B493D",
       titleMarginBottom: 10,
-      titleFontColor: '#6e707e',
+      titleFontColor: '#6B493D',
       titleFontSize: 14,
-      borderColor: '#dddfeb',
+      borderColor: '#F3E4D9',
       borderWidth: 1,
       xPadding: 15,
       yPadding: 15,

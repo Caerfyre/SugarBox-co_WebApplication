@@ -49,8 +49,7 @@ include 'includes/topbar.php'
             $prod_query_run = mysqli_query($conn, $prod_query);
             $check_products = mysqli_num_rows($prod_query_run) > 0;
             
-            if($check_products)
-            {   
+            if($check_products) {   
             ?>
 
                 <table class="table table-bordered border-content table-content bg-section2 text-content" id="dataTable">
@@ -74,8 +73,7 @@ include 'includes/topbar.php'
                         </tr>
                     </tfoot>
                     <tbody>
-                        <?php  while($row = mysqli_fetch_assoc($prod_query_run))
-                        {   ?>
+                        <?php while($row = mysqli_fetch_assoc($prod_query_run)) { ?>
                         <tr>
                             <td><?php echo $row['SideProd_ID']; ?></td>
                             <td><img class="table-image" src="../assets/<?php echo $row['SideProd_Image']; ?>" alt="<?php echo $row['SideProd_Image']; ?>"></td>
@@ -155,7 +153,6 @@ include 'includes/topbar.php'
                         <?php } ?>
                         <!-- End of Details Modal -->
 
-
                     </tbody>
                 </table>
 
@@ -167,7 +164,6 @@ include 'includes/topbar.php'
                     <p class="text-center lead text-content my-5">No Products To Be Found</p>
                 <!-- NO Products -->
             <?php } ?>
-
 
             </div>
         </div>
@@ -227,7 +223,6 @@ include 'includes/topbar.php'
                 
             </div>
             
-
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
