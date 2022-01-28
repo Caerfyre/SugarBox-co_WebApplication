@@ -22,6 +22,9 @@
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <style>
+        html, body {
+            color: #6B493D;
+        }
         .pull-up {
         transition: all 0.25s ease; 
         }
@@ -43,8 +46,6 @@
         height: 200px !important;
         object-fit: cover;
         }
-
-
     </style>
 
 </head>

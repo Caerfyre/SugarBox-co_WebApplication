@@ -60,7 +60,6 @@ include 'includes/topbar.php'
                             <th>Name</th>
                             <th>Category</th>
                             <th>Actions</th>
-                        
                         </tr>
                     </thead>
                     <tfoot>
@@ -105,9 +104,9 @@ include 'includes/topbar.php'
                                     </div>
                                     <div class="col-8">
                                         <h4 class="font-weight-bold"><?php echo $row['SideProd_Name']; ?></h4>
-                                        <p class="text-gray-500"><?php echo $row['Categ_Name']; ?></p>
+                                        <p class="text-content"><b><?php echo $row['Categ_Name']; ?></b></p>
                                         <p class=""><?php echo $row['SideProd_Desc']; ?></p>
-                                        <hr>
+                                        <hr class="bg-section">
                                         <h5 class="font-weight-bold">Price Information:</h5>
                                         <?php
                                         $prodID = $row['SideProd_ID'];
@@ -131,7 +130,7 @@ include 'includes/topbar.php'
 
                                         <?php } else { ?>
                                         <button class="btn btn-sm btn-titleColor">Add Price Information</button>
-                                        <p class="text-sm">Price Information not yet added</p>  
+                                        <p class="text-sm mt-2">Price Information not yet added</p>  
                                         <?php } ?>
 
                                     </div>
@@ -142,7 +141,7 @@ include 'includes/topbar.php'
                             <!-- Modal Content -->
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                 <button type="submit" name="registerbtn" class="btn btn-titleColor">Save</button>
                             </div>
                             </form>
@@ -178,8 +177,8 @@ include 'includes/topbar.php'
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" id="exampleModalLabel"><b>Add New Product</b></h5>
+        <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -188,8 +187,8 @@ include 'includes/topbar.php'
         <div class="modal-body">
 
             <div class="form-group">
-                <label> Product Name </label>
-                <input type="text" name="prodName" class="form-control" placeholder="Enter Username" required>
+                <label>Product Name</label>
+                <input type="text" name="prodName" class="form-control border-section text-content" placeholder="Enter Username" required>
             </div>
             <div class="form-group">
                 <label>Product Type</label>
@@ -201,7 +200,7 @@ include 'includes/topbar.php'
 
                 if($check_categ){?>
 
-                <select class="form-control" name="prodCateg" id="categ" required>
+                <select class="form-control border-section text-content" name="prodCateg" id="categ" required>
                     <?php while($res = mysqli_fetch_assoc($categ_query_run)){ ?>
                         <option value="<?php echo $res['Categ_ID']?>"><?php echo $res['Categ_Name']?></option> 
                     <?php } ?>
@@ -214,18 +213,19 @@ include 'includes/topbar.php'
             </div>
             <div class="form-group">
                 <label>Product Description</label>
-                <textarea class="form-control" name="prodDesc" id="prodDesc" placeholder="Enter product description..." required></textarea>
+                <textarea class="form-control text-content border-section" name="prodDesc" id="prodDesc" placeholder="Enter product description..." required></textarea>
             </div>
 
             <div class="form-group">
                 <label>Product Image</label>
+                <br>
                 <input class="form-control-input" type="file" name="prodImage" required>
                 
             </div>
             
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             <button type="submit" name="addProductBtn" class="btn btn-titleColor">Add Product</button>
         </div>
       </form>
