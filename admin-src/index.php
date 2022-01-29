@@ -106,74 +106,70 @@ include 'includes/topbar.php'
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4 border-section">
-                        <div class="card-header py-3 bg-section border-section">
-                            <h6 class="m-0 font-weight-bold text-content"><b>Recent Orders</b></h6>
-                        </div>
-                        <div class="card-body bg-section2">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-content bg-section2 text-content" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Order ID</th>
-                                            <th>Date Ordered</th>
-                                            <th>Fulfillment Date</th>
-                                            <th>Customer Name</th>
-                                            <th>Status</th>
-                                            <th>Price</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    
-                                    <tbody>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>01/14/2022</td>
-                                            <td>01/20/2022</td>
-                                            <td>John Doe</td>
-                                            <td>In Progress</td>
-                                            <td>P 550.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>01/14/2022</td>
-                                            <td>01/22/2022</td>
-                                            <td>James Doe</td>
-                                            <td>Pending</td>
-                                            <td>P 650.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>01/14/2022</td>
-                                            <td>01/23/2022</td>
-                                            <td>Joe Doe</td>
-                                            <td>Pending</td>
-                                            <td>P 750.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>01/14/2022</td>
-                                            <td>01/18/2022</td>
-                                            <td>Jean Doe</td>
-                                            <td>Pending</td>
-                                            <td>P 950.00</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>5</td>
-                                            <td>01/14/2022</td>
-                                            <td>01/18/2022</td>
-                                            <td>Jean Doe</td>
-                                            <td>Pending</td>
-                                            <td>P 950.00</td>
-                                        </tr>
-                                                                  
-                                     
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
+                <div class="card-header py-3 bg-section border-section">
+                    <h6 class="m-0 font-weight-bold text-content"><b>Recent Orders</b></h6>
+                </div>
+                <div class="card-body bg-section2">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-content bg-section2 text-content" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Date Ordered</th>
+                                    <th>Fulfillment Date</th>
+                                    <th>Customer Name</th>
+                                    <th>Status</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <tr>
+                                    <td>2</td>
+                                    <td>01/14/2022</td>
+                                    <td>01/20/2022</td>
+                                    <td>John Doe</td>
+                                    <td>In Progress</td>
+                                    <td>P 550.00</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>01/14/2022</td>
+                                    <td>01/22/2022</td>
+                                    <td>James Doe</td>
+                                    <td>Pending</td>
+                                    <td>P 650.00</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>01/14/2022</td>
+                                    <td>01/23/2022</td>
+                                    <td>Joe Doe</td>
+                                    <td>Pending</td>
+                                    <td>P 750.00</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>01/14/2022</td>
+                                    <td>01/18/2022</td>
+                                    <td>Jean Doe</td>
+                                    <td>Pending</td>
+                                    <td>P 950.00</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>01/14/2022</td>
+                                    <td>01/18/2022</td>
+                                    <td>Jean Doe</td>
+                                    <td>Pending</td>
+                                    <td>P 950.00</td>
+                                </tr>             
+                            </tbody>
+                        </table>
                     </div>
+                </div>
+
+            </div>
 
         </div>
 
@@ -208,10 +204,10 @@ include 'includes/topbar.php'
                             <i class="fas fa-circle" style="color:#4e73df;"></i> Direct
                         </span>
                         <span class="mr-2">
-                            <i class="fas fa-circle" style="color:#1cc88a;"></i> Social
+                            <i class="fas fa-circle" style="color:#36b9cc;"></i> Social
                         </span>
                         <span class="mr-2">
-                            <i class="fas fa-circle" style="color:#36b9cc;"></i> Referral
+                            <i class="fas fa-circle" style="color:#1cc88a;"></i> Referral
                         </span>
                     </div>
                 </div>
