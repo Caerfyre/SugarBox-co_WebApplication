@@ -14,10 +14,10 @@
                         <a class="nav-link fw-bold text-content text-nowrap" aria-current="page" href="menu.php">MENU</a>
                     </li>
                     <li class="nav-item btn-primary btn-lg text-center">
-                        <a class="nav-link fw-bold text-content text-nowrap" aria-current="page" href="#">ABOUT US</a>
+                        <a class="nav-link fw-bold text-content text-nowrap" aria-current="page" href="about-us.php">ABOUT US</a>
                     </li>
                     <li class="nav-item btn-primary btn-lg text-center">
-                        <a class="nav-link fw-bold text-content text-nowrap" aria-current="page" href="#">GALLERY</a>
+                        <a class="nav-link fw-bold text-content text-nowrap" aria-current="page" href="gallery.php">GALLERY</a>
                     </li>
                     <li class="nav-item btn-primary btn-lg text-center">
                         <a class="nav-link fw-bold text-content text-nowrap" aria-current="page" href="contact-us.php">CONTACT US</a>
