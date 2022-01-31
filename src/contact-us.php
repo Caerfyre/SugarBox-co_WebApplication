@@ -22,7 +22,7 @@
 
     <div class="container-fluid px-6 py-6">
         <div class="row">
-            <div class="col bg-section p-5">
+            <div class="col bg-section rounded-2 p-5">
                 <h2 class="text-titleColor">CONTACT US</h2>
                 <p class="text-content fw-bold mt-3">Have a question? Send us a message.</p>
                 <form class="container-fluid px-0 mt-5" action="" method="post">

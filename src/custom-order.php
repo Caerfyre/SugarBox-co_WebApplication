@@ -22,7 +22,7 @@
 
     <div class="container-fluid px-6 py-6">
         <div class="row">
-            <div class="col bg-section p-5">
+            <div class="col bg-section rounded-2 p-5">
                 <h2 class="text-titleColor text-center">CUSTOM CAKE ORDER FORM</h2>
                 <div class="text-center">
                     <img class="img-fluid mt-n5" src="../assets/leaves.svg" draggable="false" alt="">

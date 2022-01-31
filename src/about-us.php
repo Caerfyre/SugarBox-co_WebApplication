@@ -35,7 +35,7 @@
             <div class="row justify-content-center align-items-center gy-5 gx-5">
                 <div class="col-md text-center">
                     <h2 class="text-center text-titleColor">ABOUT THE COMPANY</h2>
-                    <img class="img-fluid mt-n5" src="../assets/leaves.svg" draggable="false" alt="">
+                    <img class="img-fluid col-10 mt-n5" src="../assets/leaves.svg" draggable="false" alt="">
                     <p class="text-content fw-bold m-3">Sugarbox&co. was conceptualized and formed in the year 2020
                         to bring homemade treats and sweets to families and friends stuck at home. We
                         strive to allow our customers the creative freedom to customize their own goodies.
@@ -58,7 +58,7 @@
                 </div>
                 <div class="col-md text-center">
                     <h2 class="text-center text-titleColor">OUR MISSION</h2>
-                    <img class="img-fluid mt-n5" src="../assets/leaves.svg" draggable="false" alt="">
+                    <img class="img-fluid col-10 mt-n5" src="../assets/leaves.svg" draggable="false" alt="">
                     <p class="text-content fw-bold m-3">We believe in the art of homemade baked goods,
                         that's why we never skimp. We handcraft each pastry with high quality natural ingredients and passion in our hearts,
                         providing each customer the best pastry that they can enjoy with their family and friends.</p>
@@ -73,7 +73,7 @@
             <div class="row justify-content-center align-items-center gy-5 gx-5">
                 <div class="col-md text-center">
                     <h2 class="text-center text-titleColor">THE FOUNDERS</h2>
-                    <img class="img-fluid mt-n5" src="../assets/leaves.svg" draggable="false" alt="">
+                    <img class="img-fluid col-6 mt-n5" src="../assets/leaves.svg" draggable="false" alt="">
                     <div class="row justify-content-center pt-5 gy-5">
                         <!-- Founder Card -->
                         <div class="col-lg-4">
