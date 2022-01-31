@@ -121,7 +121,7 @@
             <div class="row">
                 <div class="col-md-4 text-center py-3">
                     <h1 class="text-titleColor">CHECK OUT OUR GALLERY</h1>
-                    <a href="#"><button class="btn btn-titleColor text-white mt-4">SEE MORE</button></a>
+                    <a href="gallery.php"><button class="btn btn-titleColor text-white mt-4">SEE MORE</button></a>
                 </div>
                 <div class="col-md-8 d-flex ps-0">
                     <div class="col-3 d-flex align-items-center ps-3">
@@ -157,7 +157,7 @@
                         to bring homemade treats and sweets to families and friends stuck at home. We
                         strive to allow our customers the creative freedom to customize their own goodies.
                         Today Sugarbax&co. has served numerous happy customers since its early days.</p>
-                    <a href="#"><button class="btn btn-titleColor text-white mt-3">LEARN MORE</button></a>
+                    <a href="about-us.php"><button class="btn btn-titleColor text-white mt-3">LEARN MORE</button></a>
                 </div>
             </div>
         </div>
