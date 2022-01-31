@@ -22,20 +22,22 @@
 
     <div class="container-fluid px-6 py-6">
         <div class="row">
-            <div class="col bg-section p-5">
-                <h2 class="text-titleColor">DESSERTS GALLERY</h2>
-                <div class="row mb-3 tm-gallery">
-
+            <div class="col bg-section rounded-2 p-5">
+                <h2 class="text-titleColor text-center">DESSERTS GALLERY</h2>
+                <div class="text-center">
+                    <img class="img-fluid mt-n5" src="../assets/leaves.svg" draggable="false" alt="">
+                </div>
+                <div class="row mt-4 tm-gallery text-content">
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                         <figure class="effect-ming tm-video-item">
                             <img src="../assets/cheesecake.png" alt="Image" width="500" height="600" class="img-fluid ">
                             <figcaption class="d-flex align-items-center justify-content-center">
-                                <h2>Cheesecake </h2>
+                                <h2>Cheesecake</h2>
                                 <a href="#">View more</a>
                             </figcaption>
                         </figure>
                         <div class="d-flex justify-content-between tm-text-gray">
-                            <span class="tm-text-gray-light">16 Oct 2020</span>
+                            <span class="tm-text-gray-light">16 Oct 2021</span>
                             <span>12,460 views</span>
                         </div>
                     </div>
@@ -49,7 +51,7 @@
                             </figcaption>
                         </figure>
                         <div class="d-flex justify-content-between tm-text-gray">
-                            <span class="tm-text-gray-light">12 Oct 2020</span>
+                            <span class="tm-text-gray-light">12 Oct 2021</span>
                             <span>11,402 views</span>
                         </div>
                     </div>
@@ -58,12 +60,12 @@
                         <figure class="effect-ming tm-video-item">
                             <img src="../assets/pandesal.png" alt="Image" width="5000" height="600" class="img-fluid text-">
                             <figcaption class="d-flex align-items-center justify-content-center">
-                                <h2>Pandesal</h2>
+                                <h2>Ube Pandesal</h2>
                                 <a href="#">View more</a>
                             </figcaption>
                         </figure>
                         <div class="d-flex justify-content-between tm-text-gray">
-                            <span class="tm-text-gray-light">8 Oct 2020</span>
+                            <span class="tm-text-gray-light">8 Oct 2021</span>
                             <span>9,906 views</span>
                         </div>
                     </div>
@@ -77,7 +79,7 @@
                             </figcaption>
                         </figure>
                         <div class="d-flex justify-content-between tm-text-gray">
-                            <span class="tm-text-gray-light">6 Oct 2020</span>
+                            <span class="tm-text-gray-light">6 Oct 2021</span>
                             <span>16,100 views</span>
                         </div>
                     </div>
@@ -86,12 +88,12 @@
                         <figure class="effect-ming tm-video-item">
                             <img src="../assets/chococake.png" alt="Image" width="5000" height="600" class="img-fluid">
                             <figcaption class="d-flex align-items-center justify-content-center">
-                                <h2>Choko Cake</h2>
+                                <h2>Choco Cake</h2>
                                 <a href="#">View more</a>
                             </figcaption>
                         </figure>
                         <div class="d-flex justify-content-between tm-text-gray">
-                            <span class="tm-text-gray-light">26 Sep 2020</span>
+                            <span class="tm-text-gray-light">26 Sep 2021</span>
                             <span>16,008 views</span>
                         </div>
                     </div>
@@ -105,7 +107,7 @@
                             </figcaption>
                         </figure>
                         <div class="d-flex justify-content-between tm-text-gray">
-                            <span class="tm-text-gray-light">22 Sep 2020</span>
+                            <span class="tm-text-gray-light">22 Sep 2021</span>
                             <span>12,860 views</span>
                         </div>
                     </div>
@@ -119,7 +121,7 @@
                             </figcaption>
                         </figure>
                         <div class="d-flex justify-content-between tm-text-gray">
-                            <span class="tm-text-gray-light">12 Sep 2020</span>
+                            <span class="tm-text-gray-light">12 Sep 2021</span>
                             <span>10,900 views</span>
                         </div>
                     </div>
@@ -133,7 +135,7 @@
                             </figcaption>
                         </figure>
                         <div class="d-flex justify-content-between tm-text-gray">
-                            <span class="tm-text-gray-light">4 Sep 2020</span>
+                            <span class="tm-text-gray-light">4 Sep 2021</span>
                             <span>11,300 views</span>
                         </div>
                     </div>
