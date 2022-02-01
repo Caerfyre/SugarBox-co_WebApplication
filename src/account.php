@@ -102,12 +102,10 @@
                                 <input class="btn btn-titleColor text-light mt-3 col-3" type="submit" name="updateAccount" value="Save">
                             </div>
                         </form>
-                        
                     <?php } ?>
                 </div>
             </div>
         </div>
-        
     </div>
     
     <div class="mx-6 mb-6">
