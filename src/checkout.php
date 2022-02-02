@@ -1,4 +1,6 @@
 <?php include '../scripts/database/secure-login.php'?>
+<?php include '../scripts/database/DB-connect.php' ?>
+<?php if (isset($_GET['type']) && $_GET['type'] == 2 && !isset($_POST['CustomCheckout'])) header("Location: custom-order.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,45 +29,45 @@
                 <div class="row-cols-2 text-center mt-n3">
                     <img class="img-fluid" src="../assets/leaves.svg" draggable="false" alt="">
                 </div>
-                <form class="container-fluid px-0 mt-5 pb-4" action="" method="post">
+                <form id="confirmForm" class="container-fluid px-0 mt-5 pb-4" action="" method="post">
                     <div class="row mb-5">
                         <label class="form-label text-subheading fw-bolder mb-2" for="type">ORDER TYPE:</label>
                         <div class="col-2">
-                            <input class="form-check-input" type="radio" name="type" value="pickup">
+                            <input class="form-check-input" type="radio" name="type" required value="pickup">
                             <label class="form-check-label text-content" for="pickup">Pick-up</label>
                         </div>
                         <div class="col-2">
-                            <input class="form-check-input" type="radio" name="type" value="delivery">
+                            <input class="form-check-input" type="radio" name="type" required value="delivery">
                             <label class="form-check-label text-content" for="delivery">Delivery</label>
                         </div>
                     </div>
                     <div class="row mb-5">
                         <label class="form-label text-subheading fw-bolder mb-2" for="method">PAYMENT METHOD:</label>
                         <div class="col-2">
-                            <input class="form-check-input" type="radio" name="type" value="cash">
+                            <input class="form-check-input" type="radio" name="method" required value="cash">
                             <label class="form-check-label text-content" for="cash">Cash</label>
                         </div>
                         <div class="col-2">
-                            <input class="form-check-input" type="radio" name="type" value="gcash">
+                            <input class="form-check-input" type="radio" name="method" required value="gcash">
                             <label class="form-check-label text-content" for="gcash">GCash</label>
                         </div>
                         <div class="col-2">
-                            <input class="form-check-input" type="radio" name="type" value="paypal">
+                            <input class="form-check-input" type="radio" name="method" required value="paypal">
                             <label class="form-check-label text-content" for="paypal">Paypal</label>
                         </div>
                         <div class="col-2">
-                            <input class="form-check-input" type="radio" name="type" value="bdo">
+                            <input class="form-check-input" type="radio" name="method" required value="bdo">
                             <label class="form-check-label text-content" for="bdo">BDO</label>
                         </div>
                         <div class="col-2">
-                            <input class="form-check-input" type="radio" name="type" value="bpi">
+                            <input class="form-check-input" type="radio" name="method" required value="bpi">
                             <label class="form-check-label text-content" for="bpi">BPI</label>
                         </div>
                     </div>
                     <div class="row mb-5">
                         <div class="col-5">
                             <label class="form-label text-subheading fw-bolder mb-2" for="date">PICK-UP/DELIVERY DATE:</label>
-                            <input class="form-control text-content" type="date" name="date">
+                            <input class="form-control text-content" type="date" name="date" required>
                         </div>
                     </div>
                     <div class="row">
@@ -73,31 +75,46 @@
                             <label class="form-label text-subheading fw-bolder mb-3">CONTACT INFORMATION:</label>
                         </div>
                     </div>
-                    <div class="row mb-5">
+                    <div class="row mb-4">
                         <div class="col">
                             <label class="form-label text-content fw-bold mb-2" for="fname">First Name:</label>
-                            <input class="form-control text-content" type="text" name="fname">
+                            <input class="form-control text-content" type="text" name="fname" required 
+                                value="<?php if (isset(getContact()['Cust_FName'])) echo getContact()['Cust_FName'] ?>">
                         </div>
                         <div class="col">
                             <label class="form-label text-content fw-bold mb-2" for="lname">Last Name:</label>
-                            <input class="form-control text-content" type="text" name="lname">
+                            <input class="form-control text-content" type="text" name="lname" required 
+                                value="<?php if (isset(getContact()['Cust_LName'])) echo getContact()['Cust_LName'] ?>">
                         </div>
                         <div class="col">
                             <label class="form-label text-content fw-bold mb-2" for="number">Contact Number:</label>
-                            <input class="form-control text-content" type="number" name="number">
+                            <input class="form-control text-content" type="number" name="number" required 
+                                value="<?php if (isset(getContact()['Cust_ContactNo'])) echo getContact()['Cust_ContactNo'] ?>">
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col">
+                            <label class="form-label text-content fw-bold mb-2" for="address">Address:</label>
+                            <input class="form-control text-content" type="text" name="address" required 
+                                value="<?php if (isset(getContact()['Cust_Address'])) echo getContact()['Cust_Address'] ?>">
                         </div>
                     </div>
                     <div class="row mt-5">
                         <div class="col text-center">
+                            <?php if (isset($_GET['type']) && $_GET['type'] == 2) { ?>
+                            <a class="text-decoration-none" href="custom-order.php?<?php echo "flavor={$_POST['flavor']}&layers={$_POST['layers']}&size={$_POST['size']}&name={$_POST['name']}&description={$_POST['description']}" ?>">
+                                <input class="btn btn-content px-5" type="button" value="Edit Cake">
+                            </a>
+                            <?php } ?>
                             <input class="btn btn-titleColor text-light px-5" type="submit" value="Confirm">
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="col-lg-4 bg-section pt-4 pb-4 px-2">
+            <div class="col-lg-4 bg-section rounded-2 pt-4 pb-4 px-2">
                 <div class="container-fluid d-flex flex-column justify-content-between h-100">
                     <!-- Regular Checkout -->
-                    <?php if ($_GET['type'] == 1) { ?>
+                    <?php if (!isset($_GET['type']) || $_GET['type'] == 1) { ?>
                     <div class="row justify-content-center">
                         <p class="text-center text-titleColor fs-5 fw-bolder">YOUR CART ITEMS</p>
                         <hr class="bg-content">
@@ -170,11 +187,29 @@
                     <div class="row justify-content-center">
                         <p class="text-center text-titleColor fs-5 fw-bolder">CUSTOM CAKE</p>
                         <hr class="bg-content">
-                        <p class="text-content"><b class="text-subheading">FLAVOR: &nbsp;</b> CHOCOLATE</p>
-                        <p class="text-content"><b class="text-subheading">SIZE: &nbsp;</b> 7 INCHES</p>
-                        <p class="text-content"><b class="text-subheading">LAYERS: &nbsp;</b> 2</p>
-                        <p class="text-content"><b class="text-subheading">NAME: &nbsp;</b> SPORTS THEME</p>
-                        <p class="text-content"><b class="text-subheading">DESCRIPTION: &nbsp;</b> </p>
+                        <p class="text-content"><b class="text-subheading">FLAVOR: &nbsp;</b>
+                            <?php echo ucfirst($_POST['flavor']) ?>
+                        </p>
+                        <p class="text-content"><b class="text-subheading">LAYERS: &nbsp;</b>
+                            <?php switch ($_POST['layers']) {
+                                case 'onelayered': echo "1"; break;
+                                case 'twolayered': echo "2"; break;
+                                default: echo $_POST['layers']; break;
+                            } ?> 
+                        </p>
+                        <p class="text-content"><b class="text-subheading">SIZE: &nbsp;</b> 
+                            <?php switch ($_POST['size']) {
+                                case '5in7in': echo "5in top & 7in bottom"; break;
+                                case '7in8in': echo "7in top & 8in bottom"; break;
+                                default: echo $_POST['size']; break;
+                            } ?> 
+                        </p>
+                        <p class="text-content"><b class="text-subheading">NAME: &nbsp;</b>
+                            <?php echo $_POST['name'] ?>
+                        </p>
+                        <p class="text-content"><b class="text-subheading">DESCRIPTION: &nbsp;</b>
+                            <?php echo $_POST['description'] ?>
+                        </p>
                     </div>
                     <?php } ?>
                 </div>
@@ -183,6 +218,24 @@
     </div>
 
     <!-- Footer -->
+    <?php
+        /**
+         * Returns the contact information of the authorized user.
+         * @return array The contact information of the authorized user.
+         */
+        function getContact() {
+            $conn = db_connect();
+            $accID = $_SESSION["user"]["accID"];
+
+            $query = "SELECT * FROM `customer` WHERE `Cust_ID`='$accID' LIMIT 1";
+            $result = mysqli_query($conn, $query);
+            $contact = mysqli_fetch_array($result);
+
+            mysqli_close($conn);
+            return $contact;
+        }
+    ?>                            
+
     <?php include '../common/footer.php' ?>
 </body>
 </html>
