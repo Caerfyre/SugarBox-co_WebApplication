@@ -43,7 +43,7 @@
         margin-left: auto;
         margin-right: auto;
         width: 100%!important; 
-        height: 200px !important;
+        height: 380px !important;
         object-fit: cover;
         }
     </style>
