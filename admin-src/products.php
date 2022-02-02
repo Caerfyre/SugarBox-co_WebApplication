@@ -35,7 +35,6 @@ include 'includes/topbar.php'
             require '../scripts/database/DB-connect.php';
             $conn = db_connect();
 
-            // $prod_query = "SELECT * FROM side_products ORDER BY SideProd_ID ASC";
             $prod_query = "SELECT side_products.SideProd_ID,
                                     side_products.SideProd_Name, 
                                     side_products.SideProd_Desc, 
@@ -52,8 +51,8 @@ include 'includes/topbar.php'
             if($check_products) {   
             ?>
 
-                <table class="table table-bordered border-content table-content bg-section2 text-content" id="dataTable">
-                    <thead>
+                <table class="table table-sm table-bordered table-striped border-content table-content bg-section2 text-content" id="dataTable">
+                    <thead class="bg-light text-center">
                         <tr>
                             <th>Product ID</th>
                             <th>Image</th>
@@ -62,7 +61,7 @@ include 'includes/topbar.php'
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tfoot>
+                    <tfoot class="bg-light text-center" >
                         <tr>
                         <th>Product ID</th>
                             <th>Image</th>
@@ -71,86 +70,53 @@ include 'includes/topbar.php'
                             <th>Actions</th>
                         </tr>
                     </tfoot>
-                    <tbody>
+                    <tbody class="text-center">
                         <?php while($row = mysqli_fetch_assoc($prod_query_run)) { ?>
                         <tr>
                             <td><?php echo $row['SideProd_ID']; ?></td>
                             <td><img class="table-image" src="../assets/<?php echo $row['SideProd_Image']; ?>" alt="<?php echo $row['SideProd_Image']; ?>"></td>
                             <td><?php echo $row['SideProd_Name']; ?></td>
                             <td><?php echo $row['Categ_Name']; ?></td>
-                            <td>
-                            <button class="btn btn-titleColor" data-toggle="modal" data-target="#DetailsModal<?php echo $row['SideProd_ID']; ?>">View Details</button>
-                            <button class="btn btn-danger">Delete Product</button>
+                            <td class="d-sm-flex align-items-center justify-content-center">
+                            <form action="productDetails.php" method="post">
+                                <input type="hidden" name="prod_ID" value="<?php echo $row['SideProd_ID']; ?>">
+                                <button type="submit" name="viewDetails" class="btn btn-titleColor">View Details</button>
+                            </form>
+                            &nbsp;
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#deleteProd<?php echo $row['SideProd_ID'];?>">Delete Product</button>
                             </td>
                         </tr>
-
-                        <!-- Details Modal -->
-                        <div class="modal fade" id="DetailsModal<?php echo $row['SideProd_ID']; ?>" 
-                        tabindex="-1" role="dialog" aria-labelledby="DetailsModal" aria-hidden="true">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="DetailsModal">Product #<?php echo $row['SideProd_ID']; ?></h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-
-                            <!-- Modal Content -->
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <img class="modal-image" src="../assets/<?php echo $row['SideProd_Image']; ?>" alt="<?php echo $row['SideProd_Image']; ?>">                                               
+                        
+                        <!-- Delete Product Modal -->
+                        <div class="modal fade" id="deleteProd<?php echo $row['SideProd_ID'];?>" tabindex="-1" role="dialog" aria-labelledby="deleteProdModal"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteProdModal"><b>Delete</b></h5>
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
                                     </div>
-                                    <div class="col-8">
-                                        <h4 class="font-weight-bold"><?php echo $row['SideProd_Name']; ?></h4>
-                                        <p class="text-content"><b><?php echo $row['Categ_Name']; ?></b></p>
-                                        <p class=""><?php echo $row['SideProd_Desc']; ?></p>
-                                        <hr class="bg-section">
-                                        <h5 class="font-weight-bold">Price Information:</h5>
-                                        <?php
-                                        $prodID = $row['SideProd_ID'];
-                                        
-                                        $info_query = "SELECT sideproduct_sizes.Size_Description, sideproduct_sizes.Size_Price
-                                        FROM side_products
-                                        RIGHT JOIN sideproduct_sizes
-                                        ON side_products.SideProd_ID = sideproduct_sizes.Prod_ID
-                                        WHERE side_products.SideProd_ID = $prodID
-                                        ORDER BY sideproduct_sizes.Size_Price ASC";
-
-                                        $info_query_run = mysqli_query($conn, $info_query);
-                                        $check_prodinfo = mysqli_num_rows($info_query_run) > 0;
-                                        if($check_prodinfo){ ?>
-
-                                            <ul>
-                                            <?php while($row = mysqli_fetch_assoc($info_query_run)){ ?>
-                                            <li><?php echo $row['Size_Description'];?> - <?php echo $row['Size_Price'];?></li>
-                                            <?php } ?>
-                                            </ul>
-
-                                        <?php } else { ?>
-                                        <button class="btn btn-sm btn-titleColor">Add Price Information</button>
-                                        <p class="text-sm mt-2">Price Information not yet added</p>  
-                                        <?php } ?>
-
+                                    <div class="modal-body text-center">
+                                        <p>Are you sure you want to delete 
+                                            <br><b class="text-titleColor"><?php echo $row['SideProd_Name'];?> (Product #<?php  echo $row['SideProd_ID'];?>) ?</b>
+                                        </p>
+                                        <img class="card-img" src="../assets/<?php echo $row['SideProd_Image']; ?>" alt="<?php echo $row['SideProd_Image']; ?>">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                        <form action="../scripts/database/crud.php" method="post">
+                                            <input class="btn btn-danger" name="deleteProdID" type="hidden" value="<?php  echo $row['SideProd_ID'];?>">
+                                            <button class="btn btn-danger" name="deleteProd" type="submit">Delete Product</button>
+                                        </form>
                                     </div>
                                 </div>
-                                
                             </div>
-                            
-                            <!-- Modal Content -->
+                        </div>
 
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                <button type="submit" name="registerbtn" class="btn btn-titleColor">Save</button>
-                            </div>
-                            </form>
-                        
-                            </div>
-                        </div>
-                        </div>
                         <?php } ?>
-                        <!-- End of Details Modal -->
+                     
 
                     </tbody>
                 </table>
@@ -177,7 +143,7 @@ include 'includes/topbar.php'
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><b>Add New Product</b></h5>
+        <h5 class="modal-title" id="addProductsModal"><b>Add New Product</b></h5>
         <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
