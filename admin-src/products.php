@@ -108,7 +108,7 @@ include 'includes/topbar.php'
                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                         <form action="../scripts/database/crud.php" method="post">
                                             <input class="btn btn-danger" name="deleteProdID" type="hidden" value="<?php  echo $row['SideProd_ID'];?>">
-                                            <button class="btn btn-danger" name="deleteProd" type="submit">Delete Product</button>
+                                            <button class="btn btn-danger" name="deleteProdBtn" type="submit">Delete Product</button>
                                         </form>
                                     </div>
                                 </div>
