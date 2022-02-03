@@ -146,3 +146,20 @@ if (isset($_POST['addProductBtn'])) {
 
     mysqli_close($conn);   
 }
+
+// Delete Product
+if (isset($_POST['deleteProdBtn'])) {
+    $conn = db_connect();
+
+    $productID = $_POST['deleteProdID'];
+
+    $delete_query = "DELETE FROM `side_products` WHERE `SideProd_ID` = '$productID' LIMIT 1";
+    $delete_query_run = mysqli_query($conn, $delete_query);
+
+    if ($delete_query_run) {
+        header('Location: ../../admin-src/products.php');
+        echo '<script>alert("Product Deleted.")</script>';
+    } else {
+        echo '<script>alert("Failed to delete product")</script>';
+    }
+}
