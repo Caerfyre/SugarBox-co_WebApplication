@@ -31,7 +31,7 @@ include 'includes/topbar.php'
                 require '../scripts/database/DB-connect.php';
                 $conn = db_connect();
 
-                if(isset($_POST['viewDetails']))
+                if(isset($_POST['viewDetails']) || isset($_POST['prod_ID']))
                 {
                     $prod_ID = $_POST['prod_ID'];
 
@@ -55,11 +55,38 @@ include 'includes/topbar.php'
                             </div>
                             <div class="col-md-8">
                             <div class="card-body">
-                                <h4 class="card-title text-titleColor font-weight-bold"><?php echo $row['SideProd_Name']; ?></h4>
-                                <p class="text-content"><b><?php echo $row['Categ_Name']; ?></b></p>
-                                <p class="card-text"><?php echo $row['SideProd_Desc']; ?></p>
-                                <hr class="bg-section">
-                                <h5 class="font-weight-bold">Price Information:</h5>
+                                <div class="d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="text-subheading font-weight-bold">Product Information</h4>
+                                    <form action="" method="post">
+                                    <?php if (!isset($_POST["editPriceInfo"])) { ?>
+                                        <input type="hidden" name="prod_ID" value="<?php echo $_POST['prod_ID'];?>">
+                                        <input class="btn fs-5 text-subheading p-0" name="editPriceInfo" type="submit" value="EDIT">
+                                    <?php } else { ?>
+                                        <input type="hidden" name="prod_ID" value="<?php echo $_POST['prod_ID'];?>">
+                                        <input class="btn fs-5 text-subheading p-0" name="cancelEditPriceInfo" type="submit" value="CANCEL">
+                                    <?php } ?>
+                                    </form>     
+                                </div>         
+                                <hr class="bg-section mt-0">
+                                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Product Name:</b> <?php echo $row['SideProd_Name']; ?></p>
+                                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Category:</b> <?php echo $row['Categ_Name']; ?></p>
+                                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Description:</b> <?php echo $row['SideProd_Desc']; ?></p>
+                                
+                                <!-- <hr class="bg-section"> -->
+
+                                <div class="d-sm-flex align-items-center justify-content-between mt-4">
+                                    <h4 class="text-subheading font-weight-bold">Price Information</h4>
+                                    <form action="" method="post">
+                                    <?php if (!isset($_POST["editInfo"])) { ?>
+                                        <input type="hidden" name="prod_ID" value="<?php echo $_POST['prod_ID'];?>">
+                                        <input class="btn fs-5 text-subheading p-0" name="editInfo" type="submit" value="EDIT">
+                                    <?php } else { ?>
+                                        <input type="hidden" name="prod_ID" value="<?php echo $_POST['prod_ID'];?>">
+                                        <input class="btn fs-5 text-subheading p-0" name="cancelEditInfo" type="submit" value="CANCEL">
+                                    <?php } ?>
+                                    </form>   
+                                </div>
+                                <hr class="bg-section mt-0">       
 
                                 <?php
                                 $info_query = "SELECT sideproduct_sizes.Size_Description, sideproduct_sizes.Size_Price
@@ -75,12 +102,15 @@ include 'includes/topbar.php'
 
                                     <ul>
                                     <?php while($row = mysqli_fetch_assoc($info_query_run)){ ?>
-                                    <li><?php echo $row['Size_Description'];?> - <span>&#8369;</span> <?php echo $row['Size_Price'];?></li>
+                                    <li class="text-content font-weight-bold"><?php echo $row['Size_Description'];?> - <span>&#8369;</span> <?php echo $row['Size_Price'];?></li>
                                     <?php } ?>
                                     </ul>
 
                                 <?php } else { ?>
+                                <div class="d-flex align-items-center justify-content-center">
                                 <button class="btn btn-sm btn-titleColor">Add Price Information</button>
+                                </div>
+                               
                                 <?php } ?>
                                 
 
