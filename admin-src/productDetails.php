@@ -68,27 +68,19 @@ include 'includes/topbar.php'
                                     </form>     
                                 </div>         
                                 <hr class="bg-section mt-0">
+                                <?php if (!isset($_POST["editPriceInfo"])) { ?>
                                 <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Product Name:</b> <?php echo $row['SideProd_Name']; ?></p>
                                 <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Category:</b> <?php echo $row['Categ_Name']; ?></p>
                                 <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Description:</b> <?php echo $row['SideProd_Desc']; ?></p>
-                                
-                                <!-- <hr class="bg-section"> -->
-
-                                <div class="d-sm-flex align-items-center justify-content-between mt-4">
-                                    <h4 class="text-subheading font-weight-bold">Price Information</h4>
+                                <?php } else {?>
                                     <form action="" method="post">
-                                    <?php if (!isset($_POST["editInfo"])) { ?>
-                                        <input type="hidden" name="prod_ID" value="<?php echo $_POST['prod_ID'];?>">
-                                        <input class="btn fs-5 text-subheading p-0" name="editInfo" type="submit" value="EDIT">
-                                    <?php } else { ?>
-                                        <input type="hidden" name="prod_ID" value="<?php echo $_POST['prod_ID'];?>">
-                                        <input class="btn fs-5 text-subheading p-0" name="cancelEditInfo" type="submit" value="CANCEL">
-                                    <?php } ?>
-                                    </form>   
-                                </div>
-                                <hr class="bg-section mt-0">       
+                                    <p class="text-content font-weight-bold mb-2">Product Name:<input class="form-control bg-light border-0 mt-2" type="text" name="prodName" value="<?php echo $row['SideProd_Name']; ?>"></p>
+                                    <!-- <p class="text-content font-weight-bold mb-2">Product Category:<input class="form-control bg-light border-0 mt-2" type="text" name="prodName" value="<?php echo $row['SideProd_Name']; ?>"></p> -->
+                                    </form> 
 
                                 <?php
+                                }
+
                                 $info_query = "SELECT sideproduct_sizes.Size_Description, sideproduct_sizes.Size_Price
                                 FROM side_products
                                 RIGHT JOIN sideproduct_sizes
@@ -98,7 +90,36 @@ include 'includes/topbar.php'
 
                                 $info_query_run = mysqli_query($conn, $info_query);
                                 $check_prodinfo = mysqli_num_rows($info_query_run) > 0;
-                                if($check_prodinfo){ ?>
+                                ?>
+
+                                <div class="d-sm-flex align-items-center justify-content-between mt-4">
+                                    <h4 class="text-subheading font-weight-bold">Price Information</h4>
+                                    <div class="d-flex">
+                                        <?php if (!isset($_POST["editInfo"])) { ?>   
+                                        <button class="btn fs-5 text-subheading p-0 mr-4" data-toggle="modal" data-target="#addPriceInfo">ADD</button>
+                                        <?php } ?>
+
+                                    <?php if($check_prodinfo){?>
+                                        
+                                        <form action="" method="post">
+                                          
+                                            <?php if (!isset($_POST["editInfo"])) { ?>
+                                            <input type="hidden" name="prod_ID" value="<?php echo $_POST['prod_ID'];?>">
+                                            <input class="btn fs-5 text-subheading p-0" name="editInfo" type="submit" value="EDIT">
+                                            <?php } else { ?>
+                                                <input type="hidden" name="prod_ID" value="<?php echo $_POST['prod_ID'];?>">
+                                                <input class="btn fs-5 text-subheading p-0" name="cancelEditInfo" type="submit" value="CANCEL">
+                                            <?php } ?>
+                 
+                                        </form>
+                                    <?php }?>    
+                                    </div>
+                                      
+
+                                </div>
+                                <hr class="bg-section mt-0">       
+
+                                <?php if($check_prodinfo){ ?>
 
                                     <ul>
                                     <?php while($row = mysqli_fetch_assoc($info_query_run)){ ?>
@@ -107,12 +128,12 @@ include 'includes/topbar.php'
                                     </ul>
 
                                 <?php } else { ?>
-                                <div class="d-flex align-items-center justify-content-center">
-                                <button class="btn btn-sm btn-titleColor">Add Price Information</button>
+                                <div class="text-center">
+                                <p class="text-content">No Price Information Available.</p>
+                                <button class="btn btn-sm btn-titleColor" data-toggle="modal" data-target="#addPriceInfo">Add Price Information</button>
                                 </div>
                                
                                 <?php } ?>
-                                
 
                             </div>
                             </div>
@@ -127,11 +148,46 @@ include 'includes/topbar.php'
                 </div>
                 
         </div>
-             
+
+<!-- Add Information Modal -->
+<div class="modal fade" id="addPriceInfo" tabindex="-1" role="dialog" aria-labelledby="addPriceInfoModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addPriceInfoModal"><b>Add Price Information</b></h5>
+        <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form action="../scripts/database/crud.php" method="POST" enctype="multipart/form-data">
+        <div class="modal-body">
+
+            <div class="form-group">
+                <input type="hidden" name="prodID" value="<?php echo $_POST['prod_ID'];?>">
+
+                <label>Size Description</label>
+                <input type="text" name="sizeDesc" class="form-control border-section text-content" placeholder="Enter Size Description" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Size Price</label>
+                <input type="number" name="sizePrice" class="form-control border-section text-content" min="1" placeholder="Enter Price Per Size" required>
+            
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            <button type="submit" name="addPriceInfoBtn" class="btn btn-titleColor">Add Price Info</button>
+        </div>
+      </form>
+  
+    </div>
+  </div>
+</div>
+
                 
 </div>
 <!-- End of Main Content -->
-
 
 
 <?php
