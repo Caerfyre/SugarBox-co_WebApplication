@@ -189,21 +189,13 @@
                         <p class="text-center text-titleColor fs-5 fw-bolder">CUSTOM CAKE</p>
                         <hr class="bg-content">
                         <p class="text-content"><b class="text-subheading">FLAVOR: &nbsp;</b>
-                            <?php echo ucfirst($_POST['flavor']) ?>
+                            <?php echo $_POST['flavor'] ?>
                         </p>
                         <p class="text-content"><b class="text-subheading">LAYERS: &nbsp;</b>
-                            <?php switch ($_POST['layers']) {
-                                case 'onelayered': echo "1"; break;
-                                case 'twolayered': echo "2"; break;
-                                default: echo $_POST['layers']; break;
-                            } ?> 
+                            <?php echo $_POST['layers'] ?> 
                         </p>
                         <p class="text-content"><b class="text-subheading">SIZE: &nbsp;</b> 
-                            <?php switch ($_POST['size']) {
-                                case '5in7in': echo "5in top & 7in bottom"; break;
-                                case '7in8in': echo "7in top & 8in bottom"; break;
-                                default: echo $_POST['size']; break;
-                            } ?> 
+                            <?php echo $_POST['size'] ?> 
                         </p>
                         <p class="text-content"><b class="text-subheading">NAME: &nbsp;</b>
                             <?php echo $_POST['name'] ?>
