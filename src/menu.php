@@ -43,7 +43,7 @@
     <div class="px-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-2 bg-section border-top border-light p-0 me-5 pt-4">
+                <div class="col-md-2 bg-section2 border-top border-light p-0 me-5 pt-4">
                     <div class="mx-3 mb-4">
                         <input class="form-control form-control-sm text-content border-primary" type="search" placeholder="Search the menu">
                     </div>
