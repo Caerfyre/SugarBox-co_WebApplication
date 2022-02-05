@@ -18,6 +18,27 @@
     <script src="js/demo/chart-pie-demo.js"></script>
     <script src="js/demo/datatables-demo.js"></script>
 
+    <!-- ALERTS -->
+    <script src="js/sweetalert.min.js"></script>
+
+<?php
+//Normal alert
+if(isset($_SESSION['status']) && $_SESSION['status'] !='')
+{
+?>
+<script>
+        swal({
+        title: "<?php echo $_SESSION['status'];?>",
+        icon: "<?php echo $_SESSION['status_code'];?>",
+        button: "OK",
+        });
+</script>
+    
+    <?php
+    unset($_SESSION['status']);
+}
+?>   
+
 </body>
 
 </html>
