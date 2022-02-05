@@ -49,13 +49,13 @@
                     </div>
                     <div>
                         <p class="m-3"><b class="text-content">Types</b></p>
-                        <p class="m-3"><a class="text-decoration-none text-content" href="#">Cakes</a></p>
-                        <p class="m-3"><a class="text-decoration-none text-content" href="#">Sides</a></p>
+                        <p class="px-3 my-2"><a class="text-decoration-none text-content" href="./custom-order.php">Cakes</a></p>
+                        <p class="px-3 py-2 my-2 bg-section rounded-start rounded-3"><a class="text-decoration-none text-content" href="#!">Sides</a></p>
                     </div>
                     <hr class="bg-content mx-3 my-4">
                     <div>
                         <p class="m-3"><b class="text-content">Categories</b></p>
-                        <p class="m-3"><a class="text-decoration-none text-content" href="#">All</a></p>
+                        <p class="m-3"><a class="text-decoration-none text-subheading" href="#">All</a></p>
                         <p class="m-3"><a class="text-decoration-none text-content" href="#">Brownies</a></p>
                         <p class="m-3"><a class="text-decoration-none text-content" href="#">Cheesecakes</a></p>
                         <p class="m-3"><a class="text-decoration-none text-content" href="#">Cookies</a></p>
