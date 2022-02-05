@@ -76,27 +76,28 @@
                         </div>
                     </div>
                     <div class="row mb-4">
+                        <?php $contact = getContact() ?>
                         <div class="col">
                             <label class="form-label text-content fw-bold mb-2" for="fname">First Name:</label>
                             <input class="form-control text-content" type="text" name="fname" required 
-                                value="<?php if (isset(getContact()['Cust_FName'])) echo getContact()['Cust_FName'] ?>">
+                                value="<?php if (isset($contact['Cust_FName'])) echo $contact['Cust_FName'] ?>">
                         </div>
                         <div class="col">
                             <label class="form-label text-content fw-bold mb-2" for="lname">Last Name:</label>
                             <input class="form-control text-content" type="text" name="lname" required 
-                                value="<?php if (isset(getContact()['Cust_LName'])) echo getContact()['Cust_LName'] ?>">
+                                value="<?php if (isset($contact['Cust_LName'])) echo $contact['Cust_LName'] ?>">
                         </div>
                         <div class="col">
                             <label class="form-label text-content fw-bold mb-2" for="number">Contact Number:</label>
                             <input class="form-control text-content" type="number" name="number" required 
-                                value="<?php if (isset(getContact()['Cust_ContactNo'])) echo getContact()['Cust_ContactNo'] ?>">
+                                value="<?php if (isset($contact['Cust_ContactNo'])) echo $contact['Cust_ContactNo'] ?>">
                         </div>
                     </div>
                     <div class="row mb-5">
                         <div class="col">
                             <label class="form-label text-content fw-bold mb-2" for="address">Address:</label>
                             <input class="form-control text-content" type="text" name="address" required 
-                                value="<?php if (isset(getContact()['Cust_Address'])) echo getContact()['Cust_Address'] ?>">
+                                value="<?php if (isset($contact['Cust_Address'])) echo $contact['Cust_Address'] ?>">
                         </div>
                     </div>
                     <div class="row mt-5">
