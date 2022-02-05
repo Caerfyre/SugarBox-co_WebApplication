@@ -137,10 +137,13 @@ if (isset($_POST['addProductBtn'])) {
     } else {
         // UPLOAD TO DATABASE
         if (mysqli_query($conn, $product_query)) {
-            echo '<script>alert("Product Added.")</script>';
+            $_SESSION['status'] = "Product Successfully Added!";
+            $_SESSION['status_code'] = "success";
             header('Location: ../../admin-src/products.php');
         } else {
-            echo '<script>alert("Failed to add product")</script>';
+            $_SESSION['status'] = "Failed to Add Product. Try Again.";
+            $_SESSION['status_code'] = "error";
+            header('Location: ../../admin-src/products.php');
         }
     }
 
@@ -157,9 +160,12 @@ if (isset($_POST['deleteProdBtn'])) {
     $delete_query_run = mysqli_query($conn, $delete_query);
 
     if ($delete_query_run) {
-        header('Location: ../../admin-src/products.php');
-        echo '<script>alert("Product Deleted.")</script>';
+        $_SESSION['status'] = "Product Successfully Deleted!";
+        $_SESSION['status_code'] = "success";
+        header('Location: ../../admin-src/products.php');      
     } else {
-        echo '<script>alert("Failed to delete product")</script>';
+        $_SESSION['status'] = "Failed to Delete Product";
+        $_SESSION['status_code'] = "error";
+        header('Location: ../../admin-src/products.php');
     }
 }
