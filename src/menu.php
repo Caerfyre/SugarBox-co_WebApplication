@@ -1,4 +1,5 @@
 <?php include '../scripts/database/secure-login.php'?>
+<?php include '../scripts/database/DB-connect.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,22 +46,21 @@
             <div class="row">
                 <div class="col-md-2 bg-section2 border-top border-light p-0 me-5 pt-4">
                     <div class="mx-3 mb-4">
-                        <input class="form-control form-control-sm text-content border-primary" type="search" placeholder="Search the menu">
+                        <input id="menu" class="form-control form-control-sm text-content border-primary" type="search" placeholder="Search the menu">
                     </div>
                     <div>
                         <p class="m-3"><b class="text-content">Types</b></p>
                         <p class="px-3 my-2"><a class="text-decoration-none text-content" href="./custom-order.php">Cakes</a></p>
-                        <p class="px-3 py-2 my-2 bg-section rounded-start rounded-3"><a class="text-decoration-none text-content" href="#!">Sides</a></p>
+                        <p class="px-3 py-2 my-2 bg-section rounded-start rounded-3"><a class="text-decoration-none text-content" href="#menu">Sides</a></p>
                     </div>
                     <hr class="bg-content mx-3 my-4">
                     <div>
                         <p class="m-3"><b class="text-content">Categories</b></p>
-                        <p class="m-3"><a class="text-decoration-none text-subheading" href="#">All</a></p>
-                        <p class="m-3"><a class="text-decoration-none text-content" href="#">Brownies</a></p>
-                        <p class="m-3"><a class="text-decoration-none text-content" href="#">Cheesecakes</a></p>
-                        <p class="m-3"><a class="text-decoration-none text-content" href="#">Cookies</a></p>
-                        <p class="m-3"><a class="text-decoration-none text-content" href="#">Cupcakes</a></p>
-                        <p class="m-3"><a class="text-decoration-none text-content" href="#">Pandesal</a></p>
+                        <p class="m-3"><a class="text-decoration-none text-subheading" href="?q=all">All</a></p>
+                        <?php $categories = getCategories() ?>
+                        <?php foreach ($categories as $category) { ?>
+                            <p class="m-3"><a class="text-decoration-none text-content" href="?q=<?php echo strtolower($category['Categ_Name']) ?>#menu"><?php echo $category['Categ_Name'] ?></a></p>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="col container-fluid py-6">
@@ -70,36 +70,14 @@
                 </div>
                     <div class="row justify-content-center">
                         <!-- Products -->
-                        <a href="./order-item.php?id=1" class="text-decoration-none col-md-4 text-center mb-4">
-                            <img class="img-fluid rounded-2" src="../assets/cookies.png" alt="Assorted cookies">
-                            <p class="text-subheading fs-5 fw-bold mt-3">Assorted Cookies</p>
-                            <p class="text-content">Includes: Oatmeal, Matcha, Chocolate chip, Red Velvet, Oreo, Double Choc Chip, Brookie Flavors and More!</p>
-                        </a>
-                        <a href="./order-item.php?id=2" class="text-decoration-none col-md-4 text-center mb-4">
-                            <img class="img-fluid rounded-2" src="../assets/cheesecake.png" alt="Mini Cheesecakes">
-                            <p class="text-subheading fs-5 fw-bold mt-3">Mini Cheesecakes</p>
-                            <p class="text-content">Includes: Strawberry, Blueberry, & Mango Toppings.</p>
-                        </a>
-                        <a href="./order-item.php?id=3" class="text-decoration-none col-md-4 text-center mb-4">
-                            <img class="img-fluid rounded-2" src="../assets/pandesal.png" alt="Ube Cheese Pandesal">
-                            <p class="text-subheading fs-5 fw-bold mt-3">Ube Cheese Pandesal</p>
-                            <p class="text-content">Homemade soft Ube cheese pandesal. Also available: Ube Macapuno filling.</p>
-                        </a>
-                        <a href="./order-item.php?id=1" class="text-decoration-none col-md-4 text-center mb-4">
-                            <img class="img-fluid rounded-2" src="../assets/cookies.png" alt="Assorted cookies">
-                            <p class="text-subheading fs-5 fw-bold mt-3">Assorted Cookies</p>
-                            <p class="text-content">Includes: Oatmeal, Matcha, Chocolate chip, Red Velvet, Oreo, Double Choc Chip, Brookie Flavors and More!</p>
-                        </a>
-                        <a href="./order-item.php?id=2" class="text-decoration-none col-md-4 text-center mb-4">
-                            <img class="img-fluid rounded-2" src="../assets/cheesecake.png" alt="Mini Cheesecakes">
-                            <p class="text-subheading fs-5 fw-bold mt-3">Mini Cheesecakes</p>
-                            <p class="text-content">Includes: Strawberry, Blueberry, & Mango Toppings.</p>
-                        </a>
-                        <a href="./order-item.php?id=3" class="text-decoration-none col-md-4 text-center mb-4">
-                            <img class="img-fluid rounded-2" src="../assets/pandesal.png" alt="Ube Cheese Pandesal">
-                            <p class="text-subheading fs-5 fw-bold mt-3">Ube Cheese Pandesal</p>
-                            <p class="text-content">Homemade soft Ube cheese pandesal. Also available: Ube Macapuno filling.</p>
-                        </a>
+                        <?php $products = getProducts() ?>
+                        <?php foreach ($products as $product) { ?>
+                            <a href="./order-item.php?id=<?php echo $product['SideProd_ID'] ?>" class="text-decoration-none col-md-4 text-center mb-4">
+                                <img class="img-fluid rounded-2" src="../assets/<?php echo $product['SideProd_Image'] ?>" alt="<?php echo $product['SideProd_Name'] ?>">
+                                <p class="text-subheading fs-5 fw-bold mt-3"><?php echo $product['SideProd_Name'] ?></p>
+                                <p class="text-content"><?php echo $product['SideProd_Desc'] ?></p>
+                            </a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -107,6 +85,44 @@
     </div>
 
     <!-- Footer -->
+    <?php
+        /**
+         * Returns the available side product categories.
+         * @return array The available side product categories.
+         */
+        function getCategories() {
+            $conn = db_connect();
+
+            $query = "SELECT * FROM `side_categories` ORDER BY `Categ_Name` ASC";
+            $result = mysqli_query($conn, $query);
+            $categories = array();
+            while ($row = mysqli_fetch_assoc($result)) {
+                $categories[] = $row;
+            }
+
+            mysqli_close($conn);
+            return $categories;
+        }
+
+        /**
+         * Returns all the available side products from the database.
+         * @return array The available side products.
+         */
+        function getProducts() {
+            $conn = db_connect();
+
+            $query = "SELECT * FROM `side_products` ORDER BY `SideProd_Name` ASC";
+            $result = mysqli_query($conn, $query);
+            $products = array();
+            while ($row = mysqli_fetch_assoc($result)) {
+                $products[] = $row;
+            }
+
+            mysqli_close($conn);
+            return $products;
+        }
+    ?>
+
     <?php include '../common/footer.php' ?>
 
 </body>
