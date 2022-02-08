@@ -55,6 +55,7 @@ include 'includes/topbar.php'
                             </div>
                             <div class="col-md-8">
                             <div class="card-body">
+                            <?php if (!isset($_POST["editPriceInfo"])) { ?> 
                                 <div class="d-sm-flex align-items-center justify-content-between">
                                     <h4 class="text-subheading font-weight-bold">Product Information</h4>
                                     <form action="" method="post">
@@ -69,25 +70,28 @@ include 'includes/topbar.php'
                                 </div>         
                                 <hr class="bg-section mt-0">
                                  <?php if (!isset($_POST["editInfo"])) { ?>
-                                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Product Name:</b> <?php echo $row['SideProd_Name']; ?></p>
-                                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Category:</b> <?php echo $row['Categ_Name']; ?></p>
-                                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Description:</b> <?php echo $row['SideProd_Desc']; ?></p>
+                                    <div class="mb-4">
+                                        <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Product Name:</b> <?php echo $row['SideProd_Name']; ?></p>
+                                        <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Category:</b> <?php echo $row['Categ_Name']; ?></p>
+                                        <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Description:</b> <?php echo $row['SideProd_Desc']; ?></p>   
+                                    </div>
                                 <?php } else {?>
                                     <form action="" method="post">
                                     <div class="form-group">
-                                        <p class="text-content font-weight-bold">Product Name:<input class="form-control bg-light border-0 mt-2" type="text" name="prodName" value="<?php echo $row['SideProd_Name']; ?>"></p>
-                                        <p class="text-content font-weight-bold">Product Category:<input class="form-control bg-light border-0 mt-2" type="text" name="prodCateg" value="<?php echo $row['Categ_Name']; ?>"></p>
-                                        <p class="text-content font-weight-bold">Product Description:<textarea class="form-control bg-light border-0 mt-2" name="prodDesc"><?php echo $row['SideProd_Desc']; ?></textarea></p>
+                                        <p class="text-content font-weight-bold">Product Name:<input class="form-control bg-light border-0" type="text" name="prodName" value="<?php echo $row['SideProd_Name']; ?>"></p>
+                                        <p class="text-content font-weight-bold">Product Category:<input class="form-control bg-light border-0" type="text" name="prodCateg" value="<?php echo $row['Categ_Name']; ?>"></p>
+                                        <p class="text-content font-weight-bold">Product Description:<textarea class="form-control bg-light border-0" name="prodDesc"><?php echo $row['SideProd_Desc']; ?></textarea></p>
                                     </div>
-                                    <hr>
-                                    <div class="form-group text-right">
-                                        <button type="submit" name="editProdInfoBtn" class="btn btn-sm btn-titleColor text-right">Save Changes</button>
+                                    <hr class="mt-0">
+                                    <div class="text-right">
+                                        <button type="submit" name="editProdInfoBtn" class="btn btn-sm btn-titleColor">Save Changes</button>
                                     </div>
                                     
                                     </form> 
 
                                 <?php
                                 }
+                            }
 
                                 $info_query = "SELECT sideproduct_sizes.Size_Description, sideproduct_sizes.Size_Price
                                 FROM side_products
@@ -100,7 +104,8 @@ include 'includes/topbar.php'
                                 $check_prodinfo = mysqli_num_rows($info_query_run) > 0;
                                 ?>
 
-                                <div class="d-sm-flex align-items-center justify-content-between mt-4">
+                            <?php if (!isset($_POST["editInfo"])) { ?>
+                                <div class="d-sm-flex align-items-center justify-content-between">
                                     <h4 class="text-subheading font-weight-bold">Price Information</h4>
                                     <div class="d-flex">
 
@@ -141,7 +146,7 @@ include 'includes/topbar.php'
                                           
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                <label class="text-content font-weight-bold">Size Descrption:</label>
+                                                <label class="text-content font-weight-bold">Size Description:</label>
                                                 <input class="form-control form-control-sm bg-light border-0 mr-1" type="text" name="prodName" value="<?php echo $row['Size_Description']; ?>"> 
                                                 </div>
                                                 <div class="form-group col-md-6">
@@ -151,8 +156,8 @@ include 'includes/topbar.php'
                                             </div>  
                                             
                                             <?php } ?>
-                                            <hr>
-                                            <div class="form-group text-right">
+                                            <hr class="mt-0">
+                                            <div class="text-right">
                                                 <button type="submit" name="editPriceInfoBtn" class="btn btn-sm btn-titleColor text-right">Save Changes</button>
                                             </div>
 
@@ -164,10 +169,12 @@ include 'includes/topbar.php'
                                 <p class="text-content">No Price Information Available.</p>
                                 <button class="btn btn-sm btn-titleColor" data-toggle="modal" data-target="#addPriceInfo">Add Price Information</button>
                                 </div>
-                               
                                 <?php } ?>
 
+                            <?php } ?>
+
                             </div>
+                            <!-- End of Card Body -->
                             </div>
                         </div>
 
@@ -186,7 +193,7 @@ include 'includes/topbar.php'
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addPriceInfoModal"><b>Add Price Information</b></h5>
+        <h5 class="modal-title text-subheading" id="addPriceInfoModal"><b>Add Price Information</b></h5>
         <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -198,12 +205,12 @@ include 'includes/topbar.php'
             <div class="form-group">
                 <input type="hidden" name="prodID" value="<?php echo $_POST['prod_ID'];?>">
 
-                <label>Size Description</label>
+                <label class="text-content font-weight-bold">Size Description</label>
                 <input type="text" name="sizeDesc" class="form-control border-section text-content" placeholder="Enter Size Description" required>
             </div>
             
             <div class="form-group">
-                <label>Size Price</label>
+                <label class="text-content font-weight-bold">Size Price</label>
                 <input type="number" name="sizePrice" class="form-control border-section text-content" min="1" placeholder="Enter Price Per Size" required>
             
         </div>
