@@ -39,6 +39,7 @@ include 'includes/topbar.php'
                                     side_products.SideProd_Name, 
                                     side_products.SideProd_Desc, 
                                     side_products.SideProd_Image,
+                                    side_categories.Categ_ID,
                                     side_categories.Categ_Name  
                             FROM side_products 
                             INNER JOIN side_categories
@@ -78,9 +79,27 @@ include 'includes/topbar.php'
                                 <?php } else {?>
                                     <form action="" method="post">
                                     <div class="form-group">
-                                        <p class="text-content font-weight-bold">Product Name:<input class="form-control bg-light border-0" type="text" name="prodName" value="<?php echo $row['SideProd_Name']; ?>"></p>
-                                        <p class="text-content font-weight-bold">Product Category:<input class="form-control bg-light border-0" type="text" name="prodCateg" value="<?php echo $row['Categ_Name']; ?>"></p>
-                                        <p class="text-content font-weight-bold">Product Description:<textarea class="form-control bg-light border-0" name="prodDesc"><?php echo $row['SideProd_Desc']; ?></textarea></p>
+                                        <input type="hidden" name="prodID" value="<?php echo $row['SideProd_ID']; ?>">
+                                        <p class="text-content font-weight-bold">Edit Product Name:<input class="form-control bg-light border-0" type="text" name="prodName" value="<?php echo $row['SideProd_Name']; ?>"></p>
+                                        <p class="text-content font-weight-bold">Edit Product Category:
+                                            <?php
+                                            $categ_id = $row['Categ_ID'];
+                                            $categ_query = "SELECT * FROM side_categories WHERE Categ_ID != '$categ_id' ORDER BY Categ_ID ASC";
+                                            $categ_query_run = mysqli_query($conn, $categ_query);
+                                            $check_categ = mysqli_num_rows($categ_query_run) > 0;
+
+                                            if($check_categ){?>
+
+                                            <select class="form-control bg-light border-0" name="prodCateg" id="categ" required>
+                                                <option selected value="<?php echo $categ_id; ?>"><?php echo $row['Categ_Name']; ?></option>
+                                                <?php while($res = mysqli_fetch_assoc($categ_query_run)){ ?>
+                                                    <option value="<?php echo $res['Categ_ID']?>"><?php echo $res['Categ_Name']?></option> 
+                                                <?php } ?>
+                                            </select>
+                                            <?php } ?>
+                                        </p>
+                                        <p class="text-content font-weight-bold">Edit Product Description:<textarea class="form-control bg-light border-0" name="prodDesc"><?php echo $row['SideProd_Desc']; ?></textarea></p>
+                                        <p class="text-content font-weight-bold">Edit Product Image: &nbsp;&nbsp;<input class="form-control-input" type="file" name="prodImage" value="<?php echo $row['SideProd_Image']; ?>" required></p>
                                     </div>
                                     <hr class="mt-0">
                                     <div class="text-right">
