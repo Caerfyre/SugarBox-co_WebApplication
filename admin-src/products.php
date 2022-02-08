@@ -143,7 +143,7 @@ include 'includes/topbar.php'
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addProductsModal"><b>Add New Product</b></h5>
+        <h5 class="modal-title text-subheading" id="addProductsModal"><b>Add New Product</b></h5>
         <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -153,11 +153,11 @@ include 'includes/topbar.php'
         <div class="modal-body">
 
             <div class="form-group">
-                <label>Product Name</label>
+                <label class="text-content font-weight-bold">Product Name</label>
                 <input type="text" name="prodName" class="form-control border-section text-content" placeholder="Enter Username" required>
             </div>
             <div class="form-group">
-                <label>Product Type</label>
+                <label class="text-content font-weight-bold">Product Type</label>
 
                 <?php
                 $categ_query = "SELECT * FROM side_categories ORDER BY Categ_ID ASC";
@@ -178,12 +178,12 @@ include 'includes/topbar.php'
                 
             </div>
             <div class="form-group">
-                <label>Product Description</label>
+                <label class="text-content font-weight-bold">Product Description</label>
                 <textarea class="form-control text-content border-section" name="prodDesc" id="prodDesc" placeholder="Enter product description..." required></textarea>
             </div>
 
             <div class="form-group">
-                <label>Product Image</label>
+                <label class="text-content font-weight-bold">Product Image</label>
                 <br>
                 <input class="form-control-input" type="file" name="prodImage" required>
                 
