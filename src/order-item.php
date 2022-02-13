@@ -84,12 +84,14 @@
                     <h2 class="text-titleColor pb-3">YOU MIGHT ALSO LIKE...</h2>
                 </div>
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-start">
                 <?php foreach ($relatedProducts as $relatedProduct) { ?>
-                    <a href="./order-item.php?id=<?php echo $relatedProduct['SideProd_ID'] ?>" class="col-md text-center text-decoration-none mb-4">
-                        <img class="img-fluid rounded-2" src="../assets/<?php echo $relatedProduct['SideProd_Image'] ?>" alt="<?php echo $relatedProduct['SideProd_Name'] ?>">
-                        <p class="text-subheading fs-6 fw-bold mt-3"><?php echo $relatedProduct['SideProd_Name'] ?></p>
-                    </a>
+                    <div class="col-auto">
+                        <a href="./order-item.php?id=<?php echo $relatedProduct['SideProd_ID'] ?>" class="col-md text-center text-decoration-none mb-4">
+                            <img class="img-fluid rounded-2" style="height:200px" src="../assets/<?php echo $relatedProduct['SideProd_Image'] ?>" alt="<?php echo $relatedProduct['SideProd_Name'] ?>">
+                            <p class="text-subheading fs-6 fw-bold mt-3"><?php echo $relatedProduct['SideProd_Name'] ?></p>
+                        </a>
+                    </div>
                 <?php } ?>
             </div>
         </div>
