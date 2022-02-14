@@ -37,11 +37,12 @@
                             <h3 class="text-titleColor"><?php echo $product[0]['SideProd_Name'] ?></h3>
                             <p class="text-content mt-3"><?php echo $product[0]['SideProd_Desc'] ?></p>
                         </div>
+                        <!-- NOTE: form action is blank because the form handler is on the same page (functions.php) -->
                         <form action="" method="post">
                             <div class="row justify-content-center">
                                 <div class="col-4 text-start me-3">
                                     <p class="fs-5 fw-bolder text-subheading">TYPE</p>
-                                    <select id="type" class="form-select text-content" name="type" 
+                                    <select id="type" class="form-select text-content bg-light" name="price" 
                                         onchange="document.getElementById('price').innerHTML='P'+(this.value*document.getElementById('qty').value)">
                                         <option selected>Select type</option>
                                         <?php foreach ($product as $type) { ?>
@@ -60,7 +61,7 @@
                                         <div class="btn border-0" onclick="document.getElementById('qty').value++;
                                             document.getElementById('price').innerHTML='P'+(document.getElementById('qty').value*document.getElementById('type').value)">+</div>
                                     </div>
-                                    <input class="btn btn-titleColor text-light mt-5" type="submit" value="Add to Cart">
+                                    <input class="btn btn-titleColor text-light mt-5" type="submit" name="addToCart" value="Add to Cart">
                                 </div>
                             </div>
                         </form>

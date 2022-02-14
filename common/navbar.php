@@ -50,7 +50,7 @@
             <div class="col-4 bg-light py-3 px-4">
                 <div class="row pt-3 pb-2 ps-4 pe-5">
                     <div class="col">
-                        <p class="fs-5 fw-bolder text-content">YOUR ORDER</p>
+                        <p class="fs-5 fw-bolder text-content">YOUR ORDERS</p>
                     </div>
                     <form class="col-auto text-end" action="../scripts/functions/navicons.php" method="post">
                         <button class="btn rounded-3 px-0 py-0" name="navIcon" value="toggleCart" type="submit">
@@ -61,72 +61,53 @@
                 <div class="row mx-2">
                     <hr class="border-bottom border-2 border-content">
                 </div>
-                <!-- Product -->
-                <div class="row mx-2 mb-3 bg-section align-items-center">
-                    <div class="col-4 ps-0 overflow-hidden d-flex justify-content-center" style="max-height: 150px;">
-                        <img src="../assets/pandesal.png" alt="Product_img">
+                <?php if (!isset($_SESSION['cart'])) { ?>
+                    <div class="row text-content mx-2 mt-5">
+                        <p class="text-center fw-bold">Your cart is empty...</p>
+                        <a class="text-center text-titleColor" href="#">Order something!</a>
                     </div>
-                    <div class="col my-3 d-flex flex-column align">
-                        <div class="row">
-                            <div class="col">
-                                <p class="fw-bolder text-subheading">Ube Cheese Pandesal</p>
-                            </div>
-                            <div class="col-auto ps-0 mt-n2">
-                                <i class="bi bi-x fs-3"></i>
-                            </div>
+                <?php } else { ?>
+                <?php foreach ($_SESSION['cart'] as $cartItem) { ?>
+                    <?php $cartProduct = getProduct($cartItem['id']); ?>
+                    <!-- Product -->
+                    <div class="row mx-2 mb-3 bg-section align-items-center">
+                        <div class="col-4 ps-0 overflow-hidden d-flex justify-content-center" style="max-height: 150px;">
+                            <img src="../assets/<?php echo $cartProduct[0]['SideProd_Image'] ?>" alt="Product_img">
                         </div>
-                        <div class="row flex-grow-1">
-                            <div class="col">
-                                <p class="text-content">Box of 6 - P75</p>
+                        <div class="col my-3 d-flex flex-column align">
+                            <div class="row">
+                                <div class="col">
+                                    <p class="fw-bolder text-subheading"><?php echo $cartProduct[0]['SideProd_Name'] ?></p>
+                                </div>
+                                <div class="col-auto ps-0 mt-n2">
+                                    <i class="bi bi-x fs-3"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col d-flex align-items-center">
-                                <span class="text-content"><b>TOTAL: &nbsp;</b> P150</span>
+                            <div class="row flex-grow-1">
+                                <div class="col">
+                                    <p class="text-content">
+                                        <?php foreach ($cartProduct as $details) {
+                                            if ($details['Size_Price'] == $cartItem['price'])
+                                                echo $details['Size_Description'] . " - P" . $details['Size_Price'];
+                                        } ?>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="col-auto bg-light d-flex align-items-center rounded-2 border border-content px-0 me-3">
-                                <form class="d-flex align-items-center" action="" method="post">
-                                    <button class="btn py-0">-</button>
-                                    <span>2</span>
-                                    <button class="btn py-0">+</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product -->
-                <div class="row mx-2 mb-3 bg-section align-items-center">
-                    <div class="col-4 ps-0 overflow-hidden d-flex justify-content-center" style="max-height: 150px;">
-                        <img src="../assets/pandesal.png" alt="Product_img">
-                    </div>
-                    <div class="col my-3 d-flex flex-column">
-                        <div class="row">
-                            <div class="col">
-                                <p class="fw-bolder text-subheading">Ube Cheese Pandesal</p>
-                            </div>
-                            <div class="col-auto ps-0 mt-n2">
-                                <i class="bi bi-x fs-3"></i>
-                            </div>
-                        </div>
-                        <div class="row flex-grow-1">
-                            <div class="col">
-                                <p class="text-content">Box of 6 - P75</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col d-flex align-items-center">
-                                <span class="text-content"><b>TOTAL: &nbsp;</b> P150</span>
-                            </div>
-                            <div class="col-auto bg-light d-flex align-items-center rounded-2 border border-content px-0 me-3">
-                                <form class="d-flex align-items-center" action="" method="post">
-                                    <button class="btn py-0">-</button>
-                                    <span>2</span>
-                                    <button class="btn py-0">+</button>
-                                </form>
+                            <div class="row">
+                                <div class="col d-flex align-items-center">
+                                    <span class="text-content"><b>TOTAL: &nbsp;</b> P<?php echo $cartItem['price'] * $cartItem['quantity'] ?></span>
+                                </div>
+                                <div class="col-auto bg-light d-flex align-items-center rounded-2 border border-content px-0 me-3">
+                                    <form class="d-flex align-items-center" action="" method="post">
+                                        <button class="btn py-0">-</button>
+                                        <span><?php echo $cartItem['quantity'] ?></span>
+                                        <button class="btn py-0">+</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php }} ?>
                 <!-- Checkout -->
                 <div class="row mx-2 mt-6">
                     <hr class="border-bottom border-2 border-content">
@@ -136,13 +117,21 @@
                         <p class="text-content">TOTAL:</p>
                     </div>
                     <div class="col-auto fs-5 fw-bold px-0">
-                        <p class="text-content">P300</p>
+                        <p class="text-content">
+                        <?php 
+                            $total = 0;
+                            foreach ($_SESSION['cart'] as $cartItem) {
+                                $total += $cartItem['price'] * $cartItem['quantity'];
+                            }
+                            echo "P" . $total;
+                        ?>
+                        </p>
                     </div>
                 </div>
                 <div class="row mx-2 my-3 justify-content-center">
                     <div class="col px-0 text-center">
                         <form action="../scripts/functions/navicons.php" method="post">
-                            <input class="btn btn-titleColor text-light" type="submit" name="checkout" value="Checkout">
+                            <input <?php if (!isset($_SESSION['cart'])) echo "disabled" ?> class="btn btn-titleColor text-light" type="submit" name="checkout" value="Checkout">
                         </form>
                     </div>
                 </div>
@@ -225,7 +214,7 @@
                     </form>
                 </div>
                 <!-- Product -->
-                <a href="../src/order-item.php?id=1" class="row mx-2 mb-3 bg-section text-decoration-none">
+                <!-- <a href="../src/order-item.php?id=1" class="row mx-2 mb-3 bg-section text-decoration-none">
                     <div class="col-4 ps-0 overflow-hidden d-flex justify-content-center" style="max-height: 150px;">
                         <img src="../assets/pandesal.png" alt="Product_img">
                     </div>
@@ -241,25 +230,7 @@
                             </div>
                         </div>
                     </div>
-                </a>
-                <!-- Product -->
-                <a href="../src/order-item.php?id=1" class="row mx-2 mb-3 bg-section text-decoration-none">
-                    <div class="col-4 ps-0 overflow-hidden d-flex justify-content-center" style="max-height: 150px;">
-                        <img src="../assets/pandesal.png" alt="Product_img">
-                    </div>
-                    <div class="col my-3 px-3 d-flex flex-column">
-                        <div class="row">
-                            <div class="col">
-                                <p class="fw-bolder text-subheading">Ube Cheese Pandesal</p>
-                            </div>
-                        </div>
-                        <div class="row flex-grow-1">
-                            <div class="col">
-                                <p class="text-content">P75</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                </a> -->
             </div>
         </div>
     </div>
