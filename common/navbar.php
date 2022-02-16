@@ -118,12 +118,16 @@
                     </div>
                     <div class="col-auto fs-5 fw-bold px-0">
                         <p class="text-content">
-                        <?php 
-                            $total = 0;
-                            foreach ($_SESSION['cart'] as $cartItem) {
-                                $total += $cartItem['price'] * $cartItem['quantity'];
+                        <?php
+                            if (!isset($_SESSION['cart'])) {
+                                echo "P0";
+                            } else {
+                                $total = 0;
+                                foreach ($_SESSION['cart'] as $cartItem) {
+                                    $total += $cartItem['price'] * $cartItem['quantity'];
+                                }
+                                echo "P" . $total;
                             }
-                            echo "P" . $total;
                         ?>
                         </p>
                     </div>
