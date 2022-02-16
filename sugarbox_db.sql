@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2022 at 03:57 PM
+-- Generation Time: Feb 16, 2022 at 04:13 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -340,8 +340,8 @@ ALTER TABLE `orders`
 -- Indexes for table `order_line`
 --
 ALTER TABLE `order_line`
-  ADD PRIMARY KEY (`Order_ID`),
-  ADD KEY `Prod_ID` (`Prod_ID`);
+  ADD KEY `Prod_ID` (`Prod_ID`),
+  ADD KEY `Order_ID` (`Order_ID`);
 
 --
 -- Indexes for table `payment`
@@ -475,7 +475,7 @@ ALTER TABLE `orders`
 ALTER TABLE `order_line`
   ADD CONSTRAINT `order_line_ibfk_1` FOREIGN KEY (`Order_ID`) REFERENCES `orders` (`Order_ID`) ON DELETE CASCADE,
   ADD CONSTRAINT `order_line_ibfk_2` FOREIGN KEY (`Prod_ID`) REFERENCES `side_products` (`SideProd_ID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `order_line_ibfk_3` FOREIGN KEY (`Prod_ID`) REFERENCES `cake` (`Cake_ID`);
+  ADD CONSTRAINT `order_line_ibfk_3` FOREIGN KEY (`Prod_ID`) REFERENCES `cake` (`Cake_ID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `payment`
@@ -487,13 +487,13 @@ ALTER TABLE `payment`
 -- Constraints for table `sideproduct_sizes`
 --
 ALTER TABLE `sideproduct_sizes`
-  ADD CONSTRAINT `sideproduct_sizes_ibfk_1` FOREIGN KEY (`Prod_ID`) REFERENCES `side_products` (`SideProd_ID`);
+  ADD CONSTRAINT `sideproduct_sizes_ibfk_1` FOREIGN KEY (`Prod_ID`) REFERENCES `side_products` (`SideProd_ID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `side_products`
 --
 ALTER TABLE `side_products`
-  ADD CONSTRAINT `side_products_ibfk_1` FOREIGN KEY (`Categ_ID`) REFERENCES `side_categories` (`Categ_ID`);
+  ADD CONSTRAINT `side_products_ibfk_1` FOREIGN KEY (`Categ_ID`) REFERENCES `side_categories` (`Categ_ID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
