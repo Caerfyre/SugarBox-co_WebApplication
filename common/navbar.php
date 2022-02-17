@@ -67,8 +67,10 @@
                         <a class="text-center text-titleColor" href="#">Order something!</a>
                     </div>
                 <?php } else { ?>
+                <?php $index = -1 ?>
                 <?php foreach ($_SESSION['cart'] as $cartItem) { ?>
                     <?php $cartProduct = getProduct($cartItem['id']); ?>
+                    <?php $index++; ?>
                     <!-- Product -->
                     <div class="row mx-2 mb-3 bg-section align-items-center">
                         <div class="col-4 ps-0 overflow-hidden d-flex justify-content-center" style="max-height: 150px;">
@@ -79,9 +81,11 @@
                                 <div class="col">
                                     <p class="fw-bolder text-subheading"><?php echo $cartProduct[0]['SideProd_Name'] ?></p>
                                 </div>
-                                <div class="col-auto ps-0 mt-n2">
-                                    <i class="bi bi-x fs-3"></i>
-                                </div>
+                                <form class="col-auto ps-0 mt-n2" action="?item=<?php echo $index ?>" method="post">
+                                    <button class="btn p-0" type="submit" name="delOrder">
+                                        <i class="bi bi-x fs-3"></i>
+                                    </button>
+                                </form>
                             </div>
                             <div class="row flex-grow-1">
                                 <div class="col">
@@ -98,10 +102,10 @@
                                     <span class="text-content"><b>TOTAL: &nbsp;</b> P<?php echo $cartItem['price'] * $cartItem['quantity'] ?></span>
                                 </div>
                                 <div class="col-auto bg-light d-flex align-items-center rounded-2 border border-content px-0 me-3">
-                                    <form class="d-flex align-items-center" action="" method="post">
-                                        <button class="btn py-0">-</button>
+                                    <form class="d-flex align-items-center" action="?item=<?php echo $index ?>" method="post">
+                                        <input class="btn py-0" type="submit" name="decCount" value="-">
                                         <span><?php echo $cartItem['quantity'] ?></span>
-                                        <button class="btn py-0">+</button>
+                                        <input class="btn py-0" type="submit" name="incCount" value="+">
                                     </form>
                                 </div>
                             </div>

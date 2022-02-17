@@ -20,6 +20,27 @@ if (isset($_POST['addToCart'])) {
     header("Location: ./menu.php");
 }
 
+// Delete from cart
+if (isset($_POST['delOrder'])) {
+    array_splice($_SESSION['cart'], $_GET['item'], 1);
+    if (count($_SESSION['cart']) == 0) {
+        unset($_SESSION['cart']);
+    }
+    header("Refresh: 0");
+}
+
+// Increment cart product count
+if (isset($_POST['incCount'])) {
+    $_SESSION['cart'][$_GET['item']]['quantity']++;
+    header("Refresh: 0");
+}
+
+// Decrement cart product count
+if (isset($_POST['decCount'])) {
+    $_SESSION['cart'][$_GET['item']]['quantity']--;
+    header("Refresh: 0");
+}
+
 if (!function_exists("getProduct")) {
     /**
      * Returns information of the product with the passed id.
