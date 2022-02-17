@@ -47,22 +47,22 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <a href="./order-item.php?id=1" class="col-md text-center text-decoration-none mb-4">
+                <a href="./menu.php?q=cookies#menu" class="col-md text-center text-decoration-none mb-4">
                     <img class="img-fluid rounded-2" src="../assets/cookies.png" alt="Assorted cookies">
                     <p class="text-subheading fs-5 fw-bold mt-3">Assorted Cookies</p>
                     <p class="text-content">Includes: Oatmeal, Matcha, Chocolate chip, Red Velvet, Oreo, Double Choc Chip, Brookie Flavors and More!</p>
                 </a>
-                <a href="./order-item.php?id=2" class="col-md text-center text-decoration-none mb-4">
+                <a href="./order-item.php?id=10" class="col-md text-center text-decoration-none mb-4">
                     <img class="img-fluid rounded-2" src="../assets/pandesal.png" alt="Ube Cheese Pandesal">
                     <p class="text-subheading fs-5 fw-bold mt-3">Ube Cheese Pandesal</p>
                     <p class="text-content">Homemade soft Ube cheese pandesal. Also available: Ube Macapuno filling.</p>    
                 </a>
-                <a href="./order-item.php?id=3" class="col-md text-center text-decoration-none mb-4">
+                <a href="./menu.php?q=cheesecakes#menu" class="col-md text-center text-decoration-none mb-4">
                     <img class="img-fluid rounded-2" src="../assets/cheesecake.png" alt="Mini Cheesecakes">
                     <p class="text-subheading fs-5 fw-bold mt-3">Mini Cheesecakes</p>
                     <p class="text-content">Includes: Strawberry, Blueberry, & Mango Toppings.</p>
                 </a>
-                <a href="./order-item.php?id=4" class="col-md text-center text-decoration-none mb-4">
+                <a href="./menu.php#menu" class="col-md text-center text-decoration-none mb-4">
                     <img class="img-fluid rounded-2" src="../assets/bentocake.png" alt="Bento Cakes">
                     <p class="text-subheading fs-5 fw-bold mt-3">Bento Cakes</p>
                     <p class="text-content">Customizeable Bento Mini Cakes. Includes: 3 different flavors, toppings & decorations.</p>
