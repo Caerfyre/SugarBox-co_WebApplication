@@ -31,9 +31,9 @@
                 <div class="col-md text-center">
                     <h2 class="text-center text-titleColor">ORDER CUSTOM CAKES</h2>
                     <img class="img-fluid mt-n5" src="../assets/leaves.svg" draggable="false" alt="">
-                    <p class="text-content fw-bold m-3">Want something personalized to give for a special ocassion? Order a custom cake!
+                    <p class="text-content fw-bold m-3">Want something personalized for a special ocassion? Order a custom cake!
                         You can choose from our catalogue of flavors, sizes and more! The design is
-                        completely up to YOU. What are you waiting for? Order a custom cake now!</p>
+                        completely up to you. What are you waiting for? Order a custom cake now!</p>
                     <a href="custom-order.php"><button class="btn btn-titleColor text-light mt-3">ORDER CUSTOM CAKE</button></a>
                 </div>
             </div>
