@@ -107,7 +107,7 @@
                                 <input class="btn btn-content px-5" type="button" value="Edit Cake">
                             </a>
                             <?php } ?>
-                            <input class="btn btn-titleColor text-light px-5" type="submit" value="Confirm">
+                            <input <?php if (!isset($_SESSION['cart']) && (!isset($_GET['type']) || $_GET['type'] == 1)) echo "disabled" ?> class="btn btn-titleColor text-light px-5" type="submit" value="Confirm">
                         </div>
                     </div>
                 </form>
@@ -119,67 +119,69 @@
                     <div class="row justify-content-center">
                         <p class="text-center text-titleColor fs-5 fw-bolder">YOUR CART ITEMS</p>
                         <hr class="bg-content">
-                        <!-- Product -->
-                        <div class="row mb-3 bg-section2 p-0">
-                            <div class="col-4 ps-0 overflow-hidden d-flex justify-content-center" style="max-height: 150px;">
-                                <img src="../assets/pandesal.png" alt="Product_img">
+                        <?php if (!isset($_SESSION['cart'])) { ?>
+                            <div class="row text-content m-2">
+                                <p class="text-center fw-bold">Your cart is empty...</p>
+                                <a class="text-center text-titleColor" href="./menu.php">Order something!</a>
                             </div>
-                            <div class="col d-flex flex-column my-2">
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="fw-bolder text-subheading">Ube Cheese Pandesal</p>
-                                    </div>
+                        <?php } else { ?>
+                        <?php $index = -1 ?>
+                        <?php foreach ($_SESSION['cart'] as $cartItem) { ?>
+                            <?php $cartProduct = getProduct($cartItem['id']); ?>
+                            <?php $index++; ?>
+                            <!-- Product -->
+                            <div class="row mb-3 bg-section2 p-0">
+                                <div class="col-4 ps-0 overflow-hidden d-flex justify-content-center" style="max-height: 150px;">
+                                    <img src="../assets/<?php echo $cartProduct[0]['SideProd_Image'] ?>" alt="Product_img">
                                 </div>
-                                <div class="row flex-grow-1">
-                                    <div class="col">
-                                        <p class="text-content">Box of 6</p>
+                                <div class="col d-flex flex-column my-2">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="fw-bolder text-subheading"><?php echo $cartProduct[0]['SideProd_Name'] ?></p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col d-flex align-items-center">
-                                        <span class="text-content"><b>TOTAL: &nbsp;</b> P150</span>
+                                    <div class="row flex-grow-1">
+                                        <div class="col">
+                                            <p class="text-content">
+                                            <?php foreach ($cartProduct as $details) {
+                                                if ($details['Size_Price'] == $cartItem['price'])
+                                                    echo $details['Size_Description'] . " - P" . $details['Size_Price'];
+                                            } ?>
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="col-5 d-flex align-items-center">
-                                        <span class="text-content"><b>QTY: &nbsp;</b> 2</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Product -->
-                        <div class="row mb-3 bg-section2 p-0">
-                            <div class="col-4 ps-0 overflow-hidden d-flex justify-content-center" style="max-height: 150px;">
-                                <img src="../assets/pandesal.png" alt="Product_img">
-                            </div>
-                            <div class="col d-flex flex-column my-2">
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="fw-bolder text-subheading">Ube Cheese Pandesal</p>
-                                    </div>
-                                </div>
-                                <div class="row flex-grow-1">
-                                    <div class="col">
-                                        <p class="text-content">Box of 6</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col d-flex align-items-center">
-                                        <span class="text-content"><b>TOTAL: &nbsp;</b> P150</span>
-                                    </div>
-                                    <div class="col-5 d-flex align-items-center">
-                                        <span class="text-content"><b>QTY: &nbsp;</b> 2</span>
+                                    <div class="row">
+                                        <div class="col d-flex align-items-center">
+                                            <span class="text-content"><b>TOTAL: &nbsp;</b> P<?php echo $cartItem['price'] * $cartItem['quantity'] ?></span>
+                                        </div>
+                                        <div class="col-5 d-flex align-items-center">
+                                            <span class="text-content"><b>QTY: &nbsp;</b> <?php echo $cartItem['quantity'] ?></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php }} ?>
                     </div>
                     <div class="row justify-content-center">
                     <hr class="bg-content">
                         <div class="row p-0">
                             <div class="col d-flex align-items-center">
-                                <span class="text-content"><b>OVERALL:</b></span>
+                                <span class="text-content fs-5 fw-bolder">OVERALL:</span>
                             </div>
                             <div class="col d-flex justify-content-end">
-                                <span class="text-content fs-5 fw-bold">P250</span>
+                                <span class="text-content fs-5 fw-bold">
+                                <?php
+                                    if (!isset($_SESSION['cart'])) {
+                                        echo "P0";
+                                    } else {
+                                        $total = 0;
+                                        foreach ($_SESSION['cart'] as $cartItem) {
+                                            $total += $cartItem['price'] * $cartItem['quantity'];
+                                        }
+                                        echo "P" . $total;
+                                    }
+                                ?>
+                                </span>
                             </div>
                         </div>
                     </div>
