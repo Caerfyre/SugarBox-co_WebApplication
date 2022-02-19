@@ -78,10 +78,7 @@ include 'includes/topbar.php'
                             <td><?php echo $row['SideProd_Name']; ?></td>
                             <td><?php echo $row['Categ_Name']; ?></td>
                             <td class="d-sm-flex align-items-center justify-content-center">
-                            <form action="productDetails.php" method="post">
-                                <input type="hidden" name="prod_ID" value="<?php echo $row['SideProd_ID']; ?>">
-                                <button type="submit" name="viewDetails" class="btn btn-titleColor">View Details</button>
-                            </form>
+                            <a href="productDetails.php?prod_ID=<?php echo $row['SideProd_ID'];?>" class="btn btn-titleColor">View Details</a>
                             &nbsp;
                             <button class="btn btn-danger" data-toggle="modal" data-target="#deleteProd<?php echo $row['SideProd_ID'];?>">Delete Product</button>
                             </td>
@@ -107,7 +104,7 @@ include 'includes/topbar.php'
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                         <form action="../scripts/database/crud.php" method="post">
-                                            <input class="btn btn-danger" name="deleteProdID" type="hidden" value="<?php  echo $row['SideProd_ID'];?>">
+                                            <input name="deleteProdID" type="hidden" value="<?php  echo $row['SideProd_ID'];?>">
                                             <button class="btn btn-danger" name="deleteProdBtn" type="submit">Delete Product</button>
                                         </form>
                                     </div>
