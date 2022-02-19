@@ -118,21 +118,28 @@
                 </form>
             </div>
             <hr class="bg-content mb-4 mt-2">
-            <div class="bg-section2 rounded-2 p-3 mb-3 text-content">
-                Order
-            </div>
-            <div class="bg-section2 rounded-2 p-3 mb-3 text-content">
-                Order
-            </div>
-            <div class="bg-section2 rounded-2 p-3 mb-3 text-content">
-                Order
-            </div>
-            <div class="bg-section2 rounded-2 p-3 mb-3 text-content">
-                Order
-            </div>
-            <div class="bg-section2 rounded-2 p-3 mb-3 text-content">
-                Order
-            </div>
+            <?php $orders = getOrders() ?>
+            <?php foreach ($orders as $order) { ?>
+                <!-- Order -->
+                <div class="d-flex justify-content-between bg-section2 rounded-2 p-3 mb-3 text-content">
+                    <div>
+                        <?php echo date('D d F, Y', strtotime($order['Order_Placement_Date'])) ?>
+                    </div>
+                    <div class="<?php 
+                        switch ($order['Order_Status']) {
+                            case 'Pending': echo "text-titleColor"; break;
+                            case 'In progress': echo "text-info"; break;
+                            case 'Ready for pick-up': echo "text-warning"; break;
+                            case 'Delivering': echo "text-warning"; break;
+                            case 'Delivery failed': echo "text-danger"; break;
+                            case 'Claimed': echo "text-success"; break;
+                            case 'Cancelled': echo "text-danger"; break;
+                        }
+                    ?>">
+                        <?php echo $order['Order_Status'] ?>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
 
@@ -154,6 +161,27 @@
 
             mysqli_close($conn);
             return $password["Acc_Password"];
+        }
+
+        /**
+         * Returns all order history of the customer.
+         * @return array The order history of the customer.
+         */
+        function getOrders() {
+            $conn = db_connect();
+            $accID = $_SESSION["user"]["accID"];
+
+            $query = "SELECT * FROM `orders` WHERE `Cust_ID`='$accID' 
+                        ORDER BY `Order_Placement_Date` DESC LIMIT 5";
+            $result = mysqli_query($conn, $query);
+
+            $orders = array();
+            while ($row = mysqli_fetch_assoc($result)) {
+                $orders[] = $row;
+            }
+
+            mysqli_close($conn);
+            return $orders;
         }
     ?>
 
