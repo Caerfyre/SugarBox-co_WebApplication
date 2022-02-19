@@ -178,7 +178,7 @@ if (isset($_POST['pushOrder'])) {
         // echo mysqli_error($conn);
     }
 
-    // ADD/UPDATE CONTACT table
+    // ADD/UPDATE CUSTOMER table
     $query = "SELECT * FROM `customer` WHERE `Cust_ID`='$accID' LIMIT 1";
     $result = mysqli_query($conn, $query);
     $custInfo = mysqli_fetch_array($result);
