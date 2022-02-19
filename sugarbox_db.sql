@@ -474,8 +474,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_line`
   ADD CONSTRAINT `order_line_ibfk_1` FOREIGN KEY (`Order_ID`) REFERENCES `orders` (`Order_ID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `order_line_ibfk_2` FOREIGN KEY (`Prod_ID`) REFERENCES `side_products` (`SideProd_ID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `order_line_ibfk_3` FOREIGN KEY (`Prod_ID`) REFERENCES `cake` (`Cake_ID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `order_line_ibfk_2` FOREIGN KEY (`Prod_ID`) REFERENCES `side_products` (`SideProd_ID`) ON DELETE CASCADE;
+  -- ADD CONSTRAINT `order_line_ibfk_3` FOREIGN KEY (`Prod_ID`) REFERENCES `cake` (`Cake_ID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `payment`

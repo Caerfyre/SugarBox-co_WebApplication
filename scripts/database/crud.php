@@ -108,6 +108,81 @@ if (isset($_POST['updateAccount'])) {
     header('Location: ../../src/account.php');
 }
 
+// Add New Order
+if (isset($_POST['pushOrder'])) {
+    $conn = db_connect();
+
+    // cart details
+    $total = 0;
+    foreach ($_SESSION['cart'] as $cartItem) {
+        $total += $cartItem['price'] * $cartItem['quantity'];
+    }
+
+    // order details
+    $accID = $_SESSION['user']['accID'];
+    $type = $_POST['type'];
+    $method = $_POST['method'];
+    $date = $_POST['date'];
+
+    // contact details
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $number = $_POST['number'];
+    $address = $_POST['address'];
+
+    // INSERT into ORDERS table
+    $query = "INSERT INTO `orders`(`Cust_ID`, `Order_Fullfilment_Date`, `Order_Type`, `Order_Status`, `Total_Price`) 
+                VALUES ('$accID', '$date', '$type', 'Pending', '$total')";
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        echo '<script>console.log("Order submitted.")</script>';
+    } else {
+        echo '<script>console.log("Failed to submit order...")</script>';
+        // echo mysqli_error($conn);
+    }
+
+    // GET Order_ID from ORDERS table
+    $query = "SELECT LAST_INSERT_ID()";
+    $result = mysqli_query($conn, $query);
+    $orderID = mysqli_fetch_array($result);
+    $orderID = $orderID[0];
+
+    // INSERT into ORDER_LINE table
+    foreach ($_SESSION['cart'] as $cartItem) {
+        $prodID = $cartItem['id'];
+        $quantity = $cartItem['quantity'];
+        $price = $cartItem['price'] * $quantity;
+
+        $query = "INSERT INTO `order_line`(`Order_ID`, `Prod_ID`, `Order_Quantity`, `Line_Price`, `Product_Type`) 
+                VALUES ('$orderID', '$prodID', '$quantity', '$price', 'S')";
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {
+            echo '<script>console.log("Order line submitted.")</script>';
+        } else {
+            echo '<script>console.log("Failed to submit order line...")</script>';
+            // echo mysqli_error($conn);
+        }
+    }
+
+    // INSERT into PAYMENT table
+    $query = "INSERT INTO `payment`(`Order_ID`, `Payment_Type`, `Payment_Status`) 
+                VALUES ('$orderID', '$method', '0')";
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        echo '<script>console.log("Payment submitted.")</script>';
+    } else {
+        echo '<script>console.log("Failed to submit payment...")</script>';
+        // echo mysqli_error($conn);
+    }
+
+    mysqli_close($conn);    
+    header('Location: ../../src/account.php#orderHistory');
+}
+
+
 // ADMIN FUNCTIONS -----------------------
 
 // Add Product

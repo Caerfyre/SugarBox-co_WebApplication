@@ -29,15 +29,15 @@
                 <div class="row-cols-2 text-center mt-n3">
                     <img class="img-fluid" src="../assets/leaves.svg" draggable="false" alt="">
                 </div>
-                <form id="confirmForm" class="container-fluid px-0 mt-5 pb-4" action="" method="post">
+                <form id="confirmForm" class="container-fluid px-0 mt-5 pb-4" action="../scripts/database/crud.php<?php if (isset($_GET['type']) && $_GET['type'] == 2) echo '?type=custom' ?>" method="post">
                     <div class="row mb-5">
                         <label class="form-label text-subheading fw-bolder mb-2" for="type">ORDER TYPE:</label>
                         <div class="col-2">
-                            <input class="form-check-input" type="radio" name="type" required value="pickup">
+                            <input class="form-check-input" type="radio" name="type" required value="Pick-up">
                             <label class="form-check-label text-content" for="pickup">Pick-up</label>
                         </div>
                         <div class="col-2">
-                            <input class="form-check-input" type="radio" name="type" required value="delivery">
+                            <input class="form-check-input" type="radio" name="type" required value="Delivery">
                             <label class="form-check-label text-content" for="delivery">Delivery</label>
                         </div>
                     </div>
@@ -45,23 +45,23 @@
                         <label class="form-label text-subheading fw-bolder mb-2" for="method">PAYMENT METHOD:</label>
                         <div class="col-2">
                             <input class="form-check-input" type="radio" name="method" required value="cash">
-                            <label class="form-check-label text-content" for="cash">Cash</label>
+                            <label class="form-check-label text-content" for="Cash">Cash</label>
                         </div>
                         <div class="col-2">
                             <input class="form-check-input" type="radio" name="method" required value="gcash">
-                            <label class="form-check-label text-content" for="gcash">GCash</label>
+                            <label class="form-check-label text-content" for="GCash">GCash</label>
                         </div>
                         <div class="col-2">
                             <input class="form-check-input" type="radio" name="method" required value="paypal">
-                            <label class="form-check-label text-content" for="paypal">Paypal</label>
+                            <label class="form-check-label text-content" for="Paypal">Paypal</label>
                         </div>
                         <div class="col-2">
                             <input class="form-check-input" type="radio" name="method" required value="bdo">
-                            <label class="form-check-label text-content" for="bdo">BDO</label>
+                            <label class="form-check-label text-content" for="BDO">BDO</label>
                         </div>
                         <div class="col-2">
                             <input class="form-check-input" type="radio" name="method" required value="bpi">
-                            <label class="form-check-label text-content" for="bpi">BPI</label>
+                            <label class="form-check-label text-content" for="BPI">BPI</label>
                         </div>
                     </div>
                     <div class="row mb-5">
@@ -107,7 +107,7 @@
                                 <input class="btn btn-content px-5" type="button" value="Edit Cake">
                             </a>
                             <?php } ?>
-                            <input <?php if (!isset($_SESSION['cart']) && (!isset($_GET['type']) || $_GET['type'] == 1)) echo "disabled" ?> class="btn btn-titleColor text-light px-5" type="submit" value="Confirm">
+                            <input <?php if (!isset($_SESSION['cart']) && (!isset($_GET['type']) || $_GET['type'] == 1)) echo "disabled" ?> class="btn btn-titleColor text-light px-5" name="pushOrder" type="submit" value="Confirm">
                         </div>
                     </div>
                 </form>
