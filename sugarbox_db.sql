@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2022 at 04:13 PM
+-- Generation Time: Feb 19, 2022 at 08:24 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -164,7 +164,7 @@ CREATE TABLE `ingredients` (
 CREATE TABLE `orders` (
   `Order_ID` int(11) NOT NULL,
   `Cust_ID` int(11) NOT NULL,
-  `Order_Placement_Date` date NOT NULL,
+  `Order_Placement_Date` date NOT NULL DEFAULT current_timestamp(),
   `Order_Fullfilment_Date` date NOT NULL,
   `Order_Type` enum('Pick-up','Delivery','','') NOT NULL COMMENT '''Pick-up'', ''Delivery''',
   `Order_Status` enum('Pending','In progress','Ready for pick-up','Delivering','Delivery failed','Claimed','Cancelled') NOT NULL COMMENT '''Pending'',''In progress'',''Ready for pick-up'',''Delivering'',''Delivery failed'',''Claimed'',''Cancelled''',
