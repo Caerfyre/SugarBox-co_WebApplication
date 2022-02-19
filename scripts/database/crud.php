@@ -154,8 +154,8 @@ if (isset($_POST['pushOrder'])) {
         $quantity = $cartItem['quantity'];
         $price = $cartItem['price'] * $quantity;
 
-        $query = "INSERT INTO `order_line`(`Order_ID`, `Prod_ID`, `Order_Quantity`, `Line_Price`, `Product_Type`) 
-                VALUES ('$orderID', '$prodID', '$quantity', '$price', 'S')";
+        $query = "INSERT INTO `order_line`(`Order_ID`, `Prod_ID`, `Order_Quantity`, `Line_Price`) 
+                VALUES ('$orderID', '$prodID', '$quantity', '$price')";
         $result = mysqli_query($conn, $query);
 
         if ($result) {
