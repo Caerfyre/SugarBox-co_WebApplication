@@ -199,6 +199,9 @@ if (isset($_POST['pushOrder'])) {
         // echo mysqli_error($conn);
     }
 
+    // Empty the cart
+    unset($_SESSION['cart']);
+
     mysqli_close($conn);    
     header('Location: ../../src/account.php#orderHistory');
 }
