@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2022 at 08:24 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: Feb 19, 2022 at 12:19 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -98,6 +98,20 @@ INSERT INTO `cake_flavor` (`Flavor_Name`, `Flavor_Type`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cake_orders`
+--
+
+CREATE TABLE `cake_orders` (
+  `Cake_orderID` int(11) NOT NULL,
+  `Cake_ID` int(11) NOT NULL,
+  `Cake_Price` float(15,2) DEFAULT NULL,
+  `Price_Status` enum('Not Set','Set','','') NOT NULL,
+  `Status` enum('Accepted','Rejected','','') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cake_size`
 --
 
@@ -133,13 +147,6 @@ CREATE TABLE `customer` (
   `Cust_Address` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`Cust_ID`, `Cust_FName`, `Cust_LName`, `Cust_ContactNo`, `Cust_Address`) VALUES
-(2, 'Mary', 'Mae', '09298107433', 'Cebu City');
-
 -- --------------------------------------------------------
 
 --
@@ -164,7 +171,7 @@ CREATE TABLE `ingredients` (
 CREATE TABLE `orders` (
   `Order_ID` int(11) NOT NULL,
   `Cust_ID` int(11) NOT NULL,
-  `Order_Placement_Date` date NOT NULL DEFAULT current_timestamp(),
+  `Order_Placement_Date` date NOT NULL,
   `Order_Fullfilment_Date` date NOT NULL,
   `Order_Type` enum('Pick-up','Delivery','','') NOT NULL COMMENT '''Pick-up'', ''Delivery''',
   `Order_Status` enum('Pending','In progress','Ready for pick-up','Delivering','Delivery failed','Claimed','Cancelled') NOT NULL COMMENT '''Pending'',''In progress'',''Ready for pick-up'',''Delivering'',''Delivery failed'',''Claimed'',''Cancelled''',
@@ -181,8 +188,7 @@ CREATE TABLE `order_line` (
   `Order_ID` int(11) NOT NULL,
   `Prod_ID` int(11) NOT NULL,
   `Order_Quantity` int(11) NOT NULL,
-  `Line_Price` float(15,2) NOT NULL COMMENT 'Price x QTY',
-  `Product_Type` enum('C','S','','') NOT NULL COMMENT '''C''-cake, ''S''-side product'
+  `Line_Price` float(15,2) NOT NULL COMMENT 'Price x QTY'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -269,7 +275,8 @@ INSERT INTO `side_products` (`SideProd_ID`, `SideProd_Name`, `Categ_ID`, `SidePr
 (16, 'Blueberry Cheesecake', 4, 'Decadent bite-sized mini cheesecake topped with sweet blueberry jam.', 'blueberry-cheesecake.PNG'),
 (18, 'Mango Cheesecake', 4, 'Sweet classic cheesecake topped with fresh mangoes.', 'mango-cheescake.PNG'),
 (19, 'Red Velvet Cupcake', 1, 'Soft and moist red velvet cupcake with rich cream cheese frosting.', 'red-velvet-cupcakes.PNG'),
-(20, 'Chocolate Chip Cookies', 2, 'Chewy and delicious classic chocolate chip cookies.', 'chocolatechip-cookies.PNG');
+(20, 'Chocolate Chip Cookies', 2, 'Chewy and delicious classic chocolate chip cookies.', 'chocolatechip-cookies.PNG'),
+(23, 'Sample Product', 4, 'Sample description', 'cheesecake.png');
 
 -- --------------------------------------------------------
 
@@ -311,6 +318,13 @@ ALTER TABLE `cake_flavor`
   ADD UNIQUE KEY `Flavor_Name` (`Flavor_Name`);
 
 --
+-- Indexes for table `cake_orders`
+--
+ALTER TABLE `cake_orders`
+  ADD PRIMARY KEY (`Cake_orderID`),
+  ADD KEY `cake_orders_ibfk_2` (`Cake_ID`);
+
+--
 -- Indexes for table `cake_size`
 --
 ALTER TABLE `cake_size`
@@ -340,8 +354,8 @@ ALTER TABLE `orders`
 -- Indexes for table `order_line`
 --
 ALTER TABLE `order_line`
-  ADD KEY `Prod_ID` (`Prod_ID`),
-  ADD KEY `Order_ID` (`Order_ID`);
+  ADD PRIMARY KEY (`Order_ID`),
+  ADD KEY `Prod_ID` (`Prod_ID`);
 
 --
 -- Indexes for table `payment`
@@ -399,6 +413,12 @@ ALTER TABLE `cake_size`
   MODIFY `Size_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `Cust_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `ingredients`
 --
 ALTER TABLE `ingredients`
@@ -432,7 +452,7 @@ ALTER TABLE `side_categories`
 -- AUTO_INCREMENT for table `side_products`
 --
 ALTER TABLE `side_products`
-  MODIFY `SideProd_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `SideProd_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
@@ -450,6 +470,13 @@ ALTER TABLE `suppliers`
 ALTER TABLE `cake`
   ADD CONSTRAINT `cake_ibfk_3` FOREIGN KEY (`Flavor_Name`) REFERENCES `cake_flavor` (`Flavor_Name`) ON DELETE CASCADE,
   ADD CONSTRAINT `cake_ibfk_4` FOREIGN KEY (`CakeSize_ID`) REFERENCES `cake_size` (`Size_ID`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `cake_orders`
+--
+ALTER TABLE `cake_orders`
+  ADD CONSTRAINT `cake_orders_ibfk_1` FOREIGN KEY (`Cake_orderID`) REFERENCES `orders` (`Order_ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `cake_orders_ibfk_2` FOREIGN KEY (`Cake_ID`) REFERENCES `cake` (`Cake_ID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `customer`
@@ -475,7 +502,6 @@ ALTER TABLE `orders`
 ALTER TABLE `order_line`
   ADD CONSTRAINT `order_line_ibfk_1` FOREIGN KEY (`Order_ID`) REFERENCES `orders` (`Order_ID`) ON DELETE CASCADE,
   ADD CONSTRAINT `order_line_ibfk_2` FOREIGN KEY (`Prod_ID`) REFERENCES `side_products` (`SideProd_ID`) ON DELETE CASCADE;
-  -- ADD CONSTRAINT `order_line_ibfk_3` FOREIGN KEY (`Prod_ID`) REFERENCES `cake` (`Cake_ID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `payment`
@@ -487,13 +513,13 @@ ALTER TABLE `payment`
 -- Constraints for table `sideproduct_sizes`
 --
 ALTER TABLE `sideproduct_sizes`
-  ADD CONSTRAINT `sideproduct_sizes_ibfk_1` FOREIGN KEY (`Prod_ID`) REFERENCES `side_products` (`SideProd_ID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `sideproduct_sizes_ibfk_1` FOREIGN KEY (`Prod_ID`) REFERENCES `side_products` (`SideProd_ID`);
 
 --
 -- Constraints for table `side_products`
 --
 ALTER TABLE `side_products`
-  ADD CONSTRAINT `side_products_ibfk_1` FOREIGN KEY (`Categ_ID`) REFERENCES `side_categories` (`Categ_ID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `side_products_ibfk_1` FOREIGN KEY (`Categ_ID`) REFERENCES `side_categories` (`Categ_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
