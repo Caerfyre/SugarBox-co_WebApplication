@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2022 at 12:19 PM
+-- Generation Time: Feb 19, 2022 at 09:18 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -231,7 +231,13 @@ CREATE TABLE `sideproduct_sizes` (
 INSERT INTO `sideproduct_sizes` (`Size_ID`, `Prod_ID`, `Size_Description`, `Size_Price`) VALUES
 (11, 10, 'Box of 10', 125.00),
 (12, 10, 'Box of 8', 100.00),
-(13, 10, 'Box of 6', 75.00);
+(13, 10, 'Box of 6', 75.00),
+(14, 11, 'Box of 6', 85.00),
+(15, 11, 'Box of 12', 175.00),
+(16, 11, 'Box of 10', 120.00),
+(17, 12, 'Box of 6', 85.00),
+(18, 12, 'Box of 8', 100.00),
+(19, 12, 'Box of 12', 175.00);
 
 -- --------------------------------------------------------
 
@@ -274,7 +280,7 @@ CREATE TABLE `side_products` (
 --
 
 INSERT INTO `side_products` (`SideProd_ID`, `SideProd_Name`, `Categ_ID`, `SideProd_Desc`, `SideProd_Image`) VALUES
-(10, 'Ube Cheese Pandesal', 5, 'Homemade soft ube pandesal with cheese filling.', 'pandesal.png'),
+(10, 'Ube Cheese Pandesal', 5, 'Homemade soft ube pandesal with cheese filling. ', 'pandesal.png'),
 (11, 'Oreo Cookies', 2, 'Chewy and sweet cookies with real crushed oreos', 'oreo-cookies.png'),
 (12, 'Matcha Cookies', 2, 'Soft matcha cookies with white chocolate chips', 'matcha-cookies.png'),
 (13, 'Red Velvet Cookies', 2, 'Sweet and vibrant red velvet cookies with white chocolate chips.', 'red-velvet-cookies.png'),
@@ -282,8 +288,7 @@ INSERT INTO `side_products` (`SideProd_ID`, `SideProd_Name`, `Categ_ID`, `SidePr
 (16, 'Blueberry Cheesecake', 4, 'Decadent bite-sized mini cheesecake topped with sweet blueberry jam.', 'blueberry-cheesecake.PNG'),
 (18, 'Mango Cheesecake', 4, 'Sweet classic cheesecake topped with fresh mangoes.', 'mango-cheescake.PNG'),
 (19, 'Red Velvet Cupcake', 1, 'Soft and moist red velvet cupcake with rich cream cheese frosting.', 'red-velvet-cupcakes.PNG'),
-(20, 'Chocolate Chip Cookies', 2, 'Chewy and delicious classic chocolate chip cookies.', 'chocolatechip-cookies.PNG'),
-(23, 'Sample Product', 4, 'Sample description', 'cheesecake.png');
+(20, 'Chocolate Chip Cookies', 2, 'Chewy and delicious classic chocolate chip cookies.', 'chocolatechip-cookies.PNG');
 
 -- --------------------------------------------------------
 
@@ -423,7 +428,7 @@ ALTER TABLE `cake_size`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `Cust_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Cust_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `ingredients`
@@ -447,7 +452,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `sideproduct_sizes`
 --
 ALTER TABLE `sideproduct_sizes`
-  MODIFY `Size_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Size_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `side_categories`
