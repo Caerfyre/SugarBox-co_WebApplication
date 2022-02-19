@@ -213,6 +213,7 @@ if (isset($_POST['pushOrder'])) {
 if (isset($_POST['addProductBtn'])) {
     $conn = db_connect();
 
+    //Product info
     $prodName = mysqli_real_escape_string($conn, $_POST['prodName']);
     $prodCateg = mysqli_real_escape_string($conn, $_POST['prodCateg']);
     $prodDesc = mysqli_real_escape_string($conn, $_POST['prodDesc']);
@@ -232,7 +233,9 @@ if (isset($_POST['addProductBtn'])) {
     if ($file_name == "") {
         echo '<script>alert("NO image entered")</script>';
     } elseif (in_array($file_ext, $extensions) === false) {
-        echo '<script>alert("Extension not allowed, please choose a JPEG, PNG, GIF or JFIF file.")</script>';
+        $_SESSION['status'] = "Extension not allowed, please choose a JPEG, PNG, GIF or JFIF file.";
+        $_SESSION['status_code'] = "error";
+        header('Location: ../../admin-src/products.php');
     } else {
         // UPLOAD TO DATABASE
         if (mysqli_query($conn, $product_query)) {
@@ -267,4 +270,132 @@ if (isset($_POST['deleteProdBtn'])) {
         $_SESSION['status_code'] = "error";
         header('Location: ../../admin-src/products.php');
     }
+
+    mysqli_close($conn);
+}
+
+// Edit Product Info
+if (isset($_POST['editProdInfoBtn'])){
+    $conn = db_connect();
+    
+    //Product info
+    $prodID = $_POST['prodID'];
+    $categID = $_POST['prodCateg'];
+    $prodName = mysqli_real_escape_string($conn, $_POST['prodName']);
+    $desc = mysqli_real_escape_string($conn, $_POST['prodDesc']);
+
+    $edit_query = "UPDATE `side_products` SET
+                   `SideProd_Name` = '$prodName',
+                   `Categ_ID` = '$categID',
+                   `SideProd_Desc` = '$desc'
+                   WHERE SideProd_ID = '$prodID'";
+    $edit_query_run = mysqli_query($conn, $edit_query);
+
+    if($edit_query_run){
+        $_SESSION['status'] = "Product Information Successfully Updated!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/productDetails.php?prod_ID=$prodID");
+    }else{
+        $_SESSION['status'] = "Failed to Update Product Information";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/productDetails.php?prod_ID=$prodID");
+    }
+
+    mysqli_close($conn);
+
+}
+
+//Edit Product Image
+if (isset($_POST['editImgBtn'])){
+    $conn = db_connect();
+
+    $prodID = $_POST['prodID'];
+    $file_name = $_FILES['prodImage']['name'];
+    $file_tmp = $_FILES['prodImage']['tmp_name'];
+    $tmp = explode('.', $_FILES['prodImage']['name']);
+    $file_ext = strtolower(end($tmp));
+    $extensions = array("jpeg", "jpg", "png", "gif", "jfif");
+
+    $uploads_dir = 'assets';
+    move_uploaded_file($file_tmp, $uploads_dir . '/' . $file_name);
+
+    $edit_query = "UPDATE `side_products` SET
+                   `SideProd_Image` = '$file_name'
+                   WHERE SideProd_ID = '$prodID'";
+    $edit_query_run = mysqli_query($conn, $edit_query);
+
+    if ($file_name == "") {
+        echo '<script>alert("NO image entered")</script>';
+    } elseif (in_array($file_ext, $extensions) === false) {
+        $_SESSION['status'] = "Extension not allowed, please choose a JPEG, PNG, GIF or JFIF file.";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/productDetails.php?prod_ID=$prodID");
+    } else {
+        // UPDATE IMAGE
+        if($edit_query_run){
+            $_SESSION['status'] = "Product Image Successfully Updated!";
+            $_SESSION['status_code'] = "success";
+            header("Location: ../../admin-src/productDetails.php?prod_ID=$prodID");
+        }else{
+            $_SESSION['status'] = "Failed to Update Product Image";
+            $_SESSION['status_code'] = "error";
+            header("Location: ../../admin-src/productDetails.php?prod_ID=$prodID");
+        }
+    }
+
+    mysqli_close($conn);
+}
+
+//Add Price Information
+if (isset($_POST['addPriceInfoBtn'])){
+    $conn = db_connect();
+
+    $prodID = $_POST['prodID'];
+    $sizePrice = $_POST['sizePrice'];
+    $sizeDesc = mysqli_real_escape_string($conn, $_POST['sizeDesc']);
+
+    $add_query = "INSERT INTO `sideproduct_sizes` (`Prod_ID`, `Size_Description`, `Size_Price`)
+                  VALUES ('$prodID', '$sizeDesc', '$sizePrice')";
+    $add_query_run = mysqli_query($conn, $add_query);
+
+    if($add_query_run){
+        $_SESSION['status'] = "Price Info Successfully Added!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/productDetails.php?prod_ID=$prodID");
+    }else{
+        $_SESSION['status'] = "Failed to Add Price Info";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/productDetails.php?prod_ID=$prodID");
+    }
+
+    mysqli_close($conn);
+
+}
+
+//Edit Price Info
+if (isset($_POST['editPriceInfoBtn'])){
+    $conn = db_connect();
+
+    $sizeID = $_POST['sizeID'];
+    $prodID = $_POST['prodID'];
+    $sizePrice = $_POST['sizePrice'];
+    $sizeDesc = mysqli_real_escape_string($conn, $_POST['sizeDesc']);
+
+    $edit_query = "UPDATE `sideproduct_sizes` SET
+                  `Size_Description` = '$sizeDesc',
+                  `Size_Price` = '$sizePrice'
+                  WHERE Size_ID = '$sizeID'";
+    $edit_query_run = mysqli_query($conn, $edit_query);
+
+    if($edit_query_run){
+        $_SESSION['status'] = "Price Info Successfully Updated!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/productDetails.php?prod_ID=$prodID");
+    }else{
+        $_SESSION['status'] = "Failed to Update Price Info";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/productDetails.php?prod_ID=$prodID");
+    }
+
+    mysqli_close($conn);
 }
