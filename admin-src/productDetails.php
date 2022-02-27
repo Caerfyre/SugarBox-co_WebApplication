@@ -189,8 +189,9 @@ include 'includes/topbar.php'
                                                             <div class="modal-footer">
                                                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                                                 <form action="../scripts/database/crud.php" method="post">
-                                                                    <input name="deleteProdID" type="hidden" value="<?php echo $row['Size_ID'];?>">
-                                                                    <button class="btn btn-danger" name="deletePriceInfo" type="submit">Delete</button>
+                                                                    <input name="deleteSizeID" type="hidden" value="<?php echo $row['Size_ID'];?>">
+                                                                    <input type="hidden" name="prodID" value="<?php echo $_GET['prod_ID']; ?>">
+                                                                    <button class="btn btn-danger" name="deletePriceInfoBtn" type="submit">Delete</button>
                                                                 </form>
                                                             </div>
                                                         </div>
