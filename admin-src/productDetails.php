@@ -21,7 +21,7 @@ include 'includes/topbar.php'
                 <!-- Card Header -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-section border-section">
                     <h6 class="m-0 font-weight-bold text-content"><b>Product #<?php echo $_GET['prod_ID'];?> Details</b></h6>
-                    <a href="products.php" class="btn btn-titleColor">&larr; Go Back</a>
+                    <a href="products.php" class="btn btn-subheading">&larr; Go Back</a>
                 </div>
 
                 <!-- Card Body -->
