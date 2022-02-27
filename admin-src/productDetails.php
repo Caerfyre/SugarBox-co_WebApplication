@@ -166,10 +166,37 @@ include 'includes/topbar.php'
                                             <?php }?>
                                         </form>
                                         <!-- Delete -->
-                                        <form action="" method="post">
-                                            <input name="deleteProdID" type="hidden" value="<?php  echo $row['Size_ID'];?>">
-                                            <button class="btn fs-5 text-danger p-0" name="deletePriceInfo" type="submit">Delete</button>   
-                                        </form>
+                                        <button class="btn fs-5 text-danger p-0" data-toggle="modal" data-target="#deletePrice<?php echo $row['Size_ID'];?>">Delete</button>
+                                                <!-- Delete Price Info Modal -->
+                                                <div class="modal fade" id="deletePrice<?php echo $row['Size_ID'];?>" tabindex="-1" role="dialog" aria-labelledby="deletePriceModal"
+                                                    aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="deletePriceModal"><b>Delete</b></h5>
+                                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                            </div>
+                                
+                                                            <div class="modal-body text-center h4 my-3">
+                                                                <i class="fas fa-exclamation-circle fa-5x text-danger mb-3"></i>
+                                                                <p>Are you sure you want to delete 
+                                                                    <br><b class="text-titleColor"><?php echo $row['Size_Description'];?> - <span>&#8369;</span> <?php echo $row['Size_Price'];?> ?</b>
+                                                                </p>
+                                                            </div>
+
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                                <form action="../scripts/database/crud.php" method="post">
+                                                                    <input name="deleteProdID" type="hidden" value="<?php echo $row['Size_ID'];?>">
+                                                                    <button class="btn btn-danger" name="deletePriceInfo" type="submit">Delete</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Delete Price Info Modal -->
                                         </div>
                                         <?php } ?>
                                         </ul>
@@ -227,7 +254,7 @@ include 'includes/topbar.php'
 
 <!-- Add Information Modal -->
 <div class="modal fade" id="addPriceInfo" tabindex="-1" role="dialog" aria-labelledby="addPriceInfoModal" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-subheading" id="addPriceInfoModal"><b>Add Price Information</b></h5>
