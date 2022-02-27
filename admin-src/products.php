@@ -22,9 +22,13 @@ include 'includes/topbar.php'
         <div class="card-header py-3 bg-section border-section">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-content"><b>Side Products</b></h6>
-                <button type="button" class="btn btn-titleColor" data-toggle="modal" data-target="#addProducts">
-                Add New Product
-                </button>
+                <div>
+                    <button type="button" class="btn btn-titleColor" data-toggle="modal" data-target="#addProducts">
+                    Add New Product
+                    </button>
+                    <a href="productCategories.php" class="btn btn-subheading">View Categories</a>   
+                </div>
+                
             </div>
             
         </div>
@@ -78,7 +82,7 @@ include 'includes/topbar.php'
                             <td><?php echo $row['SideProd_Name']; ?></td>
                             <td><?php echo $row['Categ_Name']; ?></td>
                             <td class="d-sm-flex align-items-center justify-content-center">
-                            <a href="productDetails.php?prod_ID=<?php echo $row['SideProd_ID'];?>" class="btn btn-titleColor">View Details</a>
+                            <a href="productDetails.php?prod_ID=<?php echo $row['SideProd_ID'];?>" class="btn btn-subheading">View Details</a>
                             &nbsp;
                             <button class="btn btn-danger" data-toggle="modal" data-target="#deleteProd<?php echo $row['SideProd_ID'];?>">Delete Product</button>
                             </td>
@@ -129,7 +133,7 @@ include 'includes/topbar.php'
             else
             {  ?> 
                 <!-- NO Products -->
-                    <p class="text-center lead text-content my-5">No Products To Be Found</p>
+                    <p class="text-center lead text-content font-weight-bolder my-5">No Products To Be Found</p>
                 <!-- NO Products -->
             <?php } ?>
 
