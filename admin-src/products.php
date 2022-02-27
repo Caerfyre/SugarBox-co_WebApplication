@@ -87,7 +87,7 @@ include 'includes/topbar.php'
                         <!-- Delete Product Modal -->
                         <div class="modal fade" id="deleteProd<?php echo $row['SideProd_ID'];?>" tabindex="-1" role="dialog" aria-labelledby="deleteProdModal"
                             aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="deleteProdModal"><b>Delete</b></h5>
@@ -95,10 +95,16 @@ include 'includes/topbar.php'
                                             <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body text-center">
-                                        <p>Are you sure you want to delete 
-                                            <br><b class="text-titleColor"><?php echo $row['SideProd_Name'];?> (Product #<?php  echo $row['SideProd_ID'];?>) ?</b>
-                                        </p>
+                                    <div class="modal-body">
+                                        <div class="d-flex align-items-center justify-content-center pb-3">
+                                            <div><i class="fas fa-exclamation-circle fa-3x text-danger pr-3"></i></div>
+                                            <div>
+                                                Are you sure you want to delete 
+                                                <br><b class="text-titleColor"><?php echo $row['SideProd_Name'];?> (Product #<?php  echo $row['SideProd_ID'];?>) ?</b>
+                                                   
+                                            </div>
+                                        </div>
+                                    
                                         <img class="card-img" src="../assets/<?php echo $row['SideProd_Image']; ?>" alt="<?php echo $row['SideProd_Image']; ?>">
                                     </div>
                                     <div class="modal-footer">
@@ -137,7 +143,7 @@ include 'includes/topbar.php'
 
 <!-- Add Products Modal -->
 <div class="modal fade" id="addProducts" tabindex="-1" role="dialog" aria-labelledby="addProductsModal" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-subheading" id="addProductsModal"><b>Add New Product</b></h5>
