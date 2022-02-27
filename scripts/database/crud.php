@@ -399,3 +399,26 @@ if (isset($_POST['editPriceInfoBtn'])){
 
     mysqli_close($conn);
 }
+
+//Delete Price Info
+if (isset($_POST['deletePriceInfoBtn'])) {
+    $conn = db_connect();
+
+    $sizeID = $_POST['deleteSizeID'];
+    $prodID = $_POST['prodID'];
+
+    $delete_query = "DELETE FROM `sideproduct_sizes` WHERE `Size_ID` = '$sizeID' LIMIT 1";
+    $delete_query_run = mysqli_query($conn, $delete_query);
+
+    if ($delete_query_run) {
+        $_SESSION['status'] = "Price Info Successfully Deleted!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/productDetails.php?prod_ID=$prodID");      
+    } else {
+        $_SESSION['status'] = "Failed to Delete Price Info";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/productDetails.php?prod_ID=$prodID");
+    }
+
+    mysqli_close($conn);
+}
