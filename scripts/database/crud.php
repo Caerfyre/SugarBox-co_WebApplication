@@ -422,3 +422,69 @@ if (isset($_POST['deletePriceInfoBtn'])) {
 
     mysqli_close($conn);
 }
+
+/// CATEGORIES ///
+
+//Add Category
+if (isset($_POST['addCategBtn'])) {
+    $conn = db_connect();
+
+    $categName = $_POST['categName'];
+    $categ_query = "INSERT INTO `side_categories` (`Categ_Name`) VALUES('$categName')";
+    $categ_query_run = mysqli_query($conn, $categ_query);
+
+    if($categ_query_run){
+        $_SESSION['status'] = "Category Successfully Added!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/productCategories.php");
+    }else{
+        $_SESSION['status'] = "Failed to Add Category";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/productCategories.php");
+    }
+    mysqli_close($conn);
+}
+
+//Edit Category
+if (isset($_POST['EditCategBtn'])) {
+    $conn = db_connect();
+
+    $categID = $_POST['categID'];
+    $categName = $_POST['categName'];
+
+    $edit_query = "UPDATE `side_categories` SET `Categ_Name` = '$categName' WHERE Categ_ID = '$categID'";
+    $edit_query_run = mysqli_query($conn, $edit_query);
+
+    if($edit_query_run){
+        $_SESSION['status'] = "Category Successfully Updated!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/productCategories.php");
+    }else{
+        $_SESSION['status'] = "Failed to Update Category";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/productCategories.php");
+    }
+    mysqli_close($conn);
+}
+
+//Delete Category
+if (isset($_POST['deleteCategBtn'])) {
+    $conn = db_connect();
+
+    $categID = $_POST['deleteCategID'];
+
+    $delete_query = "DELETE FROM `side_categories` WHERE `Categ_ID` = '$categID' LIMIT 1";
+    $delete_query_run = mysqli_query($conn, $delete_query);
+
+    if ($delete_query_run) {
+        $_SESSION['status'] = "Category Successfully Deleted!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/productCategories.php");   
+    } else {
+        $_SESSION['status'] = "Failed to Delete Category";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/productCategories.php");
+    }
+
+    mysqli_close($conn);
+}
