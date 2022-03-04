@@ -91,7 +91,8 @@ include 'includes/topbar.php'
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <label class="text-content font-weight-bold">Category Name</label>
-                                                    <input type="text" name="prodName" class="form-control border-section text-content" value="<?php echo $row['Categ_Name']; ?>" required>
+                                                    <input type="hidden" name="categID" value="<?php echo $row['Categ_ID']; ?>">
+                                                    <input type="text" name="categName" class="form-control border-section text-content" value="<?php echo $row['Categ_Name']; ?>" required>
                                                 </div>  
                                             </div>
 
@@ -127,7 +128,7 @@ include 'includes/topbar.php'
                                             <div class="modal-footer">
                                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                                 <form action="../scripts/database/crud.php" method="post">
-                                                    <input name="deleteSizeID" type="hidden" value="<?php echo $row['Categ_ID']; ?>">
+                                                    <input name="deleteCategID" type="hidden" value="<?php echo $row['Categ_ID']; ?>">
                                                     <button class="btn btn-danger" name="deleteCategBtn" type="submit">Delete</button>
                                                 </form>
                                             </div>
@@ -164,6 +165,35 @@ include 'includes/topbar.php'
 </div>
 <!-- End of Main Content -->
 
+<!-- Add Category Modal -->
+<div class="modal fade" id="addCateg" tabindex="-1" role="dialog" aria-labelledby="addCategModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-subheading" id="addCategModal"><b>Add New Category</b></h5>
+        <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form action="../scripts/database/crud.php" method="POST">
+        <div class="modal-body">
+
+            <div class="form-group">
+                <label class="text-content font-weight-bold">Category Name</label>
+                <input type="text" name="categName" class="form-control border-section text-content" placeholder="Enter Category Name" required>
+            </div>
+            
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            <button type="submit" name="addCategBtn" class="btn btn-titleColor">Add Category</button>
+        </div>
+      </form>
+  
+    </div>
+  </div>
+</div>
 
 <?php
 include 'includes/footer.php';
