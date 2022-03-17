@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2022 at 09:18 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Mar 17, 2022 at 03:22 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -102,11 +102,11 @@ INSERT INTO `cake_flavor` (`Flavor_Name`, `Flavor_Type`) VALUES
 --
 
 CREATE TABLE `cake_orders` (
-  `Cake_orderID` int(11) NOT NULL,
+  `Order_ID` int(11) NOT NULL,
   `Cake_ID` int(11) NOT NULL,
   `Cake_Price` float(15,2) DEFAULT NULL,
-  `Price_Status` enum('Not Set','Set','','') NOT NULL,
-  `Status` enum('Accepted','Rejected','','') NOT NULL
+  `Price_Status` enum('Not Set','Set') NOT NULL COMMENT '''Not Set'', ''Set''',
+  `Status` enum('Pending','Accepted','Rejected') NOT NULL COMMENT '''Pending'', ''Accepted'', ''Rejected'''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -333,8 +333,8 @@ ALTER TABLE `cake_flavor`
 -- Indexes for table `cake_orders`
 --
 ALTER TABLE `cake_orders`
-  ADD PRIMARY KEY (`Cake_orderID`),
-  ADD KEY `cake_orders_ibfk_2` (`Cake_ID`);
+  ADD KEY `Order_ID` (`Order_ID`),
+  ADD KEY `Cake_ID` (`Cake_ID`);
 
 --
 -- Indexes for table `cake_size`
@@ -487,7 +487,7 @@ ALTER TABLE `cake`
 -- Constraints for table `cake_orders`
 --
 ALTER TABLE `cake_orders`
-  ADD CONSTRAINT `cake_orders_ibfk_1` FOREIGN KEY (`Cake_orderID`) REFERENCES `orders` (`Order_ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `cake_orders_ibfk_1` FOREIGN KEY (`Order_ID`) REFERENCES `orders` (`Order_ID`) ON DELETE CASCADE,
   ADD CONSTRAINT `cake_orders_ibfk_2` FOREIGN KEY (`Cake_ID`) REFERENCES `cake` (`Cake_ID`) ON DELETE CASCADE;
 
 --
