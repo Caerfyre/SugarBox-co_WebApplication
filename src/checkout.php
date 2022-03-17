@@ -29,7 +29,17 @@
                 <div class="row-cols-2 text-center mt-n3">
                     <img class="img-fluid" src="../assets/leaves.svg" draggable="false" alt="">
                 </div>
-                <form id="confirmForm" class="container-fluid px-0 mt-5 pb-4" action="../scripts/database/crud.php<?php if (isset($_GET['type']) && $_GET['type'] == 2) echo '?type=custom' ?>" method="post">
+                <?php $size = urlencode($_POST['size']) ?>
+                <?php $description = urlencode($_POST['description']) ?>
+                <form id="confirmForm" class="container-fluid px-0 mt-5 pb-4" 
+                    action="../scripts/database/crud.php<?php if (isset($_GET['type']) && $_GET['type'] == 2) 
+                        echo '?type=custom' . 
+                        '&flavor=' . $_POST['flavor'] . 
+                        '&layers=' . $_POST['layers'] . 
+                        '&size=' . $size . 
+                        '&name=' . $_POST['name'] . 
+                        '&description=' . $description?>" 
+                    method="post">
                     <div class="row mb-5">
                         <label class="form-label text-subheading fw-bolder mb-2" for="type">ORDER TYPE:</label>
                         <div class="col-2">
@@ -103,7 +113,7 @@
                     <div class="row mt-5">
                         <div class="col text-center">
                             <?php if (isset($_GET['type']) && $_GET['type'] == 2) { ?>
-                            <a class="text-decoration-none" href="custom-order.php?<?php echo "flavor={$_POST['flavor']}&layers={$_POST['layers']}&size={$_POST['size']}&name={$_POST['name']}&description={$_POST['description']}" ?>">
+                            <a class="text-decoration-none" href="custom-order.php?<?php echo "flavor={$_POST['flavor']}&layers={$_POST['layers']}&size={$size}&name={$_POST['name']}&description={$description}" ?>">
                                 <input class="btn btn-content px-5" type="button" value="Edit Cake">
                             </a>
                             <?php } ?>

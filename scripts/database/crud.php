@@ -21,8 +21,7 @@ if (!isset($_SESSION["customer"])) {
  * - Address
  * @param int $accID The Account ID of the customer.
  */
-function getCustomer($accID)
-{
+function getCustomer($accID) {
     include "./DB-connect.php";
     $conn = db_connect();
 
@@ -112,23 +111,32 @@ if (isset($_POST['updateAccount'])) {
 if (isset($_POST['pushOrder'])) {
     $conn = db_connect();
 
-    // cart details
-    $total = 0;
-    foreach ($_SESSION['cart'] as $cartItem) {
-        $total += $cartItem['price'] * $cartItem['quantity'];
-    }
-
     // order details
     $accID = $_SESSION['user']['accID'];
     $type = $_POST['type'];
     $method = $_POST['method'];
     $date = $_POST['date'];
+    $total = 0;
 
     // contact details
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $contact = $_POST['number'];
     $address = $_POST['address'];
+
+    if (isset($_GET["type"]) && $_GET["type"] == "custom") {
+        // cake details
+        $flavor = $_GET['flavor'];
+        $layers = $_GET['layers'];
+        $size = $_GET['size'];
+        $designName = $_GET['name'];
+        $description = $_GET['description'];
+    } else {
+        // cart details
+        foreach ($_SESSION['cart'] as $cartItem) {
+            $total += $cartItem['price'] * $cartItem['quantity'];
+        }
+    }
 
     // INSERT into ORDERS table
     $query = "INSERT INTO `orders`(`Cust_ID`, `Order_Fullfilment_Date`, `Order_Type`, `Order_Status`, `Total_Price`) 
@@ -148,22 +156,62 @@ if (isset($_POST['pushOrder'])) {
     $orderID = mysqli_fetch_array($result);
     $orderID = $orderID[0];
 
-    // INSERT into ORDER_LINE table
-    foreach ($_SESSION['cart'] as $cartItem) {
-        $prodID = $cartItem['id'];
-        $quantity = $cartItem['quantity'];
-        $price = $cartItem['price'] * $quantity;
+    if (isset($_GET["type"]) && $_GET["type"] == "custom") {
+        // GET Size_ID from CAKE_SIZE table
+        $query = "SELECT `Size_ID` FROM `cake_size` WHERE `Layer_Size`='$size' LIMIT 1";
+        $result = mysqli_query($conn, $query);
+        $sizeID = mysqli_fetch_array($result);
+        $sizeID = $sizeID[0];
 
-        $query = "INSERT INTO `order_line`(`Order_ID`, `Prod_ID`, `Order_Quantity`, `Line_Price`) 
-                VALUES ('$orderID', '$prodID', '$quantity', '$price')";
+        // INSERT into CAKE table
+        $query = "INSERT INTO `cake`(`Flavor_Name`, `Design_Name`, `Design_Description`, `CakeSize_ID`) 
+                    VALUES ('$flavor', '$designName', '$description', '$sizeID')";
         $result = mysqli_query($conn, $query);
 
         if ($result) {
-            echo '<script>console.log("Order line submitted.")</script>';
+            echo '<script>console.log("Custom cake submitted.")</script>';
         } else {
-            echo '<script>console.log("Failed to submit order line...")</script>';
+            echo '<script>console.log("Failed to submit custom cake...")</script>';
             // echo mysqli_error($conn);
         }
+
+        // GET Cake_ID from CAKE table
+        $query = "SELECT LAST_INSERT_ID()";
+        $result = mysqli_query($conn, $query);
+        $cakeID = mysqli_fetch_array($result);
+        $cakeID = $cakeID[0];
+
+        // INSERT into CAKE_ORDERS table
+        $query = "INSERT INTO `cake_orders`(`Order_ID`, `Cake_ID`, `Price_Status`, `Status`) 
+                    VALUES ('$orderID', '$cakeID', 'Not Set', 'Pending')";
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {
+            echo '<script>console.log("Custom cake order submitted.")</script>';
+        } else {
+            echo '<script>console.log("Failed to submit custom cake order...")</script>';
+            // echo mysqli_error($conn);
+        }
+    } else {
+        // INSERT into ORDER_LINE table
+        foreach ($_SESSION['cart'] as $cartItem) {
+            $prodID = $cartItem['id'];
+            $quantity = $cartItem['quantity'];
+            $price = $cartItem['price'] * $quantity;
+
+            $query = "INSERT INTO `order_line`(`Order_ID`, `Prod_ID`, `Order_Quantity`, `Line_Price`) 
+                    VALUES ('$orderID', '$prodID', '$quantity', '$price')";
+            $result = mysqli_query($conn, $query);
+
+            if ($result) {
+                echo '<script>console.log("Order line submitted.")</script>';
+            } else {
+                echo '<script>console.log("Failed to submit order line...")</script>';
+                // echo mysqli_error($conn);
+            }
+        }
+        // Empty the cart
+        unset($_SESSION['cart']);
     }
 
     // INSERT into PAYMENT table
@@ -198,9 +246,6 @@ if (isset($_POST['pushOrder'])) {
         echo '<script>console.log("Failed to update contact details...")</script>';
         // echo mysqli_error($conn);
     }
-
-    // Empty the cart
-    unset($_SESSION['cart']);
 
     mysqli_close($conn);    
     header('Location: ../../src/account.php#orderHistory');
