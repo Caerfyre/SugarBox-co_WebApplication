@@ -29,8 +29,12 @@
                 <div class="row-cols-2 text-center mt-n3">
                     <img class="img-fluid" src="../assets/leaves.svg" draggable="false" alt="">
                 </div>
-                <?php $size = urlencode($_POST['size']) ?>
-                <?php $description = urlencode($_POST['description']) ?>
+                <?php
+                    if (isset($_GET['type']) && $_GET['type'] == 2) {
+                        $size = urlencode($_POST['size']);
+                        $description = urlencode($_POST['description']);
+                    }
+                ?>
                 <form id="confirmForm" class="container-fluid px-0 mt-5 pb-4" 
                     action="../scripts/database/crud.php<?php if (isset($_GET['type']) && $_GET['type'] == 2) 
                         echo '?type=custom' . 
