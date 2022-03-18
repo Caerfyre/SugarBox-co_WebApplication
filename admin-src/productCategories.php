@@ -87,7 +87,7 @@ include 'includes/topbar.php'
                                                 </button>
                                             </div>
                                             
-                                           <form action="../scripts/database/crud.php" method="post">
+                                           <form action="../scripts/database/admin-crud.php" method="post">
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <label class="text-content font-weight-bold">Category Name</label>
@@ -127,7 +127,7 @@ include 'includes/topbar.php'
 
                                             <div class="modal-footer">
                                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                <form action="../scripts/database/crud.php" method="post">
+                                                <form action="../scripts/database/admin-crud.php" method="post">
                                                     <input name="deleteCategID" type="hidden" value="<?php echo $row['Categ_ID']; ?>">
                                                     <button class="btn btn-danger" name="deleteCategBtn" type="submit">Delete</button>
                                                 </form>
@@ -176,7 +176,7 @@ include 'includes/topbar.php'
         </button>
       </div>
 
-      <form action="../scripts/database/crud.php" method="POST">
+      <form action="../scripts/database/admin-crud.php" method="POST">
         <div class="modal-body">
 
             <div class="form-group">

@@ -113,7 +113,7 @@ include 'includes/topbar.php'
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                        <form action="../scripts/database/crud.php" method="post">
+                                        <form action="../scripts/database/admin-crud.php" method="post">
                                             <input name="deleteProdID" type="hidden" value="<?php  echo $row['SideProd_ID'];?>">
                                             <button class="btn btn-danger" name="deleteProdBtn" type="submit">Delete Product</button>
                                         </form>
@@ -156,7 +156,7 @@ include 'includes/topbar.php'
         </button>
       </div>
 
-      <form action="../scripts/database/crud.php" method="POST" enctype="multipart/form-data">
+      <form action="../scripts/database/admin-crud.php" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
 
             <div class="form-group">

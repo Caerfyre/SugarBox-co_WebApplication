@@ -53,7 +53,7 @@
                         <p class="text-content fw-bolder">Contact Number: &nbsp;<span class="text-content fw-bold"><?php echo $_SESSION["customer"]["contact"] ?></span></p>
                         <p class="text-content fw-bolder">Address: &nbsp;<span class="text-content fw-bold"><?php echo $_SESSION["customer"]["address"] ?></span></p>
                     <?php } else { ?>
-                        <form action="../scripts/database/crud.php" method="post">
+                        <form action="../scripts/database/client-crud.php" method="post">
                             <p class="text-content fw-bolder">First Name: <input class="form-control bg-section2 border-0 mt-2" type="text" name="fname" value="<?php echo $_SESSION["customer"]["fname"] ?>"></p>
                             <p class="text-content fw-bolder">Last Name: <input class="form-control bg-section2 border-0 mt-2" type="text" name="lname" value="<?php echo $_SESSION["customer"]["lname"] ?>"></p>
                             <p class="text-content fw-bolder">Contact Number: <input class="form-control bg-section2 border-0 mt-2" type="number" name="contact" value="<?php echo $_SESSION["customer"]["contact"] ?>"></p>
@@ -81,7 +81,7 @@
                         <p class="text-content fw-bolder">Password: &nbsp;<span class="text-content fw-bold font-monospace"><?php for ($i = 0; $i < strlen(getPassword()); $i++) echo '*' ?></span></p>
                         <a href="#" class="text-decoration-none"><p class="text-danger fw-bold">Delete Account</p></a>
                     <?php } else { ?>
-                        <form action="../scripts/database/crud.php" method="post">
+                        <form action="../scripts/database/client-crud.php" method="post">
                             <p class="text-content fw-bolder">Username: <input class="form-control bg-section2 border-0 mt-2" type="text" name="username" value="<?php echo $_SESSION['user']['accUsername'] ?>"></p>
                             <p class="text-content fw-bolder mb-2">Password:</p>
                             <div class="input-group mb-3">

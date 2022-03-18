@@ -82,7 +82,7 @@ include 'includes/topbar.php'
                                         <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Description:</b> <?php echo $row['SideProd_Desc']; ?></p>   
                                     </div>
                                 <?php } else {?>
-                                    <form action="../scripts/database/crud.php" method="post" enctype="multipart/form-data">
+                                    <form action="../scripts/database/admin-crud.php" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <input type="hidden" name="prodID" value="<?php echo $row['SideProd_ID']; ?>">
                                         <p class="text-content font-weight-bold">Edit Product Name:<input class="form-control bg-light border-0" type="text" name="prodName" value="<?php echo $row['SideProd_Name']; ?>"></p>
@@ -188,7 +188,7 @@ include 'includes/topbar.php'
 
                                                             <div class="modal-footer">
                                                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                                <form action="../scripts/database/crud.php" method="post">
+                                                                <form action="../scripts/database/admin-crud.php" method="post">
                                                                     <input name="deleteSizeID" type="hidden" value="<?php echo $row['Size_ID'];?>">
                                                                     <input type="hidden" name="prodID" value="<?php echo $_GET['prod_ID']; ?>">
                                                                     <button class="btn btn-danger" name="deletePriceInfoBtn" type="submit">Delete</button>
@@ -203,7 +203,7 @@ include 'includes/topbar.php'
                                         </ul>
                                     <?php } else { ?>
                                         <?php if (isset($_POST["editPriceInfo"])){?> 
-                                        <form action="../scripts/database/crud.php" method="post">
+                                        <form action="../scripts/database/admin-crud.php" method="post">
                                 
                                             <div class="form-row">
                                                 <input type="hidden" name="sizeID" value="<?php echo $_POST['sizeID']; ?>">
@@ -264,7 +264,7 @@ include 'includes/topbar.php'
         </button>
       </div>
 
-      <form action="../scripts/database/crud.php" method="POST" enctype="multipart/form-data">
+      <form action="../scripts/database/admin-crud.php" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
 
             <div class="form-group">
@@ -304,7 +304,7 @@ include 'includes/topbar.php'
         </button>
       </div>
 
-      <form action="../scripts/database/crud.php" method="POST" enctype="multipart/form-data">
+      <form action="../scripts/database/admin-crud.php" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
 
             <div class="form-group">

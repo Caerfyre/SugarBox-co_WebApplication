@@ -36,7 +36,7 @@
                     }
                 ?>
                 <form id="confirmForm" class="container-fluid px-0 mt-5 pb-4" 
-                    action="../scripts/database/crud.php<?php if (isset($_GET['type']) && $_GET['type'] == 2) 
+                    action="../scripts/database/client-crud.php<?php if (isset($_GET['type']) && $_GET['type'] == 2) 
                         echo '?type=custom' . 
                         '&flavor=' . $_POST['flavor'] . 
                         '&layers=' . $_POST['layers'] . 
