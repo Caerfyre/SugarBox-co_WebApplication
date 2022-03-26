@@ -27,8 +27,19 @@ include 'includes/topbar.php'
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Items Sold</div>
-                            <div class="h5 mb-0 font-weight-bold text-content">56</div>
+                                Items Sold
+                            </div>
+                            <?php
+                                $conn = db_connect();
+
+                                $query = "SELECT COUNT(`Order_ID`) from `orders` where `Order_Status`='claimed'";
+                                $result = mysqli_query($conn, $query);
+                                $itemsSold = mysqli_fetch_array($result);
+                                if ($itemsSold[0] == 0) $itemsSold[0] = "0";
+                        
+                                mysqli_close($conn);
+                            ?>
+                            <div class="h5 mb-0 font-weight-bold text-content"><?php echo $itemsSold[0] ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-success"></i>
@@ -45,8 +56,18 @@ include 'includes/topbar.php'
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Total Products</div>
-                            <div class="h5 mb-0 font-weight-bold text-content">20</div>
+                                Total Products
+                            </div>
+                            <?php
+                                $conn = db_connect();
+
+                                $query = "SELECT COUNT(`SideProd_ID`) from `side_products`";
+                                $result = mysqli_query($conn, $query);
+                                $productsCount = mysqli_fetch_array($result);
+                        
+                                mysqli_close($conn);
+                            ?>
+                            <div class="h5 mb-0 font-weight-bold text-content"><?php echo $productsCount[0] ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-tags fa-2x text-info"></i>
@@ -62,11 +83,21 @@ include 'includes/topbar.php'
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Customers
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Total Customers
                             </div>
+                            <?php
+                                $conn = db_connect();
+
+                                $query = "SELECT COUNT(`Cust_ID`) from `customer`";
+                                $result = mysqli_query($conn, $query);
+                                $customersCount = mysqli_fetch_array($result);
+                        
+                                mysqli_close($conn);
+                            ?>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-content">67</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-content"><?php echo $customersCount[0] ?></div>
                                 </div>
                             </div>
                         </div>
@@ -85,8 +116,19 @@ include 'includes/topbar.php'
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                Total Revenue</div>
-                            <div class="h5 mb-0 font-weight-bold text-content">P 3,456.00</div>
+                                Total Revenue
+                            </div>
+                            <?php
+                                $conn = db_connect();
+
+                                $query = "SELECT SUM(`Total_Price`) from `orders` where `Order_Status`='claimed'";
+                                $result = mysqli_query($conn, $query);
+                                $revenueTotal = mysqli_fetch_array($result);
+                                if ($revenueTotal[0] == 0) $revenueTotal[0] = "0.00";
+                        
+                                mysqli_close($conn);
+                            ?>
+                            <div class="h5 mb-0 font-weight-bold text-content">P <?php echo $revenueTotal[0] ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-money-bill fa-2x text-danger"></i>
@@ -106,64 +148,52 @@ include 'includes/topbar.php'
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4 border-section">
-                <div class="card-header py-3 bg-section border-section">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-section border-section">
                     <h6 class="m-0 font-weight-bold text-content"><b>Recent Orders</b></h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-content"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="orders.php">See all</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body bg-section2">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-content bg-section2 text-content" width="100%" cellspacing="0">
+                        <table class="table table-striped table-bordered table-content bg-section2 text-content" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th>Order ID</th>
-                                    <th>Date Ordered</th>
+                                    <th>Placement Date</th>
                                     <th>Fulfillment Date</th>
-                                    <th>Customer Name</th>
                                     <th>Status</th>
                                     <th>Price</th>
                                 </tr>
                             </thead>
                             
                             <tbody>
+                            <?php
+                                $conn = db_connect();
+
+                                $query = "SELECT * FROM `orders` ORDER BY `Order_ID` DESC LIMIT 5";
+                                $result = mysqli_query($conn, $query);
+                                $categories = array();
+                                while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
                                 <tr>
-                                    <td>2</td>
-                                    <td>01/14/2022</td>
-                                    <td>01/20/2022</td>
-                                    <td>John Doe</td>
-                                    <td>In Progress</td>
-                                    <td>P 550.00</td>
+                                    <td><?php echo $row['Order_ID'] ?></td>
+                                    <td><?php echo date('D d F, Y', strtotime($row['Order_Placement_Date'])) ?></td>
+                                    <td><?php echo date('D d F, Y', strtotime($row['Order_Fullfilment_Date'])) ?></td>
+                                    <td><?php echo $row['Order_Status'] ?></td>
+                                    <td>P <?php echo $row['Total_Price'] ?></td>
                                 </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>01/14/2022</td>
-                                    <td>01/22/2022</td>
-                                    <td>James Doe</td>
-                                    <td>Pending</td>
-                                    <td>P 650.00</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>01/14/2022</td>
-                                    <td>01/23/2022</td>
-                                    <td>Joe Doe</td>
-                                    <td>Pending</td>
-                                    <td>P 750.00</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>01/14/2022</td>
-                                    <td>01/18/2022</td>
-                                    <td>Jean Doe</td>
-                                    <td>Pending</td>
-                                    <td>P 950.00</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>01/14/2022</td>
-                                    <td>01/18/2022</td>
-                                    <td>Jean Doe</td>
-                                    <td>Pending</td>
-                                    <td>P 950.00</td>
-                                </tr>             
+                            <?php 
+                                } 
+                            
+                                mysqli_close($conn);
+                            ?>
                             </tbody>
                         </table>
                     </div>
@@ -216,11 +246,9 @@ include 'includes/topbar.php'
     </div>
 
     <!-- Content Row -->
-    <div class="row">
-
+    <!-- <div class="row">
         <div class="col-xl-8 col-lg-5mb-7 mb-4">
         <div class="card shadow mb-4 border-section">
-                <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-section border-section">
                     <h6 class="m-0 font-weight-bold text-content"><b>Earnings Overview</b></h6>
                     <div class="dropdown no-arrow">
@@ -238,17 +266,14 @@ include 'includes/topbar.php'
                         </div>
                     </div>
                 </div>
-                <!-- Card Body -->
                 <div class="card-body bg-section2">
                     <div class="chart-area">
                         <canvas id="myAreaChart"></canvas>
                     </div>
                 </div>
             </div>
-             
-                    
         </div>
-    </div>
+    </div> -->
 
 </div>
 <!-- /.container-fluid -->
