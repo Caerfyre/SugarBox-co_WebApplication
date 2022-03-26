@@ -49,7 +49,7 @@
              
             <!-- Nav Item - Orders -->
             <li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == 'orders.php') echo 'active' ?>">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="orders.php">
                     <i class="fas fa-fw fa-clipboard"></i>
                     <span>Orders</span></a>
             </li>
