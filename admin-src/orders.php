@@ -6,7 +6,7 @@ include 'includes/topbar.php'
 ?>
 
 <head>
-    <title>SugarBox&co. Admin - Products</title>
+    <title>SugarBox&co. Admin - Orders</title>
 </head>
 
 <!-- Begin Page Content -->
@@ -23,9 +23,9 @@ include 'includes/topbar.php'
             <div class="d-sm-flex align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-content"><b>All Orders</b></h6>
                 <div>
-                    <button type="button" class="btn btn-subheading">All</button>
-                    <button type="button" class="btn btn-outline-subheading">Side Products</button>
-                    <button type="button" class="btn btn-outline-subheading">Cakes</button>
+                    <a href="orders.php?q=all" type="button" class="btn <?php echo (isset($_GET['q']) && $_GET['q'] == 'all') || !isset($_GET['q']) ? 'btn-subheading' : 'btn-outline-subheading' ?>">All</a>
+                    <a href="orders.php?q=sides" type="button" class="btn <?php echo isset($_GET['q']) && $_GET['q'] == 'sides' ? 'btn-subheading' : 'btn-outline-subheading' ?>">Sides</a>
+                    <a href="orders.php?q=cakes" type="button" class="btn <?php echo isset($_GET['q']) && $_GET['q'] == 'cakes' ? 'btn-subheading' : 'btn-outline-subheading' ?>">Cakes</a>
                 </div>
             </div>
         </div>
@@ -37,14 +37,7 @@ include 'includes/topbar.php'
             require '../scripts/database/DB-connect.php';
             $conn = db_connect();
 
-            $orders_query = "SELECT 
-                            `orders`.`Order_ID`, 
-                            `orders`.`Cust_ID`, 
-                            `orders`.`Order_Placement_Date`, 
-                            `orders`.`Order_Fullfilment_Date`, 
-                            `orders`.`Order_Type`, 
-                            `orders`.`Order_Status`, 
-                            `orders`.`Total_Price`,
+            $orders_query = "SELECT `orders`.*,
                             `customer`.`Cust_FName`, 
                             `customer`.`Cust_LName`
                             FROM `orders` 
@@ -67,9 +60,10 @@ include 'includes/topbar.php'
                             <th>Type</th>
                             <th>Status</th>
                             <th>Price</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
-                    <!-- <tfoot class="bg-light text-center" >
+                    <tfoot class="bg-light text-center" >
                         <tr>
                             <th>Order ID</th>
                             <th>Customer</th>
@@ -78,8 +72,9 @@ include 'includes/topbar.php'
                             <th>Type</th>
                             <th>Status</th>
                             <th>Price</th>
+                            <th>Action</th>
                         </tr>
-                    </tfoot> -->
+                    </tfoot>
                     <tbody class="text-center">
                         <?php while($row = mysqli_fetch_assoc($orders_query_run)) { ?>
                         <tr>
@@ -89,7 +84,8 @@ include 'includes/topbar.php'
                             <td><?php echo date('D d F, Y', strtotime($row['Order_Fullfilment_Date'])) ?></td>
                             <td><?php echo $row['Order_Type'] ?></td>
                             <td><?php echo $row['Order_Status'] ?></td>
-                            <td><?php echo $row['Total_Price'] ?></td>
+                            <td>P <?php echo $row['Total_Price'] ?></td>
+                            <td><a href="orderDetails.php?order_ID=<?php echo $row['Order_ID'] ?>" type="button" class="btn btn-subheading px-2 py-1">View</a></td>
                         </tr>
                         <?php } ?>
                     </tbody>
@@ -107,6 +103,7 @@ include 'includes/topbar.php'
 <!-- End of Main Content -->
 
 <?php
+mysqli_close($conn);
 include 'includes/footer.php';
 include 'includes/logoutModal.php';
 include 'includes/scripts.php'
