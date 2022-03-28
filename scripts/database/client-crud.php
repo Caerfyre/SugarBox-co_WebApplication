@@ -195,10 +195,18 @@ if (isset($_POST['pushOrder'])) {
         foreach ($_SESSION['cart'] as $cartItem) {
             $prodID = $cartItem['id'];
             $quantity = $cartItem['quantity'];
+            $price = $cartItem['price'];
+
+            // GET Size_ID from SIDEPRODUCT_SIZES table
+            $query = "SELECT `Size_ID` FROM `sideproduct_sizes` WHERE `Prod_ID`='$prodID' AND `Size_Price`='$price' LIMIT 1";
+            $result = mysqli_query($conn, $query);
+            $sizeID = mysqli_fetch_array($result);
+
+            $sizeID = $sizeID[0];
             $price = $cartItem['price'] * $quantity;
 
-            $query = "INSERT INTO `order_line`(`Order_ID`, `Prod_ID`, `Order_Quantity`, `Line_Price`) 
-                    VALUES ('$orderID', '$prodID', '$quantity', '$price')";
+            $query = "INSERT INTO `order_line`(`Order_ID`, `Prod_ID`, `Size_ID`, `Order_Quantity`, `Line_Price`) 
+                    VALUES ('$orderID', '$prodID', '$sizeID', '$quantity', '$price')";
             $result = mysqli_query($conn, $query);
 
             if ($result) {

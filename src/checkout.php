@@ -36,14 +36,14 @@
                     }
                 ?>
                 <form id="confirmForm" class="container-fluid px-0 mt-5 pb-4" 
-                    action="../scripts/database/client-crud.php<?php if (isset($_GET['type']) && $_GET['type'] == 2) 
-                        echo '?type=custom' . 
-                        '&flavor=' . $_POST['flavor'] . 
-                        '&layers=' . $_POST['layers'] . 
-                        '&size=' . $size . 
-                        '&name=' . $_POST['name'] . 
-                        '&description=' . $description?>" 
-                    method="post">
+                    action="../scripts/database/client-crud.php<?php 
+                        if (isset($_GET['type']) && $_GET['type'] == 2) 
+                            echo '?type=custom' . 
+                            '&flavor=' . $_POST['flavor'] . 
+                            '&layers=' . $_POST['layers'] . 
+                            '&size=' . $size . 
+                            '&name=' . $_POST['name'] . 
+                            '&description=' . $description ?>" method="post">
                     <div class="row mb-5">
                         <label class="form-label text-subheading fw-bolder mb-2" for="type">ORDER TYPE:</label>
                         <div class="col-2">
