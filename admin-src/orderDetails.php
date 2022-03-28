@@ -46,8 +46,9 @@ include 'includes/topbar.php'
             $payment = mysqli_fetch_assoc($result);
 
             // Get Order Line
-            $query = "SELECT `order_line`.*, `side_products`.* FROM `order_line` 
+            $query = "SELECT `order_line`.*, `side_products`.*, `sideproduct_sizes`.* FROM `order_line` 
                         INNER JOIN `side_products` ON `order_line`.`Prod_ID`=`side_products`.`SideProd_ID`
+                        INNER JOIN `sideproduct_sizes` ON `order_line`.`Size_ID`=`sideproduct_sizes`.`Size_ID`
                         WHERE `Order_ID`='$orderID'";
             $result = mysqli_query($conn, $query);
             $orderType = "Side";
@@ -144,7 +145,7 @@ include 'includes/topbar.php'
                     <?php foreach ($orderLine as $item) { ?>
                         <li class="col-3 text-content font-weight-bold mb-4"><b class="font-weight-bolder"><?php echo $item['SideProd_Name'] ?></b>
                         <img class="card-img mt-2" style="width:150px;height:155px;object-fit:cover" src="../assets/<?php echo $item['SideProd_Image'] ?>" alt="<?php echo $item['SideProd_Name'] ?>">
-                        <p class="text-content font-weight-bold my-2"><b class="font-weight-bolder">Size:&nbsp;</b> <?php echo "" ?></p>
+                        <p class="text-content font-weight-bold my-2"><b class="font-weight-bolder">Size:&nbsp;</b> <?php echo $item['Size_Description'] ?></p>
                         <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Quantity:&nbsp;</b> <?php echo $item['Order_Quantity'] ?></p>
                         <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Line Price:&nbsp;</b> P <?php echo $item['Line_Price'] ?></p>
                     <?php } ?>
