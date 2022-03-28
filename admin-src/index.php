@@ -161,6 +161,14 @@ include 'includes/topbar.php'
                     </div>
                 </div>
                 <div class="card-body bg-section2">
+                <?php 
+                    $conn = db_connect();
+
+                    $query = "SELECT * FROM `orders` ORDER BY `Order_ID` DESC LIMIT 5";
+                    $result = mysqli_query($conn, $query);
+                    
+                    if (mysqli_num_rows($result) > 0) {
+                ?>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-content bg-section2 text-content" width="100%" cellspacing="0">
                             <thead>
@@ -174,14 +182,7 @@ include 'includes/topbar.php'
                             </thead>
                             
                             <tbody>
-                            <?php
-                                $conn = db_connect();
-
-                                $query = "SELECT * FROM `orders` ORDER BY `Order_ID` DESC LIMIT 5";
-                                $result = mysqli_query($conn, $query);
-                                $categories = array();
-                                while ($row = mysqli_fetch_assoc($result)) {
-                            ?>
+                            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                                 <tr>
                                     <td><?php echo $row['Order_ID'] ?></td>
                                     <td><?php echo date('D d F, Y', strtotime($row['Order_Placement_Date'])) ?></td>
@@ -189,14 +190,14 @@ include 'includes/topbar.php'
                                     <td><?php echo $row['Order_Status'] ?></td>
                                     <td>P <?php echo $row['Total_Price'] ?></td>
                                 </tr>
-                            <?php 
-                                } 
-                            
-                                mysqli_close($conn);
-                            ?>
+                            <?php } ?>
                             </tbody>
                         </table>
                     </div>
+                <?php } else { ?>
+                    <!-- No Orders -->
+                    <p class="text-center lead text-content font-weight-bolder my-5">No Orders To Be Found</p>
+                <?php } ?>
                 </div>
 
             </div>
@@ -282,6 +283,7 @@ include 'includes/topbar.php'
 <!-- End of Main Content -->
 
 <?php
+mysqli_close($conn);
 include 'includes/footer.php';
 include 'includes/logoutModal.php';
 include 'includes/scripts.php'
