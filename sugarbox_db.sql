@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2022 at 03:22 PM
+-- Generation Time: Mar 28, 2022 at 06:15 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -194,6 +194,7 @@ CREATE TABLE `orders` (
 CREATE TABLE `order_line` (
   `Order_ID` int(11) NOT NULL,
   `Prod_ID` int(11) NOT NULL,
+  `Size_ID` int(11) NOT NULL,
   `Order_Quantity` int(11) NOT NULL,
   `Line_Price` float(15,2) NOT NULL COMMENT 'Price x QTY'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -367,7 +368,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_line`
   ADD KEY `Prod_ID` (`Prod_ID`),
-  ADD KEY `Order_ID` (`Order_ID`);
+  ADD KEY `Order_ID` (`Order_ID`),
+  ADD KEY `Size_ID` (`Size_ID`);
 
 --
 -- Indexes for table `payment`
@@ -513,7 +515,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_line`
   ADD CONSTRAINT `order_line_ibfk_1` FOREIGN KEY (`Order_ID`) REFERENCES `orders` (`Order_ID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `order_line_ibfk_2` FOREIGN KEY (`Prod_ID`) REFERENCES `side_products` (`SideProd_ID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `order_line_ibfk_2` FOREIGN KEY (`Prod_ID`) REFERENCES `side_products` (`SideProd_ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_line_ibfk_3` FOREIGN KEY (`Size_ID`) REFERENCES `sideproduct_sizes` (`Size_ID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `payment`
