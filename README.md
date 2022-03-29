@@ -8,10 +8,24 @@ Sugarbox&co is a growing small-scale pastry business based on Cebu, Philippines 
 ## Project Description
 The primary objective of this project is to successfully create an Information System for Sugarbox&co using the database approach. This system is expected to contain functionalities of managing data that is received, processed, stored, or sent from transactions and other business-related activities. These functions will be focused on allowing the client user to have better data management, time-saving processes, and other benefits brought by the database approach.
 
+## Screenshots
+Coming soon
+
+## Contribution
+Guidelines for creating an _enhancement_ issue:
+- Issue must contain two sections: **Overview** and **To-do**
+- **Overview** provides an introduction to the feature/enhancement request
+- **To-do** provides a task list in order to achieve the requested feature/enhancement
+- Self-assign issue if you don't want other contributors to work on it
+- Provide additional sections and/or details as needed
+
 ## Project Setup
+1. Install node modules
 ```sh-session
-npm install
+npm i
 ```
+2. Run Apache and MySQL server on XAMPP
+3. Import sugarbox_db database to MySQL
 
 ## Links
 * [Figma Prototype](https://www.figma.com/file/YdoiT4VOOJoGmICwCWTRmv/CIS-1202-Exercise-2-WebDev-and-Design-YBAS?node-id=104%3A14172)
