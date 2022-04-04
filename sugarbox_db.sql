@@ -54,7 +54,7 @@ CREATE TABLE `cake` (
   `Cake_ID` int(11) NOT NULL,
   `Flavor_Name` varchar(40) NOT NULL,
   `Design_Name` varchar(40) NOT NULL,
-  `Design_Description` varchar(100) NOT NULL,
+  `Design_Description` varchar(255) NOT NULL,
   `CakeSize_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -272,7 +272,7 @@ CREATE TABLE `side_products` (
   `SideProd_ID` int(11) NOT NULL,
   `SideProd_Name` varchar(40) NOT NULL,
   `Categ_ID` int(11) NOT NULL,
-  `SideProd_Desc` varchar(100) NOT NULL,
+  `SideProd_Desc` varchar(255) NOT NULL,
   `SideProd_Image` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
