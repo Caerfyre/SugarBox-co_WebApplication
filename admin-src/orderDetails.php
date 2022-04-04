@@ -55,7 +55,10 @@ include 'includes/topbar.php'
 
             // Get Cake Order
             if (!mysqli_num_rows($result) > 0) {
-                $query = "SELECT * FROM `cake_orders` WHERE `Order_ID`='$orderID'";
+                $query = "SELECT `cake_orders`.*, `cake`.*, `cake_size`.* FROM `cake_orders` 
+                            INNER JOIN `cake` ON `cake_orders`.`Cake_ID`=`cake`.`Cake_ID`
+                            INNER JOIN `cake_size` ON `cake`.`CakeSize_ID`=`cake_size`.`Size_ID`
+                            WHERE `Order_ID`='$orderID'";
                 $result = mysqli_query($conn, $query);
                 $orderType = "Cake";
             }
@@ -105,6 +108,13 @@ include 'includes/topbar.php'
         <!---------- Customer Info ---------->
         <div class="d-sm-flex align-items-center justify-content-between">
             <h4 class="text-subheading font-weight-bold">Customer Info</h4> 
+            <div class="d-flex">
+            <?php if (!isset($_POST["editCustomerDetails"])) { ?>   
+                <input class="btn btn-subheading px-2 py-0" name="editCustomerDetails" type="submit" value="Update">
+            <?php } else {?>
+                <input class="btn btn-outline-danger px-2 py-0" name="cancelEditCustomerDetails" type="submit" value="Cancel">
+            <?php }?>
+            </div>
         </div>         
         <hr class="bg-section mt-0">
         <div class="mb-4 d-flex">
@@ -158,10 +168,38 @@ include 'includes/topbar.php'
 
             <!---------- Cake Details ----------->
             <div class="d-sm-flex align-items-center justify-content-between">
-                <h4 class="text-subheading font-weight-bold">Cake Details</h4> 
+                <h4 class="text-subheading font-weight-bold">Cake Details</h4>
+                <div class="d-flex">
+                <?php if (!isset($_POST["editCakeDetails"])) { ?>   
+                    <input class="btn btn-subheading px-2 py-0" name="editCakeDetails" type="submit" value="Update">
+                <?php } else {?>
+                    <input class="btn btn-outline-danger px-2 py-0" name="cancelEditCakeDetails" type="submit" value="Cancel">
+                <?php }?>
+                </div>
             </div>         
             <hr class="bg-section mt-0">
             <div class="mb-4 d-flex">
+                <div class="col">
+                    <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Flavor:&nbsp;</b> <?php echo $orderLine[0]['Flavor_Name'] ?></p>
+                    <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Design Name:&nbsp;</b> "<?php echo $orderLine[0]['Design_Name'] ?>"</p>
+                    <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Description:&nbsp;</b> "<?php echo $orderLine[0]['Design_Description'] ?>"</p>
+                    <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Size:&nbsp;</b> <?php echo $orderLine[0]['Layer_Count'] . " layer/s, " . $orderLine[0]['Layer_Size'] ?></p>
+                </div>
+                <div class="col">
+                    <p class="text-content font-weight-bold my-2"><b class="font-weight-bolder">Price:&nbsp;</b> <span class="<?php 
+                        switch ($orderLine[0]['Price_Status']) {
+                            case 'Not Set': echo 'text-danger'; break;
+                            case 'Set': echo 'text-success'; break;
+                        }
+                    ?>"><?php echo $orderLine[0]['Price_Status'] ?></span></p>
+                    <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Status:&nbsp;</b> <span class="<?php 
+                        switch ($orderLine[0]['Status']) {
+                            case 'Pending': echo 'text-titleColor'; break;
+                            case 'Accepted': echo 'text-success'; break;
+                            case 'Rejected': echo 'text-danger'; break;
+                        }
+                    ?>"><?php echo $orderLine[0]['Status'] ?></span></p>
+                </div>
             </div>
             <!---------- Cake Details ----------->
 
