@@ -13,7 +13,7 @@ include 'includes/topbar.php'
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <div class="d-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-content"><b>Order Details</b></h1>
     </div>
 
@@ -70,14 +70,10 @@ include 'includes/topbar.php'
         ?>
 
         <!---------- Order Details ---------->
-        <div class="d-sm-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center justify-content-between">
             <h4 class="text-subheading font-weight-bold">Order Details</h4> 
             <div class="d-flex">
-            <?php if (!isset($_POST["editOrderDetails"])) { ?>   
-                <input class="btn btn-subheading px-2 py-0" name="editOrderDetails" type="submit" value="Update">
-            <?php } else {?>
-                <input class="btn btn-outline-danger px-2 py-0" name="cancelEditOrderDetails" type="submit" value="Cancel">
-            <?php }?>
+                <input class="btn btn-subheading px-2 py-0" data-toggle="modal" data-target="#editOrderDetails" type="submit" value="Update">
             </div>
         </div>         
         <hr class="bg-section mt-0">
@@ -101,20 +97,20 @@ include 'includes/topbar.php'
                         case 'Cancelled': echo "text-danger"; break;
                     }
                 ?>"><?php echo $order['Order_Status'] ?></span></p>
-            </div>                
+            </div>
         </div>
         <!---------- Order Details ---------->
         
         <!---------- Customer Info ---------->
-        <div class="d-sm-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center justify-content-between">
             <h4 class="text-subheading font-weight-bold">Customer Info</h4> 
-            <div class="d-flex">
+            <form action="" method="POST" class="d-flex">
             <?php if (!isset($_POST["editCustomerDetails"])) { ?>   
                 <input class="btn btn-subheading px-2 py-0" name="editCustomerDetails" type="submit" value="Update">
             <?php } else {?>
                 <input class="btn btn-outline-danger px-2 py-0" name="cancelEditCustomerDetails" type="submit" value="Cancel">
             <?php }?>
-            </div>
+            </form>
         </div>         
         <hr class="bg-section mt-0">
         <div class="mb-4 d-flex">
@@ -145,7 +141,7 @@ include 'includes/topbar.php'
         <?php if ($orderType == "Side") { ?>
 
             <!-------------- Items -------------->
-            <div class="d-sm-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center justify-content-between">
                 <h4 class="text-subheading font-weight-bold">Items</h4> 
             </div>         
             <hr class="bg-section mt-0">
@@ -167,15 +163,15 @@ include 'includes/topbar.php'
         <?php } else if ($orderType == "Cake") { ?>
 
             <!---------- Cake Details ----------->
-            <div class="d-sm-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center justify-content-between">
                 <h4 class="text-subheading font-weight-bold">Cake Details</h4>
-                <div class="d-flex">
+                <form action="" method="POST" class="d-flex">
                 <?php if (!isset($_POST["editCakeDetails"])) { ?>   
                     <input class="btn btn-subheading px-2 py-0" name="editCakeDetails" type="submit" value="Update">
                 <?php } else {?>
                     <input class="btn btn-outline-danger px-2 py-0" name="cancelEditCakeDetails" type="submit" value="Cancel">
                 <?php }?>
-                </div>
+                </form>
             </div>         
             <hr class="bg-section mt-0">
             <div class="mb-4 d-flex">
@@ -203,13 +199,51 @@ include 'includes/topbar.php'
             </div>
             <!---------- Cake Details ----------->
 
-        <?php } ?>
-
-        <?php } ?>
+        <?php }} ?>
         </div>
     </div>                
 </div>
 <!-- End of Main Content -->
+
+<!-- Add Information Modal -->
+<div class="modal fade" id="editOrderDetails" tabindex="-1" role="dialog" aria-labelledby="editOrderDetailsModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-subheading" id="editOrderDetailsModal"><b>Update Order Details</b></h5>
+                <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form action="../scripts/database/admin-crud.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="orderID" value="<?php echo $_GET['order_ID'] ?>">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="text-content font-weight-bold">Total Price</label>
+                        <input type="number" step='0.01' name="newPrice" class="form-control border-section text-content" value="<?php echo $order['Total_Price'] ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-content font-weight-bold">Status</label>
+                        <select class="form-control border-section text-content" name="newStatus" required>
+                            <option value="Pending" <?php if ($order['Order_Status'] == "Pending") echo "selected" ?>>Pending</option>
+                            <option value="In Progress" <?php if ($order['Order_Status'] == "In Progress") echo "selected" ?>>In Progress</option>
+                            <option value="Ready for pick-up" <?php if ($order['Order_Status'] == "Ready for pick-up") echo "selected" ?>>Ready for pick-up</option>
+                            <option value="Delivering" <?php if ($order['Order_Status'] == "Delivering") echo "selected" ?>>Delivering</option>
+                            <option value="Delivery failed" <?php if ($order['Order_Status'] == "Delivery failed") echo "selected" ?>>Delivery failed</option>
+                            <option value="Claimed" <?php if ($order['Order_Status'] == "Claimed") echo "selected" ?>>Claimed</option>
+                            <option value="Cancelled" <?php if ($order['Order_Status'] == "Cancelled") echo "selected" ?>>Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        <button type="submit" name="editOrderDetails" class="btn btn-titleColor">Confirm</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <?php
 mysqli_close($conn);

@@ -281,3 +281,28 @@ if (isset($_POST['deleteCategBtn'])) {
 
     mysqli_close($conn);
 }
+
+// Update Order Details
+if (isset($_POST['editOrderDetails'])) {
+    $conn = db_connect();
+
+    $orderID = $_POST['orderID'];
+    $newPrice = $_POST['newPrice'];
+    $newStatus = $_POST['newStatus'];
+
+    $edit_query = "UPDATE `orders` SET `Order_Status` = '$newStatus', `Total_Price` = '$newPrice' 
+                    WHERE Order_ID = '$orderID'";
+    $edit_query_run = mysqli_query($conn, $edit_query);
+
+    if($edit_query_run){
+        $_SESSION['status'] = "Order Details Successfully Updated!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/orderDetails.php?order_ID=${orderID}");
+    }else{
+        $_SESSION['status'] = "Failed to Update Order Details";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/orderDetails.php?order_ID=${orderID}");
+    }
+
+    mysqli_close($conn);
+}
