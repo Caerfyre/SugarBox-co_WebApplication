@@ -31,7 +31,7 @@ CREATE TABLE `accounts` (
   `Account_ID` int(11) NOT NULL,
   `Acc_Username` varchar(40) NOT NULL,
   `Acc_Password` varchar(255) NOT NULL,
-  `Date_Created` date NOT NULL DEFAULT current_timestamp(),
+  `Date_Created` timestamp NOT NULL DEFAULT current_timestamp(),
   `Acc_Status` enum('0','1','2','') NOT NULL COMMENT '0-Banned,1-Inactive (>60 days), 2-Active',
   `User_Type` enum('0','1','','') NOT NULL COMMENT '0-Admin, 1-Customer '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -178,7 +178,7 @@ CREATE TABLE `ingredients` (
 CREATE TABLE `orders` (
   `Order_ID` int(11) NOT NULL,
   `Cust_ID` int(11) NOT NULL,
-  `Order_Placement_Date` date NOT NULL DEFAULT current_timestamp(),
+  `Order_Placement_Date` timestamp NOT NULL DEFAULT current_timestamp(),
   `Order_Fullfilment_Date` date NOT NULL,
   `Order_Type` enum('Pick-up','Delivery','','') NOT NULL COMMENT '''Pick-up'', ''Delivery''',
   `Order_Status` enum('Pending','In progress','Ready for pick-up','Delivering','Delivery failed','Claimed','Cancelled') NOT NULL COMMENT '''Pending'',''In progress'',''Ready for pick-up'',''Delivering'',''Delivery failed'',''Claimed'',''Cancelled''',
