@@ -22,7 +22,7 @@ Guidelines for creating an _enhancement_ issue:
 ## Project Setup
 ### XAMPP
 1. Install node modules
-```sh-session
+```
 npm install
 ```
 2. Run Apache and MySQL server on XAMPP
@@ -36,7 +36,7 @@ npm install
 docker pull mattrayner/lamp
 ```
 2. Run services in `docker-compose.yml`
-3. Create `sugarbox_db schema` from the query console
+3. Create `sugarbox_db` schema from the query console
 ```
 create schema sugarbox_db;
 use sugarbox_db;
