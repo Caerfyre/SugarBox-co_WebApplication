@@ -1,4 +1,4 @@
-<p align="center">
+<p style="text-align: center">
   <img src="https://raw.githubusercontent.com/Caerfyre/IM2-Project/main/assets/sblogo-2.svg"/> 
 </p>
 
@@ -20,12 +20,29 @@ Guidelines for creating an _enhancement_ issue:
 - Provide additional sections and/or details as needed
 
 ## Project Setup
+### XAMPP
 1. Install node modules
 ```sh-session
-npm i
+npm install
 ```
 2. Run Apache and MySQL server on XAMPP
-3. Import sugarbox_db database to MySQL
+3. Create `sugarbox_db` schema in phpMyAdmin
+4. Import `sugarbox_db.sql` to phpMyAdmin
+5. Access app on http://localhost:8080/
+
+### Docker
+1. Download Docker-LAMP
+```
+docker pull mattrayner/lamp
+```
+2. Run services in `docker-compose.yml`
+3. Create `sugarbox_db schema` from the query console
+```
+create schema sugarbox_db;
+use sugarbox_db;
+```
+4. Run `sugarbox_db.sql`
+5. Access app on http://localhost:8080/
 
 ## Links
 * [Figma Prototype](https://www.figma.com/file/YdoiT4VOOJoGmICwCWTRmv/CIS-1202-Exercise-2-WebDev-and-Design-YBAS?node-id=104%3A14172)
@@ -34,8 +51,8 @@ npm i
 ## Contributors
 **IM-2 Group 9**
   - Niña Therese Ybas
-  - Vladimir Roman
   - Edwin Bartlett
+  - Vladimir Roman
   - Eloisa Españo
 
 ## Project Status
