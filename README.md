@@ -11,14 +11,6 @@ The primary objective of this project is to successfully create an Information S
 ## Screenshots
 Coming soon
 
-## Contribution
-Guidelines for creating an _enhancement_ issue:
-- Issue must contain two sections: **Overview** and **To-do**
-- **Overview** provides an introduction to the feature/enhancement request
-- **To-do** provides a task list in order to achieve the requested feature/enhancement
-- Self-assign issue if you don't want other contributors to work on it
-- Provide additional sections and/or details as needed
-
 ## Project Setup
 ### XAMPP
 1. Install node modules
@@ -43,6 +35,14 @@ use sugarbox_db;
 ```
 4. Run `sugarbox_db.sql`
 5. Access app on http://localhost:8080/
+
+## Contribution
+Guidelines for creating an _enhancement_ issue:
+- Issue must contain two sections: **overview** and **to-do**
+- The **overview** provides an introduction to the feature/enhancement request
+- The **to-do** provides a task list in order to achieve the requested feature/enhancement
+- Self-assign your issue if you don't want other contributors to work on it
+- Provide additional sections and/or details as needed
 
 ## Links
 * [Figma Prototype](https://www.figma.com/file/YdoiT4VOOJoGmICwCWTRmv/CIS-1202-Exercise-2-WebDev-and-Design-YBAS?node-id=104%3A14172)
