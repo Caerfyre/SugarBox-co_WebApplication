@@ -103,14 +103,10 @@ include 'includes/topbar.php'
         
         <!---------- Customer Info ---------->
         <div class="d-flex align-items-center justify-content-between">
-            <h4 class="text-subheading font-weight-bold">Customer Info</h4> 
-            <form action="" method="POST" class="d-flex">
-            <?php if (!isset($_POST["editCustomerDetails"])) { ?>   
-                <input class="btn btn-subheading px-2 py-0" name="editCustomerDetails" type="submit" value="Update">
-            <?php } else {?>
-                <input class="btn btn-outline-danger px-2 py-0" name="cancelEditCustomerDetails" type="submit" value="Cancel">
-            <?php }?>
-            </form>
+            <h4 class="text-subheading font-weight-bold">Customer Info</h4>
+            <div class="d-flex">
+                <input class="btn btn-subheading px-2 py-0" data-toggle="modal" data-target="#editCustInfo" type="submit" value="Update">
+            </div>
         </div>         
         <hr class="bg-section mt-0">
         <div class="mb-4 d-flex">
@@ -225,20 +221,63 @@ include 'includes/topbar.php'
                         <input type="number" step='0.01' name="newPrice" class="form-control border-section text-content" value="<?php echo $order['Total_Price'] ?>" required>
                     </div>
                     <div class="form-group">
-                        <label class="text-content font-weight-bold">Status</label>
+                        <label class="text-content font-weight-bold">Order Status</label>
                         <select class="form-control border-section text-content" name="newStatus" required>
-                            <option value="Pending" <?php if ($order['Order_Status'] == "Pending") echo "selected" ?>>Pending</option>
-                            <option value="In Progress" <?php if ($order['Order_Status'] == "In progress") echo "selected" ?>>In Progress</option>
-                            <option value="Ready for pick-up" <?php if ($order['Order_Status'] == "Ready for pick-up") echo "selected" ?>>Ready for pick-up</option>
-                            <option value="Delivering" <?php if ($order['Order_Status'] == "Delivering") echo "selected" ?>>Delivering</option>
-                            <option value="Delivery failed" <?php if ($order['Order_Status'] == "Delivery failed") echo "selected" ?>>Delivery failed</option>
-                            <option value="Claimed" <?php if ($order['Order_Status'] == "Claimed") echo "selected" ?>>Claimed</option>
-                            <option value="Cancelled" <?php if ($order['Order_Status'] == "Cancelled") echo "selected" ?>>Cancelled</option>
+                            <option value="Pending" <?php if ($order['Order_Status'] == "Pending") echo "selected"; ?>>Pending</option>
+                            <option value="In Progress" <?php if ($order['Order_Status'] == "In progress") echo "selected"; ?>>In Progress</option>
+                            <option value="Ready for pick-up" <?php if ($order['Order_Status'] == "Ready for pick-up") echo "selected"; ?>>Ready for pick-up</option>
+                            <option value="Delivering" <?php if ($order['Order_Status'] == "Delivering") echo "selected"; ?>>Delivering</option>
+                            <option value="Delivery failed" <?php if ($order['Order_Status'] == "Delivery failed") echo "selected"; ?>>Delivery failed</option>
+                            <option value="Claimed" <?php if ($order['Order_Status'] == "Claimed") echo "selected"; ?>>Claimed</option>
+                            <option value="Cancelled" <?php if ($order['Order_Status'] == "Cancelled") echo "selected"; ?>>Cancelled</option>
                         </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                         <button type="submit" name="editOrderDetails" class="btn btn-titleColor">Confirm</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Customer Info Modal -->
+<div class="modal fade" id="editCustInfo" tabindex="-1" role="dialog" aria-labelledby="editCustInfoModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-subheading" id="editCustInfoModal"><strong>Update Customer Information</strong></h5>
+                <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form action="../scripts/database/admin-crud.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="orderID" value="<?php echo $_GET['order_ID'] ?>">
+                <input type="hidden" name="paymentID" value="<?php echo $payment['Payment_ID'] ?>">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="text-content font-weight-bold">Payment Type</label>
+                        <select class="form-control border-section text-content" name="newType" required>
+                            <option value="Cash" <?php if ($payment['Payment_Type'] == "Cash") echo "selected"; ?>>Cash</option>
+                            <option value="BDO" <?php if ($payment['Payment_Type'] == "BDO") echo "selected"; ?>>BDO</option>
+                            <option value="BPI" <?php if ($payment['Payment_Type'] == "BPI") echo "selected"; ?>>BPI</option>
+                            <option value="Paypal" <?php if ($payment['Payment_Type'] == "Paypal") echo "selected"; ?>>Paypal</option>
+                            <option value="GCash" <?php if ($payment['Payment_Type'] == "GCash") echo "selected"; ?>>GCash</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-content font-weight-bold">Payment Status</label>
+                        <select class="form-control border-section text-content" name="newStatus" required>
+                            <option value="0" <?php if ($payment['Payment_Status'] == "0") echo "selected"; ?>>Not Paid</option>
+                            <option value="1" <?php if ($payment['Payment_Status'] == "1") echo "selected"; ?>>Partial (50%)</option>
+                            <option value="2" <?php if ($payment['Payment_Status'] == "2") echo "selected"; ?>>Paid</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        <button type="submit" name="editCustInfo" class="btn btn-titleColor">Confirm</button>
                     </div>
                 </div>
             </form>

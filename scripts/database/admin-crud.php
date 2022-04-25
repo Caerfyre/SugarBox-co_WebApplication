@@ -282,6 +282,8 @@ if (isset($_POST['deleteCategBtn'])) {
     mysqli_close($conn);
 }
 
+/// ORDER DETAILS ///
+
 // Update Order Details
 if (isset($_POST['editOrderDetails'])) {
     $conn = db_connect();
@@ -300,6 +302,32 @@ if (isset($_POST['editOrderDetails'])) {
         header("Location: ../../admin-src/orderDetails.php?order_ID=${orderID}");
     }else{
         $_SESSION['status'] = "Failed to Update Order Details";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/orderDetails.php?order_ID=${orderID}");
+    }
+
+    mysqli_close($conn);
+}
+
+// Update Customer Info
+if (isset($_POST['editCustInfo'])) {
+    $conn = db_connect();
+
+    $orderID = $_POST['orderID'];
+    $paymentID = $_POST['paymentID'];
+    $newType = $_POST['newType'];
+    $newStatus = $_POST['newStatus'];
+
+    $edit_query = "UPDATE `payment` SET `Payment_Type` = '$newType', `Payment_Status` = '$newStatus' 
+                    WHERE Payment_ID = '$paymentID'";
+    $edit_query_run = mysqli_query($conn, $edit_query);
+
+    if($edit_query_run){
+        $_SESSION['status'] = "Customer Information Successfully Updated!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/orderDetails.php?order_ID=${orderID}");
+    }else{
+        $_SESSION['status'] = "Failed to Update Customer Information";
         $_SESSION['status_code'] = "error";
         header("Location: ../../admin-src/orderDetails.php?order_ID=${orderID}");
     }
