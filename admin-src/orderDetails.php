@@ -176,19 +176,19 @@ include 'includes/topbar.php'
             <hr class="bg-section mt-0">
             <div class="mb-4 d-flex">
                 <div class="col">
-                    <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Flavor:&nbsp;</b> <?php echo $orderLine[0]['Flavor_Name'] ?></p>
-                    <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Design Name:&nbsp;</b> "<?php echo $orderLine[0]['Design_Name'] ?>"</p>
-                    <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Description:&nbsp;</b> "<?php echo $orderLine[0]['Design_Description'] ?>"</p>
-                    <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Size:&nbsp;</b> <?php echo $orderLine[0]['Layer_Count'] . " layer/s, " . $orderLine[0]['Layer_Size'] ?></p>
+                    <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Flavor:&nbsp;</strong> <?php echo $orderLine[0]['Flavor_Name'] ?></p>
+                    <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Design Name:&nbsp;</strong> "<?php echo $orderLine[0]['Design_Name'] ?>"</p>
+                    <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Description:&nbsp;</strong> "<?php echo $orderLine[0]['Design_Description'] ?>"</p>
+                    <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Size:&nbsp;</strong> <?php echo $orderLine[0]['Layer_Count'] . " layer/s, " . $orderLine[0]['Layer_Size'] ?></p>
                 </div>
                 <div class="col">
-                    <p class="text-content font-weight-bold my-2"><b class="font-weight-bolder">Price:&nbsp;</b> <span class="<?php 
+                    <p class="text-content font-weight-bold my-2"><strong class="font-weight-bolder">Price:&nbsp;</strong> <span class="<?php
                         switch ($orderLine[0]['Price_Status']) {
                             case 'Not Set': echo 'text-danger'; break;
                             case 'Set': echo 'text-success'; break;
                         }
                     ?>"><?php echo $orderLine[0]['Price_Status'] ?></span></p>
-                    <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Status:&nbsp;</b> <span class="<?php 
+                    <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Status:&nbsp;</strong> <span class="<?php
                         switch ($orderLine[0]['Status']) {
                             case 'Pending': echo 'text-titleColor'; break;
                             case 'Accepted': echo 'text-success'; break;
@@ -199,18 +199,19 @@ include 'includes/topbar.php'
             </div>
             <!---------- Cake Details ----------->
 
-        <?php }} ?>
+        <?php }
+        } ?>
         </div>
     </div>                
 </div>
 <!-- End of Main Content -->
 
-<!-- Add Information Modal -->
+<!-- Edit Order Details Modal -->
 <div class="modal fade" id="editOrderDetails" tabindex="-1" role="dialog" aria-labelledby="editOrderDetailsModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-subheading" id="editOrderDetailsModal"><b>Update Order Details</b></h5>
+                <h5 class="modal-title text-subheading" id="editOrderDetailsModal"><strong>Update Order Details</strong></h5>
                 <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -227,7 +228,7 @@ include 'includes/topbar.php'
                         <label class="text-content font-weight-bold">Status</label>
                         <select class="form-control border-section text-content" name="newStatus" required>
                             <option value="Pending" <?php if ($order['Order_Status'] == "Pending") echo "selected" ?>>Pending</option>
-                            <option value="In Progress" <?php if ($order['Order_Status'] == "In Progress") echo "selected" ?>>In Progress</option>
+                            <option value="In Progress" <?php if ($order['Order_Status'] == "In progress") echo "selected" ?>>In Progress</option>
                             <option value="Ready for pick-up" <?php if ($order['Order_Status'] == "Ready for pick-up") echo "selected" ?>>Ready for pick-up</option>
                             <option value="Delivering" <?php if ($order['Order_Status'] == "Delivering") echo "selected" ?>>Delivering</option>
                             <option value="Delivery failed" <?php if ($order['Order_Status'] == "Delivery failed") echo "selected" ?>>Delivery failed</option>
