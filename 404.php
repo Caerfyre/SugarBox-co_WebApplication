@@ -15,18 +15,6 @@
     <title>SugarBox&co.</title>
 </head>
 
-<style>
-    /* div {
-        border: 1px solid black;
-    } */
-
-    .row:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-</style>
-
 <body class="bg-light text-center">
 
     <div class="container mt-5">
@@ -39,7 +27,7 @@
             <div class="col-md-5 bg-section py-4 rounded-2">
                 <h3 class="text-content">404</h3>
                 <h1 class="text-titleColor my-5">OOPS!</h1>
-                <p class="fw-bold text-content">Something went terribly wrong...<br>Don't worry, try again!</p>
+                <p class="fw-bold text-content">Couldn't connect to the database...<br>Don't worry, try again!</p>
                 <a href="./index.php"><button class="btn btn-titleColor text-light fw-bold my-5">Return to Login</button></a>
             </div>
         </div>
