@@ -1,6 +1,6 @@
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <footer class="sticky-footer bg-light">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto text-content">
                         <span>Copyright &copy; SugarBox&co. 2021</span>
