@@ -334,3 +334,40 @@ if (isset($_POST['editCustInfo'])) {
 
     mysqli_close($conn);
 }
+
+// Update Cake Details
+if (isset($_POST['editCakeDetails'])) {
+    $conn = db_connect();
+
+    $orderID = $_POST['orderID'];
+    $newStatus = $_POST['newStatus'];
+    $newPrice = $_POST['newPrice'];
+
+    if ($newPrice != "") {
+        $edit_query = "UPDATE `cake_orders`
+                    SET `Cake_Price` = '$newPrice', `Price_Status` = 'Set' , `Status` = '$newStatus'
+                    WHERE Order_ID = '$orderID'";
+        $edit_query2 = "UPDATE `orders` SET `Total_Price` = '$newPrice'
+                    WHERE Order_ID = '$orderID'";
+
+        $edit_query_run2 = mysqli_query($conn, $edit_query2);
+    } else {
+        $edit_query = "UPDATE `cake_orders`
+                    SET `Status` = '$newStatus'
+                    WHERE Order_ID = '$orderID'";
+    }
+
+    $edit_query_run = mysqli_query($conn, $edit_query);
+
+    if($edit_query_run){
+        $_SESSION['status'] = "Cake Details Successfully Updated!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/orderDetails.php?order_ID=${orderID}");
+    }else{
+        $_SESSION['status'] = "Failed to Update Cake Details";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/orderDetails.php?order_ID=${orderID}");
+    }
+
+    mysqli_close($conn);
+}

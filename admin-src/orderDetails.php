@@ -161,13 +161,9 @@ include 'includes/topbar.php'
             <!---------- Cake Details ----------->
             <div class="d-flex align-items-center justify-content-between">
                 <h4 class="text-subheading font-weight-bold">Cake Details</h4>
-                <form action="" method="POST" class="d-flex">
-                <?php if (!isset($_POST["editCakeDetails"])) { ?>   
-                    <input class="btn btn-subheading px-2 py-0" name="editCakeDetails" type="submit" value="Update">
-                <?php } else {?>
-                    <input class="btn btn-outline-danger px-2 py-0" name="cancelEditCakeDetails" type="submit" value="Cancel">
-                <?php }?>
-                </form>
+                <div class="d-flex">
+                    <input class="btn btn-subheading px-2 py-0" data-toggle="modal" data-target="#editCakeDetails" type="submit" value="Update">
+                </div>
             </div>         
             <hr class="bg-section mt-0">
             <div class="mb-4 d-flex">
@@ -278,6 +274,42 @@ include 'includes/topbar.php'
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                         <button type="submit" name="editCustInfo" class="btn btn-titleColor">Confirm</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Cake Details Modal -->
+<div class="modal fade" id="editCakeDetails" tabindex="-1" role="dialog" aria-labelledby="editCakeDetailsModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-subheading" id="editCakeDetailsModal"><strong>Update Cake Details</strong></h5>
+                <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form action="../scripts/database/admin-crud.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="orderID" value="<?php echo $_GET['order_ID'] ?>">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="text-content font-weight-bold">Price</label>
+                        <input type="number" step='0.01' name="newPrice" class="form-control border-section text-content" value="<?php echo $orderLine[0]['Cake_Price'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label class="text-content font-weight-bold">Status</label>
+                        <select class="form-control border-section text-content" name="newStatus" required>
+                            <option value="Pending" <?php if ($orderLine[0]['Status'] == "Pending") echo "selected"; ?>>Pending</option>
+                            <option value="Accepted" <?php if ($orderLine[0]['Status'] == "Accepted") echo "selected"; ?>>Accepted</option>
+                            <option value="Rejected" <?php if ($orderLine[0]['Status'] == "Rejected") echo "selected"; ?>>Rejected</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        <button type="submit" name="editCakeDetails" class="btn btn-titleColor">Confirm</button>
                     </div>
                 </div>
             </form>
