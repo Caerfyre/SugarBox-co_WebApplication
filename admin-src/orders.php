@@ -14,14 +14,14 @@ include 'includes/topbar.php'
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-content"><b>Orders</b></h1>
+        <h1 class="h3 mb-0 text-content"><strong>Orders</strong></h1>
     </div>
 
     <!-- Orders -->
     <div class="card shadow mb-4 border-section">
         <div class="card-header py-3 bg-section border-section">
             <div class="d-sm-flex align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-content"><b>All Orders</b></h6>
+                <h6 class="m-0 font-weight-bold text-content"><strong>All Orders</strong></h6>
                 <div>
                     <a href="orders.php?q=all" type="button" class="btn <?php echo (isset($_GET['q']) && $_GET['q'] == 'all') || !isset($_GET['q']) ? 'btn-subheading' : 'btn-outline-subheading' ?>">All</a>
                     <a href="orders.php?q=sides" type="button" class="btn <?php echo isset($_GET['q']) && $_GET['q'] == 'sides' ? 'btn-subheading' : 'btn-outline-subheading' ?>">Sides</a>
