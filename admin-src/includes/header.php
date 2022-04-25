@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/sblogo-1.svg">
+    <link rel="icon" type="image/svg" sizes="16x16" href="../../assets/sblogo-1.svg">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
