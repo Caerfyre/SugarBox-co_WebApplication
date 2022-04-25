@@ -14,13 +14,13 @@ include 'includes/topbar.php'
 
     <!-- Page Heading -->
     <div class="d-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-content"><b>Order Details</b></h1>
+        <h1 class="h3 mb-0 text-content"><strong>Order Details</strong></h1>
     </div>
 
     <div class="card shadow mb-4 border-section">
         <!-- Card Header -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-section border-section">
-            <h6 class="m-0 font-weight-bold text-content"><b>Order #<?php echo $_GET['order_ID'] ?></b></h6>
+            <h6 class="m-0 font-weight-bold text-content"><strong>Order #<?php echo $_GET['order_ID'] ?></strong></h6>
             <a href="orders.php" class="btn btn-subheading">&larr; Go Back</a>
         </div>
 
@@ -79,22 +79,22 @@ include 'includes/topbar.php'
         <hr class="bg-section mt-0">
         <div class="mb-4 d-flex">
             <div class="col">
-                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Type:&nbsp;</b> <?php echo $orderType ?></p>
-                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Method:&nbsp;</b> <?php echo $order['Order_Type'] ?></p>
-                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Total Price:&nbsp;</b> P <?php echo $order['Total_Price'] ?></p>
+                <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Type:&nbsp;</strong> <?php echo $orderType ?></p>
+                <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Method:&nbsp;</strong> <?php echo $order['Order_Type'] ?></p>
+                <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Total Price:&nbsp;</strong> P <?php echo $order['Total_Price'] ?></p>
             </div>
             <div class="col">
-                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Order Date:&nbsp;</b> <?php echo date('F d, Y (D)', strtotime($order['Order_Placement_Date'])) ?></p>
-                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Fulfillment Date:&nbsp;</b> <span class="text-titleColor"><?php echo date('F d, Y (D)', strtotime($order['Order_Fullfilment_Date'])) ?></span></p>
-                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Status:&nbsp;</b> <span class="<?php 
+                <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Order Date:&nbsp;</strong> <?php echo date('F d, Y (D)', strtotime($order['Order_Placement_Date'])) ?></p>
+                <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Fulfillment Date:&nbsp;</strong> <span class="text-titleColor"><?php echo date('F d, Y (D)', strtotime($order['Order_Fullfilment_Date'])) ?></span></p>
+                <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Status:&nbsp;</strong> <span class="<?php
                     switch ($order['Order_Status']) {
                         case 'Pending': echo "text-titleColor"; break;
                         case 'In progress': echo "text-info"; break;
+                        case 'Delivering':
                         case 'Ready for pick-up': echo "text-warning"; break;
-                        case 'Delivering': echo "text-warning"; break;
+                        case 'Cancelled':
                         case 'Delivery failed': echo "text-danger"; break;
                         case 'Claimed': echo "text-success"; break;
-                        case 'Cancelled': echo "text-danger"; break;
                     }
                 ?>"><?php echo $order['Order_Status'] ?></span></p>
             </div>
@@ -115,13 +115,13 @@ include 'includes/topbar.php'
         <hr class="bg-section mt-0">
         <div class="mb-4 d-flex">
             <div class="col">
-                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Customer:&nbsp;</b> <?php echo $order['Cust_FName'] . " " . $order['Cust_LName'] ?></p>
-                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Contact Number:&nbsp;</b> <?php echo $order['Cust_ContactNo'] ?></p>
-                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Address:&nbsp;</b> <?php echo $order['Cust_Address'] ?></p>
+                <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Customer:&nbsp;</strong> <?php echo $order['Cust_FName'] . " " . $order['Cust_LName'] ?></p>
+                <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Contact Number:&nbsp;</strong> <?php echo $order['Cust_ContactNo'] ?></p>
+                <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Address:&nbsp;</strong> <?php echo $order['Cust_Address'] ?></p>
             </div>
             <div class="col">
-                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Payment Type:&nbsp;</b> <?php echo $payment['Payment_Type'] ?></p>
-                <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Payment Status:&nbsp;</b> <span class="<?php 
+                <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Payment Type:&nbsp;</strong> <?php echo $payment['Payment_Type'] ?></p>
+                <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Payment Status:&nbsp;</strong> <span class="<?php
                     switch ($payment['Payment_Status']) {
                         case 0: echo "text-danger"; break;
                         case 1: echo "text-warning"; break;
@@ -149,11 +149,11 @@ include 'includes/topbar.php'
                 <div class="col">
                     <ol class="pl-3 d-flex flex-wrap">
                     <?php foreach ($orderLine as $item) { ?>
-                        <li class="col-3 text-content font-weight-bold mb-4"><b class="font-weight-bolder"><?php echo $item['SideProd_Name'] ?></b>
+                        <li class="col-3 text-content font-weight-bold mb-4"><strong class="font-weight-bolder"><?php echo $item['SideProd_Name'] ?></strong>
                         <img class="card-img mt-2" style="width:150px;height:155px;object-fit:cover" src="../assets/<?php echo $item['SideProd_Image'] ?>" alt="<?php echo $item['SideProd_Name'] ?>">
-                        <p class="text-content font-weight-bold my-2"><b class="font-weight-bolder">Size:&nbsp;</b> <?php echo $item['Size_Description'] ?></p>
-                        <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Quantity:&nbsp;</b> <?php echo $item['Order_Quantity'] ?></p>
-                        <p class="text-content font-weight-bold mb-2"><b class="font-weight-bolder">Line Price:&nbsp;</b> P <?php echo $item['Line_Price'] ?></p>
+                        <p class="text-content font-weight-bold my-2"><strong class="font-weight-bolder">Size:&nbsp;</strong> <?php echo $item['Size_Description'] ?></p>
+                        <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Quantity:&nbsp;</strong> <?php echo $item['Order_Quantity'] ?></p>
+                        <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Line Price:&nbsp;</strong> P <?php echo $item['Line_Price'] ?></p>
                     <?php } ?>
                     </ol>
                 </div>
