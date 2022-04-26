@@ -343,19 +343,13 @@ if (isset($_POST['editCakeDetails'])) {
     $newStatus = $_POST['newStatus'];
     $newPrice = $_POST['newPrice'];
 
-    if ($newPrice != "") {
-        $edit_query = "UPDATE `cake_orders`
-                    SET `Cake_Price` = '$newPrice', `Price_Status` = 'Set' , `Status` = '$newStatus'
-                    WHERE Order_ID = '$orderID'";
-        $edit_query2 = "UPDATE `orders` SET `Total_Price` = '$newPrice'
-                    WHERE Order_ID = '$orderID'";
+    $edit_query = "UPDATE `cake_orders`
+                SET `Cake_Price` = '$newPrice', `Price_Status` = 'Set'
+                WHERE Order_ID = '$orderID'";
+    $edit_query2 = "UPDATE `orders` SET `Total_Price` = '$newPrice'
+                WHERE Order_ID = '$orderID'";
 
-        $edit_query_run2 = mysqli_query($conn, $edit_query2);
-    } else {
-        $edit_query = "UPDATE `cake_orders`
-                    SET `Status` = '$newStatus'
-                    WHERE Order_ID = '$orderID'";
-    }
+    $edit_query_run2 = mysqli_query($conn, $edit_query2);
 
     $edit_query_run = mysqli_query($conn, $edit_query);
 

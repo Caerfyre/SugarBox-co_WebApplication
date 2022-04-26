@@ -179,7 +179,7 @@ include 'includes/topbar.php'
                             case 'Not Set': echo 'text-danger'; break;
                             case 'Set': echo 'text-success'; break;
                         }
-                    ?>"><?php echo $orderLine[0]['Price_Status'] ?></span></p>
+                    ?>"><?php echo $orderLine[0]['Price_Status'] ?><?php if ($orderLine[0]['Cake_Price']) echo ' – P ' . $orderLine[0]['Cake_Price'] ?></span></p>
                     <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Status:&nbsp;</strong> <span class="<?php
                         switch ($orderLine[0]['Status']) {
                             case 'Pending': echo 'text-titleColor'; break;
@@ -297,15 +297,7 @@ include 'includes/topbar.php'
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="text-content font-weight-bold">Price</label>
-                        <input type="number" step='0.01' name="newPrice" class="form-control border-section text-content" value="<?php echo $orderLine[0]['Cake_Price'] ?>">
-                    </div>
-                    <div class="form-group">
-                        <label class="text-content font-weight-bold">Status</label>
-                        <select class="form-control border-section text-content" name="newStatus" required>
-                            <option value="Pending" <?php if ($orderLine[0]['Status'] == "Pending") echo "selected"; ?>>Pending</option>
-                            <option value="Accepted" <?php if ($orderLine[0]['Status'] == "Accepted") echo "selected"; ?>>Accepted</option>
-                            <option value="Rejected" <?php if ($orderLine[0]['Status'] == "Rejected") echo "selected"; ?>>Rejected</option>
-                        </select>
+                        <input type="number" step='0.01' name="newPrice" class="form-control border-section text-content" value="<?php echo $orderLine[0]['Cake_Price'] ?>" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
