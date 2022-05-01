@@ -126,6 +126,7 @@
                 <div class="bg-section2 rounded-2 p-3 mb-3 text-content">
                     <div class="d-flex justify-content-between">
                         <div>
+                            <span class="fw-bold">Ordered on:&nbsp;</span>
                             <?php echo date('l - F d, Y', strtotime($order['Order_Placement_Date'])) ?>
                         </div>
                         <div><span class="<?php
@@ -142,6 +143,14 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-between mt-2">
+                        <div>
+                            <span class="fw-bold">Ready by:&nbsp;</span>
+                            <?php echo date('l, F d, Y', strtotime($order['Order_Fullfilment_Date'])) ?>
+                        </div>
+                        <div class="d-md-flex">
+                            <span class="fw-bold">Price:&nbsp;</span>
+                            <?php echo "P" . $order['Total_Price']; ?>
+                        </div>
                     </div>
                 </div>
             <?php }
