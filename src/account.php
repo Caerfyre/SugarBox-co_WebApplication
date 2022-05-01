@@ -16,7 +16,7 @@
     } */
 </style>
 
-<body class="bg-light <?php if ($_SESSION['functions']['toggleCart'] == true || $_SESSION['functions']['toggleOptions'] == true || $_SESSION['functions']['toggleSearch'] == true) echo 'overflow-hidden' ?>">
+<body class="bg-light <?php if ($_SESSION['functions']['toggleCart'] || $_SESSION['functions']['toggleOptions'] || $_SESSION['functions']['toggleSearch']) echo 'overflow-hidden' ?>">
     
     <!-- Navbar -->
     <?php include '../common/navbar.php' ?>
@@ -129,11 +129,11 @@
                         switch ($order['Order_Status']) {
                             case 'Pending': echo "text-titleColor"; break;
                             case 'In progress': echo "text-info"; break;
+                            case 'Delivering':
                             case 'Ready for pick-up': echo "text-warning"; break;
-                            case 'Delivering': echo "text-warning"; break;
+                            case 'Cancelled':
                             case 'Delivery failed': echo "text-danger"; break;
                             case 'Claimed': echo "text-success"; break;
-                            case 'Cancelled': echo "text-danger"; break;
                         }
                     ?>">
                         <?php echo $order['Order_Status'] ?>
@@ -187,7 +187,7 @@
 
     <script>
         function showPass(input = "", btn) {
-            var x = document.getElementById(input);
+            const x = document.getElementById(input);
             if (x.type === "password") {
                 x.type = "text";
                 btn.innerHTML = "Hide";
