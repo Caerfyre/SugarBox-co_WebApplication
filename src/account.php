@@ -181,9 +181,11 @@
                                 echo 'Under Review';
                             } else if ($order['Status'] == 'Pending') {
                                 echo "P" . $order['Cake_Price']; ?>
-                                &nbsp;<button class="btn btn-sm text-success p-0">Accept</button>
-                                &nbsp;<span class="fs-6">|</span>
-                                &nbsp;<button class="btn btn-sm text-danger p-0">Reject</button>
+                                <form action="../scripts/database/client-crud.php" method="POST" class="d-md-flex">
+                                    &nbsp;<button type="submit" name="acceptPrice" value="<?php echo $order['Order_ID'] ?>" class="btn btn-sm text-success p-0">Accept</button>
+                                    &nbsp;<span class="fs-6">|</span>
+                                    &nbsp;<button type="submit" name="rejectPrice" value="<?php echo $order['Order_ID'] ?>" class="btn btn-sm text-danger p-0">Reject</button>
+                                </form>
                             <?php } else if ($order['Status'] == 'Accepted') {
                                 echo "P" . $order['Cake_Price'] . " - "; ?>
                                <span class="text-success">Accepted</span>

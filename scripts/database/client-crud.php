@@ -256,3 +256,43 @@ if (isset($_POST['pushOrder'])) {
     mysqli_close($conn);    
     header('Location: ../../src/account.php#orderHistory');
 }
+
+// Update Cake Order Status (Accept) ---------------------------------
+if (isset($_POST['acceptPrice'])) {
+    $conn = db_connect();
+
+    $orderID = $_POST['acceptPrice'];
+
+    $query = "UPDATE `cake_orders`
+            SET `Status` = 'Accepted'
+            WHERE `Order_ID` = '$orderID'";
+
+    if (mysqli_query($conn, $query)) {
+        echo '<script>console.log("Account updated.")</script>';
+    } else {
+        echo '<script>console.log("Failed to update cake order status...")</script>';
+    }
+
+    mysqli_close($conn);
+    header('Location: ../../src/account.php#orderHistory');
+}
+
+// Update Cake Order Status (Reject) ---------------------------------
+if (isset($_POST['rejectPrice'])) {
+    $conn = db_connect();
+
+    $orderID = $_POST['rejectPrice'];
+
+    $query = "UPDATE `cake_orders`
+            SET `Status` = 'Rejected'
+            WHERE `Order_ID` = '$orderID'";
+
+    if (mysqli_query($conn, $query)) {
+        echo '<script>console.log("Account updated.")</script>';
+    } else {
+        echo '<script>console.log("Failed to update cake order status...")</script>';
+    }
+
+    mysqli_close($conn);
+    header('Location: ../../src/account.php#orderHistory');
+}
