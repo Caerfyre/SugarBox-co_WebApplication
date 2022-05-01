@@ -37,12 +37,30 @@ include 'includes/topbar.php'
             require '../scripts/database/DB-connect.php';
             $conn = db_connect();
 
-            $orders_query = "SELECT `orders`.*,
+            if (isset($_GET['q']) && $_GET['q'] == 'sides') {
+                $orders_query = "SELECT DISTINCT `orders`.*,
+                            `customer`.`Cust_FName`,
+                            `customer`.`Cust_LName` 
+                            FROM `orders` 
+                            INNER JOIN `customer` ON `orders`.`Cust_ID`=`customer`.`Cust_ID` 
+                            INNER JOIN `order_line` ON `order_line`.`Order_ID`=`orders`.`Order_ID` 
+                            ORDER BY `orders`.`Order_ID`";
+            } else if (isset($_GET['q']) && $_GET['q'] == 'cakes') {
+                $orders_query = "SELECT `orders`.*,
+                            `customer`.`Cust_FName`, 
+                            `customer`.`Cust_LName`
+                            FROM `orders` 
+                            INNER JOIN `customer` ON `orders`.`Cust_ID`=`customer`.`Cust_ID` 
+                            INNER JOIN `cake_orders` ON `cake_orders`.`Order_ID`=`orders`.`Order_ID` 
+                            ORDER BY `orders`.`Order_ID`";
+            } else {
+                $orders_query = "SELECT `orders`.*,
                             `customer`.`Cust_FName`, 
                             `customer`.`Cust_LName`
                             FROM `orders` 
                             INNER JOIN `customer` ON `orders`.`Cust_ID`=`customer`.`Cust_ID` 
                             ORDER BY `orders`.`Order_ID`";
+            }
 
             $orders_query_run = mysqli_query($conn, $orders_query);
             $check_orders = mysqli_num_rows($orders_query_run) > 0;
