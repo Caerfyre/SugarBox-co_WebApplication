@@ -118,28 +118,84 @@
                 </form>
             </div>
             <hr class="bg-content mb-4 mt-2">
-            <?php $orders = getOrders() ?>
+            <?php $orders = getSideOrders() ?>
+            <?php if (count($orders) > 0) { ?>
+            <p class="text-content fw-bolder">Sides</p>
             <?php foreach ($orders as $order) { ?>
                 <!-- Order -->
-                <div class="d-flex justify-content-between bg-section2 rounded-2 p-3 mb-3 text-content">
-                    <div>
-                        <?php echo date('D d F, Y', strtotime($order['Order_Placement_Date'])) ?>
+                <div class="bg-section2 rounded-2 p-3 mb-3 text-content">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <?php echo date('l - F d, Y', strtotime($order['Order_Placement_Date'])) ?>
+                        </div>
+                        <div><span class="<?php
+                            switch ($order['Order_Status']) {
+                                case 'Pending': echo "text-titleColor"; break;
+                                case 'In progress': echo "text-info"; break;
+                                case 'Delivering':
+                                case 'Ready for pick-up': echo "text-warning"; break;
+                                case 'Cancelled':
+                                case 'Delivery failed': echo "text-danger"; break;
+                                case 'Claimed': echo "text-success"; break;
+                            }
+                            ?>"><?php echo $order['Order_Status'] ?></span>
+                        </div>
                     </div>
-                    <div class="<?php 
-                        switch ($order['Order_Status']) {
-                            case 'Pending': echo "text-titleColor"; break;
-                            case 'In progress': echo "text-info"; break;
-                            case 'Delivering':
-                            case 'Ready for pick-up': echo "text-warning"; break;
-                            case 'Cancelled':
-                            case 'Delivery failed': echo "text-danger"; break;
-                            case 'Claimed': echo "text-success"; break;
-                        }
-                    ?>">
-                        <?php echo $order['Order_Status'] ?>
+                    <div class="d-flex justify-content-between mt-2">
                     </div>
                 </div>
-            <?php } ?>
+            <?php }
+                }?>
+            <?php $orders = getCakeOrders() ?>
+            <?php if (count($orders) > 0) { ?>
+            <p class="text-content fw-bolder">Cakes</p>
+            <?php foreach ($orders as $order) { ?>
+                <!-- Order -->
+                <div class="bg-section2 rounded-2 p-3 mb-3 text-content">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <span class="fw-bold">Ordered on:&nbsp;</span>
+                            <?php echo date('l, F d, Y', strtotime($order['Order_Placement_Date'])) ?>
+                        </div>
+                        <div><span class="fw-bold <?php
+                            switch ($order['Order_Status']) {
+                                case 'Pending': echo "text-titleColor"; break;
+                                case 'In progress': echo "text-info"; break;
+                                case 'Delivering':
+                                case 'Ready for pick-up': echo "text-warning"; break;
+                                case 'Cancelled':
+                                case 'Delivery failed': echo "text-danger"; break;
+                                case 'Claimed': echo "text-success"; break;
+                            }
+                            ?>"><?php echo $order['Order_Status'] ?></span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <div>
+                            <span class="fw-bold">Ready by:&nbsp;</span>
+                            <?php echo date('l, F d, Y', strtotime($order['Order_Fullfilment_Date'])) ?>
+                        </div>
+                        <div class="d-md-flex">
+                            <span class="fw-bold">Price:&nbsp;</span>
+                            <?php if ($order['Price_Status'] == 'Not Set') {
+                                echo 'Under Review';
+                            } else if ($order['Status'] == 'Pending') {
+                                echo "P" . $order['Cake_Price']; ?>
+                                &nbsp;<button class="btn btn-sm text-success p-0">Accept</button>
+                                &nbsp;<span class="fs-6">|</span>
+                                &nbsp;<button class="btn btn-sm text-danger p-0">Reject</button>
+                            <?php } else if ($order['Status'] == 'Accepted') {
+                                echo "P" . $order['Cake_Price'] . " - "; ?>
+                               <span class="text-success">Accepted</span>
+                            <?php } else {
+                                echo "P" . $order['Cake_Price'] . " - "; ?>
+                                <span class="text-danger">Rejected</span>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            <?php }
+                } ?>
         </div>
     </div>
 
@@ -164,15 +220,40 @@
         }
 
         /**
-         * Returns all order history of the customer.
-         * @return array The order history of the customer.
+         * Returns the 3 latest side orders of the customer.
+         * @return array  The the 3 latest side orders of the customer.
          */
-        function getOrders() {
+        function getSideOrders() {
             $conn = db_connect();
             $accID = $_SESSION["user"]["accID"];
 
-            $query = "SELECT * FROM `orders` WHERE `Cust_ID`='$accID' 
-                        ORDER BY `Order_Placement_Date` DESC LIMIT 5";
+            $query = "SELECT DISTINCT `orders`.* FROM `orders` 
+                       INNER JOIN `order_line` ON `order_line`.`Order_ID`=`orders`.`Order_ID`
+                       WHERE `Cust_ID`='$accID'
+                       ORDER BY `Order_Placement_Date` DESC LIMIT 3";
+            $result = mysqli_query($conn, $query);
+
+            $orders = array();
+            while ($row = mysqli_fetch_assoc($result)) {
+                $orders[] = $row;
+            }
+
+            mysqli_close($conn);
+            return $orders;
+        }
+
+        /**
+         * Returns the 3 latest cake orders of the customer.
+         * @return array The 3 latest cake orders of the customer.
+         */
+        function getCakeOrders() {
+            $conn = db_connect();
+            $accID = $_SESSION["user"]["accID"];
+
+            $query = "SELECT `orders`.*, `cake_orders`.* FROM `orders`  
+                       INNER JOIN `cake_orders` ON `cake_orders`.`Order_ID`=`orders`.`Order_ID`
+                       WHERE `Cust_ID`='$accID'
+                       ORDER BY `Order_Placement_Date` DESC LIMIT 3";
             $result = mysqli_query($conn, $query);
 
             $orders = array();
