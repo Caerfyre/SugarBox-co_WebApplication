@@ -154,7 +154,10 @@
                     </div>
                 </div>
             <?php }
-                }?>
+                } else { ?>
+             <p class="text-center text-content fw-bold mt-5 mb-3">No orders to be found...</p>
+                <p class="text-center mb-4"><a href="./menu.php" class="text-titleColor">Order something!</a></p>
+            <?php } ?>
             <?php $orders = getCakeOrders() ?>
             <?php if (count($orders) > 0) { ?>
             <p class="text-content fw-bolder">Cakes</p>
