@@ -64,7 +64,7 @@
                 <?php if (!isset($_SESSION['cart'])) { ?>
                     <div class="row text-content mx-2 mt-5">
                         <p class="text-center fw-bold">Your cart is empty...</p>
-                        <a class="text-center text-titleColor" href="#">Order something!</a>
+                        <a class="text-center text-titleColor" href="../src/menu.php">Order something!</a>
                     </div>
                 <?php } else { ?>
                 <?php $index = -1 ?>
