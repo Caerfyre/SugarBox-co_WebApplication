@@ -37,6 +37,47 @@ function getCustomer($accID) {
     mysqli_close($conn);
 }
 
+// Sign Up
+if (isset($_POST['signup'])) {
+    $conn = db_connect();
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $password2 = $_POST['password2'];
+
+    $query = "SELECT * FROM `accounts` WHERE `Acc_Username`='$username' LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    $custInfo = mysqli_fetch_array($result);
+
+    if ($custInfo) {
+        $_SESSION['signupErr'] = 1;
+        mysqli_close($conn);
+        header('Location: ../../src/signup.php');
+        exit;
+    }
+
+    if ($password != $password2) {
+        $_SESSION['signupErr'] = 2;
+        mysqli_close($conn);
+        header('Location: ../../src/signup.php');
+        exit;
+    }
+
+    $query = "INSERT INTO `accounts`(`Acc_Username`, `Acc_Password`, `Acc_Status`, `User_Type`) 
+                VALUES('$username', '$password', '2', '1')";
+
+    if (mysqli_query($conn, $query)) {
+        echo '<script>console.log("New user account created.")</script>';
+    } else {
+        echo '<script>console.log("Failed to create new user account...")</script>';
+        // echo mysqli_error($conn);
+    }
+
+    if (isset($_SESSION['signupErr'])) unset($_SESSION['signupErr']);
+    mysqli_close($conn);
+    header('Location: ../../index.php');
+}
+
 // Add/Update Contact Details -----------------------------
 if (isset($_POST['updateContact'])) {
     $conn = db_connect();
