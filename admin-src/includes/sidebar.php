@@ -34,7 +34,7 @@
 
             <!-- Nav Item - Customers -->
             <li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == 'customers.php') echo 'active' ?>">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="customers.php">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Customers</span></a>
             </li>
