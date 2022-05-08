@@ -130,9 +130,12 @@ include 'includes/topbar.php'
                                 <tbody class="text-center">
                                     <?php while($row = mysqli_fetch_assoc($acc_query_run)) { 
 
+                                        $banBtn = "Ban";
+
                                         switch($row['Acc_Status']){
                                             case 0: $status = "Banned";
                                                     $style = "text-danger";
+                                                    $banBtn = "Unban";
                                                     break;
                                             case 1: $status = "Inactive";
                                                     $style = "text-gray-600";
@@ -151,6 +154,8 @@ include 'includes/topbar.php'
                                         <td class="font-weight-bold <?php echo $style ?>"><?php echo $status ?></td>
                                         <td class="d-sm-flex align-items-center justify-content-center">
                                         <button class="btn btn-subheading" data-toggle="modal" data-target="#viewDetails<?php echo $row['Account_ID'];?>">View Details</button>
+                                        &nbsp;
+                                        <button class="btn btn-titleColor" data-toggle="modal" data-target="#banUser<?php echo $row['Account_ID'];?>"><?php echo $banBtn?></button>
                                         &nbsp;
                                         <button class="btn btn-danger" data-toggle="modal" data-target="#deleteUser<?php echo $row['Account_ID'];?>">Remove User</button>
                                         </td>
@@ -215,6 +220,41 @@ include 'includes/topbar.php'
 
                                         </div>
                                     </div>
+                                    </div>
+                                    <!-- End of Modal -->
+
+                                    <!-- Ban Modal -->             
+                                    <div class="modal fade" id="banUser<?php echo $row['Account_ID'];?>" tabindex="-1" role="dialog" aria-labelledby="banUserModal"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="banUserModal"><b><?php echo $banBtn?></b></h5>
+                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="text-center">
+                                                      <i class="fas fa-exclamation-circle fa-5x text-warning pb-3"></i>
+                                                        <p>
+                                                            Are you sure you want to <b><?php echo $banBtn?></b>
+                                                            <br><b class="text-titleColor">Customer #<?php echo $row['Account_ID'];?> (<?php echo $row['Acc_Username'];?>) ?</b>
+                                                        </p>
+                                                            
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                    <form action="../scripts/database/admin-crud.php" method="post">
+                                                        <input name="banAccID" type="hidden" value="<?php echo $row['Account_ID'];?>">
+                                                        <input name="banStatus" type="hidden" value="<?php echo ($banBtn == 'Ban') ? '0' : '2' ?>">
+                                                        <button class="btn btn-danger" name="banCustBtn" type="submit"><?php echo $banBtn?></button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <!-- End of Modal -->
 
