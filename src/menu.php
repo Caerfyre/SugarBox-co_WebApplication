@@ -49,17 +49,19 @@
                         <input id="menu" class="form-control form-control-sm text-content border-primary" type="search" placeholder="Search the menu">
                     </div>
                     <div>
-                        <p class="m-3"><b class="text-content">Types</b></p>
+                        <p class="m-3"><strong class="text-content">Types</strong></p>
                         <p class="px-3 my-2"><a class="text-decoration-none text-content" href="./custom-order.php">Cakes</a></p>
                         <p class="px-3 py-2 my-2 bg-section rounded-start rounded-3"><a class="text-decoration-none text-content" href="#menu">Sides</a></p>
                     </div>
                     <hr class="bg-content mx-3 my-4">
                     <div>
-                        <p class="m-3"><b class="text-content">Categories</b></p>
-                        <p class="m-3"><a class="text-decoration-none text-subheading" href="?q=all">All</a></p>
+                        <p class="m-3"><strong class="text-content">Categories</strong></p>
+                        <p class="m-3"><a class="text-decoration-none text-content <?php if (!isset($_GET['q']) || $_GET['q'] == 'all') echo 'text-subheading' ?>"
+                                          href="?q=all#menu">All</a></p>
                         <?php $categories = getCategories() ?>
                         <?php foreach ($categories as $category) { ?>
-                            <p class="m-3"><a class="text-decoration-none text-content" href="?q=<?php echo strtolower($category['Categ_Name']) ?>#menu"><?php echo $category['Categ_Name'] ?></a></p>
+                            <p class="m-3"><a class="text-decoration-none text-content <?php if (isset($_GET['q']) && $_GET['q'] == strtolower($category['Categ_Name'])) echo 'text-subheading' ?>"
+                                              href="?q=<?php echo strtolower($category['Categ_Name']) ?>#menu"><?php echo $category['Categ_Name'] ?></a></p>
                         <?php } ?>
                     </div>
                 </div>
