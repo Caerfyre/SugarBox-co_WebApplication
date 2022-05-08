@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2022 at 06:15 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: May 08, 2022 at 04:34 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `accounts` (
   `Account_ID` int(11) NOT NULL,
   `Acc_Username` varchar(40) NOT NULL,
   `Acc_Password` varchar(255) NOT NULL,
-  `Date_Created` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Date_Created` date NOT NULL DEFAULT current_timestamp(),
   `Acc_Status` enum('0','1','2','') NOT NULL COMMENT '0-Banned,1-Inactive (>60 days), 2-Active',
   `User_Type` enum('0','1','','') NOT NULL COMMENT '0-Admin, 1-Customer '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -42,7 +42,11 @@ CREATE TABLE `accounts` (
 
 INSERT INTO `accounts` (`Account_ID`, `Acc_Username`, `Acc_Password`, `Date_Created`, `Acc_Status`, `User_Type`) VALUES
 (1, 'admin1', 'admin1', '2022-01-12', '2', '0'),
-(2, 'Mary45', 'mary45', '2022-01-12', '2', '1');
+(2, 'Mary45', 'mary45', '2022-01-12', '2', '1'),
+(3, 'Bob30', 'bob30', '2022-05-08', '2', '1'),
+(4, 'Mark21', 'mark21', '2022-05-08', '2', '1'),
+(5, 'Kiara17', 'kiara17', '2022-05-08', '1', '1'),
+(6, 'Karen123', 'karen123', '2022-05-08', '0', '1');
 
 -- --------------------------------------------------------
 
@@ -54,7 +58,7 @@ CREATE TABLE `cake` (
   `Cake_ID` int(11) NOT NULL,
   `Flavor_Name` varchar(40) NOT NULL,
   `Design_Name` varchar(40) NOT NULL,
-  `Design_Description` varchar(255) NOT NULL,
+  `Design_Description` varchar(100) NOT NULL,
   `CakeSize_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -63,7 +67,9 @@ CREATE TABLE `cake` (
 --
 
 INSERT INTO `cake` (`Cake_ID`, `Flavor_Name`, `Design_Name`, `Design_Description`, `CakeSize_ID`) VALUES
-(10, 'Vanilla', 'sea theme', 'with candles and etc', 6);
+(10, 'Vanilla', 'sea theme', 'with candles and etc', 6),
+(11, 'Vanilla Funfetti', 'Unicorn Themed Birthday Cake', 'I would like to have a cake that looks like a unicorn with flowers on the side. ', 2),
+(12, 'Vanilla', 'Rose themed cake', 'I wish to have a large cake that looks like a bouquet of roses with the colors red and white.', 4);
 
 -- --------------------------------------------------------
 
@@ -109,6 +115,14 @@ CREATE TABLE `cake_orders` (
   `Status` enum('Pending','Accepted','Rejected') NOT NULL COMMENT '''Pending'', ''Accepted'', ''Rejected'''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `cake_orders`
+--
+
+INSERT INTO `cake_orders` (`Order_ID`, `Cake_ID`, `Cake_Price`, `Price_Status`, `Status`) VALUES
+(2, 11, NULL, 'Not Set', 'Pending'),
+(4, 12, NULL, 'Not Set', 'Pending');
+
 -- --------------------------------------------------------
 
 --
@@ -152,7 +166,11 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`Cust_ID`, `Cust_FName`, `Cust_LName`, `Cust_ContactNo`, `Cust_Address`) VALUES
-(2, 'Mary', 'Mae', '09298107433', 'Cebu City');
+(2, 'Mary', 'Mae', '09298107433', 'Cebu City'),
+(3, 'Bob', 'Smith', '09758624859', '71A/22 Lemke Mall Apt. 809, Poblacion, B'),
+(4, 'Mark', 'Gomez', '09134558431', '56A/52 Dibbert Center Suite 723, Poblaci'),
+(5, 'Kiara', 'Dela Rosa', '09446583138', '52A/86 King Meadows, Poblacion, Calapan '),
+(6, 'Karen', 'Hart', '09784853156', '89A BrekkParkways Apt. 881, Baggao 8387 ');
 
 -- --------------------------------------------------------
 
@@ -178,12 +196,22 @@ CREATE TABLE `ingredients` (
 CREATE TABLE `orders` (
   `Order_ID` int(11) NOT NULL,
   `Cust_ID` int(11) NOT NULL,
-  `Order_Placement_Date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Order_Placement_Date` date NOT NULL DEFAULT current_timestamp(),
   `Order_Fullfilment_Date` date NOT NULL,
   `Order_Type` enum('Pick-up','Delivery','','') NOT NULL COMMENT '''Pick-up'', ''Delivery''',
   `Order_Status` enum('Pending','In progress','Ready for pick-up','Delivering','Delivery failed','Claimed','Cancelled') NOT NULL COMMENT '''Pending'',''In progress'',''Ready for pick-up'',''Delivering'',''Delivery failed'',''Claimed'',''Cancelled''',
   `Total_Price` float(15,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`Order_ID`, `Cust_ID`, `Order_Placement_Date`, `Order_Fullfilment_Date`, `Order_Type`, `Order_Status`, `Total_Price`) VALUES
+(1, 2, '2022-05-08', '2022-05-08', 'Delivery', 'Pending', 380.00),
+(2, 3, '2022-05-08', '2022-05-24', 'Pick-up', 'Pending', 0.00),
+(3, 2, '2022-05-08', '2022-05-25', 'Delivery', 'Pending', 185.00),
+(4, 4, '2022-05-08', '2022-05-26', 'Delivery', 'Pending', 0.00);
 
 -- --------------------------------------------------------
 
@@ -194,7 +222,6 @@ CREATE TABLE `orders` (
 CREATE TABLE `order_line` (
   `Order_ID` int(11) NOT NULL,
   `Prod_ID` int(11) NOT NULL,
-  `Size_ID` int(11) NOT NULL,
   `Order_Quantity` int(11) NOT NULL,
   `Line_Price` float(15,2) NOT NULL COMMENT 'Price x QTY'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -211,6 +238,16 @@ CREATE TABLE `payment` (
   `Payment_Type` enum('Cash','BDO','BPI','Paypal','GCash') NOT NULL,
   `Payment_Status` enum('0','1','2','') NOT NULL COMMENT '0-Not Paid, 1-Partial (50%), 2-Paid '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`Payment_ID`, `Order_ID`, `Payment_Type`, `Payment_Status`) VALUES
+(1, 1, 'GCash', '0'),
+(2, 2, 'Cash', '0'),
+(3, 3, 'Paypal', '0'),
+(4, 4, 'BDO', '0');
 
 -- --------------------------------------------------------
 
@@ -238,7 +275,23 @@ INSERT INTO `sideproduct_sizes` (`Size_ID`, `Prod_ID`, `Size_Description`, `Size
 (16, 11, 'Box of 10', 120.00),
 (17, 12, 'Box of 6', 85.00),
 (18, 12, 'Box of 8', 100.00),
-(19, 12, 'Box of 12', 175.00);
+(19, 12, 'Box of 12', 175.00),
+(20, 13, 'Box of 6', 85.00),
+(21, 13, 'Box of 8', 100.00),
+(22, 13, 'Box of 12', 120.00),
+(23, 14, 'Box of 3', 90.00),
+(24, 14, 'Box of 6', 125.00),
+(25, 14, 'Box of 8', 140.00),
+(26, 16, 'Box of 3', 90.00),
+(27, 16, 'Box of 6', 125.00),
+(28, 16, 'Box of 8', 140.00),
+(29, 18, 'Box of 3', 85.00),
+(30, 18, 'Box of 6', 115.00),
+(31, 18, 'Box of 8', 135.00),
+(32, 19, 'Box of 6', 150.00),
+(33, 19, 'Box of 12', 300.00),
+(34, 20, 'Box of 6', 145.00),
+(35, 20, 'Box of 12', 295.00);
 
 -- --------------------------------------------------------
 
@@ -272,7 +325,7 @@ CREATE TABLE `side_products` (
   `SideProd_ID` int(11) NOT NULL,
   `SideProd_Name` varchar(40) NOT NULL,
   `Categ_ID` int(11) NOT NULL,
-  `SideProd_Desc` varchar(255) NOT NULL,
+  `SideProd_Desc` varchar(100) NOT NULL,
   `SideProd_Image` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -368,8 +421,7 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_line`
   ADD KEY `Prod_ID` (`Prod_ID`),
-  ADD KEY `Order_ID` (`Order_ID`),
-  ADD KEY `Size_ID` (`Size_ID`);
+  ADD KEY `Order_ID` (`Order_ID`);
 
 --
 -- Indexes for table `payment`
@@ -412,13 +464,13 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `Account_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Account_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `cake`
 --
 ALTER TABLE `cake`
-  MODIFY `Cake_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Cake_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `cake_size`
@@ -430,7 +482,7 @@ ALTER TABLE `cake_size`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `Cust_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Cust_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `ingredients`
@@ -442,19 +494,19 @@ ALTER TABLE `ingredients`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `Order_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Order_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `Payment_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Payment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sideproduct_sizes`
 --
 ALTER TABLE `sideproduct_sizes`
-  MODIFY `Size_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Size_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `side_categories`
@@ -515,8 +567,7 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_line`
   ADD CONSTRAINT `order_line_ibfk_1` FOREIGN KEY (`Order_ID`) REFERENCES `orders` (`Order_ID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `order_line_ibfk_2` FOREIGN KEY (`Prod_ID`) REFERENCES `side_products` (`SideProd_ID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `order_line_ibfk_3` FOREIGN KEY (`Size_ID`) REFERENCES `sideproduct_sizes` (`Size_ID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `order_line_ibfk_2` FOREIGN KEY (`Prod_ID`) REFERENCES `side_products` (`SideProd_ID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `payment`
