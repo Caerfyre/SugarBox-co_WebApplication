@@ -25,7 +25,12 @@ include 'includes/topbar.php'
                     <button type="button" class="btn btn-titleColor" data-toggle="modal" data-target="#addCustomer">
                     Add Customer
                     </button>
-                       <a href="products.php" class="btn btn-subheading">&larr; Go Back</a>  
+                    
+                    <a href="customers.php?q=all" type="button" class="btn <?php echo (isset($_GET['q']) && $_GET['q'] == 'all') || !isset($_GET['q']) ? 'btn-subheading' : 'btn-outline-subheading' ?>">All</a>
+                    <a href="customers.php?q=active" type="button" class="btn <?php echo isset($_GET['q']) && $_GET['q'] == 'active' ? 'btn-subheading' : 'btn-outline-subheading' ?>">Active</a>
+                    <a href="customers.php?q=inactive" type="button" class="btn <?php echo isset($_GET['q']) && $_GET['q'] == 'inactive' ? 'btn-subheading' : 'btn-outline-subheading' ?>">Inactive</a>
+                    <a href="customers.php?q=banned" type="button" class="btn <?php echo isset($_GET['q']) && $_GET['q'] == 'banned' ? 'btn-subheading' : 'btn-outline-subheading' ?>">Banned</a>
+                 
                     </div>
                    
                 </div>
@@ -37,8 +42,9 @@ include 'includes/topbar.php'
                         <?php
                         require '../scripts/database/DB-connect.php';
                         $conn = db_connect();
-
-                        $account_query = "SELECT accounts.Account_ID,
+                        $active = 0;
+                        if (isset($_GET['q']) && $_GET['q'] == 'active') {
+                            $account_query = "SELECT accounts.Account_ID,
                                                 accounts.Acc_Username,
                                                 accounts.Acc_Status,
                                                 customer.Cust_FName,
@@ -46,7 +52,55 @@ include 'includes/topbar.php'
                                         FROM accounts
                                         INNER JOIN customer
                                         ON accounts.Account_ID = customer.Cust_ID
+                                        WHERE accounts.Acc_Status = '2'
                                         ORDER BY accounts.Account_ID ASC";
+
+                            $err_message = "No Active Customers To Be Found";
+
+                        } else if (isset($_GET['q']) && $_GET['q'] == 'inactive') {
+                            $account_query = "SELECT accounts.Account_ID,
+                                                accounts.Acc_Username,
+                                                accounts.Acc_Status,
+                                                customer.Cust_FName,
+                                                customer.Cust_LName 
+                                        FROM accounts
+                                        INNER JOIN customer
+                                        ON accounts.Account_ID = customer.Cust_ID
+                                        WHERE accounts.Acc_Status = '1'
+                                        ORDER BY accounts.Account_ID ASC";
+
+                            $err_message = "No Inactive Customers To Be Found";
+
+                        } else if (isset($_GET['q']) && $_GET['q'] == 'banned') {
+
+                            $account_query = "SELECT accounts.Account_ID,
+                                                accounts.Acc_Username,
+                                                accounts.Acc_Status,
+                                                customer.Cust_FName,
+                                                customer.Cust_LName 
+                                        FROM accounts
+                                        INNER JOIN customer
+                                        ON accounts.Account_ID = customer.Cust_ID
+                                        WHERE accounts.Acc_Status = '0'
+                                        ORDER BY accounts.Account_ID ASC";
+
+                            $err_message = "No Banned Customers To Be Found";
+
+                        } else {
+
+                            $account_query = "SELECT accounts.Account_ID,
+                                                accounts.Acc_Username,
+                                                accounts.Acc_Status,
+                                                customer.Cust_FName,
+                                                customer.Cust_LName 
+                                        FROM accounts
+                                        INNER JOIN customer
+                                        ON accounts.Account_ID = customer.Cust_ID                           
+                                        ORDER BY accounts.Account_ID ASC";
+
+                            $err_message = "No Customers To Be Found";
+                        }
+                        
 
                         $acc_query_run = mysqli_query($conn, $account_query);
                         $check_accounts = mysqli_num_rows($acc_query_run) > 0;
@@ -96,10 +150,9 @@ include 'includes/topbar.php'
                                         <td><?php echo $row['Cust_FName'];?> <?php echo $row['Cust_LName']; ?></td>
                                         <td class="font-weight-bold <?php echo $style ?>"><?php echo $status ?></td>
                                         <td class="d-sm-flex align-items-center justify-content-center">
-                                        <!-- <a href="productDetails.php?prod_ID=<?php echo $row['Account_ID'];?>" class="btn btn-subheading">View Details</a> -->
                                         <button class="btn btn-subheading" data-toggle="modal" data-target="#viewDetails<?php echo $row['Account_ID'];?>">View Details</button>
                                         &nbsp;
-                                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteProd<?php echo $row['Account_ID'];?>">Delete Product</button>
+                                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteUser<?php echo $row['Account_ID'];?>">Remove User</button>
                                         </td>
                                     </tr>                      
 
@@ -175,7 +228,7 @@ include 'includes/topbar.php'
                         else
                         {  ?> 
                             <!-- NO Customers -->
-                                <p class="text-center lead text-content font-weight-bolder my-5">No Customers To Be Found</p>
+                                <p class="text-center lead text-content font-weight-bolder my-5"><?php echo $err_message ?></p>
                             <!-- NO Customers -->
                         <?php } ?>
 
@@ -194,6 +247,7 @@ include 'includes/topbar.php'
 
 
 <?php
+mysqli_close($conn);
 include 'includes/footer.php';
 include 'includes/logoutModal.php';
 include 'includes/scripts.php'
