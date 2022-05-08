@@ -74,12 +74,23 @@
                         <!-- Products -->
                         <?php $products = getProducts() ?>
                         <?php foreach ($products as $product) { ?>
-                            <a href="./order-item.php?id=<?php echo $product['SideProd_ID'] ?>" class="text-decoration-none col-md-4 text-center mb-4">
-                                <img class="img-fluid rounded-2" src="../assets/<?php echo $product['SideProd_Image'] ?>" alt="<?php echo $product['SideProd_Name'] ?>"
-                                    style="height: 250px; width: 300px; object-fit: cover">
-                                <p class="text-subheading fs-5 fw-bold mt-3"><?php echo $product['SideProd_Name'] ?></p>
-                                <p class="text-content"><?php echo $product['SideProd_Desc'] ?></p>
-                            </a>
+                            <?php if (isset($_GET['q']) && $_GET['q'] != 'all') { ?>
+                                <?php if ($_GET['q'] == strtolower($product['Categ_Name'])) { ?>
+                                    <a href="./order-item.php?id=<?php echo $product['SideProd_ID'] ?>" class="text-decoration-none col-md-4 text-center mb-4">
+                                        <img class="img-fluid rounded-2" src="../assets/<?php echo $product['SideProd_Image'] ?>" alt="<?php echo $product['SideProd_Name'] ?>"
+                                            style="height: 250px; width: 300px; object-fit: cover">
+                                        <p class="text-subheading fs-5 fw-bold mt-3"><?php echo $product['SideProd_Name'] ?></p>
+                                        <p class="text-content"><?php echo $product['SideProd_Desc'] ?></p>
+                                    </a>
+                            <?php }
+                                } else { ?>
+                                <a href="./order-item.php?id=<?php echo $product['SideProd_ID'] ?>" class="text-decoration-none col-md-4 text-center mb-4">
+                                    <img class="img-fluid rounded-2" src="../assets/<?php echo $product['SideProd_Image'] ?>" alt="<?php echo $product['SideProd_Name'] ?>"
+                                         style="height: 250px; width: 300px; object-fit: cover">
+                                    <p class="text-subheading fs-5 fw-bold mt-3"><?php echo $product['SideProd_Name'] ?></p>
+                                    <p class="text-content"><?php echo $product['SideProd_Desc'] ?></p>
+                                </a>
+                            <?php } ?>
                         <?php } ?>
                     </div>
                 </div>
@@ -98,6 +109,7 @@
 
             $query = "SELECT * FROM `side_categories` ORDER BY `Categ_Name` ASC";
             $result = mysqli_query($conn, $query);
+
             $categories = array();
             while ($row = mysqli_fetch_assoc($result)) {
                 $categories[] = $row;
@@ -114,8 +126,12 @@
         function getProducts() {
             $conn = db_connect();
 
-            $query = "SELECT * FROM `side_products` ORDER BY `SideProd_Name` ASC";
+            $query = "SELECT * FROM `side_products`
+                        INNER JOIN `side_categories` 
+                        ON `side_categories`.`Categ_ID`=`side_products`.`Categ_ID`
+                        ORDER BY `SideProd_Name` ASC";
             $result = mysqli_query($conn, $query);
+
             $products = array();
             while ($row = mysqli_fetch_assoc($result)) {
                 $products[] = $row;
