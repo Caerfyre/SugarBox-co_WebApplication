@@ -31,7 +31,7 @@ CREATE TABLE `accounts` (
   `Account_ID` int(11) NOT NULL,
   `Acc_Username` varchar(40) NOT NULL,
   `Acc_Password` varchar(255) NOT NULL,
-  `Date_Created` date NOT NULL DEFAULT current_timestamp(),
+  `Date_Created` timestamp NOT NULL DEFAULT current_timestamp(),
   `Acc_Status` enum('0','1','2','') NOT NULL COMMENT '0-Banned,1-Inactive (>60 days), 2-Active',
   `User_Type` enum('0','1','','') NOT NULL COMMENT '0-Admin, 1-Customer '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -58,7 +58,7 @@ CREATE TABLE `cake` (
   `Cake_ID` int(11) NOT NULL,
   `Flavor_Name` varchar(40) NOT NULL,
   `Design_Name` varchar(40) NOT NULL,
-  `Design_Description` varchar(100) NOT NULL,
+  `Design_Description` varchar(255) NOT NULL,
   `CakeSize_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -212,8 +212,8 @@ INSERT INTO `ingredients` (`Ingr_ID`, `Ingr_Name`, `Unit_Per_Purchase`, `Unit_Pr
 CREATE TABLE `orders` (
   `Order_ID` int(11) NOT NULL,
   `Cust_ID` int(11) NOT NULL,
-  `Order_Placement_Date` date NOT NULL DEFAULT current_timestamp(),
-  `Order_Fullfilment_Date` date NOT NULL,
+  `Order_Placement_Date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Order_Fullfilment_Date` timestamp NOT NULL,
   `Order_Type` enum('Pick-up','Delivery','','') NOT NULL COMMENT '''Pick-up'', ''Delivery''',
   `Order_Status` enum('Pending','In progress','Ready for pick-up','Delivering','Delivery failed','Claimed','Cancelled') NOT NULL COMMENT '''Pending'',''In progress'',''Ready for pick-up'',''Delivering'',''Delivery failed'',''Claimed'',''Cancelled''',
   `Total_Price` float(15,2) NOT NULL
@@ -238,6 +238,7 @@ INSERT INTO `orders` (`Order_ID`, `Cust_ID`, `Order_Placement_Date`, `Order_Full
 CREATE TABLE `order_line` (
   `Order_ID` int(11) NOT NULL,
   `Prod_ID` int(11) NOT NULL,
+  `Size_ID` int(11) NOT NULL,
   `Order_Quantity` int(11) NOT NULL,
   `Line_Price` float(15,2) NOT NULL COMMENT 'Price x QTY'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -341,7 +342,7 @@ CREATE TABLE `side_products` (
   `SideProd_ID` int(11) NOT NULL,
   `SideProd_Name` varchar(40) NOT NULL,
   `Categ_ID` int(11) NOT NULL,
-  `SideProd_Desc` varchar(100) NOT NULL,
+  `SideProd_Desc` varchar(255) NOT NULL,
   `SideProd_Image` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -436,7 +437,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_line`
   ADD KEY `Prod_ID` (`Prod_ID`),
-  ADD KEY `Order_ID` (`Order_ID`);
+  ADD KEY `Order_ID` (`Order_ID`),
+  ADD KEY `Size_ID` (`Size_ID`);
 
 --
 -- Indexes for table `payment`
@@ -576,7 +578,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_line`
   ADD CONSTRAINT `order_line_ibfk_1` FOREIGN KEY (`Order_ID`) REFERENCES `orders` (`Order_ID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `order_line_ibfk_2` FOREIGN KEY (`Prod_ID`) REFERENCES `side_products` (`SideProd_ID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `order_line_ibfk_2` FOREIGN KEY (`Prod_ID`) REFERENCES `side_products` (`SideProd_ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_line_ibfk_3` FOREIGN KEY (`Size_ID`) REFERENCES `sideproduct_sizes` (`Size_ID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `payment`
