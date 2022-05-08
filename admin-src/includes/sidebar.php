@@ -40,11 +40,11 @@
             </li>
 
             <!-- Nav Item - Suppliers -->
-            <li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == 'suppliers.php') echo 'active' ?>">
+            <!-- <li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == 'suppliers.php') echo 'active' ?>">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Suppliers</span></a>
-            </li>
+            </li> -->
 
              
             <!-- Nav Item - Orders -->
@@ -55,11 +55,11 @@
             </li>
 
             <!-- Nav Item - Fulfillment -->
-            <li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == 'fulfillment.php') echo 'active' ?>">
+            <!-- <li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == 'fulfillment.php') echo 'active' ?>">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-truck"></i>
                     <span>Fulfillment</span></a>
-            </li>
+            </li> -->
 
             <!-- Nav Item - Inventory -->
             <li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == 'inventory.php') echo 'active' ?>">
@@ -69,11 +69,11 @@
             </li>
 
             <!-- Nav Item - Sales Reports -->
-            <li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == 'salesreports.php') echo 'active' ?>">
+            <!-- <li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == 'salesreports.php') echo 'active' ?>">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-file-alt"></i>
                     <span>Sales Reports</span></a>
-            </li>
+            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
