@@ -205,10 +205,10 @@ include 'includes/topbar.php'
         </div>
 
         <!-- Pie Chart -->
-        <div class="col-xl-4 col-lg-5">
-            <div class="card shadow mb-4 border-section">
+        <!-- <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4 border-section"> -->
                 <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between border-section bg-section">
+                <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between border-section bg-section">
                     <h6 class="m-0 font-weight-bold text-content"><b>Revenue Sources</b></h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
@@ -224,9 +224,9 @@ include 'includes/topbar.php'
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Card Body -->
-                <div class="card-body bg-section2">
+                <!-- <div class="card-body bg-section2">
                     <div class="chart-pie pt-4 pb-2">
                         <canvas id="myPieChart"></canvas>
                     </div>
@@ -244,7 +244,7 @@ include 'includes/topbar.php'
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Content Row -->
     <!-- <div class="row">
