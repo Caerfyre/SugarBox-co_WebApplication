@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2022 at 04:34 PM
+-- Generation Time: May 08, 2022 at 06:28 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -183,9 +183,25 @@ CREATE TABLE `ingredients` (
   `Ingr_Name` varchar(24) NOT NULL,
   `Unit_Per_Purchase` varchar(8) NOT NULL,
   `Unit_Price` float(15,2) NOT NULL,
-  `Supplier_ID` int(11) NOT NULL,
   `Qty_Remaining` float(3,1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ingredients`
+--
+
+INSERT INTO `ingredients` (`Ingr_ID`, `Ingr_Name`, `Unit_Per_Purchase`, `Unit_Price`, `Qty_Remaining`) VALUES
+(2, 'All Purpose Flour', '1 kg', 43.00, 0.5),
+(3, 'Cocoa Powder', '1 kg', 340.00, 0.7),
+(4, 'Baking Soda', '1 kg', 80.00, 0.6),
+(5, 'Baking Powder', '50 g', 20.00, 0.4),
+(6, 'White Sugar', '1 kg', 53.00, 0.5),
+(7, 'Vanilla Extract', '250 ml', 25.00, 0.8),
+(8, 'OIl', '2 kg', 188.00, 1.4),
+(9, 'Milk', '1 L', 75.00, 0.4),
+(10, 'Vinegar', '945 g', 196.00, 99.9),
+(11, 'Food Color', '125 g', 43.00, 48.0),
+(12, 'Eggs', '25 pcs', 173.00, 17.0);
 
 -- --------------------------------------------------------
 
@@ -406,8 +422,7 @@ ALTER TABLE `customer`
 -- Indexes for table `ingredients`
 --
 ALTER TABLE `ingredients`
-  ADD PRIMARY KEY (`Ingr_ID`),
-  ADD KEY `Supplier_ID` (`Supplier_ID`);
+  ADD PRIMARY KEY (`Ingr_ID`);
 
 --
 -- Indexes for table `orders`
@@ -488,7 +503,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `ingredients`
 --
 ALTER TABLE `ingredients`
-  MODIFY `Ingr_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Ingr_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -549,12 +564,6 @@ ALTER TABLE `cake_orders`
 --
 ALTER TABLE `customer`
   ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`Cust_ID`) REFERENCES `accounts` (`Account_ID`) ON DELETE CASCADE;
-
---
--- Constraints for table `ingredients`
---
-ALTER TABLE `ingredients`
-  ADD CONSTRAINT `ingredients_ibfk_1` FOREIGN KEY (`Supplier_ID`) REFERENCES `suppliers` (`Supplier_ID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `orders`
