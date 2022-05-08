@@ -73,7 +73,8 @@
                         <?php $products = getProducts() ?>
                         <?php foreach ($products as $product) { ?>
                             <a href="./order-item.php?id=<?php echo $product['SideProd_ID'] ?>" class="text-decoration-none col-md-4 text-center mb-4">
-                                <img class="img-fluid rounded-2" src="../assets/<?php echo $product['SideProd_Image'] ?>" alt="<?php echo $product['SideProd_Name'] ?>">
+                                <img class="img-fluid rounded-2" src="../assets/<?php echo $product['SideProd_Image'] ?>" alt="<?php echo $product['SideProd_Name'] ?>"
+                                    style="height: 250px; width: 300px; object-fit: cover">
                                 <p class="text-subheading fs-5 fw-bold mt-3"><?php echo $product['SideProd_Name'] ?></p>
                                 <p class="text-content"><?php echo $product['SideProd_Desc'] ?></p>
                             </a>
