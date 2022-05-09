@@ -365,3 +365,27 @@ if (isset($_POST['editCakeDetails'])) {
 
     mysqli_close($conn);
 }
+
+/// CUSTOMERS ///
+if (isset($_POST['banCustBtn'])) {
+    $conn = db_connect();
+
+    $accID = $_POST['banAccID'];
+    $banStatus = $_POST['banStatus'];
+    $banMsg = ($banStatus == '0')? "Banned" : "Unbanned";
+
+    $ban_query = "UPDATE `accounts` SET `Acc_Status` = '$banStatus' WHERE `Account_ID` = '$accID'";
+    $ban_query_run = mysqli_query($conn, $ban_query);
+
+    if ($ban_query_run) {
+        $_SESSION['status'] = "Customer Successfully $banMsg!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/customers.php");   
+    } else {
+        $_SESSION['status'] = "Failed to $banMsg Category";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/customers.php");
+    }
+
+    mysqli_close($conn);
+}
