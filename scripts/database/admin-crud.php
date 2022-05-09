@@ -367,6 +367,8 @@ if (isset($_POST['editCakeDetails'])) {
 }
 
 /// CUSTOMERS ///
+
+// Ban Customer
 if (isset($_POST['banCustBtn'])) {
     $conn = db_connect();
 
@@ -383,6 +385,28 @@ if (isset($_POST['banCustBtn'])) {
         header("Location: ../../admin-src/customers.php");   
     } else {
         $_SESSION['status'] = "Failed to $banMsg Category";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/customers.php");
+    }
+
+    mysqli_close($conn);
+}
+
+// Remove Customer
+if (isset($_POST['removeUsertBtn'])) {
+    $conn = db_connect();
+
+    $accID = $_POST['accID'];
+
+    $delete_query = "DELETE FROM `accounts` WHERE `Account_ID` = '$accID' LIMIT 1";
+    $delete_query_run = mysqli_query($conn, $delete_query);
+
+    if ($delete_query_run) {
+        $_SESSION['status'] = "Customer Successfully Removed!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/customers.php");   
+    } else {
+        $_SESSION['status'] = "Failed to Remove Customer";
         $_SESSION['status_code'] = "error";
         header("Location: ../../admin-src/customers.php");
     }
