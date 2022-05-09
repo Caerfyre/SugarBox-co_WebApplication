@@ -17,15 +17,13 @@ include 'includes/topbar.php'
         <h1 class="h3 mb-0 text-content"><strong>Inventory</strong></h1>
     </div>
 
-    <!-- Orders -->
+    <!-- Ingredient List -->
     <div class="card shadow mb-4 border-section">
         <div class="card-header py-3 bg-section border-section">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-content"><strong>Ingredient List</strong></h6>
                 <div>
-                    <a href="orders.php?q=all" type="button" class="btn <?php echo (isset($_GET['q']) && $_GET['q'] == 'all') || !isset($_GET['q']) ? 'btn-subheading' : 'btn-outline-subheading' ?>">All</a>
-                    <a href="orders.php?q=sides" type="button" class="btn <?php echo isset($_GET['q']) && $_GET['q'] == 'sides' ? 'btn-subheading' : 'btn-outline-subheading' ?>">Sides</a>
-                    <a href="orders.php?q=cakes" type="button" class="btn <?php echo isset($_GET['q']) && $_GET['q'] == 'cakes' ? 'btn-subheading' : 'btn-outline-subheading' ?>">Cakes</a>
+                    <a href="#" type="button" class="btn btn-titleColor">Add Ingredient</a>
                 </div>
             </div>
         </div>
@@ -37,35 +35,12 @@ include 'includes/topbar.php'
             require '../scripts/database/DB-connect.php';
             $conn = db_connect();
 
-            if (isset($_GET['q']) && $_GET['q'] == 'sides') {
-                $orders_query = "SELECT DISTINCT `orders`.*,
-                            `customer`.`Cust_FName`,
-                            `customer`.`Cust_LName` 
-                            FROM `orders` 
-                            INNER JOIN `customer` ON `orders`.`Cust_ID`=`customer`.`Cust_ID` 
-                            INNER JOIN `order_line` ON `order_line`.`Order_ID`=`orders`.`Order_ID` 
-                            ORDER BY `orders`.`Order_ID`";
-            } else if (isset($_GET['q']) && $_GET['q'] == 'cakes') {
-                $orders_query = "SELECT `orders`.*,
-                            `customer`.`Cust_FName`, 
-                            `customer`.`Cust_LName`
-                            FROM `orders` 
-                            INNER JOIN `customer` ON `orders`.`Cust_ID`=`customer`.`Cust_ID` 
-                            INNER JOIN `cake_orders` ON `cake_orders`.`Order_ID`=`orders`.`Order_ID` 
-                            ORDER BY `orders`.`Order_ID`";
-            } else {
-                $orders_query = "SELECT `orders`.*,
-                            `customer`.`Cust_FName`, 
-                            `customer`.`Cust_LName`
-                            FROM `orders` 
-                            INNER JOIN `customer` ON `orders`.`Cust_ID`=`customer`.`Cust_ID` 
-                            ORDER BY `orders`.`Order_ID`";
-            }
+            $ingredients_query = "SELECT * FROM `ingredients` ORDER BY `Ingr_ID`";
 
-            $orders_query_run = mysqli_query($conn, $orders_query);
-            $check_orders = mysqli_num_rows($orders_query_run) > 0;
+            $ingredients_query_run = mysqli_query($conn, $ingredients_query);
+            $check_ingredients = mysqli_num_rows($ingredients_query_run) > 0;
             
-            if($check_orders) {   
+            if($check_ingredients) {
             ?>
 
                 <table class="table table-sm table-bordered table-striped border-content table-content bg-section2 text-content" id="dataTable">
@@ -90,22 +65,36 @@ include 'includes/topbar.php'
                         </tr>
                     </tfoot>
                     <tbody class="text-center">
-                        <?php while($row = mysqli_fetch_assoc($orders_query_run)) { ?>
+                        <?php while($row = mysqli_fetch_assoc($ingredients_query_run)) { ?>
+                        <?php
+                            $unit = explode(" ", $row['Unit_Per_Purchase']);
+                            $amount = $unit[0];
+                            unset($unit[0]);
+                            $unit = implode(" ", $unit);
+                        ?>
                         <tr>
-                            <td><?php echo $row['Order_ID'] ?></td>
-                            <td><?php echo $row['Cust_FName'] . " " . $row['Cust_LName'] ?></td>
-                            <td><?php echo date('D d F, Y', strtotime($row['Order_Placement_Date'])) ?></td>
-                            <td><?php echo date('D d F, Y', strtotime($row['Order_Fullfilment_Date'])) ?></td>
-                            <td><?php echo $row['Order_Type'] ?></td>
-                            <td><a href="orderDetails.php?order_ID=<?php echo $row['Order_ID'] ?>" type="button" class="btn btn-subheading px-2 py-1">View</a></td>
+                            <td><?php echo $row['Ingr_ID'] ?></td>
+                            <td><?php echo $row['Ingr_Name'] ?></td>
+                            <td><?php echo $row['Unit_Per_Purchase'] ?></td>
+                            <td><?php echo "P " . $row['Unit_Price'] ?></td>
+                            <td class="<?php
+                                if ($row['Qty_Remaining'] > $amount * .75) echo 'table-success';
+                                else if ($row['Qty_Remaining'] > $amount * .5) echo 'table-info';
+                                else if ($row['Qty_Remaining'] > $amount * .25) echo 'table-warning';
+                                else echo 'table-danger';
+                            ?>"><?php echo $row['Qty_Remaining'] + 0 . " " . $unit ?></td>
+                            <td>
+                                <a href="#?ingredient_ID=<?php echo $row['Ingr_ID'] ?>" type="button" class="btn btn-subheading px-2 py-1">Edit</a>
+                                <a href="#?ingredient_ID=<?php echo $row['Ingr_ID'] ?>" type="button" class="btn btn-danger px-2 py-1">Delete</a>
+                            </td>
                         </tr>
                         <?php } ?>
                     </tbody>
                 </table>
 
             <?php } else { ?> 
-                <!-- No Orders -->
-                <p class="text-center lead text-content font-weight-bolder my-5">No Orders To Be Found</p>
+                <!-- No Ingredients -->
+                <p class="text-center lead text-content font-weight-bolder my-5">No Ingredients To Be Found</p>
             <?php } ?>
 
             </div>
