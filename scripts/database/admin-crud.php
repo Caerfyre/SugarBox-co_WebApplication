@@ -405,6 +405,21 @@ if (isset($_POST['editIngr'])) {
 if (isset($_POST['deleteIngr'])) {
     $conn = db_connect();
 
+    $ingrID = $_POST['IngrID'];
+
+    $delete_query = "DELETE FROM `ingredients` WHERE `Ingr_ID` = '$ingrID' LIMIT 1";
+    $delete_query_run = mysqli_query($conn, $delete_query);
+
+    if ($delete_query_run) {
+        $_SESSION['status'] = "Ingredient Successfully Deleted!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/inventory.php");
+    } else {
+        $_SESSION['status'] = "Failed to Delete Ingredient";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/inventory.php");
+    }
+
     mysqli_close($conn);
 }
 
