@@ -22,9 +22,9 @@ include 'includes/topbar.php'
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-section border-section">
                     <h6 class="m-0 font-weight-bold text-content"><b>Customers List</b></h6>
                     <div>
-                    <button type="button" class="btn btn-titleColor" data-toggle="modal" data-target="#addCustomer">
+                    <!-- <button type="button" class="btn btn-titleColor" data-toggle="modal" data-target="#addCustomer">
                     Add Customer
-                    </button>
+                    </button> -->
                     
                     <a href="customers.php?q=all" type="button" class="btn <?php echo (isset($_GET['q']) && $_GET['q'] == 'all') || !isset($_GET['q']) ? 'btn-subheading' : 'btn-outline-subheading' ?>">All</a>
                     <a href="customers.php?q=active" type="button" class="btn <?php echo isset($_GET['q']) && $_GET['q'] == 'active' ? 'btn-subheading' : 'btn-outline-subheading' ?>">Active</a>
