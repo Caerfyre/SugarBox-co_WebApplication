@@ -164,7 +164,7 @@ include 'includes/topbar.php'
                 <?php 
                     $conn = db_connect();
 
-                    $query = "SELECT * FROM `orders` ORDER BY `Order_ID` DESC LIMIT 5";
+                    $query = "SELECT * FROM `orders` ORDER BY `Order_ID` DESC LIMIT 6";
                     $result = mysqli_query($conn, $query);
                     
                     if (mysqli_num_rows($result) > 0) {

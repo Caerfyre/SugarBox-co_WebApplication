@@ -218,15 +218,15 @@ include 'includes/topbar.php'
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="text-content font-weight-bold">Ingredient Name</label>
-                        <input type="text" name="newName" class="form-control border-section text-content" required>
+                        <input type="text" name="newName" class="form-control border-section text-content" placeholder="Enter ingredient name..." required>
                     </div>
                     <div class="form-group">
                         <label class="text-content font-weight-bold">Unit Per Purchase</label>
-                        <input type="text" name="newUnit" class="form-control border-section text-content"  required>
+                        <input type="text" name="newUnit" class="form-control border-section text-content" placeholder="Enter unit per purchase..." required>
                     </div>
                     <div class="form-group">
                         <label class="text-content font-weight-bold">Unit Price</label>
-                        <input type="number" step="0.01" name="newPrice" class="form-control border-section text-content" required>
+                        <input type="number" step="0.01" name="newPrice" class="form-control border-section text-content" placeholder="Enter unit price..." required>
                     </div>
                 </div>
                 <div class="modal-footer">

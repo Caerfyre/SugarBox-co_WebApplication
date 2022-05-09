@@ -112,8 +112,8 @@ include 'includes/topbar.php'
                                 <thead class="bg-light text-center">
                                     <tr>
                                         <th>Customer ID</th>
-                                        <th>Customer Username</th>
-                                        <th>Customer Name</th>
+                                        <th>Username</th>
+                                        <th>Name</th>
                                         <th>Account Status</th>
                                         <th>Actions</th>
                                     </tr>
@@ -121,8 +121,8 @@ include 'includes/topbar.php'
                                 <tfoot class="bg-light text-center" >
                                     <tr>
                                         <th>Customer ID</th>
-                                        <th>Customer Username</th>
-                                        <th>Customer Name</th>
+                                        <th>Username</th>
+                                        <th>Name</th>
                                         <th>Account Status</th>
                                         <th>Actions</th>
                                     </tr>
@@ -200,12 +200,12 @@ include 'includes/topbar.php'
                                                         <div class="col text-left"><p class="text-content font-weight-bold mb-2"><?php echo $row['Acc_Username'];?></p></div>
                                                     </div>
                                                     <div class="row justify-content-center">
-                                                        <div class="col text-right"><p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Status:</strong></div>
-                                                        <div class="col text-left"><p class="text-content font-weight-bold mb-2"><?php echo $status;?></p></div>
+                                                        <div class="col text-right"><p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Name:</strong></div>
+                                                        <div class="col text-left"><p class="text-content font-weight-bold mb-2"><?php echo $row['Cust_FName'];?> <?php echo $row['Cust_LName']; ?></p></div>
                                                     </div>
                                                     <div class="row justify-content-center">
-                                                        <div class="col text-right"><p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Customer Name:</strong></div>
-                                                        <div class="col text-left"><p class="text-content font-weight-bold mb-2"><?php echo $row['Cust_FName'];?> <?php echo $row['Cust_LName']; ?></p></div>
+                                                        <div class="col text-right"><p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Status:</strong></div>
+                                                        <div class="col text-left"><p class="text-content font-weight-bold mb-2"><?php echo $status;?></p></div>
                                                     </div>
                                                     <div class="row justify-content-center">
                                                         <div class="col text-right"><p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Contact Number:</strong></div>
@@ -219,7 +219,7 @@ include 'includes/topbar.php'
                                             </div>
                                         </div>
                                         </div>
-                                    </div>
+                                        </div>
                                     </div>
                                     <!-- End of Modal -->
 
@@ -238,7 +238,7 @@ include 'includes/topbar.php'
                                                     <div class="text-center">
                                                       <em class="fas fa-exclamation-circle fa-5x text-warning pb-3"></em>
                                                         <p>
-                                                            Are you sure you want to <strong><?php echo $banBtn?></strong>
+                                                            Are you sure you want to <strong><?php echo $banBtn ?></strong>
                                                             <br><strong class="text-titleColor">Customer #<?php echo $row['Account_ID'];?> (<?php echo $row['Acc_Username'];?>)?</strong>
                                                         </p>
                                                     </div>

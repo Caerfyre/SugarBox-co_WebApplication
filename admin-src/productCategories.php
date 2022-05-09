@@ -91,7 +91,7 @@ include 'includes/topbar.php'
                                            <form action="../scripts/database/admin-crud.php" method="post">
                                             <div class="modal-body">
                                                 <div class="form-group">
-                                                    <label class="text-content font-weight-bold">Category Name</label>
+                                                    <label class="text-content font-weight-bold">Name</label>
                                                     <input type="hidden" name="categID" value="<?php echo $row['Categ_ID']; ?>">
                                                     <input type="text" name="categName" class="form-control border-section text-content" value="<?php echo $row['Categ_Name']; ?>" required>
                                                 </div>  
@@ -121,8 +121,8 @@ include 'includes/topbar.php'
                 
                                             <div class="modal-body text-center h4 my-3">
                                                 <em class="fas fa-exclamation-circle fa-5x text-danger mb-3"></em>
-                                                <p>Are you sure you want to delete 
-                                                    <br><strong class="text-titleColor"><?php echo $row['Categ_Name']; ?> ?</strong>
+                                                <p>Are you sure you want to delete category
+                                                    <br><strong class="text-titleColor"><?php echo $row['Categ_Name']; ?>?</strong>
                                                 </p>
                                             </div>
 
@@ -169,8 +169,8 @@ include 'includes/topbar.php'
         <div class="modal-body">
 
             <div class="form-group">
-                <label class="text-content font-weight-bold">Category Name</label>
-                <input type="text" name="categName" class="form-control border-section text-content" placeholder="Enter Category Name" required>
+                <label class="text-content font-weight-bold">Name</label>
+                <input type="text" name="categName" class="form-control border-section text-content" placeholder="Enter category name..." required>
             </div>
             
         </div>

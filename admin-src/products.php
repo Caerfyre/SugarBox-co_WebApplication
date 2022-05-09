@@ -21,7 +21,7 @@ include 'includes/topbar.php'
     <div class="card shadow mb-4 border-section">
         <div class="card-header py-3 bg-section border-section">
             <div class="d-sm-flex align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-content"><strong>Side Products</strong></h6>
+                <h6 class="m-0 font-weight-bold text-content"><strong>Side Products List</strong></h6>
                 <div>
                     <button type="button" class="btn btn-titleColor" data-toggle="modal" data-target="#addProducts">
                     Add Product
@@ -144,11 +144,11 @@ include 'includes/topbar.php'
         <div class="modal-body">
 
             <div class="form-group">
-                <label class="text-content font-weight-bold">Product Name</label>
-                <input type="text" name="prodName" class="form-control border-section text-content" placeholder="Enter Username" required>
+                <label class="text-content font-weight-bold">Name</label>
+                <input type="text" name="prodName" class="form-control border-section text-content" placeholder="Enter product name..." required>
             </div>
             <div class="form-group">
-                <label class="text-content font-weight-bold">Product Type</label>
+                <label class="text-content font-weight-bold">Type</label>
                 <?php
                 $categ_query = "SELECT * FROM side_categories ORDER BY Categ_ID ASC";
                 $categ_query_run = mysqli_query($conn, $categ_query);
@@ -165,17 +165,17 @@ include 'includes/topbar.php'
                 <?php } ?>
             </div>
             <div class="form-group">
-                <label class="text-content font-weight-bold">Product Description</label>
+                <label class="text-content font-weight-bold">Description</label>
                 <textarea class="form-control text-content border-section" name="prodDesc" id="prodDesc" placeholder="Enter product description..." required></textarea>
             </div>
             <div class="form-group">
-                <label class="text-content font-weight-bold">Product Image</label><br>
+                <label class="text-content font-weight-bold">Image</label><br>
                 <input class="form-control-input" type="file" name="prodImage" required>
             </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-            <button type="submit" name="addProductBtn" class="btn btn-titleColor">Add Product</button>
+            <button type="submit" name="addProductBtn" class="btn btn-titleColor">Add</button>
         </div>
       </form>
     </div>

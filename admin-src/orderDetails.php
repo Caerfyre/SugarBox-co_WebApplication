@@ -145,11 +145,13 @@ include 'includes/topbar.php'
                 <div class="col">
                     <ol class="pl-3 d-flex flex-wrap">
                     <?php foreach ($orderLine as $item) { ?>
-                        <li class="col-2 text-content font-weight-bold mb-4"><strong class="font-weight-bolder"><?php echo $item['SideProd_Name'] ?></strong>
-                        <img class="card-img mt-2" style="width:150px;height:155px;object-fit:cover" src="../assets/<?php echo $item['SideProd_Image'] ?>" alt="<?php echo $item['SideProd_Name'] ?>">
-                        <p class="text-content font-weight-bold my-2"><strong class="font-weight-bolder">Size:&nbsp;</strong> <?php echo $item['Size_Description'] ?></p>
-                        <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Quantity:&nbsp;</strong> <?php echo $item['Order_Quantity'] ?></p>
-                        <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Line Price:&nbsp;</strong> P <?php echo $item['Line_Price'] ?></p>
+                        <li class="col-3">
+                            <p class="text-content font-weight-bold"><strong class="font-weight-bolder"><?php echo $item['SideProd_Name'] ?></strong></p>
+                            <img class="card-img mb-2" style="width:150px; height:120px; object-fit:cover" src="../assets/<?php echo $item['SideProd_Image'] ?>" alt="<?php echo $item['SideProd_Name'] ?>">
+                            <p class="text-content font-weight-bold my-2"><strong class="font-weight-bolder">Size:&nbsp;</strong> <?php echo $item['Size_Description'] ?></p>
+                            <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Quantity:&nbsp;</strong> <?php echo $item['Order_Quantity'] ?></p>
+                            <p class="text-content font-weight-bold mb-2"><strong class="font-weight-bolder">Line Price:&nbsp;</strong> P <?php echo $item['Line_Price'] ?></p>
+                        </li>
                     <?php } ?>
                     </ol>
                 </div>
