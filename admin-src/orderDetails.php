@@ -228,10 +228,10 @@ include 'includes/topbar.php'
                             <option value="Cancelled" <?php if ($order['Order_Status'] == "Cancelled") echo "selected"; ?>>Cancelled</option>
                         </select>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                        <button type="submit" name="editOrderDetails" class="btn btn-titleColor">Confirm</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="submit" name="editOrderDetails" class="btn btn-titleColor">Confirm</button>
                 </div>
             </form>
         </div>
@@ -271,10 +271,10 @@ include 'includes/topbar.php'
                             <option value="2" <?php if ($payment['Payment_Status'] == "2") echo "selected"; ?>>Paid</option>
                         </select>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                        <button type="submit" name="editCustInfo" class="btn btn-titleColor">Confirm</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="submit" name="editCustInfo" class="btn btn-titleColor">Confirm</button>
                 </div>
             </form>
         </div>
@@ -299,10 +299,10 @@ include 'includes/topbar.php'
                         <label class="text-content font-weight-bold">Price</label>
                         <input type="number" step='0.01' name="newPrice" class="form-control border-section text-content" value="<?php echo $orderLine[0]['Cake_Price'] ?>" required>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                        <button type="submit" name="editCakeDetails" class="btn btn-titleColor">Confirm</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="submit" name="editCakeDetails" class="btn btn-titleColor">Confirm</button>
                 </div>
             </form>
         </div>

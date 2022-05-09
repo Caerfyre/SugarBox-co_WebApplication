@@ -14,13 +14,13 @@ include 'includes/topbar.php'
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-content"><b>Product Categories</b></h1>
+        <h1 class="h3 mb-0 text-content"><strong>Product Categories</strong></h1>
     </div>
 
         <div class="card shadow mb-4 border-section">
                 <!-- Card Header -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-section border-section">
-                    <h6 class="m-0 font-weight-bold text-content"><b>Categories List</b></h6>
+                    <h6 class="m-0 font-weight-bold text-content"><strong>Categories List</strong></h6>
                     <div>
                     <button type="button" class="btn btn-titleColor" data-toggle="modal" data-target="#addCateg">
                     Add Category
@@ -66,12 +66,13 @@ include 'includes/topbar.php'
                             <tbody class="text-center">
                                 <?php while($row = mysqli_fetch_assoc($categ_query_run)) { ?>
                                 <tr>
-                                    <td><?php echo $row['Categ_ID']; ?></td>
-                                    <td><?php echo $row['Categ_Name']; ?></td>
-                                    <td class="d-sm-flex align-items-center justify-content-center">
-                                    <button class="btn btn-subheading" data-toggle="modal" data-target="#editCateg<?php echo $row['Categ_ID']; ?>">Edit</button>
-                                    &nbsp;
-                                    <button class="btn btn-danger" data-toggle="modal" data-target="#deleteCateg<?php echo $row['Categ_ID']; ?>">Delete</button>
+                                    <td class="align-middle"><?php echo $row['Categ_ID']; ?></td>
+                                    <td class="align-middle"><?php echo $row['Categ_Name']; ?></td>
+                                    <td class="align-middle">
+                                        <div class="d-sm-flex align-items-center justify-content-center">
+                                            <button class="btn btn-subheading px-2 py-1" data-toggle="modal" data-target="#editCateg<?php echo $row['Categ_ID']; ?>">Edit</button>
+                                            &nbsp;<button class="btn btn-danger px-2 py-1" data-toggle="modal" data-target="#deleteCateg<?php echo $row['Categ_ID']; ?>">Delete</button>
+                                        </div>
                                     </td>
                                 </tr>
 
@@ -81,7 +82,7 @@ include 'includes/topbar.php'
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="editCategModal"><b>Edit Category #<?php echo $row['Categ_ID']; ?></b></h5>
+                                                <h5 class="modal-title" id="editCategModal"><strong>Edit Category #<?php echo $row['Categ_ID']; ?></strong></h5>
                                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">×</span>
                                                 </button>
@@ -97,8 +98,8 @@ include 'includes/topbar.php'
                                             </div>
 
                                             <div class="modal-footer">
-                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                <button class="btn btn-danger" name="EditCategBtn" type="submit">Save</button>
+                                                <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+                                                <button class="btn btn-titleColor" name="EditCategBtn" type="submit">Save</button>
                                             </div>
                                             </form>
                                         </div>
@@ -112,23 +113,23 @@ include 'includes/topbar.php'
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteCategModal"><b>Delete</b></h5>
+                                                <h5 class="modal-title" id="deleteCategModal"><strong>Delete</strong></h5>
                                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">×</span>
                                                 </button>
                                             </div>
                 
                                             <div class="modal-body text-center h4 my-3">
-                                                <i class="fas fa-exclamation-circle fa-5x text-danger mb-3"></i>
+                                                <em class="fas fa-exclamation-circle fa-5x text-danger mb-3"></em>
                                                 <p>Are you sure you want to delete 
-                                                    <br><b class="text-titleColor"><?php echo $row['Categ_Name']; ?> ?</b>
+                                                    <br><strong class="text-titleColor"><?php echo $row['Categ_Name']; ?> ?</strong>
                                                 </p>
                                             </div>
 
                                             <div class="modal-footer">
-                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                                 <form action="../scripts/database/admin-crud.php" method="post">
                                                     <input name="deleteCategID" type="hidden" value="<?php echo $row['Categ_ID']; ?>">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                                     <button class="btn btn-danger" name="deleteCategBtn" type="submit">Delete</button>
                                                 </form>
                                             </div>
@@ -138,30 +139,18 @@ include 'includes/topbar.php'
                                 <!-- Delete Categ Modal -->
 
                                 <?php } ?>
-                            
-
                             </tbody>
                         </table>
 
-                    <?php
-                    } 
-                    else
-                    {  ?> 
+                    <?php } else { ?>
                         <!-- NO Categories -->
-                            <p class="text-center lead text-content font-weight-bolder my-5">No Categories To Be Found</p>
-                        <!-- NO Categories -->
+                        <p class="text-center lead text-content font-weight-bolder my-5">No Categories To Be Found</p>
                     <?php } ?>
-
                     </div>
                     <!-- Table End -->
-
                 </div>
                 <!-- Card Body End -->
-                
         </div>
-
-
-                
 </div>
 <!-- End of Main Content -->
 

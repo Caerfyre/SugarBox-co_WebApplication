@@ -17,11 +17,11 @@ include 'includes/topbar.php'
         <h1 class="h3 mb-0 text-content"><strong>Inventory</strong></h1>
     </div>
 
-    <!-- Ingredient List -->
+    <!-- Ingredients List -->
     <div class="card shadow mb-4 border-section">
         <div class="card-header py-3 bg-section border-section">
             <div class="d-sm-flex align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-content"><strong>Ingredient List</strong></h6>
+                <h6 class="m-0 font-weight-bold text-content"><strong>Ingredients List</strong></h6>
                 <div>
                     <a type="button" class="btn btn-titleColor" data-toggle="modal" data-target="#addIngr">Add Ingredient</a>
                 </div>
@@ -73,18 +73,18 @@ include 'includes/topbar.php'
                             $unit = implode(" ", $unit);
                         ?>
                         <tr>
-                            <td><?php echo $row['Ingr_ID'] ?></td>
-                            <td><?php echo $row['Ingr_Name'] ?></td>
-                            <td><?php echo $row['Unit_Per_Purchase'] ?></td>
-                            <td><?php echo "P " . $row['Unit_Price'] ?></td>
-                            <td class="<?php
+                            <td class="align-middle"><?php echo $row['Ingr_ID'] ?></td>
+                            <td class="align-middle"><?php echo $row['Ingr_Name'] ?></td>
+                            <td class="align-middle"><?php echo $row['Unit_Per_Purchase'] ?></td>
+                            <td class="align-middle"><?php echo "P " . $row['Unit_Price'] ?></td>
+                            <td class="align-middle <?php
                                 if ($row['Qty_Remaining'] > $amount * .75) echo 'table-success';
                                 else if ($row['Qty_Remaining'] > $amount * .5) echo 'table-info';
                                 else if ($row['Qty_Remaining'] > $amount * .25) echo 'table-warning';
                                 else echo 'table-danger';
                             ?>"><?php echo $row['Qty_Remaining'] + 0 . " " . $unit ?></td>
-                            <td>
-                                <a type="button" class="btn btn-subheading px-2 py-1" data-toggle="modal" data-target="#restockIngr<?php echo $row['Ingr_ID'] ?>">Restock</a>
+                            <td class="align-middle">
+                                <a type="button" class="btn btn-success px-2 py-1" data-toggle="modal" data-target="#restockIngr<?php echo $row['Ingr_ID'] ?>">Restock</a>
                                 <a type="button" class="btn btn-subheading px-2 py-1" data-toggle="modal" data-target="#editIngr<?php echo $row['Ingr_ID'] ?>">Edit</a>
                                 <a type="button" class="btn btn-danger px-2 py-1" data-toggle="modal" data-target="#deleteIngr<?php echo $row['Ingr_ID'] ?>">Delete</a>
                             </td>
@@ -110,7 +110,7 @@ include 'includes/topbar.php'
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                            <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
                                             <button class="btn btn-success" name="restockIngr" type="submit">Restock</button>
                                         </div>
                                     </form>
@@ -150,8 +150,8 @@ include 'includes/topbar.php'
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                            <button class="btn btn-success" name="editIngr" type="submit">Edit</button>
+                                            <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+                                            <button class="btn btn-titleColor" name="editIngr" type="submit">Edit</button>
                                         </div>
                                     </form>
                                 </div>
@@ -230,8 +230,8 @@ include 'includes/topbar.php'
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-success" name="addIngr" type="submit">Create</button>
+                    <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-titleColor" name="addIngr" type="submit">Create</button>
                 </div>
             </form>
         </div>

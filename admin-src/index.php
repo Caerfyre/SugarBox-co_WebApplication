@@ -42,7 +42,7 @@ include 'includes/topbar.php'
                             <div class="h5 mb-0 font-weight-bold text-content"><?php echo $itemsSold[0] ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-success"></i>
+                            <em class="fas fa-dollar-sign fa-2x text-success"></em>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@ include 'includes/topbar.php'
                             <div class="h5 mb-0 font-weight-bold text-content"><?php echo $productsCount[0] ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-tags fa-2x text-info"></i>
+                            <em class="fas fa-tags fa-2x text-info"></em>
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@ include 'includes/topbar.php'
                             </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-warning"></i>
+                            <em class="fas fa-users fa-2x text-warning"></em>
                         </div>
                     </div>
                 </div>
@@ -131,7 +131,7 @@ include 'includes/topbar.php'
                             <div class="h5 mb-0 font-weight-bold text-content">P <?php echo $revenueTotal[0] ?></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-money-bill fa-2x text-danger"></i>
+                            <em class="fas fa-money-bill fa-2x text-danger"></em>
                         </div>
                     </div>
                 </div>
@@ -144,16 +144,16 @@ include 'includes/topbar.php'
     <div class="row">
         
         <!-- ORDERS TABLE -->
-        <div class="col-xl-8 col-lg-7">
+        <div class="col">
 
-            <!-- DataTales Example -->
+            <!-- DataTable -->
             <div class="card shadow mb-4 border-section">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-section border-section">
-                    <h6 class="m-0 font-weight-bold text-content"><b>Recent Orders</b></h6>
+                    <h6 class="m-0 font-weight-bold text-content"><strong>Recent Orders</strong></h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-content"></i>
+                            <em class="fas fa-ellipsis-v fa-sm fa-fw text-content"></em>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="orders.php">See all</a>

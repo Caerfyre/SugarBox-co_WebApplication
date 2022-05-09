@@ -21,7 +21,7 @@ include 'includes/topbar.php'
     <div class="card shadow mb-4 border-section">
         <div class="card-header py-3 bg-section border-section">
             <div class="d-sm-flex align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-content"><strong>All Orders</strong></h6>
+                <h6 class="m-0 font-weight-bold text-content"><strong>Orders List</strong></h6>
                 <div>
                     <a href="orders.php?q=all" type="button" class="btn <?php echo (isset($_GET['q']) && $_GET['q'] == 'all') || !isset($_GET['q']) ? 'btn-subheading' : 'btn-outline-subheading' ?>">All</a>
                     <a href="orders.php?q=sides" type="button" class="btn <?php echo isset($_GET['q']) && $_GET['q'] == 'sides' ? 'btn-subheading' : 'btn-outline-subheading' ?>">Sides</a>
@@ -96,14 +96,14 @@ include 'includes/topbar.php'
                     <tbody class="text-center">
                         <?php while($row = mysqli_fetch_assoc($orders_query_run)) { ?>
                         <tr>
-                            <td><?php echo $row['Order_ID'] ?></td>
-                            <td><?php echo $row['Cust_FName'] . " " . $row['Cust_LName'] ?></td>
-                            <td><?php echo date('D d F, Y', strtotime($row['Order_Placement_Date'])) ?></td>
-                            <td><?php echo date('D d F, Y', strtotime($row['Order_Fullfilment_Date'])) ?></td>
-                            <td><?php echo $row['Order_Type'] ?></td>
-                            <td><?php echo $row['Order_Status'] ?></td>
-                            <td>P <?php echo $row['Total_Price'] ?></td>
-                            <td><a href="orderDetails.php?order_ID=<?php echo $row['Order_ID'] ?>" type="button" class="btn btn-subheading px-2 py-1">View</a></td>
+                            <td class="align-middle"><?php echo $row['Order_ID'] ?></td>
+                            <td class="align-middle"><?php echo $row['Cust_FName'] . " " . $row['Cust_LName'] ?></td>
+                            <td class="align-middle"><?php echo date('D d F, Y', strtotime($row['Order_Placement_Date'])) ?></td>
+                            <td class="align-middle"><?php echo date('D d F, Y', strtotime($row['Order_Fullfilment_Date'])) ?></td>
+                            <td class="align-middle"><?php echo $row['Order_Type'] ?></td>
+                            <td class="align-middle"><?php echo $row['Order_Status'] ?></td>
+                            <td class="align-middle">P <?php echo $row['Total_Price'] ?></td>
+                            <td class="align-middle"><a href="orderDetails.php?order_ID=<?php echo $row['Order_ID'] ?>" type="button" class="btn btn-subheading px-2 py-1">View</a></td>
                         </tr>
                         <?php } ?>
                     </tbody>
