@@ -157,7 +157,7 @@ include 'includes/topbar.php'
                                         &nbsp;
                                         <button class="btn btn-titleColor" data-toggle="modal" data-target="#banUser<?php echo $row['Account_ID'];?>"><?php echo $banBtn?></button>
                                         &nbsp;
-                                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteUser<?php echo $row['Account_ID'];?>">Remove User</button>
+                                        <button class="btn btn-danger" data-toggle="modal" data-target="#removeUser<?php echo $row['Account_ID'];?>">Remove User</button>
                                         </td>
                                     </tr>                      
 
@@ -251,6 +251,40 @@ include 'includes/topbar.php'
                                                         <input name="banAccID" type="hidden" value="<?php echo $row['Account_ID'];?>">
                                                         <input name="banStatus" type="hidden" value="<?php echo ($banBtn == 'Ban') ? '0' : '2' ?>">
                                                         <button class="btn btn-danger" name="banCustBtn" type="submit"><?php echo $banBtn?></button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End of Modal -->
+
+                                    <!-- Remove User Modal -->             
+                                    <div class="modal fade" id="removeUser<?php echo $row['Account_ID'];?>" tabindex="-1" role="dialog" aria-labelledby="removeUserModal"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="removeUserModal"><b>Remove User</b></h5>
+                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="text-center">
+                                                      <i class="fas fa-exclamation-circle fa-5x text-danger pb-3"></i>
+                                                        <p>
+                                                            Are you sure you want to remove
+                                                            <br><b class="text-titleColor">Customer #<?php echo $row['Account_ID'];?> (<?php echo $row['Acc_Username'];?>) ?</b>
+                                                        </p>
+                                                            
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                    <form action="../scripts/database/admin-crud.php" method="post">
+                                                        <input name="accID" type="hidden" value="<?php echo $row['Account_ID'];?>">
+                                                        <button class="btn btn-danger" name="removeUsertBtn" type="submit">Remove</button>
                                                     </form>
                                                 </div>
                                             </div>
