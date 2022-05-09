@@ -398,6 +398,31 @@ if (isset($_POST['restockIngr'])) {
 if (isset($_POST['editIngr'])) {
     $conn = db_connect();
 
+    $ingrID = $_POST['IngrID'];
+    $newName = $_POST['newName'];
+    $newUnit = $_POST['newUnit'];
+    $newPrice = $_POST['newPrice'];
+    $newQty = $_POST['newQty'];
+
+    $edit_query = "UPDATE `ingredients`
+                SET `Ingr_Name` = '$newName',
+                `Unit_Per_Purchase` = '$newUnit',
+                `Unit_Price` = '$newPrice',
+                `Qty_Remaining` = '$newQty'
+                WHERE `Ingr_ID` = '$ingrID'";
+
+    $edit_query_run = mysqli_query($conn, $edit_query);
+
+    if($edit_query_run){
+        $_SESSION['status'] = "Ingredient Successfully Updated!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/inventory.php");
+    }else{
+        $_SESSION['status'] = "Failed to Update Ingredient";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/inventory.php");
+    }
+
     mysqli_close($conn);
 }
 
