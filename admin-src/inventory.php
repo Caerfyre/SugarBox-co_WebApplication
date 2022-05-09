@@ -101,19 +101,19 @@ include 'includes/topbar.php'
                                             <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
-                                        <div>
-                                            Are you sure you want to restock<br />
-                                            <span class="text-titleColor"><strong><?php echo $row['Ingr_Name'] ?>?</strong></span>
+                                    <form action="../scripts/database/admin-crud.php" method="POST" enctype="multipart/form-data">
+                                        <input name="IngrID" type="hidden" value="<?php echo $row['Ingr_ID'] ?>">
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label class="text-content font-weight-bold">Add amount (<?php echo $unit ?>) to Inventory:</label>
+                                                <input type="number" step="0.1" name="restockAmount" class="form-control border-section text-content" value="<?php echo $amount ?>" required>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <form action="../scripts/database/admin-crud.php" method="post">
-                                            <input name="IngrID" type="hidden" value="<?php echo $row['Ingr_ID'] ?>">
+                                        <div class="modal-footer">
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                             <button class="btn btn-success" name="restockIngr" type="submit">Restock</button>
-                                        </form>
-                                    </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -129,19 +129,31 @@ include 'includes/topbar.php'
                                             <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
-                                        <div>
-                                            Are you sure you want to edit<br />
-                                            <span class="text-titleColor"><strong><?php echo $row['Ingr_Name'] ?>?</strong></span>
+                                    <form action="../scripts/database/admin-crud.php" method="POST" enctype="multipart/form-data">
+                                        <input name="IngrID" type="hidden" value="<?php echo $row['Ingr_ID'] ?>">
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label class="text-content font-weight-bold">Ingredient Name</label>
+                                                <input type="text" name="newName" class="form-control border-section text-content" value="<?php echo $row['Ingr_Name'] ?>" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-content font-weight-bold">Unit Per Purchase</label>
+                                                <input type="text" name="newUnit" class="form-control border-section text-content" value="<?php echo $row['Unit_Per_Purchase'] ?>" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-content font-weight-bold">Unit Price</label>
+                                                <input type="number" step="0.01" name="newPrice" class="form-control border-section text-content" value="<?php echo $row['Unit_Price'] ?>" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-content font-weight-bold">Qty. Remaining</label>
+                                                <input type="number" step="0.1" name="newQty" class="form-control border-section text-content" value="<?php echo $row['Qty_Remaining'] ?>" required>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <form action="../scripts/database/admin-crud.php" method="post">
-                                            <input name="IngrID" type="hidden" value="<?php echo $row['Ingr_ID'] ?>">
+                                        <div class="modal-footer">
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                             <button class="btn btn-success" name="editIngr" type="submit">Edit</button>
-                                        </form>
-                                    </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
