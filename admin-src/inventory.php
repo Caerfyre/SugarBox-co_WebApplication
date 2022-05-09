@@ -23,7 +23,7 @@ include 'includes/topbar.php'
             <div class="d-sm-flex align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-content"><strong>Ingredient List</strong></h6>
                 <div>
-                    <a href="#" type="button" class="btn btn-titleColor">Add Ingredient</a>
+                    <a type="button" class="btn btn-titleColor" data-toggle="modal" data-target="#addIngr">Add Ingredient</a>
                 </div>
             </div>
         </div>
@@ -202,6 +202,41 @@ include 'includes/topbar.php'
     </div>
 </div>
 <!-- End of Main Content -->
+
+<!-- Add Ingredient Modal -->
+<div class="modal fade" id="addIngr" tabindex="-1" role="dialog" aria-labelledby="addIngrModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addIngrModal"><strong>Create New Ingredient</strong></h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form action="../scripts/database/admin-crud.php" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="text-content font-weight-bold">Ingredient Name</label>
+                        <input type="text" name="newName" class="form-control border-section text-content" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-content font-weight-bold">Unit Per Purchase</label>
+                        <input type="text" name="newUnit" class="form-control border-section text-content"  required>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-content font-weight-bold">Unit Price</label>
+                        <input type="number" step="0.01" name="newPrice" class="form-control border-section text-content" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-success" name="addIngr" type="submit">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <?php
 mysqli_close($conn);

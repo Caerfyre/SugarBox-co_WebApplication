@@ -368,6 +368,35 @@ if (isset($_POST['editCakeDetails'])) {
 
 /// INVENTORY ///
 
+// Add Ingredient
+if (isset($_POST['addIngr'])) {
+    $conn = db_connect();
+
+    $ingrID = $_POST['IngrID'];
+    $newName = $_POST['newName'];
+    $newUnit = $_POST['newUnit'];
+    $newPrice = $_POST['newPrice'];
+    $unit = explode(" ", $newUnit);
+    $qty = $unit[0];
+
+    $insert_query = "INSERT INTO `ingredients` (`Ingr_Name`, `Unit_Per_Purchase`, `Unit_Price`, `Qty_Remaining`)
+                    VALUES('$newName', '$newUnit', '$newPrice', '$qty')";
+
+    $insert_query_run = mysqli_query($conn, $insert_query);
+
+    if($insert_query_run){
+        $_SESSION['status'] = "Ingredient Successfully Created!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/inventory.php");
+    }else{
+        $_SESSION['status'] = "Failed to Create Ingredient";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/inventory.php");
+    }
+
+    mysqli_close($conn);
+}
+
 // Restock
 if (isset($_POST['restockIngr'])) {
     $conn = db_connect();
