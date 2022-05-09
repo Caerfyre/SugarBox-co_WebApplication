@@ -84,10 +84,98 @@ include 'includes/topbar.php'
                                 else echo 'table-danger';
                             ?>"><?php echo $row['Qty_Remaining'] + 0 . " " . $unit ?></td>
                             <td>
-                                <a href="#?ingredient_ID=<?php echo $row['Ingr_ID'] ?>" type="button" class="btn btn-subheading px-2 py-1">Edit</a>
-                                <a href="#?ingredient_ID=<?php echo $row['Ingr_ID'] ?>" type="button" class="btn btn-danger px-2 py-1">Delete</a>
+                                <a type="button" class="btn btn-subheading px-2 py-1" data-toggle="modal" data-target="#restockIngr<?php echo $row['Ingr_ID'] ?>">Restock</a>
+                                <a type="button" class="btn btn-subheading px-2 py-1" data-toggle="modal" data-target="#editIngr<?php echo $row['Ingr_ID'] ?>">Edit</a>
+                                <a type="button" class="btn btn-danger px-2 py-1" data-toggle="modal" data-target="#deleteIngr<?php echo $row['Ingr_ID'] ?>">Delete</a>
                             </td>
                         </tr>
+
+                        <!-- Restock Ingredient Modal -->
+                        <div class="modal fade" id="restockIngr<?php echo $row['Ingr_ID'] ?>" tabindex="-1" role="dialog" aria-labelledby="restockIngrModal"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="restockIngrModal"><strong>Restock</strong></h5>
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            Are you sure you want to restock<br />
+                                            <span class="text-titleColor"><strong><?php echo $row['Ingr_Name'] ?>?</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="../scripts/database/admin-crud.php" method="post">
+                                            <input name="IngrID" type="hidden" value="<?php echo $row['Ingr_ID'] ?>">
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                            <button class="btn btn-success" name="restockIngr" type="submit">Restock</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Edit Ingredient Modal -->
+                        <div class="modal fade" id="editIngr<?php echo $row['Ingr_ID'] ?>" tabindex="-1" role="dialog" aria-labelledby="editIngrModal"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editIngrModal"><strong>Edit Details</strong></h5>
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            Are you sure you want to edit<br />
+                                            <span class="text-titleColor"><strong><?php echo $row['Ingr_Name'] ?>?</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="../scripts/database/admin-crud.php" method="post">
+                                            <input name="IngrID" type="hidden" value="<?php echo $row['Ingr_ID'] ?>">
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                            <button class="btn btn-success" name="editIngr" type="submit">Edit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Delete Ingredient Modal -->
+                        <div class="modal fade" id="deleteIngr<?php echo $row['Ingr_ID'] ?>" tabindex="-1" role="dialog" aria-labelledby="deleteIngrModal"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteIngrModal"><strong>Delete</strong></h5>
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="d-flex align-items-center justify-content-center py-3">
+                                            <div><em class="fas fa-exclamation-circle fa-3x text-danger pr-3"></em></div>
+                                            <div>
+                                                Are you sure you want to delete<br />
+                                                <span class="text-titleColor"><strong><?php echo $row['Ingr_Name'] ?>?</strong></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="../scripts/database/admin-crud.php" method="post">
+                                            <input name="IngrID" type="hidden" value="<?php echo $row['Ingr_ID'] ?>">
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                            <button class="btn btn-danger" name="deleteIngr" type="submit">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <?php } ?>
                     </tbody>
                 </table>
