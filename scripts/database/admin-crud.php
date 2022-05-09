@@ -366,6 +366,48 @@ if (isset($_POST['editCakeDetails'])) {
     mysqli_close($conn);
 }
 
+/// INVENTORY ///
+
+// Restock
+if (isset($_POST['restockIngr'])) {
+    $conn = db_connect();
+
+    $ingrID = $_POST['IngrID'];
+    $restockAmount = $_POST['restockAmount'];
+
+    $edit_query = "UPDATE `ingredients`
+                SET `Qty_Remaining` = `Qty_Remaining`+ '$restockAmount'
+                WHERE `Ingr_ID` = '$ingrID'";
+
+    $edit_query_run = mysqli_query($conn, $edit_query);
+
+    if($edit_query_run){
+        $_SESSION['status'] = "Ingredient Successfully Restocked!";
+        $_SESSION['status_code'] = "success";
+        header("Location: ../../admin-src/inventory.php");
+    }else{
+        $_SESSION['status'] = "Failed to Restock Ingredient";
+        $_SESSION['status_code'] = "error";
+        header("Location: ../../admin-src/inventory.php");
+    }
+
+    mysqli_close($conn);
+}
+
+// Edit Ingredient
+if (isset($_POST['editIngr'])) {
+    $conn = db_connect();
+
+    mysqli_close($conn);
+}
+
+// Delete Ingredient
+if (isset($_POST['deleteIngr'])) {
+    $conn = db_connect();
+
+    mysqli_close($conn);
+}
+
 /// CUSTOMERS ///
 
 // Ban Customer
