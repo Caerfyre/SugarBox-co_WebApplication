@@ -209,6 +209,7 @@ include 'includes/topbar.php'
 
 
 <?php
+mysqli_close($conn);
 include 'includes/footer.php';
 include 'includes/logoutModal.php';
 include 'includes/scripts.php'

@@ -196,6 +196,7 @@ include 'includes/topbar.php'
 </div>
 
 <?php
+mysqli_close($conn);
 include 'includes/footer.php';
 include 'includes/logoutModal.php';
 include 'includes/scripts.php'
