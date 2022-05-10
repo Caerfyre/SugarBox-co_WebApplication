@@ -177,6 +177,27 @@ if (isset($_POST['pushOrder'])) {
         }
     }
 
+    // ADD/UPDATE CUSTOMER table
+    $query = "SELECT * FROM `customer` WHERE `Cust_ID`='$accID' LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    $custInfo = mysqli_fetch_array($result);
+
+    if ($custInfo) {
+        $query = "UPDATE `customer` SET `Cust_FName` = '$fname',`Cust_LName` = '$lname', 
+                `Cust_ContactNo` = '$contact', `Cust_Address` = '$address' WHERE `Cust_ID` = '$accID'";
+    } else {
+        $query = "INSERT INTO `customer`(`Cust_ID`, `Cust_FName`, `Cust_LName`, `Cust_ContactNo`, `Cust_Address`) 
+                VALUES('$accID', '$fname','$lname', '$contact', '$address')";
+    }
+
+    if (mysqli_query($conn, $query)) {
+        getCustomer($accID);
+        echo '<script>console.log("Contact details updated.")</script>';
+    } else {
+        echo '<script>console.log("Failed to update contact details...")</script>';
+        // echo mysqli_error($conn);
+    }
+
     // INSERT into ORDERS table
     $query = "INSERT INTO `orders`(`Cust_ID`, `Order_Fullfilment_Date`, `Order_Type`, `Order_Status`, `Total_Price`) 
                 VALUES ('$accID', '$date', '$type', 'Pending', '$total')";
@@ -270,27 +291,6 @@ if (isset($_POST['pushOrder'])) {
         echo '<script>console.log("Payment submitted.")</script>';
     } else {
         echo '<script>console.log("Failed to submit payment...")</script>';
-        // echo mysqli_error($conn);
-    }
-
-    // ADD/UPDATE CUSTOMER table
-    $query = "SELECT * FROM `customer` WHERE `Cust_ID`='$accID' LIMIT 1";
-    $result = mysqli_query($conn, $query);
-    $custInfo = mysqli_fetch_array($result);
-
-    if ($custInfo) {
-        $query = "UPDATE `customer` SET `Cust_FName` = '$fname',`Cust_LName` = '$lname', 
-                `Cust_ContactNo` = '$contact', `Cust_Address` = '$address' WHERE `Cust_ID` = '$accID'";
-    } else {
-        $query = "INSERT INTO `customer`(`Cust_ID`, `Cust_FName`, `Cust_LName`, `Cust_ContactNo`, `Cust_Address`) 
-                VALUES('$accID', '$fname','$lname', '$contact', '$address')";
-    }
-
-    if (mysqli_query($conn, $query)) {
-        getCustomer($accID);
-        echo '<script>console.log("Contact details updated.")</script>';
-    } else {
-        echo '<script>console.log("Failed to update contact details...")</script>';
         // echo mysqli_error($conn);
     }
 
