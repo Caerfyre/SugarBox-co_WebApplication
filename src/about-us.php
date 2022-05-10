@@ -13,18 +13,13 @@
         border: 1px solid black;
     } */
     .img2 img {
-	width: 140px;
-	height: 140px;
-	border: 7px solid white;
+	width: 120px;
+	height: 120px;
 	margin-top: -60px;
-    }
-    .card:hover .img2 img {
-        border-color: #F3E4D9;
-        transition: 1s;
     }
 </style>
 
-<body class="bg-light <?php if ($_SESSION['functions']['toggleCart'] == true || $_SESSION['functions']['toggleOptions'] == true || $_SESSION['functions']['toggleSearch'] == true) echo 'overflow-hidden' ?>">
+<body class="bg-light <?php if ($_SESSION['functions']['toggleCart'] || $_SESSION['functions']['toggleOptions'] || $_SESSION['functions']['toggleSearch']) echo 'overflow-hidden' ?>">
 
     <!-- Navbar -->
     <?php include '../common/navbar.php' ?>
@@ -75,6 +70,7 @@
                     <h2 class="text-center text-titleColor">THE FOUNDERS</h2>
                     <img class="img-fluid col-6 mt-n5" src="../assets/leaves.svg" draggable="false" alt="">
                     <div class="row justify-content-center pt-5 gy-5">
+                    <?php for ($i = 0; $i < 3; $i++) { ?>
                         <!-- Founder Card -->
                         <div class="col-lg-4">
                             <div class="card bg-white shadow-lg rounded-3">
@@ -82,59 +78,20 @@
                                     <img class="img-fluid rounded-3 rounded-bottom" src="../assets/splash.svg" alt="Background">
                                 </div>
                                 <div class="img2 d-flex justify-content-center">
-                                    <img class="rounded-circle" src="../assets/pandesal.png" alt="Founder">
+                                    <img class="rounded-circle" src="../assets/sblogo-1.svg" style="object-fit: cover" alt="Founder">
                                 </div>
                                 <div class="mx-5">
                                     <h3 class="text-titleColor mt-3 mb-4">FOUNDER</h3>
                                     <p class="text-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                 </div>
                                 <div class="text-icon fs-4 pt-3 pb-4">
-                                    <i class="bi bi-facebook px-3"></i>
-                                    <i class="bi bi-instagram px-3"></i>
-                                    <i class="bi bi-twitter px-3"></i>
+                                    <em class="bi bi-facebook px-3"></em>
+                                    <em class="bi bi-instagram px-3"></em>
+                                    <em class="bi bi-twitter px-3"></em>
                                 </div>
                             </div>
                         </div>
-                        <!-- Founder Card -->
-                        <div class="col-lg-4">
-                            <div class="card bg-white shadow-lg rounded-3">
-                                <div class="col">
-                                    <img class="img-fluid rounded-3 rounded-bottom" src="../assets/splash.svg" alt="Background">
-                                </div>
-                                <div class="img2 d-flex justify-content-center">
-                                    <img class="rounded-circle" src="../assets/pandesal.png" alt="Founder">
-                                </div>
-                                <div class="mx-5">
-                                    <h3 class="text-titleColor mt-3 mb-4">FOUNDER</h3>
-                                    <p class="text-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                </div>
-                                <div class="text-icon fs-4 pt-3 pb-4">
-                                    <i class="bi bi-facebook px-3"></i>
-                                    <i class="bi bi-instagram px-3"></i>
-                                    <i class="bi bi-twitter px-3"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Founder Card -->
-                        <div class="col-lg-4">
-                            <div class="card bg-white shadow-lg rounded-3">
-                                <div class="col">
-                                    <img class="img-fluid rounded-3 rounded-bottom" src="../assets/splash.svg" alt="Background">
-                                </div>
-                                <div class="img2 d-flex justify-content-center">
-                                    <img class="rounded-circle" src="../assets/pandesal.png" alt="Founder">
-                                </div>
-                                <div class="mx-5">
-                                    <h3 class="text-titleColor mt-3 mb-4">FOUNDER</h3>
-                                    <p class="text-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                </div>
-                                <div class="text-icon fs-4 pt-3 pb-4">
-                                    <i class="bi bi-facebook px-3"></i>
-                                    <i class="bi bi-instagram px-3"></i>
-                                    <i class="bi bi-twitter px-3"></i>
-                                </div>
-                            </div>
-                        </div>
+                    <?php } ?>
                     </div>
                 </div>
             </div>

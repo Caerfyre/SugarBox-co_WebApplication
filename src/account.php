@@ -127,7 +127,7 @@
                     <div class="d-flex justify-content-between">
                         <div>
                             <span class="fw-bold">Ordered on:&nbsp;</span>
-                            <?php echo date('l - F d, Y', strtotime($order['Order_Placement_Date'])) ?>
+                            <?php echo date('l, F d, Y', strtotime($order['Order_Placement_Date'])) ?>
                         </div>
                         <div><span class="<?php
                             switch ($order['Order_Status']) {
