@@ -132,12 +132,12 @@ include 'includes/topbar.php'
                                 <?php if($check_prodinfo){?>
                                     <?php if (!isset($_POST["editPriceInfo"])) { ?>
                                         <button class="btn fs-5 btn-titleColor px-2 py-0" data-toggle="modal" data-target="#addPriceInfo">Add</button>
-                                    <?php } ?>
-                                <?php } else { ?>
-                                    <form action="" method="post">
-                                        <input class="btn fs-5 btn-danger px-2 py-0" name="cancelEditPriceInfo" type="submit" value="Cancel">
-                                    </form>
-                                <?php }?>
+                                    <?php } else {?>
+                                        <form action="" method="post">
+                                            <input class="btn fs-5 btn-danger px-2 py-0" name="cancelEditPriceInfo" type="submit" value="Cancel">
+                                        </form>
+                                    <?php }?>
+                                    <?php }?>
                                 </div>
                             </div>
 
