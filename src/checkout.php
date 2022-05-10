@@ -146,7 +146,7 @@
                             <!-- Product -->
                             <div class="row mb-3 bg-section2 p-0">
                                 <div class="col-4 ps-0 overflow-hidden d-flex justify-content-center" style="max-height: 150px;">
-                                    <img src="../assets/<?php echo $cartProduct[0]['SideProd_Image'] ?>" alt="Product_img">
+                                    <img src="../assets/<?php echo $cartProduct[0]['SideProd_Image'] ?>" alt="Product_img" style="object-fit: scale-down">
                                 </div>
                                 <div class="col d-flex flex-column my-2">
                                     <div class="row">
