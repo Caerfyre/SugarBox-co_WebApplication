@@ -9,7 +9,64 @@ Sugarbox&co is a growing small-scale pastry business based on Cebu, Philippines 
 The primary objective of this project is to successfully create an Information System for Sugarbox&co using the database approach. This system is expected to contain functionalities of managing data that is received, processed, stored, or sent from transactions and other business-related activities. These functions will be focused on allowing the client user to have better data management, time-saving processes, and other benefits brought by the database approach.
 
 ## Screenshots
-Coming soon
+<details>
+<summary>Customer View</summary>
+<br>
+  <div align="center">
+    <img src="https://github.com/Caerfyre/IM2-Project/blob/main/screenshots/customer/homepage.png?raw=true"></img>
+    <p>Homepage</p>
+  </div>
+  <div align="center">
+    <img src="https://github.com/Caerfyre/IM2-Project/blob/main/screenshots/customer/gallery.png?raw=true"></img>
+    <p>Gallery</p>
+  </div>
+  <div align="center">
+    <img src="https://github.com/Caerfyre/IM2-Project/blob/main/screenshots/customer/menu.png?raw=true"></img>
+    <p>Menu</p>
+  </div>
+  <div align="center">
+    <img src="https://github.com/Caerfyre/IM2-Project/blob/main/screenshots/customer/order-item.png?raw=true"></img>
+    <p>Order Item</p>
+  </div>
+  <div align="center">
+    <img src="https://github.com/Caerfyre/IM2-Project/blob/main/screenshots/customer/checkout.png?raw=true"></img>
+    <p>Checkout</p>
+  </div>
+  <div align="center">
+    <img src="https://github.com/Caerfyre/IM2-Project/blob/main/screenshots/customer/account.png?raw=true"></img>
+    <p>Account & Order History</p>
+  </div>
+</details>
+<details>
+<summary>Admin View</summary>
+<br>
+<div style="display:flex">
+  <div align="center">
+    <img src="https://github.com/Caerfyre/IM2-Project/blob/main/screenshots/admin/dashboard.png?raw=true"></img>
+    <p>Dashboard</p>
+  </div>
+  <div align="center">
+    <img src="https://github.com/Caerfyre/IM2-Project/blob/main/screenshots/admin/products.png?raw=true"></img>
+    <p>Products</p>
+  </div>
+  <div align="center">
+    <img src="https://github.com/Caerfyre/IM2-Project/blob/main/screenshots/admin/customers.png?raw=true"></img>
+    <p>Customers</p>
+  </div>
+  <div align="center">
+    <img src="https://github.com/Caerfyre/IM2-Project/blob/main/screenshots/admin/orders.png?raw=true"></img>
+    <p>Orders</p>
+  </div>
+  <div align="center">
+    <img src="https://github.com/Caerfyre/IM2-Project/blob/main/screenshots/admin/order-details.png?raw=true"></img>
+    <p>Order Details</p>
+  </div>
+  <div align="center">
+    <img src="https://github.com/Caerfyre/IM2-Project/blob/main/screenshots/admin/inventory.png?raw=true"></img>
+    <p>Inventory</p>
+  </div>
+</div>
+</details>
 
 ## Project Setup
 ### XAMPP
