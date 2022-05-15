@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/Caerfyre/IM2-Project/main/assets/sblogo-2.svg"/> 
 </p>
 
-# Sugarbox&co.
+# 🍰 Sugarbox&co. 🧁🥐
 Sugarbox&co is a growing small-scale pastry business based on Cebu, Philippines that specializes in creating custom desserts such as cakes, cupcakes, cookies and more.
 
 ## Project Description
@@ -101,10 +101,6 @@ Guidelines for creating an _enhancement_ issue:
 - Self-assign your issue if you don't want other contributors to work on it
 - Provide additional sections and/or details as needed
 
-## Links
-* [Figma Prototype](https://www.figma.com/file/YdoiT4VOOJoGmICwCWTRmv/CIS-1202-Exercise-2-WebDev-and-Design-YBAS?node-id=104%3A14172)
-* [Proposal Document](https://docs.google.com/document/d/1fKh0n3eTiV8IhbUMKo7PGqCGzXXHRrAM/edit?usp=sharing&ouid=108013498313349699134&rtpof=true&sd=true)
-
 ## Contributors
 **IM-2 Group 9**
   - Niña Therese Ybas
@@ -113,4 +109,4 @@ Guidelines for creating an _enhancement_ issue:
   - Eloisa Españo
 
 ## Project Status
-Ongoing
+✅ Complete - May 11, 2022
